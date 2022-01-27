@@ -1,0 +1,102 @@
+html,
+body {
+  width: 100%;
+  height: 600vh;
+  padding: 0;
+  margin: 0;
+}
+.pages {
+  position: fixed;
+}
+.house {
+  position: absolute;
+  background-image: url("./svg/majhoolsoft.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+  width: 100%;
+  height: 100vh;
+  min-width: 1920px;
+  z-index: -1;
+  /* transform: translateX(-1000px);
+  transform-origin: 1000px 100%;
+  transform: scale(1.4); */
+}
+.door {
+  position: absolute;
+  background-image: url("./svg/door.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* object-fit: none; */
+  /* object-position: center; */
+  /* open the door using scroll */
+  transform-origin: 100% 83%;
+  transform: rotateX(calc(var(--scrollpos) * 20deg));
+}
+@media screen and (min-width: 900px) {
+  .house {
+    /* animation to zoom on door */
+    animation: transition-to-door 5s ease forwards;
+  }
+}
+@media screen and (max-width: 900px) {
+  .house {
+    /* animation to zoom on door */
+    animation: transition-to-door-mobile 5s ease forwards;
+  }
+}
+@keyframes transition-to-door {
+  0% {
+    top: 0;
+  }
+  50% {
+    transform-origin: bottom left;
+    transform: scale(2);
+  }
+  100% {
+    /* transform-origin: 2000px 100vh;
+    transform: scaleX(2); */
+
+    transform-origin: 1000px 100%;
+    transform: scaleY(3);
+    transform: translateX(-1000px);
+  }
+}
+@keyframes transition-to-door-mobile {
+  0% {
+    top: 0;
+  }
+  50% {
+    transform-origin: bottom left;
+    transform: scale(2);
+  }
+  100% {
+    transform-origin: 100%;
+    transform: scaleY(3);
+    transform: translateX(-1000px);
+  }
+}
+.welcome {
+  /* display: inline; */
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
+  /* transform: scale(2);
+  transition: transform ease-in 2s 2s; */
+}
+.text {
+  /* text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5,
+    0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5; */
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* to get element position https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element */
