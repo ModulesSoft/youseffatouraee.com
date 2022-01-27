@@ -1,0 +1,64 @@
+html,
+body {
+  width: 100%;
+  height: 600vh;
+  padding: 0;
+  margin: 0;
+}
+.pages {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.pages__first {
+  background-image: url("./svg/majhoolsoft.svg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  object-fit: cover;
+  height: 100%;
+  left: 0;
+  /* min-width: 1920px; */
+  position: absolute;
+  top: 0;
+  width: 100%;
+  /* object-position: 50% 50%; */
+  /* animation to zoom on door */
+  /* animation: transition-to-door 5s ease forwards; */
+}
+.first__door {
+  position: absolute;
+  background-image: url("./svg/door.svg");
+  background-repeat: no-repeat;
+
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* object-fit: none; */
+  /* object-position: center; */
+  /* open the door using scroll */
+  transform-origin: 100% 83%;
+  transform: rotateX(calc(var(--scrollpos) * 20deg));
+}
+@keyframes transition-to-door {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 200px;
+    transform-origin: bottom left;
+    transform: scale(2);
+  }
+  75% {
+    transform-origin: bottom left;
+    transform: scale(2);
+  }
+  100% {
+    vertical-align: middle;
+    background-position: inherit;
+    /* transform-origin: 100% 25%; */
+    /* object-fit: cover; */
+    /* transform-origin: 100%; */
+    transform: scale(2);
+    /* transform: translateX(-740px); */
+  }
+}
