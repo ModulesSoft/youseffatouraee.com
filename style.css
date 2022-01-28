@@ -1,0 +1,147 @@
+html,
+body {
+  width: 100%;
+  height: 600vh;
+  padding: 0;
+  margin: 0;
+  background-color: #257B42;
+}
+.pages {
+  position: fixed;
+}
+.house-image{
+  
+  position: absolute;
+  background-image: url("./svg/majhoolsoft.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+  min-width: 1920px;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+.house {
+  /* transform: translateX(-1000px);
+  transform-origin: 1000px 100%;
+  transform: scale(1.4); */
+}
+.door {
+  position: absolute;
+  background-image: url("./svg/door.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* object-fit: none; */
+  /* object-position: center; */
+  /* open the door using scroll */
+  transform-origin: 100% 83%;
+  transform: rotateX(calc(var(--scrollpos) * 20deg));
+}
+@media screen and (min-width:1900px) {
+  .pages{
+    animation:scale-out 5s ease-out forwards;
+  }
+  
+  .pages__first{
+    transform-origin:1920px 100vh !important;
+  animation: scale-to-door 3s ease-in 5s forwards;
+  }
+}
+  @media screen and (min-width: 900px) and (max-width:1900px) {
+  .pages{
+    
+  animation:scale-out 5s ease-out forwards;
+  }
+  
+.pages__first{
+  animation: scale-to-door 3s ease-in 10s forwards;
+}
+  .house {
+    /* animation to zoom on door */
+    /* animation-name: scale-out, transition-to-door;
+    animation-duration: 4s, 5s;
+    animation-delay: 0s,5s; */
+    animation:  transition-to-door 5s 5s forwards;
+  }
+  
+}
+@media screen and (max-width: 900px) {
+  .pages{
+    
+    animation:scale-out 5s ease-out forwards;
+    }
+  .house {
+    /* animation to zoom on door */
+    animation: transition-to-door-mobile 5s 5s ease forwards;
+  }
+}
+@keyframes scale-to-door {
+  from{
+    transform-origin: 800px 100vh;
+    transform: scale(1);
+  }
+  to{
+    transform-origin: 800px 100vh;
+    transform: scale(2);
+  }
+}
+@keyframes scale-out {
+  from{
+    transform: scale(2);
+    /* transition: top 500ms ease; */
+  }
+  to{
+    
+    /* transform-origin: bottom left; */
+    /* transform: scale(2); */
+    transform: translateY(-100%);
+  }
+}
+@keyframes transition-to-door {
+  0% {
+    transform-origin: bottom left;
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateX(-500px);
+  }
+   100% {
+    /* transform-origin: 2000px 100vh;
+    transform: scaleX(2); */
+
+    /* transform-origin: bottom right; */
+  }
+  
+}
+@keyframes transition-to-door-mobile {
+  0% {
+    transform-origin: bottom left;
+  }
+  100% {
+    transform: translate( -1000px ,-200px);
+  }
+}
+.welcome {
+  /* display: inline; */
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
+  /* transform: scale(2);
+  transition: transform ease-in 2s 2s; */
+}
+.text {
+  /* text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5,
+    0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5; */
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* to get element position https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element */
