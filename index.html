@@ -22,11 +22,10 @@
         <div class="pages__first">
             <!-- <div class="first__door"> </div> -->
             <!-- <img src="./svg/door.svg" alt="" class="first__door src"> -->
-            <div class="house">
-                <div class="house-image">
-                    <div class="door"></div>
-                </div>
-            </div>
+            <object class="house">
+                <img  id="house" class="house-image" src="./svg/majhoolsoft.svg">
+                <img class="door-image" src="./svg/door.svg">
+            </object>
 
             <p class="welcome text">
                 Welcome to my world!
@@ -36,3 +35,13 @@
 </body>
 
 </html>
+<script>
+    const demo = document.querySelector("svg");
+    gsap.to(demo, {
+        duration: 1,
+        attr: {
+            viewBox: "400 0 200 200"
+        },
+        ease: "power3.inOut"
+    });
+</script>
