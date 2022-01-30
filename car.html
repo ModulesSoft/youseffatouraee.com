@@ -279,24 +279,24 @@
             //     ease: "power3.inOut"
             // });
 
-            // anime({
-            //     targets: '#front-wheel',
-            //     duration: 5000,
-            //     rotate: '360deg',
-            //     loop: true
-            // });
+            anime({
+                targets: '#front-wheel',
+                duration: 5000,
+                rotate: '360deg',
+                loop: true
+            });
             anime({
                 targets: '#rear-wheel',
                 duration: 5000,
                 rotate: '360deg',
                 loop: true,
             });
-            anime({
-                targets: '#car',
-                duration: 10000,
-                easing: 'easeInOutQuad',
-                viewBox: junkView
-            });
+            // anime({
+            //     targets: '#car',
+            //     duration: 10000,
+            //     easing: 'easeInOutQuad',
+            //     viewBox: junkView
+            // });
         }
         animateViewBox();
 
