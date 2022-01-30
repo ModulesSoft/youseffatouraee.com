@@ -1,13 +1,23 @@
-.pages {
-    height: 600vh;
-}
-
-.background>svg {
-    width: 100%;
-    height: 100vh;
-}
-
-#front-wheel {
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-}
+        .pages {
+            height: 600vh;
+            position: fixed;
+        }
+        
+        .background>svg {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        #rear-wheel {
+            transform-origin: 50% 50%;
+            transform-box: fill-box;
+            /* display: none; */
+        }
+        
+        #front-wheel {
+            transform-origin: 50% 50%;
+            transform-box: fill-box;
+        }
+        /* #Component_14_1 {
+    display: none
+} */
