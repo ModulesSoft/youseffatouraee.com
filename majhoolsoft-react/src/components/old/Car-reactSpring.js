@@ -1,22 +1,22 @@
-import anime from 'animejs';
-import {useEffect} from 'react';
+import { animated, useSpring } from '@react-spring/web';
+
 function Car() {
-    useEffect(()=>{
-        anime({
-            targets: '#rear-wheel , #front-wheel',
-            rotate: '5turn',
-            duration: 8000
-          });
-          anime({
-            targets: '#car',
-            translateX: 250,
-            duration: 8000
-          });
-    },[])
-    
+    const wheels = useSpring({
+        from: {
+            transformOrigin: 'center',
+            transformBox: 'fill-box',
+            transform: 'rotate(0deg)'
+        },
+        to: {
+            transform: 'rotate(360deg)'
+        }
+    })
     return (
-        <svg  x="0" y="900">
-            <g id="car">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="578.884"
+            height="172.711"
+        >
             <g
                 data-name="Group 141"
                 transform="translate(307.61 -1618.709) translate(-307.61 1618.709)"
@@ -65,7 +65,7 @@ function Car() {
                         ></path>
                     </g>
                     <g data-name="Group 37" transform="translate(100.003 92.409)">
-                        <g id="rear-wheel"  data-name="Component 14 – 1">
+                        <animated.g id="rear-wheel" style={wheels} data-name="Component 14 – 1">
                             <path
                                 fill="#757679"
                                 d="M451.235 628.417a39.517 39.517 0 11-39.518-39.517 39.517 39.517 0 0139.517 39.517z"
@@ -282,10 +282,10 @@ function Car() {
                                     transform="rotate(-49.998 3.88 1.809)"
                                 ></path>
                             </g>
-                        </g>
+                        </animated.g>
                     </g>
                     <g data-name="Group 37_2" transform="translate(420 92.409)">
-                        <g id="front-wheel"  data-name="Group 37_2">
+                        <animated.g id="front-wheel" style={wheels} data-name="Group 37_2">
                             <path
                                 fill="#757679"
                                 d="M1006.135 628.417a39.517 39.517 0 11-39.518-39.517 39.518 39.518 0 0139.518 39.517z"
@@ -502,7 +502,7 @@ function Car() {
                                     transform="rotate(-49.998 3.88 1.809)"
                                 ></path>
                             </g>
-                        </g>
+                        </animated.g>
                     </g>
                     <path
                         fill="#676974"
@@ -916,8 +916,7 @@ function Car() {
                     ></path>
                 </g>
             </g>
-            </g>
-        </svg>
+        </svg >
     );
 }
 export default Car;
