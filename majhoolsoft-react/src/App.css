@@ -1,0 +1,25 @@
+.app {
+  height: 600vh;
+}
+.page {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.background {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  height: 100vh;
+}
+.car {
+  z-index: 2;
+  position: fixed;
+  top: 90vh;
+  /* display: none; */
+}
+#rear-wheel,
+#front-wheel {
+  transform-origin: center;
+  transform-box: fill-box;
+}
