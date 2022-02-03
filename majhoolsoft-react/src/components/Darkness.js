@@ -5,6 +5,7 @@ function Darkness() {
       width="2920"
       height="1080"
       viewBox="0 0 2920 1080"
+      x="-1000"
     >
       <rect
         id="darkness"
