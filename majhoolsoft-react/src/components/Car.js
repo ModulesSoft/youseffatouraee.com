@@ -21,7 +21,7 @@ function Car() {
 
   // width="578" height="172"
   return (
-    <svg y="900">
+    <svg y="900" x="-1000">
       <g id="car">
         <g
           data-name="Group 141"

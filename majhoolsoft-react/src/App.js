@@ -5,6 +5,7 @@ import Background from "./components/Background";
 import anime from "animejs";
 import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
+import Sun from "./components/Sun";
 function App() {
   let generalView = "0 0 1920 1080";
   let beginView = "400 0 200 200";
@@ -15,9 +16,20 @@ function App() {
     anime({
       targets: "#page",
       duration: 4000,
-      viewBox: ["0 650 900 500", "1000 0 2240 1080"],
+      viewBox: ["-1000 650 900 500", "0 0 2240 1080"],
       easing: "easeOutQuad",
       delay: 5000,
+      // delay: 500,
+    });
+  }, []);
+  // sun sets
+  useEffect(() => {
+    anime({
+      targets: "#sun",
+      duration: 10000,
+      translateY: "-500px",
+      easing: "easeOutQuad",
+      delay: 9000,
       // delay: 500,
     });
   }, []);
@@ -47,6 +59,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <svg className="page" id="page">
+          <Sun />
           <Background />
           <Car />
           <Darkness />
