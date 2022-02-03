@@ -4,15 +4,18 @@ function Car() {
   useEffect(() => {
     anime({
       targets: "#rear-wheel , #front-wheel",
-      rotate: "5turn",
-      duration: 3000,
-      easing: "cubicBezier(1,0,.45,.45)",
+      rotate: "10turn",
+      duration: 11000,
+      // easing: "cubicBezier(1,0,.45,.45)",
+      easing: "easeOutQuad",
     });
     anime({
-      targets: "#car",
+      targets: "#car, #beam",
       translateX: 1050,
-      duration: 3000,
-      easing: "cubicBezier(1,0,.45,.45)",
+      duration: 6000,
+      delay: 5000,
+      // easing: "cubicBezier(1,0,.45,.45)",
+      easing: "easeOutQuad",
     });
   }, []);
 
