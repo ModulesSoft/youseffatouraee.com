@@ -7,8 +7,20 @@ import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import Sun from "./components/Sun";
 import Clouds from "./components/Clouds";
-import DriverDark from "./components/DriverDark";
+import useWindowDimensions from "./components/GetWindowDimensions";
 function App() {
+  const { height, width } = useWindowDimensions();
+  let desktopSize;
+  if (width > height) {
+    // it's not a mobile
+    desktopSize = {
+      width: width,
+    };
+  } else {
+    desktopSize = {
+      height: height,
+    };
+  }
   let generalView = "0 0 1920 1080";
   let beginView = "400 0 200 200";
   let doorView = "1002.43 900.24 384.26 136.1";
@@ -55,7 +67,7 @@ function App() {
       duration: 3000,
       translateY: "-650px",
       easing: "easeOutQuad",
-      delay: 7000,
+      delay: 6000,
     });
   }, []);
   // clouds come up
@@ -78,10 +90,20 @@ function App() {
       delay: 7000,
     });
   }, []);
+  // debug for top gap
+  useEffect(() => {
+    anime({
+      targets: ".container",
+      duration: 3000,
+      backgroundColor: "#87ceeb",
+      easing: "linear",
+      delay: 7000,
+    });
+  }, []);
   // background color fades to blue
   useEffect(() => {
     anime({
-      targets: ".page",
+      targets: "container",
       backgroundImage: "linear-gradient (#87CEEB, #034b04)",
       duration: 5000,
       opacity: 1,
@@ -102,18 +124,20 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <body>
-        <svg className="page">
-          <Sun />
-          <Clouds />
-          <Background />
-          <Darkness />
-          <Car />
-          <LightBeam />
-        </svg>
-        <article>
-          <p className="hi">Hi</p>
-          <p className="welcome">welcome to my world!</p>
-        </article>
+        <div className="container">
+          <svg className="page" style={desktopSize}>
+            <Sun />
+            <Clouds />
+            <Background />
+            <Darkness />
+            <Car />
+            <LightBeam />
+          </svg>
+          <article>
+            <p className="hi">Hi</p>
+            <p className="welcome">welcome to my world!</p>
+          </article>
+        </div>
       </body>
     </div>
   );
