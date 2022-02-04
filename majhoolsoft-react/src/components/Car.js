@@ -4,7 +4,7 @@ function Car() {
   useEffect(() => {
     anime({
       targets: "#rear-wheel , #front-wheel",
-      rotate: "10turn",
+      rotate: "11turn",
       duration: 11000,
       // easing: "cubicBezier(1,0,.45,.45)",
       easing: "easeOutQuad",
