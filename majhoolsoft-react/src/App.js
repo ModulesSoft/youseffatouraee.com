@@ -8,6 +8,7 @@ import LightBeam from "./components/LightBeam";
 import Sun from "./components/Sun";
 import Clouds from "./components/Clouds";
 import useWindowDimensions from "./components/GetWindowDimensions";
+import GarageDoor from "./components/GarageDoor";
 function App() {
   const { height, width } = useWindowDimensions();
   let desktopSize;
@@ -22,7 +23,7 @@ function App() {
     };
   }
   let generalView = "0 0 1920 1080";
-  let beginView = "400 0 200 200";
+  let beginView = "-1000 650 900 500";
   let doorView = "1002.43 900.24 384.26 136.1";
   let carView = "0 650 900 400";
   // Hi text fades in and out
@@ -50,14 +51,20 @@ function App() {
     });
   }, []);
 
-  // camera transition from the car in the way home to the background
+  // camera transition
   useEffect(() => {
     anime({
       targets: ".page",
       duration: 4000,
-      viewBox: ["-1000 650 900 500", "0 0 1920 1080"],
+      keyframes: [
+        // camera transition from the car in the way home to the background
+        { viewBox: [beginView, generalView], delay: 5000 },
+        // camera transition to garage door
+        { viewBox: [generalView, doorView], delay: 5000 },
+        {},
+      ],
       easing: "easeOutQuad",
-      delay: 5000,
+      // delay: 5000,
     });
   }, []);
   // sun sets
@@ -120,6 +127,7 @@ function App() {
       delay: 8000,
     });
   }, []);
+
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -129,13 +137,14 @@ function App() {
             <Sun />
             <Clouds />
             <Background />
+            <GarageDoor />
             <Darkness />
             <Car />
             <LightBeam />
           </svg>
           <article>
             <p className="hi">Hi</p>
-            <p className="welcome">welcome to my world!</p>
+            <p className="welcome">Ride with me to my world!</p>
           </article>
         </div>
       </body>
