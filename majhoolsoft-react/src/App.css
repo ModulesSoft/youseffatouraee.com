@@ -31,12 +31,14 @@
   transform-box: fill-box;
 }
 
-.hi,
-.welcome {
+.text {
   position: relative;
   opacity: 0;
   margin: 0;
   color: white;
+}
+.scroll {
+  text-align: center;
 }
 article {
   padding: 20vh 20vw;
