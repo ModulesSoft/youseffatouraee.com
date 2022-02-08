@@ -9,25 +9,41 @@ import Sun from "./components/Sun";
 import Clouds from "./components/Clouds";
 import useWindowDimensions from "./components/GetWindowDimensions";
 import GarageDoor from "./components/GarageDoor";
+import ScrollDown from "./components/ScrollDown";
 function App() {
   const { height, width } = useWindowDimensions();
-  let desktopSize;
-  if (width > height) {
-    // it's not a mobile
-    desktopSize = {
-      width: width,
-    };
-  } else {
-    desktopSize = {
-      height: height,
-    };
-  }
+  let mobile = width < height;
+  let size = mobile
+    ? {
+        height: height,
+      }
+    : {
+        width: width,
+      };
   let generalView = "0 0 1920 1080";
   let beginView = "-1000 650 900 500";
-  let doorView = "1002.43 900.24 384.26 136.1";
+  let doorViewDesktop = "1000 800 400 240";
+  let doorViewMobile = `1000 ${1080 - height} ${width} ${height}`;
   let carView = "0 650 900 400";
-  // Hi text fades in and out
+  // const [scroll, showScroll] = useState(false);
+  // setTimeout(function () {
+  //   showScroll(true); //After 1 second, show the scroll icon
+  // }, 100);
+
+  // Scroll icon
   useEffect(() => {
+    anime({
+      targets: ".scrollIcon",
+      translateY: -50,
+      direction: "alternate",
+      loop: true,
+      easing: "spring(1, 80, 10, 0)",
+      opacity: 0.3,
+    });
+  }, []);
+
+  useEffect(() => {
+    // Hi text fades in and out
     anime({
       targets: ".hi",
       opacity: [
@@ -37,9 +53,7 @@ function App() {
       easing: "easeInExpo",
       delay: 0,
     });
-  }, []);
-  // welcome text fades in and out
-  useEffect(() => {
+    // welcome text fades in and out
     anime({
       targets: ".welcome",
       opacity: [
@@ -60,11 +74,15 @@ function App() {
         // camera transition from the car in the way home to the background
         { viewBox: [beginView, generalView], delay: 5000 },
         // camera transition to garage door
-        { viewBox: [generalView, doorView], delay: 5000 },
-        {},
+        {
+          viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
+          // scaleY: 2,
+          // scaleX: width / 385,
+          delay: 5000,
+        },
       ],
       easing: "easeOutQuad",
-      // delay: 5000,
+      delay: 5000,
     });
   }, []);
   // sun sets
@@ -87,14 +105,21 @@ function App() {
       delay: 9000,
     });
   }, []);
-  // fade away the darkness to brightness
+  // fade away the darkness to brightness and vice versa
   useEffect(() => {
     anime({
       targets: "#darkness",
-      duration: 3000,
-      opacity: 0,
-      easing: "linear",
-      delay: 7000,
+      keyframes: [
+        // fade in to day
+        { opacity: 0, duration: 3000, delay: 7000, easing: "linear" },
+        // fade in unless scroll
+        {
+          opacity: 0.7,
+          duration: 1000,
+          delay: 4000,
+          easing: "linear",
+        },
+      ],
     });
   }, []);
   // debug for top gap
@@ -128,12 +153,22 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    // scroll text fades in
+    anime({
+      targets: ".scroll",
+      opacity: 0.8,
+      delay: 15000,
+      duration: 2000,
+      easing: "linear",
+    });
+  }, []);
   return (
     <div className="App">
       <header className="App-header"></header>
       <body>
         <div className="container">
-          <svg className="page" style={desktopSize}>
+          <svg className="page" style={size}>
             <Sun />
             <Clouds />
             <Background />
@@ -141,10 +176,13 @@ function App() {
             <Darkness />
             <Car />
             <LightBeam />
+            {/* {scroll && <ScrollDown />} */}
+            <ScrollDown />
           </svg>
           <article>
-            <p className="hi">Hi</p>
-            <p className="welcome">Ride with me to my world!</p>
+            <p className="hi text">Hi</p>
+            <p className="welcome text">Ride with me to my world!</p>
+            <p className="scroll text">Scroll Down</p>
           </article>
         </div>
       </body>
