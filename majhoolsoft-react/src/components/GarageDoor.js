@@ -1,4 +1,7 @@
-function GarageDoor() {
+function GarageDoor({ scrollY }) {
+  let transform = {
+    transform: `translateY(${scrollY < 140 && -1 * scrollY}px)`,
+  };
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +11,7 @@ function GarageDoor() {
       x="1003"
       y="900"
     >
-      <g id="garage-door">
+      <g id="garage-door" style={transform}>
         <defs>
           <clipPath id="clip-path">
             <path fill="none" d="M0 0H384.264V136.105H0z"></path>

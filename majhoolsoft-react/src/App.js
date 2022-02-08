@@ -10,7 +10,9 @@ import Clouds from "./components/Clouds";
 import useWindowDimensions from "./components/GetWindowDimensions";
 import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
+import useScroll from "./helpers/GetScroll";
 function App() {
+  let scrollY = useScroll().scrollY / 10;
   const { height, width } = useWindowDimensions();
   let mobile = width < height;
   let size = mobile
@@ -29,6 +31,15 @@ function App() {
   // setTimeout(function () {
   //   showScroll(true); //After 1 second, show the scroll icon
   // }, 100);
+
+  // remove scroll instruction whenever scrolled enough ( 140px)
+  if (scrollY > 10) {
+    anime.remove([".scrollIcon", "#darkness", ".scroll"]);
+    anime({
+      targets: [".scrollIcon", "#darkness", ".scroll"],
+      opacity: 0,
+    });
+  }
 
   // Scroll icon
   useEffect(() => {
@@ -163,29 +174,28 @@ function App() {
       easing: "linear",
     });
   }, []);
+
   return (
     <div className="App">
       <header className="App-header"></header>
-      <body>
-        <div className="container">
-          <svg className="page" style={size}>
-            <Sun />
-            <Clouds />
-            <Background />
-            <GarageDoor />
-            <Darkness />
-            <Car />
-            <LightBeam />
-            {/* {scroll && <ScrollDown />} */}
-            <ScrollDown />
-          </svg>
-          <article>
-            <p className="hi text">Hi</p>
-            <p className="welcome text">Ride with me to my world!</p>
-            <p className="scroll text">Scroll Down</p>
-          </article>
-        </div>
-      </body>
+      <div className="container">
+        <svg className="page" style={size}>
+          <Sun />
+          <Clouds />
+          <Background />
+          <GarageDoor scrollY={scrollY} />
+          <Darkness />
+          <Car />
+          <LightBeam />
+          {/* {scroll && <ScrollDown />} */}
+          <ScrollDown />
+        </svg>
+        <article>
+          <p className="hi text">Hi</p>
+          <p className="welcome text">Ride with me to my world!</p>
+          <p className="scroll text">Scroll Down</p>
+        </article>
+      </div>
     </div>
   );
 }
