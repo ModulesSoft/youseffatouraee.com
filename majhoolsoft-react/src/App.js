@@ -11,6 +11,7 @@ import useWindowDimensions from "./components/GetWindowDimensions";
 import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
+import Garage from "./components/Garage";
 function App() {
   let scrollY = useScroll().scrollY / 10;
   const { height, width } = useWindowDimensions();
@@ -77,25 +78,29 @@ function App() {
   }, []);
 
   // camera transition
-  useEffect(() => {
-    anime({
-      targets: ".page",
-      duration: 4000,
-      keyframes: [
-        // camera transition from the car in the way home to the background
-        { viewBox: [beginView, generalView], delay: 5000 },
-        // camera transition to garage door
-        {
-          viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
-          // scaleY: 2,
-          // scaleX: width / 385,
-          delay: 5000,
-        },
-      ],
-      easing: "easeOutQuad",
-      delay: 5000,
-    });
-  }, []);
+  useEffect(
+    // (beginView, generalView, mobile, doorViewMobile, doorViewDesktop) => {
+    () => {
+      anime({
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          // camera transition from the car in the way home to the background
+          { viewBox: [beginView, generalView], delay: 5000 },
+          // camera transition to garage door
+          {
+            viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
+            // scaleY: 2,
+            // scaleX: width / 385,
+            delay: 5000,
+          },
+        ],
+        easing: "easeOutQuad",
+        delay: 5000,
+      });
+    },
+    []
+  );
   // sun sets
   useEffect(() => {
     anime({
@@ -175,6 +180,7 @@ function App() {
     });
   }, []);
 
+  function beginResume() {}
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -183,7 +189,13 @@ function App() {
           <Sun />
           <Clouds />
           <Background />
-          <GarageDoor scrollY={scrollY} />
+          <Garage />
+          <GarageDoor
+            scrollY={scrollY}
+            doorOpened={(e) => {
+              e && beginResume();
+            }}
+          />
           <Darkness />
           <Car />
           <LightBeam />

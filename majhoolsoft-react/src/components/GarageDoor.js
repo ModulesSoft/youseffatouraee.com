@@ -1,7 +1,9 @@
-function GarageDoor({ scrollY }) {
+function GarageDoor({ scrollY, doorOpened }) {
   let transform = {
     transform: `translateY(${scrollY < 140 && -1 * scrollY}px)`,
   };
+  //whether the door is finished opening
+  doorOpened(scrollY > 135 ? true : false);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
