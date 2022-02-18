@@ -12,6 +12,7 @@ import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
+import { useState } from "react/cjs/react.development";
 function App() {
   let scrollY = useScroll().scrollY / 10;
   const { height, width } = useWindowDimensions();
@@ -29,7 +30,6 @@ function App() {
   let doorViewMobile = `1000 ${1080 - height} ${width} ${height}`;
   let carView = "0 650 900 400";
   let laptopView = "1306 920 70 60";
-
   let timeline = 0;
   // const [scroll, showScroll] = useState(false);
   // setTimeout(function () {
@@ -198,6 +198,7 @@ function App() {
       easing: "easeOutQuad",
     });
     timeline += 4000;
+    // enterOnce = false;
   }
   return (
     <div className="App">

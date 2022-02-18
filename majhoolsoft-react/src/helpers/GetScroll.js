@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 
 export const useScroll = () => {
+  //   useEffect(() => {
+  //     // set scroll to zero when component did mount
+  //     window.scrollTo(0, 0);
+  //     console.log("umad");
+  // }, []);
   const [state, setState] = useState({
     lastScrollTop: 0,
     bodyOffset: document.body.getBoundingClientRect(),
