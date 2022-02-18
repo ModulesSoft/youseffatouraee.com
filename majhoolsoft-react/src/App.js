@@ -28,6 +28,9 @@ function App() {
   let doorViewDesktop = "1000 800 400 240";
   let doorViewMobile = `1000 ${1080 - height} ${width} ${height}`;
   let carView = "0 650 900 400";
+  let laptopView = "1306 920 70 60";
+
+  let timeline = 0;
   // const [scroll, showScroll] = useState(false);
   // setTimeout(function () {
   //   showScroll(true); //After 1 second, show the scroll icon
@@ -42,145 +45,160 @@ function App() {
     });
   }
 
-  // Scroll icon
-  useEffect(() => {
-    anime({
-      targets: ".scrollIcon",
-      translateY: -50,
-      direction: "alternate",
-      loop: true,
-      easing: "spring(1, 80, 10, 0)",
-      opacity: 0.3,
-    });
-  }, []);
+  // // Scroll icon
+  // useEffect(() => {
+  //   anime({
+  //     targets: ".scrollIcon",
+  //     translateY: -50,
+  //     direction: "alternate",
+  //     loop: true,
+  //     easing: "spring(1, 80, 10, 0)",
+  //     opacity: 0.3,
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    // Hi text fades in and out
-    anime({
-      targets: ".hi",
-      opacity: [
-        { value: 1, duration: 1000 },
-        { value: 0, delay: 6000 },
-      ],
-      easing: "easeInExpo",
-      delay: 0,
-    });
-    // welcome text fades in and out
-    anime({
-      targets: ".welcome",
-      opacity: [
-        { value: 1, duration: 1000 },
-        { value: 0, delay: 6000 },
-      ],
-      easing: "easeInExpo",
-      delay: 1000,
-    });
-  }, []);
+  // useEffect(() => {
+  //   // Hi text fades in and out
+  //   anime({
+  //     targets: ".hi",
+  //     opacity: [
+  //       { value: 1, duration: 1000 },
+  //       { value: 0, delay: 6000 },
+  //     ],
+  //     easing: "easeInExpo",
+  //     delay: 0,
+  //   });
+  //   // welcome text fades in and out
+  //   anime({
+  //     targets: ".welcome",
+  //     opacity: [
+  //       { value: 1, duration: 1000 },
+  //       { value: 0, delay: 6000 },
+  //     ],
+  //     easing: "easeInExpo",
+  //     delay: 1000,
+  //   });
+  // }, []);
 
-  // camera transition
-  useEffect(
-    // (beginView, generalView, mobile, doorViewMobile, doorViewDesktop) => {
-    () => {
-      anime({
-        targets: ".page",
-        duration: 4000,
-        keyframes: [
-          // camera transition from the car in the way home to the background
-          { viewBox: [beginView, generalView], delay: 5000 },
-          // camera transition to garage door
-          {
-            viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
-            // scaleY: 2,
-            // scaleX: width / 385,
-            delay: 5000,
-          },
-        ],
-        easing: "easeOutQuad",
-        delay: 5000,
-      });
-    },
-    []
-  );
-  // sun sets
-  useEffect(() => {
+  // // camera transition
+  // useEffect(
+  //   // (beginView, generalView, mobile, doorViewMobile, doorViewDesktop) => {
+  //   () => {
+  //     anime({
+  //       targets: ".page",
+  //       duration: 4000,
+  //       keyframes: [
+  //         // camera transition from the car in the way home to the background
+  //         { viewBox: [beginView, generalView], delay: 5000 },
+  //         // camera transition to garage door
+  //         {
+  //           viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
+  //           // scaleY: 2,
+  //           // scaleX: width / 385,
+  //           delay: 5000,
+  //         },
+  //       ],
+  //       easing: "easeOutQuad",
+  //       delay: 5000,
+  //     });
+  //   },
+  //   []
+  // );
+  // // sun sets
+  // useEffect(() => {
+  //   anime({
+  //     targets: "#sun",
+  //     duration: 3000,
+  //     translateY: "-650px",
+  //     easing: "easeOutQuad",
+  //     delay: 6000,
+  //   });
+  // }, []);
+  // // clouds come up
+  // useEffect(() => {
+  //   anime({
+  //     targets: "#clouds",
+  //     duration: 1000,
+  //     translateY: "-300px",
+  //     // easing: "easeOutQuad",
+  //     delay: 9000,
+  //   });
+  // }, []);
+  // // fade away the darkness to brightness and vice versa
+  // useEffect(() => {
+  //   anime({
+  //     targets: "#darkness",
+  //     keyframes: [
+  //       // fade in to day
+  //       { opacity: 0, duration: 3000, delay: 7000, easing: "linear" },
+  //       // fade in unless scroll
+  //       {
+  //         opacity: 0.7,
+  //         duration: 1000,
+  //         delay: 4000,
+  //         easing: "linear",
+  //       },
+  //     ],
+  //   });
+  // }, []);
+  // // debug for top gap
+  // useEffect(() => {
+  //   anime({
+  //     targets: ".container",
+  //     duration: 3000,
+  //     backgroundColor: "#87ceeb",
+  //     easing: "linear",
+  //     delay: 7000,
+  //   });
+  // }, []);
+  // // background color fades to blue
+  // useEffect(() => {
+  //   anime({
+  //     targets: "container",
+  //     backgroundImage: "linear-gradient (#87CEEB, #034b04)",
+  //     duration: 5000,
+  //     opacity: 1,
+  //     delay: 8000,
+  //   });
+  // }, []);
+  // // turn off the head lights
+  // useEffect(() => {
+  //   anime({
+  //     targets: "#beam",
+  //     duration: 500,
+  //     opacity: 0,
+  //     easing: "easeOutQuad",
+  //     delay: 8000,
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   // scroll text fades in
+  //   anime({
+  //     targets: ".scroll",
+  //     opacity: 0.8,
+  //     delay: 15000,
+  //     duration: 2000,
+  //     easing: "linear",
+  //   });
+  // }, []);
+
+  function beginResume() {
     anime({
-      targets: "#sun",
-      duration: 3000,
-      translateY: "-650px",
-      easing: "easeOutQuad",
-      delay: 6000,
-    });
-  }, []);
-  // clouds come up
-  useEffect(() => {
-    anime({
-      targets: "#clouds",
-      duration: 1000,
-      translateY: "-300px",
-      // easing: "easeOutQuad",
-      delay: 9000,
-    });
-  }, []);
-  // fade away the darkness to brightness and vice versa
-  useEffect(() => {
-    anime({
-      targets: "#darkness",
+      targets: ".page",
+      duration: 4000,
       keyframes: [
-        // fade in to day
-        { opacity: 0, duration: 3000, delay: 7000, easing: "linear" },
-        // fade in unless scroll
+        // camera transition from the garage door to the laptop
         {
-          opacity: 0.7,
-          duration: 1000,
-          delay: 4000,
-          easing: "linear",
+          viewBox: [mobile ? doorViewMobile : doorViewDesktop, laptopView],
         },
+        // camera transition to garage door
+        {},
       ],
-    });
-  }, []);
-  // debug for top gap
-  useEffect(() => {
-    anime({
-      targets: ".container",
-      duration: 3000,
-      backgroundColor: "#87ceeb",
-      easing: "linear",
-      delay: 7000,
-    });
-  }, []);
-  // background color fades to blue
-  useEffect(() => {
-    anime({
-      targets: "container",
-      backgroundImage: "linear-gradient (#87CEEB, #034b04)",
-      duration: 5000,
-      opacity: 1,
-      delay: 8000,
-    });
-  }, []);
-  // turn off the head lights
-  useEffect(() => {
-    anime({
-      targets: "#beam",
-      duration: 500,
-      opacity: 0,
       easing: "easeOutQuad",
-      delay: 8000,
     });
-  }, []);
-
-  useEffect(() => {
-    // scroll text fades in
-    anime({
-      targets: ".scroll",
-      opacity: 0.8,
-      delay: 15000,
-      duration: 2000,
-      easing: "linear",
-    });
-  }, []);
-
-  function beginResume() {}
+    timeline += 4000;
+  }
   return (
     <div className="App">
       <header className="App-header"></header>
