@@ -1,9 +1,18 @@
+import { useState } from "react";
 function GarageDoor({ scrollY, doorOpened }) {
   let transform = {
     transform: `translateY(${scrollY < 140 && -1 * scrollY}px)`,
   };
-  //whether the door is finished opening
-  doorOpened(scrollY > 135 ? true : false);
+
+  // check whether the door is finished opening
+  // flag to prevent multiple door open notice
+  let [enterOnce, setEnterOnce] = useState(true);
+  if (scrollY > 135 && enterOnce) {
+    doorOpened(true);
+    setEnterOnce(false);
+  } else {
+    doorOpened(false);
+  }
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
