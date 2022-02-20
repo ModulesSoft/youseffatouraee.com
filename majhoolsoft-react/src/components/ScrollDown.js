@@ -1,7 +1,6 @@
 function ScrollDown() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       x="1142"
       y="900"
       width="100"

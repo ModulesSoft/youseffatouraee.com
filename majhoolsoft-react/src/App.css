@@ -51,7 +51,7 @@ article {
   font-size: 1rem;
 }
 
-/* text animation properties */
+/* typewriter animation properties */
 .text-animation {
   display: none;
   background-color: rgba(0, 0, 0, 0.7);
@@ -71,7 +71,7 @@ article {
 }
 
 .cursor {
-  margin-left: -8px;
+  margin: 8px -8px; /* debug margin */
   position: absolute;
   top: 0;
   bottom: 0;

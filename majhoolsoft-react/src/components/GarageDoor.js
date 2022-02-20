@@ -15,7 +15,6 @@ function GarageDoor({ scrollY, doorOpened }) {
   }
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="384.264"
       height="136.105"
       viewBox="0 0 384.264 136.105"
