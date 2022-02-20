@@ -12,6 +12,8 @@ import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
+import TextAnimation from "./helpers/TextAnimation";
+
 function App() {
   let scrollY = useScroll().scrollY / 10;
   const { height, width } = useWindowDimensions();
@@ -28,7 +30,7 @@ function App() {
   let doorViewDesktop = "1000 800 400 240";
   let doorViewMobile = `1000 ${1080 - height} ${width} ${height}`;
   let carView = "0 650 900 400";
-  let laptopView = "1328 920 70 60";
+  let laptopView = "1328 920 60 60";
   let timeline = 0;
   // const [scroll, showScroll] = useState(false);
   // setTimeout(function () {
@@ -190,14 +192,35 @@ function App() {
         // camera transition from the garage door to the laptop
         {
           viewBox: [mobile ? doorViewMobile : doorViewDesktop, laptopView],
+          // viewBox: mobile ? doorViewMobile : doorViewDesktop,
         },
         // camera transition to garage door
         {},
       ],
       easing: "easeOutQuad",
     });
+
     timeline += 4000;
-    // enterOnce = false;
+
+    //resumeOne text background appearance
+    anime({
+      targets: "#resumeOne",
+      duration: 1000,
+      opacity: [0, 1],
+      easing: "easeInExpo",
+      delay: 2000,
+    });
+    //resumeTwo text background appearance
+    anime({
+      targets: "#resumeTwo",
+      duration: 1000,
+      opacity: [0, 1],
+      easing: "easeInExpo",
+      delay: 8000,
+    });
+    TextAnimation("#resumeOne", 4_000, 100, 10000);
+    TextAnimation("#resumeTwo", 10_000, 100, 16000);
+    timeline += 4000;
   }
   return (
     <div className="App">
@@ -219,11 +242,20 @@ function App() {
           <LightBeam />
           {/* {scroll && <ScrollDown />} */}
           <ScrollDown />
+          <svg x="1325" y="920" className="test">
+            {/* <rect width="35" height="65"></rect> */}
+          </svg>
         </svg>
         <article>
           <p className="hi text">Hi</p>
           <p className="welcome text">Ride with me to my world!</p>
           <p className="scroll text">Scroll Down</p>
+          <p id="resumeOne" className="text-animation">
+            I'm a software engineer
+          </p>
+          <p id="resumeTwo" className="text-animation">
+            I was born in Canada
+          </p>
         </article>
       </div>
     </div>
