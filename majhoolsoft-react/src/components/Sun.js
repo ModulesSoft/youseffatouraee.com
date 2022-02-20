@@ -1,6 +1,6 @@
 function Sun() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <svg>
       <g id="sun">
         <path
           fill="#ffdb0d"

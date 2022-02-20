@@ -1,6 +1,6 @@
 function LightBeam() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" y="945" x="-422">
+    <svg y="945" x="-422">
       <g id="beam">
         <defs>
           <radialGradient
