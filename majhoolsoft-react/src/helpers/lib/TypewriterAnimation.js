@@ -1,5 +1,5 @@
 import anime from "animejs";
-function TextAnimation(
+function TypewriterAnimation(
   target,
   delay = 1_000,
   typeSpeed = 250,
@@ -63,4 +63,4 @@ function TextAnimation(
       displayDuration
     );
 }
-export default TextAnimation;
+export default TypewriterAnimation;

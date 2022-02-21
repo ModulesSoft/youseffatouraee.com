@@ -37,12 +37,8 @@
   margin-left: 2rem;
 }
 .scroll {
-  opacity: 0;
   color: white;
   text-align: center;
-}
-.scrollIcon {
-  /* opacity: 0; */
 }
 article {
   position: fixed;
@@ -56,6 +52,10 @@ article {
 }
 #resumeTwo {
   bottom: 5px;
+  font-size: 1rem;
+}
+#degreeOne {
+  bottom: 10px;
   font-size: 1rem;
 }
 
