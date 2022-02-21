@@ -1,24 +1,4 @@
-import anime from "animejs";
-import { useEffect } from "react";
 function Car() {
-  useEffect(() => {
-    anime({
-      targets: "#rear-wheel , #front-wheel",
-      rotate: "21turn",
-      duration: 11000,
-      // easing: "cubicBezier(1,0,.45,.45)",
-      easing: "easeOutQuad",
-    });
-    anime({
-      targets: "#car, #beam",
-      translateX: 1050,
-      duration: 6000,
-      delay: 5000,
-      // easing: "cubicBezier(1,0,.45,.45)",
-      easing: "easeOutQuad",
-    });
-  }, []);
-
   // width="578" height="172"
   return (
     <svg y="900" x="-1000">
