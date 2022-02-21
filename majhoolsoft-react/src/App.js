@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   function playGarage() {
-    Play().GarageScene();
+    Play(mobile, width, height).GarageScene();
   }
 
   function removeScroll() {
