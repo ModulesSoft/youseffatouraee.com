@@ -28,13 +28,21 @@
   transform-box: fill-box;
 }
 
-.text {
-  opacity: 0;
-  margin: 0;
+.hi {
   color: white;
+  margin-left: 2rem;
+}
+.welcome {
+  color: white;
+  margin-left: 2rem;
 }
 .scroll {
+  opacity: 0;
+  color: white;
   text-align: center;
+}
+.scrollIcon {
+  /* opacity: 0; */
 }
 article {
   position: fixed;
