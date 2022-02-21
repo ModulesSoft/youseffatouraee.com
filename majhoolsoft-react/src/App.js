@@ -1,13 +1,13 @@
 import "./App.css";
 import { useEffect } from "react";
+import useWindowDimensions from "./components/GetWindowDimensions";
+import anime from "animejs";
 import Car from "./components/Car";
 import Background from "./components/Background";
-import anime from "animejs";
 import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import Sun from "./components/Sun";
 import Clouds from "./components/Clouds";
-import useWindowDimensions from "./components/GetWindowDimensions";
 import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
@@ -29,8 +29,8 @@ function App() {
   const beginView = "-1000 650 900 500";
   const doorViewDesktop = "1000 800 400 240";
   const doorViewMobile = `1000 ${1080 - height} ${width} ${height}`;
-  const carView = "0 650 900 400";
   const laptopView = "1328 920 60 60";
+
   let timeline = 0;
 
   // remove scroll instruction whenever scrolled enough ( 140px)
@@ -42,8 +42,8 @@ function App() {
     });
   }
 
-  // Scroll icon
   useEffect(() => {
+    // Scroll icon
     anime({
       targets: ".scrollIcon",
       translateY: -50,
@@ -52,9 +52,6 @@ function App() {
       easing: "spring(1, 80, 10, 0)",
       opacity: 0.3,
     });
-  }, []);
-
-  useEffect(() => {
     // Hi text fades in and out
     anime({
       targets: ".hi",
@@ -75,34 +72,23 @@ function App() {
       easing: "easeInExpo",
       delay: 1000,
     });
-  }, []);
-
-  // camera transition
-  useEffect(
-    // (beginView, generalView, mobile, doorViewMobile, doorViewDesktop) => {
-    () => {
-      anime({
-        targets: ".page",
-        duration: 4000,
-        keyframes: [
-          // camera transition from the car in the way home to the background
-          { viewBox: [beginView, generalView], delay: 5000 },
-          // camera transition to garage door
-          {
-            viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
-            // scaleY: 2,
-            // scaleX: width / 385,
-            delay: 5000,
-          },
-        ],
-        easing: "easeOutQuad",
-        delay: 5000,
-      });
-    },
-    []
-  );
-  // sun sets
-  useEffect(() => {
+    // camera transition
+    anime({
+      targets: ".page",
+      duration: 4000,
+      keyframes: [
+        // camera transition from the car in the way home to the background
+        { viewBox: [beginView, generalView], delay: 5000 },
+        // camera transition to garage door
+        {
+          viewBox: [generalView, mobile ? doorViewMobile : doorViewDesktop],
+          delay: 5000,
+        },
+      ],
+      easing: "easeOutQuad",
+      delay: 5000,
+    });
+    // sun sets
     anime({
       targets: "#sun",
       duration: 3000,
@@ -110,9 +96,7 @@ function App() {
       easing: "easeOutQuad",
       delay: 6000,
     });
-  }, []);
-  // clouds come up
-  useEffect(() => {
+    // clouds come up
     anime({
       targets: "#clouds",
       duration: 1000,
@@ -120,9 +104,7 @@ function App() {
       // easing: "easeOutQuad",
       delay: 9000,
     });
-  }, []);
-  // fade away the darkness to brightness and vice versa
-  useEffect(() => {
+    // fade away the darkness to brightness and vice versa
     anime({
       targets: "#darkness",
       keyframes: [
@@ -137,9 +119,7 @@ function App() {
         },
       ],
     });
-  }, []);
-  // debug for top gap
-  useEffect(() => {
+    // debug for top gap
     anime({
       targets: ".container",
       duration: 3000,
@@ -147,9 +127,7 @@ function App() {
       easing: "linear",
       delay: 7000,
     });
-  }, []);
-  // background color fades to blue
-  useEffect(() => {
+    // background color fades to blue
     anime({
       targets: "container",
       backgroundImage: "linear-gradient (#87CEEB, #034b04)",
@@ -157,9 +135,7 @@ function App() {
       opacity: 1,
       delay: 8000,
     });
-  }, []);
-  // turn off the head lights
-  useEffect(() => {
+    // turn off the head lights
     anime({
       targets: "#beam",
       duration: 500,
@@ -167,9 +143,6 @@ function App() {
       easing: "easeOutQuad",
       delay: 8000,
     });
-  }, []);
-
-  useEffect(() => {
     // scroll text fades in
     anime({
       targets: ".scroll",
