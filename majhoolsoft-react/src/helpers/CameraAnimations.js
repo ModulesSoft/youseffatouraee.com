@@ -42,50 +42,59 @@ class CameraAnimations {
     });
   }
 
-  GarageScene() {
+  // GarageScene() {
+  //   const library = {
+  //     certificate: {
+  //       view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+  //       textPosition: this.isMobile ? "bottom" : "right",
+  //     },
+  //   };
+  // }
+
+  LaptopView() {
+    anime.timeline({ loop: false }).add({
+      targets: ".page",
+      duration: 4000,
+      keyframes: [
+        // camera transition from the GarageCamera door to the laptop
+        {
+          viewBox: [
+            this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+            this.laptopView,
+          ],
+          // viewBox: mobile ? doorViewMobile : doorViewDesktop,
+        },
+        // camera transition to GarageCamera door
+        {},
+      ],
+      easing: "easeOutQuad",
+    });
+  }
+
+  CertificateView() {
     const library = {
       certificate: {
         view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
         textPosition: this.isMobile ? "bottom" : "right",
       },
     };
-    anime
-      .timeline({ loop: false })
-      .add({
+    // Certificate View
+    anime(
+      {
         targets: ".page",
         duration: 4000,
         keyframes: [
-          // camera transition from the GarageCamera door to the laptop
+          // camera transition from the laptop to GarageCamera door
           {
-            viewBox: [
-              this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
-              this.laptopView,
-            ],
-            // viewBox: mobile ? doorViewMobile : doorViewDesktop,
+            viewBox: [this.laptopView, library.certificate.view],
           },
           // camera transition to GarageCamera door
           {},
         ],
         easing: "easeOutQuad",
-      })
-
-      // Certificate View
-      .add(
-        {
-          targets: ".page",
-          duration: 4000,
-          keyframes: [
-            // camera transition from the laptop to GarageCamera door
-            {
-              viewBox: [this.laptopView, library.certificate.view],
-            },
-            // camera transition to GarageCamera door
-            {},
-          ],
-          easing: "easeOutQuad",
-        },
-        15000
-      );
+      },
+      15000
+    );
   }
 }
 export default CameraAnimations;

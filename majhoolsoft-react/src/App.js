@@ -77,10 +77,10 @@ function App() {
           <p className="hi">Hi</p>
           <p className="welcome">Ride with me to my world!</p>
           <p className="scroll">Scroll Down</p>
-          <p id="resumeOne" className="text-animation">
+          <p id="laptopOne" className="text-animation">
             I'm a software engineer
           </p>
-          <p id="resumeTwo" className="text-animation">
+          <p id="laptopTwo" className="text-animation">
             I was born in Quebec
           </p>
           <p id="degreeOne" className="text-animation">

@@ -47,16 +47,20 @@ article {
   font-size: 2rem;
 }
 
-#resumeOne {
+#laptopOne {
   top: 20px;
 }
-#resumeTwo {
+#laptopTwo {
   bottom: 5px;
   font-size: 1rem;
 }
 #degreeOne {
   bottom: 10px;
-  font-size: 1rem;
+  /* font-size: 2rem; */
+}
+#degreeTwo {
+  bottom: 15px;
+  /* font-size: 1rem; */
 }
 
 /* typewriter animation properties */

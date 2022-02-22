@@ -1,21 +1,39 @@
 import CarAnimations from "./helpers/CarAnimations";
-import TextAnimations from "./helpers/TextAnimations";
+import IntroTextAnimations from "./helpers/IntroTextAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
 import CameraAnimations from "./helpers/CameraAnimations";
+import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
 
 function Play(isMobile, width, height, timeline = 0) {
   // setting camera
   const Camera = new CameraAnimations(isMobile, width, height, timeline);
   function HouseScene() {
     CarAnimations(timeline);
-    TextAnimations(timeline).BackgroundScene();
+    IntroTextAnimations();
     Camera.BackgroundScene();
     BackgroundAnimations(timeline);
   }
 
   function GarageScene() {
-    TextAnimations(timeline).GarageScene();
-    Camera.GarageScene();
+    laptop(degree);
+
+    function laptop(done) {
+      Camera.LaptopView();
+      TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
+      function laptopTwo() {
+        TypewriterAnimation("#laptopTwo", 500, 100, 1000, done);
+      }
+    }
+    function degree(done) {
+      Camera.CertificateView();
+      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
+      function degreeTwo() {
+        TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, done);
+      }
+    }
+    function OS() {
+      console.log("os view");
+    }
   }
   return { HouseScene, GarageScene };
 }
