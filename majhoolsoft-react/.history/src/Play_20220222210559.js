@@ -15,25 +15,27 @@ function Play(isMobile, width, height, timeline = 0) {
   }
 
   function GarageScene() {
-    // start sequence
-    Camera.LaptopView(laptopOne);
+    startSequence();
+
+    function startSequence() {
+      laptopOne();
+    }
 
     function laptopOne() {
+      Camera.LaptopView();
       TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
     }
     function laptopTwo() {
-      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
+      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degree);
     }
-    function degreeCamera() {
-      Camera.CertificateView(degreeOne);
+    function degree(done) {
+      Camera.CertificateView();
+      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo(done));
     }
-    function degreeOne() {
-      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
+    function degreeTwo(done) {
+      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, done);
     }
-    function degreeTwo() {
-      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
-    }
-    function OSCamera() {
+    function OS(s) {
       console.log("os");
     }
   }

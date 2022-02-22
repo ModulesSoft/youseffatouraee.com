@@ -72,7 +72,10 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the GarageCamera door to the laptop
           {
-            viewBox: [this.library.door.view, this.library.laptop.view],
+            viewBox: [
+              this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+              this.library.laptop.view,
+            ],
             // viewBox: mobile ? doorViewMobile : doorViewDesktop,
           },
           // camera transition to GarageCamera door

@@ -14,7 +14,7 @@ class CameraAnimations {
       },
       door: {
         view: isMobile
-          ? `1000 ${1080 - height} ${width} ${height}`
+          ? `1000 ${1080 - this.height} ${this.width} ${this.height}`
           : "1000 800 400 240",
       },
       laptop: {
@@ -22,12 +22,12 @@ class CameraAnimations {
         textPosition: "",
       },
       certificate: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
-        textPosition: isMobile ? "bottom" : "right",
+        view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        textPosition: this.isMobile ? "bottom" : "right",
       },
       OS: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
-        textPosition: isMobile ? "bottom" : "right",
+        view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        textPosition: this.isMobile ? "bottom" : "right",
       },
     };
   }
@@ -40,13 +40,16 @@ class CameraAnimations {
       keyframes: [
         // camera transition from the car in the way home to the background
         {
-          viewBox: [this.library.begin.view, this.library.general.view],
+          viewBox: [this.beginView, this.library.general.view],
           duration: (this.timeline += 3000),
           delay: (this.timeline += 1000),
         },
-        // camera transition to Garage door
+        // camera transition to GarageCamera door
         {
-          viewBox: [this.library.general.view, this.library.door.view],
+          viewBox: [
+            this.library.general.view,
+            this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+          ],
           delay: 5000,
         },
       ],
@@ -72,7 +75,10 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the GarageCamera door to the laptop
           {
-            viewBox: [this.library.door.view, this.library.laptop.view],
+            viewBox: [
+              this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+              this.library.laptop.view,
+            ],
             // viewBox: mobile ? doorViewMobile : doorViewDesktop,
           },
           // camera transition to GarageCamera door
