@@ -3,7 +3,8 @@ function TypewriterAnimation(
   target,
   delay = 1_000,
   typeSpeed = 250,
-  displayDuration = 5000
+  displayDuration = 5000,
+  completeCallback = () => {}
 ) {
   const element = document.querySelector(target);
   const lettersHtml = element.textContent.replace(
@@ -53,14 +54,15 @@ function TypewriterAnimation(
       },
       TYPE_AFTER_MS
     )
-    .add(
-      {
-        targets: target,
-        opacity: 0,
-        duration: 5000,
-        easing: "easeOutExpo",
+    .add({
+      targets: target,
+      opacity: 0,
+      duration: 2000,
+      easing: "easeOutExpo",
+      delay: displayDuration,
+      complete: function (anim) {
+        completeCallback();
       },
-      displayDuration
-    );
+    });
 }
 export default TypewriterAnimation;
