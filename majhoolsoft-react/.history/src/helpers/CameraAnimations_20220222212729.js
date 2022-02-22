@@ -2,34 +2,18 @@ import anime from "animejs";
 
 class CameraAnimations {
   constructor(isMobile, width, height, timeline = null) {
+    this.isMobile = isMobile;
+    this.width = width;
+    this.height = height;
     this.timeline = timeline;
+    this.doorViewMobile = `1000 ${1080 - this.height} ${this.width} ${
+      this.height
+    }`;
 
-    this.library = {
-      begin: {
-        view: "-1000 650 900 500",
-        textPosition: "",
-      },
-      general: {
-        view: "0 0 1920 1080",
-      },
-      door: {
-        view: isMobile
-          ? `1000 ${1080 - height} ${width} ${height}`
-          : "1000 800 400 240",
-      },
-      laptop: {
-        view: "1328 920 60 60",
-        textPosition: "",
-      },
-      certificate: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      OS: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-    };
+    // const certificateView = isMobile ? "1288 900 60 45" : "1288 900 60 25";
+    this.generalView = "0 0 1920 1080";
+    this.doorViewDesktop = "1000 800 400 240";
+    this.beginView = "-1000 650 900 500";
   }
 
   BackgroundScene() {
@@ -40,13 +24,16 @@ class CameraAnimations {
       keyframes: [
         // camera transition from the car in the way home to the background
         {
-          viewBox: [this.library.begin.view, this.library.general.view],
+          viewBox: [this.beginView, this.generalView],
           duration: (this.timeline += 3000),
           delay: (this.timeline += 1000),
         },
-        // camera transition to Garage door
+        // camera transition to GarageCamera door
         {
-          viewBox: [this.library.general.view, this.library.door.view],
+          viewBox: [
+            this.generalView,
+            this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+          ],
           delay: 5000,
         },
       ],
@@ -72,7 +59,10 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the GarageCamera door to the laptop
           {
-            viewBox: [this.library.door.view, this.library.laptop.view],
+            viewBox: [
+              this.isMobile ? this.doorViewMobile : this.doorViewDesktop,
+              this.laptopView,
+            ],
             // viewBox: mobile ? doorViewMobile : doorViewDesktop,
           },
           // camera transition to GarageCamera door
@@ -84,6 +74,12 @@ class CameraAnimations {
   }
 
   CertificateView(finishedCallback) {
+    const library = {
+      certificate: {
+        view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        textPosition: this.isMobile ? "bottom" : "right",
+      },
+    };
     // Certificate View
     anime(
       {
@@ -92,7 +88,7 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the laptop to GarageCamera door
           {
-            viewBox: [this.library.laptop.view, this.library.certificate.view],
+            viewBox: [this.laptopView, library.certificate.view],
           },
           // camera transition to GarageCamera door
           {},
@@ -103,6 +99,20 @@ class CameraAnimations {
     ).finished.then(finishedCallback);
   }
   OSView(finishedCallback) {
+    const library = {
+      laptop: {
+        view: "1328 920 60 60",
+        textPosition: "",
+      },
+      certificate: {
+        view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        textPosition: this.isMobile ? "bottom" : "right",
+      },
+      OS: {
+        view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        textPosition: this.isMobile ? "bottom" : "right",
+      },
+    };
     // OS View
     anime(
       {
@@ -111,7 +121,7 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the laptop to GarageCamera door
           {
-            viewBox: [this.library.certificate.view, this.library.OS.view],
+            viewBox: [library.certificate.view, library.OS.view],
           },
           // camera transition to GarageCamera door
           {},

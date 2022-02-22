@@ -31,9 +31,9 @@ function Play(isMobile, width, height, timeline = 0) {
       TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
     }
     function degreeTwo() {
-      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
+      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OS);
     }
-    function OSCamera() {
+    function OS() {
       console.log("os");
     }
   }

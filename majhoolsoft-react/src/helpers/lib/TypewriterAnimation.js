@@ -4,7 +4,7 @@ function TypewriterAnimation(
   delay = 1_000,
   typeSpeed = 250,
   displayDuration = 5000,
-  completeCallback = () => {}
+  finishedCallback = () => {}
 ) {
   const element = document.querySelector(target);
   const lettersHtml = element.textContent.replace(
@@ -60,9 +60,7 @@ function TypewriterAnimation(
       duration: 2000,
       easing: "easeOutExpo",
       delay: displayDuration,
-      complete: function (anim) {
-        completeCallback();
-      },
-    });
+    })
+    .finished.then(finishedCallback);
 }
 export default TypewriterAnimation;

@@ -14,26 +14,24 @@ function Play(isMobile, width, height, timeline = 0) {
     BackgroundAnimations(timeline);
   }
 
-  function GarageScene() {
-    // start sequence
-    Camera.LaptopView(laptopOne);
+  async function GarageScene() {
+    laptop();
 
-    function laptopOne() {
+    function laptop() {
+      Camera.LaptopView();
       TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
     }
     function laptopTwo() {
-      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
+      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degree);
     }
-    function degreeCamera() {
-      Camera.CertificateView(degreeOne);
-    }
-    function degreeOne() {
+    function degree() {
+      Camera.CertificateView();
       TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
     }
     function degreeTwo() {
-      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
+      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OS);
     }
-    function OSCamera() {
+    function OS(s) {
       console.log("os");
     }
   }
