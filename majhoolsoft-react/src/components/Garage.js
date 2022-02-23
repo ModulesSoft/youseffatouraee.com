@@ -2050,7 +2050,7 @@ function Garage() {
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) rotate(90 12.707 25.366)"
         >
           <tspan x="0" y="0">
-            Linu
+            Linux
           </tspan>
         </text>
         <path

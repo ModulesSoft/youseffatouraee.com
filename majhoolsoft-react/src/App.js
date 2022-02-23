@@ -34,12 +34,11 @@ function App() {
 
   //play
   useEffect(() => {
-    Play(mobile, width, height).HouseScene();
+    // Play(mobile, width, height).HouseScene();
+    Play(mobile, width, height).GarageScene();
   }, []);
 
-  function playGarage() {
-    Play(mobile, width, height).GarageScene();
-  }
+  function playGarage() {}
 
   function removeScroll() {
     anime.remove([".scrollIcon", "#darkness", ".scroll"]);
@@ -58,12 +57,12 @@ function App() {
           <Clouds />
           <Background />
           <Garage />
-          <GarageDoor
+          {/* <GarageDoor
             scrollY={scrollY}
             doorOpened={(e) => {
               e && playGarage();
             }}
-          />
+          /> */}
           <Darkness />
           <Car />
           <LightBeam />
@@ -90,6 +89,22 @@ function App() {
             <a href="https://www.usnews.com/education/best-global-universities/amirkabir-university-of-technology-aut-506266">
               See the rank here
             </a>
+          </p>
+          <p id="OSOne" className="text-animation">
+            I have done my projects using lovely Linux and Windows OS'!
+          </p>
+          <p id="HtmlCssJsOne" className="text-animation">
+            I have over 4 years of experience with html5 and CSS3
+          </p>
+          <p id="HtmlCssJsTwo" className="text-animation">
+            I also know Javascript as well, and its many libraries and
+            frameworks, like React.js and Vue.js.
+          </p>
+          <p id="SassGraphqlTsOne" className="text-animation">
+            I know Sass
+          </p>
+          <p id="SassGraphqlTsTwo" className="text-animation">
+            I know GQL TS
           </p>
         </article>
       </div>
