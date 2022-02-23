@@ -26,7 +26,18 @@ class CameraAnimations {
         textPosition: isMobile ? "bottom" : "right",
       },
       OS: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        view: isMobile ? "1288 900 60 45" : "1240 900 60 25",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      firstRowEnd: {
+        view: isMobile ? "1230 900 60 45" : "1200 900 60 25",
+      },
+      htmlCssJs: {
+        view: isMobile ? "1230 930 60 45" : "1200 930 60 25",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      SassGraphqlTs: {
+        view: isMobile ? "1257 920 60 45" : "1230 930 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
     };
@@ -75,7 +86,6 @@ class CameraAnimations {
             viewBox: [this.library.door.view, this.library.laptop.view],
             // viewBox: mobile ? doorViewMobile : doorViewDesktop,
           },
-          // camera transition to GarageCamera door
           {},
         ],
         easing: "easeOutQuad",
@@ -90,11 +100,9 @@ class CameraAnimations {
         targets: ".page",
         duration: 4000,
         keyframes: [
-          // camera transition from the laptop to GarageCamera door
           {
             viewBox: [this.library.laptop.view, this.library.certificate.view],
           },
-          // camera transition to GarageCamera door
           {},
         ],
         easing: "easeOutQuad",
@@ -109,12 +117,51 @@ class CameraAnimations {
         targets: ".page",
         duration: 4000,
         keyframes: [
-          // camera transition from the laptop to GarageCamera door
           {
             viewBox: [this.library.certificate.view, this.library.OS.view],
           },
-          // camera transition to GarageCamera door
-          {},
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  htmlCssJsView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          // camera transition from the OS books to the end of the first row (left)
+          {
+            viewBox: [this.library.OS.view, this.library.firstRowEnd.view],
+          },
+          // camera transition from the end of the first row (left) to the begining of the second row (left) html css js books
+          {
+            viewBox: [
+              this.library.firstRowEnd.view,
+              this.library.htmlCssJs.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  SassGraphqlTsView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          // camera transition from the begining of the second row (left) html css js books to Saas graphql TS
+          {
+            viewBox: [
+              this.library.htmlCssJs.view,
+              this.library.SassGraphqlTs.view,
+            ],
+          },
         ],
         easing: "easeOutQuad",
       },

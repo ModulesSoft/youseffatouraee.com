@@ -29,14 +29,17 @@
 }
 
 .hi {
+  opacity: 0; /* Now it won't bother on developement */
   color: white;
   margin-left: 2rem;
 }
 .welcome {
+  opacity: 0; /* Now it won't bother on developement */
   color: white;
   margin-left: 2rem;
 }
 .scroll {
+  opacity: 0; /* Now it won't bother on developement */
   color: white;
   text-align: center;
 }
@@ -59,6 +62,18 @@ article {
   /* font-size: 2rem; */
 }
 #degreeTwo {
+  bottom: 15px;
+  /* font-size: 1rem; */
+}
+#OSOne {
+  bottom: 15px;
+  /* font-size: 1rem; */
+}
+#HtmlCssJsOne {
+  bottom: 15px;
+  /* font-size: 1rem; */
+}
+#HtmlCssJsTwo {
   bottom: 15px;
   /* font-size: 1rem; */
 }
