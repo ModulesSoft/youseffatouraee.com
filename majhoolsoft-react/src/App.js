@@ -34,11 +34,12 @@ function App() {
 
   //play
   useEffect(() => {
-    // Play(mobile, width, height).HouseScene();
-    Play(mobile, width, height).GarageScene();
+    Play(mobile, width, height).HouseScene();
   }, []);
 
-  function playGarage() {}
+  function playGarage() {
+    Play(mobile, width, height).GarageScene();
+  }
 
   function removeScroll() {
     anime.remove([".scrollIcon", "#darkness", ".scroll"]);
@@ -57,12 +58,12 @@ function App() {
           <Clouds />
           <Background />
           <Garage />
-          {/* <GarageDoor
+          <GarageDoor
             scrollY={scrollY}
             doorOpened={(e) => {
               e && playGarage();
             }}
-          /> */}
+          />
           <Darkness />
           <Car />
           <LightBeam />
