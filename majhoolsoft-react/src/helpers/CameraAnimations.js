@@ -32,11 +32,15 @@ class CameraAnimations {
       firstRowEnd: {
         view: isMobile ? "1230 900 60 45" : "1200 900 60 25",
       },
-      htmlCssJs: {
+      frontEndOne: {
         view: isMobile ? "1230 930 60 45" : "1200 930 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
-      SassGraphqlTs: {
+      frontEndTwo: {
+        view: isMobile ? "1257 920 60 45" : "1230 930 60 25",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      backEndOne: {
         view: isMobile ? "1257 920 60 45" : "1230 930 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
@@ -126,7 +130,7 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  htmlCssJsView(finishedCallback) {
+  frontEndOneView(finishedCallback) {
     anime(
       {
         targets: ".page",
@@ -140,7 +144,7 @@ class CameraAnimations {
           {
             viewBox: [
               this.library.firstRowEnd.view,
-              this.library.htmlCssJs.view,
+              this.library.frontEndOne.view,
             ],
           },
         ],
@@ -149,7 +153,7 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  SassGraphqlTsView(finishedCallback) {
+  frontEndTwoView(finishedCallback) {
     anime(
       {
         targets: ".page",
@@ -158,8 +162,8 @@ class CameraAnimations {
           // camera transition from the begining of the second row (left) html css js books to Saas graphql TS
           {
             viewBox: [
-              this.library.htmlCssJs.view,
-              this.library.SassGraphqlTs.view,
+              this.library.frontEndOne.view,
+              this.library.frontEndTwo.view,
             ],
           },
         ],
