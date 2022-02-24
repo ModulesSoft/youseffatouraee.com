@@ -16,61 +16,60 @@ function Play(isMobile, width, height, timeline = 0) {
 
   function GarageScene() {
     // start sequence
-    // Camera.LaptopView(laptopOne);
-    // function laptopOne() {
-    //   TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
-    // }
-    // function laptopTwo() {
-    //   TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
-    // }
-    // function degreeCamera() {
-    //   Camera.CertificateView(degreeOne);
-    // }
-    // function degreeOne() {
-    //   TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
-    // }
-    // function degreeTwo() {
-    //   TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
-    // }
-    // function OSCamera() {
-    //   Camera.OSView(OSOne);
-    // }
-    // function OSOne() {
-    //   TypewriterAnimation("#OSOne", 2_000, 100, 1000, frontEndOneCamera);
-    // }
-    // function frontEndOneCamera() {
-    //   Camera.frontEndOneView(frontEndOneOne);
-    // }
-    // // front end
-    // function frontEndOneOne() {
-    //   TypewriterAnimation("#frontEndOneOne", 2_000, 100, 1000, frontEndOneTwo);
-    // }
-    // function frontEndOneTwo() {
-    //   TypewriterAnimation(
-    //     "#frontEndOneTwo",
-    //     2_000,
-    //     100,
-    //     1000,
-    //     frontEndTwoCamera
-    //   );
-    // }
-    // function frontEndTwoCamera() {
-    //   Camera.frontEndTwoView(frontEndTwoOne);
-    // }
-    // function frontEndTwoOne() {
-    //   TypewriterAnimation("#frontEndTwoOne", 2_000, 100, 1000, frontEndTwoTwo);
-    // }
-    // function frontEndTwoTwo() {
-    //   TypewriterAnimation(
-    //     "#frontEndTwoTwo",
-    //     2_000,
-    //     100,
-    //     1000,
-    //     backEndOneCamera
-    //   );
-    // }
+    Camera.LaptopView(laptopOne);
+    function laptopOne() {
+      TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
+    }
+    function laptopTwo() {
+      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
+    }
+    function degreeCamera() {
+      Camera.CertificateView(degreeOne);
+    }
+    function degreeOne() {
+      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
+    }
+    function degreeTwo() {
+      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
+    }
+    function OSCamera() {
+      Camera.OSView(OSOne);
+    }
+    function OSOne() {
+      TypewriterAnimation("#OSOne", 2_000, 100, 1000, frontEndOneCamera);
+    }
+    function frontEndOneCamera() {
+      Camera.frontEndOneView(frontEndOneOne);
+    }
+    // front end
+    function frontEndOneOne() {
+      TypewriterAnimation("#frontEndOneOne", 2_000, 100, 1000, frontEndOneTwo);
+    }
+    function frontEndOneTwo() {
+      TypewriterAnimation(
+        "#frontEndOneTwo",
+        2_000,
+        100,
+        1000,
+        frontEndTwoCamera
+      );
+    }
+    function frontEndTwoCamera() {
+      Camera.frontEndTwoView(frontEndTwoOne);
+    }
+    function frontEndTwoOne() {
+      TypewriterAnimation("#frontEndTwoOne", 2_000, 100, 1000, frontEndTwoTwo);
+    }
+    function frontEndTwoTwo() {
+      TypewriterAnimation(
+        "#frontEndTwoTwo",
+        2_000,
+        100,
+        1000,
+        backEndOneCamera
+      );
+    }
     // back end
-    backEndOneCamera();
     function backEndOneCamera() {
       Camera.backEndOneView(backEndOneOne);
     }
@@ -78,8 +77,34 @@ function Play(isMobile, width, height, timeline = 0) {
       TypewriterAnimation("#backEndOneOne", 2_000, 100, 1000, backEndOneTwo);
     }
     function backEndOneTwo() {
-      TypewriterAnimation("#backEndOneTwo", 2_000, 100, 1000, test);
+      TypewriterAnimation(
+        "#backEndOneTwo",
+        2_000,
+        100,
+        1000,
+        notebookOneCamera
+      );
     }
+    // notebook view
+    function notebookOneCamera() {
+      Camera.notebookOneView(notebookOneOne);
+    }
+    function notebookOneOne() {
+      TypewriterAnimation("#notebookOneOne", 2_000, 100, 1000, notebookOneTwo);
+    }
+    function notebookOneTwo() {
+      notebookTwoCamera();
+    }
+    function notebookTwoCamera() {
+      Camera.notebookTwoView(notebookTwoOne);
+    }
+    function notebookTwoOne() {
+      TypewriterAnimation("#notebookTwoOne", 2_000, 100, 1000, notebookTwoTwo);
+    }
+    function notebookTwoTwo() {
+      TypewriterAnimation("#notebookTwoTwo", 2_000, 100, 1000, test);
+    }
+
     function test(e) {
       console.log("done");
     }
