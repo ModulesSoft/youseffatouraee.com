@@ -16,52 +16,52 @@ function Play(isMobile, width, height, timeline = 0) {
 
   function GarageScene() {
     // start sequence
-    // Camera.LaptopView(laptopOne);
-    // function laptopOne() {
-    //   TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
-    // }
-    // function laptopTwo() {
-    //   TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
-    // }
-    // function degreeCamera() {
-    //   Camera.CertificateView(degreeOne);
-    // }
-    // function degreeOne() {
-    //   TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
-    // }
-    // function degreeTwo() {
-    //   TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
-    // }
-    // function OSCamera() {
-    //   Camera.OSView(OSOne);
-    // }
-    // function OSOne() {
-    //   TypewriterAnimation("#OSOne", 2_000, 100, 1000, test);
-    // }
-    // function htmlCssJsCamera() {
-    //   Camera.htmlCssJsView(htmlCssJsOne);
-    // }
-    // function htmlCssJsOne() {
-    //     TypewriterAnimation("#HtmlCssJsOne", 2_000, 100, 1000, htmlCssJsTwo);
-    // }
-    // function htmlCssJsTwo() {
-    //     TypewriterAnimation("#HtmlCssJsTwo", 2_000, 100, 1000, test);
-    // }
-    SassGraphqlTsCamera();
-    function SassGraphqlTsCamera() {
-      Camera.SassGraphqlTsView(SassGraphqlTsOne);
+    Camera.LaptopView(laptopOne);
+    function laptopOne() {
+      TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
     }
-    function SassGraphqlTsOne() {
+    function laptopTwo() {
+      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
+    }
+    function degreeCamera() {
+      Camera.CertificateView(degreeOne);
+    }
+    function degreeOne() {
+      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
+    }
+    function degreeTwo() {
+      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
+    }
+    function OSCamera() {
+      Camera.OSView(OSOne);
+    }
+    function OSOne() {
+      TypewriterAnimation("#OSOne", 2_000, 100, 1000, frontEndOneCamera);
+    }
+    function frontEndOneCamera() {
+      Camera.frontEndOneView(frontEndOneOne);
+    }
+    function frontEndOneOne() {
+      TypewriterAnimation("#frontEndOneOne", 2_000, 100, 1000, frontEndOneTwo);
+    }
+    function frontEndOneTwo() {
       TypewriterAnimation(
-        "#SassGraphqlTsOne",
+        "#frontEndOneTwo",
         2_000,
         100,
         1000,
-        SassGraphqlTsTwo
+        frontEndTwoCamera
       );
     }
-    function SassGraphqlTsTwo() {
-      TypewriterAnimation("#SassGraphqlTsTwo", 2_000, 100, 1000, test);
+    // frontEndTwoCamera();
+    function frontEndTwoCamera() {
+      Camera.frontEndTwoView(frontEndTwoOne);
+    }
+    function frontEndTwoOne() {
+      TypewriterAnimation("#frontEndTwoOne", 2_000, 100, 1000, frontEndTwoTwo);
+    }
+    function frontEndTwoTwo() {
+      TypewriterAnimation("#frontEndTwoTwo", 2_000, 100, 1000, test);
     }
 
     function test(e) {

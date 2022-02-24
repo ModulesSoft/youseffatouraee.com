@@ -93,17 +93,17 @@ function App() {
           <p id="OSOne" className="text-animation">
             I have done my projects using lovely Linux and Windows OS'!
           </p>
-          <p id="HtmlCssJsOne" className="text-animation">
+          <p id="frontEndOneOne" className="text-animation">
             I have over 4 years of experience with html5 and CSS3
           </p>
-          <p id="HtmlCssJsTwo" className="text-animation">
-            I also know Javascript as well, and its many libraries and
-            frameworks, like React.js and Vue.js.
+          <p id="frontEndOneTwo" className="text-animation">
+            I know Javascript as well, and its many libraries and frameworks,
+            like React.js and Vue.js.
           </p>
-          <p id="SassGraphqlTsOne" className="text-animation">
+          <p id="frontEndTwoOne" className="text-animation">
             I know Sass
           </p>
-          <p id="SassGraphqlTsTwo" className="text-animation">
+          <p id="frontEndTwoTwo" className="text-animation">
             I know GQL TS
           </p>
         </article>
