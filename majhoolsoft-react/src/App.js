@@ -107,10 +107,19 @@ function App() {
             I know GQL TS
           </p>
           <p id="backEndOneOne" className="text-animation">
-            I used to use PHP and SQL when I develop fullstack
+            I used to use PHP and SQL when I develop as a fullstack
           </p>
           <p id="backEndOneTwo" className="text-animation">
             I taught Java
+          </p>
+          <p id="notebookOneOne" className="text-animation">
+            I have experience with these methodologies in small scales
+          </p>
+          <p id="notebookTwoOne" className="text-animation">
+            These are my public available websites
+          </p>
+          <p id="notebookTwoTwo" className="text-animation">
+            There are more I've done for the companies private projects.
           </p>
         </article>
       </div>

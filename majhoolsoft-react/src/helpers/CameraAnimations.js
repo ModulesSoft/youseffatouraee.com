@@ -44,6 +44,14 @@ class CameraAnimations {
         view: isMobile ? "1288 920 60 45" : "1260 930 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
+      notebookOne: {
+        view: isMobile ? "1252 960 60 45" : "1215 962 60 25",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      notebookTwo: {
+        view: isMobile ? "1270 960 60 45" : "1270 962 60 25",
+        textPosition: isMobile ? "bottom" : "right",
+      },
     };
   }
 
@@ -159,7 +167,6 @@ class CameraAnimations {
         targets: ".page",
         duration: 4000,
         keyframes: [
-          // camera transition from the begining of the second row (left) html css js books to Saas graphql TS
           {
             viewBox: [
               this.library.frontEndOne.view,
@@ -178,11 +185,46 @@ class CameraAnimations {
         targets: ".page",
         duration: 4000,
         keyframes: [
-          // camera transition from the begining of the second row (left) html css js books to Saas graphql TS
           {
             viewBox: [
               this.library.frontEndTwo.view,
               this.library.backEndOne.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  notebookOneView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [
+              this.library.backEndOne.view,
+              this.library.notebookOne.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  notebookTwoView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [
+              this.library.notebookOne.view,
+              this.library.notebookTwo.view,
             ],
           },
         ],
