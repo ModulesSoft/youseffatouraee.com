@@ -2538,7 +2538,7 @@ function Garage() {
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 6.597)"
           >
             <tspan x="0" y="0">
-              Online websites:
+              Online public websites:
             </tspan>
           </text>
           <text
