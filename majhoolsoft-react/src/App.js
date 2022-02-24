@@ -106,6 +106,12 @@ function App() {
           <p id="frontEndTwoTwo" className="text-animation">
             I know GQL TS
           </p>
+          <p id="backEndOneOne" className="text-animation">
+            I used to use PHP and SQL when I develop fullstack
+          </p>
+          <p id="backEndOneTwo" className="text-animation">
+            I taught Java
+          </p>
         </article>
       </div>
     </div>

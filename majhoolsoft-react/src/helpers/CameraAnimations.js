@@ -41,7 +41,7 @@ class CameraAnimations {
         textPosition: isMobile ? "bottom" : "right",
       },
       backEndOne: {
-        view: isMobile ? "1257 920 60 45" : "1230 930 60 25",
+        view: isMobile ? "1288 920 60 45" : "1260 930 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
     };
@@ -164,6 +164,25 @@ class CameraAnimations {
             viewBox: [
               this.library.frontEndOne.view,
               this.library.frontEndTwo.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  backEndOneView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          // camera transition from the begining of the second row (left) html css js books to Saas graphql TS
+          {
+            viewBox: [
+              this.library.frontEndTwo.view,
+              this.library.backEndOne.view,
             ],
           },
         ],
