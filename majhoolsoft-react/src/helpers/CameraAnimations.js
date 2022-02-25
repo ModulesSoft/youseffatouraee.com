@@ -54,38 +54,33 @@ class CameraAnimations {
       },
     };
   }
-
-  BackgroundScene() {
+  //Intro Scene
+  IntroScene(finishedCallback) {
     // camera transition
-    anime.timeline({ loop: false }).add({
-      targets: ".page",
-      duration: 4000,
-      keyframes: [
-        // camera transition from the car in the way home to the background
-        {
-          viewBox: [this.library.begin.view, this.library.general.view],
-          duration: (this.timeline += 3000),
-          delay: (this.timeline += 1000),
-        },
-        // camera transition to Garage door
-        {
-          viewBox: [this.library.general.view, this.library.door.view],
-          delay: 5000,
-        },
-      ],
-      easing: "easeOutQuad",
-    });
+    anime
+      .timeline({ loop: false })
+      .add({
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          // camera transition from the car in the way home to the background
+          {
+            viewBox: [this.library.begin.view, this.library.general.view],
+            duration: (this.timeline += 3000),
+            delay: (this.timeline += 1000),
+          },
+          // camera transition to Garage door
+          {
+            viewBox: [this.library.general.view, this.library.door.view],
+            delay: 5000,
+          },
+        ],
+        easing: "easeOutQuad",
+      })
+      .finished.then(finishedCallback);
   }
 
-  // GarageScene() {
-  //   const library = {
-  //     certificate: {
-  //       view: this.isMobile ? "1288 900 60 45" : "1288 900 60 25",
-  //       textPosition: this.isMobile ? "bottom" : "right",
-  //     },
-  //   };
-  // }
-
+  // Garage Scene
   LaptopView(finishedCallback) {
     anime
       .timeline({ loop: false })

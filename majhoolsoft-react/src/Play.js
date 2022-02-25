@@ -7,14 +7,14 @@ import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
 function Play(isMobile, width, height, timeline = 0) {
   // setting camera
   const Camera = new CameraAnimations(isMobile, width, height, timeline);
-  function HouseScene() {
+  function introScene(finished) {
     CarAnimations(timeline);
-    IntroTextAnimations();
-    Camera.BackgroundScene();
+    IntroTextAnimations().introScene();
+    Camera.IntroScene(finished);
     BackgroundAnimations(timeline);
   }
 
-  function GarageScene() {
+  function garageScene() {
     // start sequence
     Camera.LaptopView(laptopOne);
     function laptopOne() {
@@ -109,6 +109,9 @@ function Play(isMobile, width, height, timeline = 0) {
       console.log("done");
     }
   }
-  return { HouseScene, GarageScene };
+  function removeScrollIcon() {
+    IntroTextAnimations().removeScrollIcon();
+  }
+  return { introScene, garageScene, removeScrollIcon };
 }
 export default Play;

@@ -1,7 +1,6 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useWindowDimensions from "./components/GetWindowDimensions";
-import anime from "animejs";
 import Car from "./components/Car";
 import Background from "./components/Background";
 import Darkness from "./components/Darkness";
@@ -16,7 +15,6 @@ import Play from "./Play";
 
 function App() {
   // get window properties
-  let scrollY = useScroll().scrollY / 10;
   const { height, width } = useWindowDimensions();
   const mobile = width < height;
   const size = mobile
@@ -26,27 +24,24 @@ function App() {
     : {
         width: width,
       };
-
+  // get scroll properties
+  let scrollY = useScroll().scrollY / 10;
+  let scrollDirection = useScroll().scrollDirection;
+  let [allowScroll, setAllowScroll] = useState(false);
   // remove scroll instruction whenever scrolled enough ( 140px)
-  if (scrollY > 10) {
-    removeScroll();
+  if (scrollY > 10 && scrollDirection === "up" && allowScroll) {
+    Play().removeScrollIcon();
+  } else {
+    window.scrollTo(0, 0);
   }
 
   //play
   useEffect(() => {
-    Play(mobile, width, height).HouseScene();
+    Play(mobile, width, height).introScene(() => setAllowScroll(true));
   }, []);
 
   function playGarage() {
-    Play(mobile, width, height).GarageScene();
-  }
-
-  function removeScroll() {
-    anime.remove([".scrollIcon", "#darkness", ".scroll"]);
-    anime({
-      targets: [".scrollIcon", "#darkness", ".scroll"],
-      opacity: 0,
-    });
+    Play(mobile, width, height).garageScene();
   }
 
   return (
@@ -59,7 +54,7 @@ function App() {
           <Background />
           <Garage />
           <GarageDoor
-            scrollY={scrollY}
+            scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
               e && playGarage();
             }}
@@ -67,7 +62,6 @@ function App() {
           <Darkness />
           <Car />
           <LightBeam />
-          {/* {scroll && <ScrollDown />} */}
           <ScrollDown />
           {/* <svg x="1325" y="920" className="test">
             <rect width="35" height="65"></rect>
