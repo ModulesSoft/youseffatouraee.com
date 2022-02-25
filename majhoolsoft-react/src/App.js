@@ -35,15 +35,14 @@ function App() {
     window.scrollTo(0, 0);
   }
 
-  //play
+  // play intro
   useEffect(() => {
     Play(mobile, width, height).introScene(() => setAllowScroll(true));
   }, []);
-
+  // play garage
   function playGarage() {
     Play(mobile, width, height).garageScene();
   }
-
   return (
     <div className="App">
       <header className="App-header"></header>
