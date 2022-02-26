@@ -1,36 +1,28 @@
 import anime from "animejs";
 function IntroTextAnimations() {
   function introScene(finishedCallback) {
-    anime
-      .timeline({ loop: false })
-      // Hi text fades in
-      .add({
-        targets: ".hi",
-        opacity: [0, 1],
-        easing: "easeInExpo",
-      })
-      // welcome text fades in
-      .add({
-        targets: ".welcome",
-        opacity: [0, 1],
-        easing: "easeInExpo",
-      })
-      // Hi and welcome text fade out
-      .add(
+    anime({
+      targets: [".hi", ".welcome"],
+      keyframes: [
         {
-          targets: [".hi", ".welcome"],
-          opacity: 0,
+          opacity: 1,
           easing: "easeInExpo",
+          delay: anime.stagger(2000, { start: 1000 }),
         },
-        5000
-      )
-      .finished.then(addScrollIcon(".scrollResume"), finishedCallback);
+        {
+          opacity: 0,
+          easing: "easeOutExpo",
+          delay: anime.stagger(5000, { start: 4000, direction: "reverse" }),
+        },
+      ],
+    }).finished.then(addScrollIcon(".scrollResume", finishedCallback, 15000));
   }
-  function addScrollIcon(target, finishedCallback) {
+  function addScrollIcon(target, finishedCallback, delay = 0) {
     anime({
       targets: target,
       opacity: [0, 0.8],
       easing: "easeInExpo",
+      delay: delay,
     }).finished.then(finishedCallback);
   }
   function removeScrollIcon() {

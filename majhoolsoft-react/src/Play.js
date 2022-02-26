@@ -15,7 +15,7 @@ function Play(isMobile, width, height, timeline = 0) {
   }
   function garageScene(finishedCallback) {
     // start sequence
-    notebookTwoTwo();
+    Camera.LaptopView(laptopOne);
     function laptopOne() {
       TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
     }
@@ -118,10 +118,16 @@ function Play(isMobile, width, height, timeline = 0) {
       Camera.microphoneView(microphoneOne);
     }
     function microphoneOne() {
-      TypewriterAnimation("#microphoneOne", 2_000, 100, 1000, test);
+      TypewriterAnimation("#microphoneOne", 2_000, 100, 1000, motorcycleCamera);
+    }
+    function motorcycleCamera() {
+      Camera.motorcycleView(motorcycleOne);
+    }
+    function motorcycleOne() {
+      TypewriterAnimation("#motorcycleOne", 2_000, 100, 1000, test);
     }
     function test() {
-      console.log("hobbiesScene");
+      console.log("hobbiesScene done");
     }
   }
   function removeScrollIcon() {
