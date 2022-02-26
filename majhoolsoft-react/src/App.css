@@ -45,6 +45,7 @@
   width: 100%;
   height: 100%;
   font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .intro {
   position: absolute;
