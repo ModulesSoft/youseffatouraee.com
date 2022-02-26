@@ -3,7 +3,6 @@ import anime from "animejs";
 class CameraAnimations {
   constructor(isMobile, width, height, timeline = null) {
     this.timeline = timeline;
-
     this.library = {
       begin: {
         view: "-1000 650 900 500",
@@ -54,6 +53,10 @@ class CameraAnimations {
       },
       microphone: {
         view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      motorcycle: {
+        view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
         textPosition: isMobile ? "bottom" : "right",
       },
     };
@@ -242,6 +245,24 @@ class CameraAnimations {
             viewBox: [
               this.library.notebookTwo.view,
               this.library.microphone.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  motorcycleView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [
+              this.library.microphone.view,
+              this.library.motorcycle.view,
             ],
           },
         ],

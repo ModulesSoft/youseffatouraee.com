@@ -34,7 +34,7 @@ function App() {
     Play().removeScrollIcon();
     // if it's hobbies scene
     if (showHobbies) {
-      Play().hobbiesScene();
+      Play(mobile, width, height).hobbiesScene();
       setAllowScroll(false);
     }
   } else {
@@ -43,13 +43,12 @@ function App() {
 
   // play intro
   useEffect(() => {
-    // Play(mobile, width, height).introScene(() => setAllowScroll(true));
-    playGarage();
+    Play(mobile, width, height).introScene(() => setAllowScroll(true));
   }, []);
   // play garage
   function playGarage() {
-    Play(mobile, width, height).garageScene(finished);
-    function finished() {
+    Play(mobile, width, height).garageScene(startHobbies);
+    function startHobbies() {
       setAllowScroll(true);
       setShowHobbies(true);
     }
@@ -63,29 +62,28 @@ function App() {
           <Clouds />
           <Background />
           <Garage />
-          {/* <GarageDoor
+          <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
               e && playGarage();
             }}
-          /> */}
+          />
           <Darkness />
           <Car />
           <LightBeam />
           <ScrollDown />
-          {/* <svg x="1325" y="920" className="test">
-            <rect width="35" height="65"></rect>
-          </svg> */}
         </svg>
-        <article className="article">
+        <div className="decorative">
           <div className="intro">
             <p className="hi">Hi</p>
             <p className="welcome">Ride with me to my world!</p>
-            <p className="scrollResume scrollText">Scroll Down</p>
-            <p className="scrollHobbies scrollText">
-              Scroll Down to see my hobbies
-            </p>
           </div>
+          <p className="scrollResume scrollText">Scroll Down</p>
+          <p className="scrollHobbies scrollText">
+            Scroll Down to see my hobbies
+          </p>
+        </div>
+        <article className="article">
           <div className="resume">
             <p id="laptopOne" className="text-animation">
               I'm a software engineer
@@ -136,6 +134,9 @@ function App() {
           <div className="hobbies">
             <p id="microphoneOne" className="text-animation">
               I made an electronic rap album in Farsi back in 2011. Link
+            </p>
+            <p id="motorcycleOne" className="text-animation">
+              I have restored over 2 motorcycles. Link
             </p>
           </div>
         </article>

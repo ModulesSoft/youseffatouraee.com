@@ -1,7 +1,6 @@
 function Garage() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="384.264"
       height="136.105"
       viewBox="0 0 384.264 136.105"
@@ -311,7 +310,7 @@ function Garage() {
             transform="translate(-108.517 -379.846)"
           ></path>
         </g>
-        <g transform="translate(53.8 41.644)">
+        <g id="motorcycle" transform="translate(20 44)">
           <path
             fill="#a59585"
             d="M1271.66 657.36a2.052 2.052 0 01.127 1.142c-.167.372-2.494 2.648-3.689 1.938l2.438-3.275c.004-.017.854-.499 1.124.195z"
@@ -931,7 +930,7 @@ function Garage() {
             transform="translate(-1199.272 -579.022)"
           ></path>
         </g>
-        <g transform="translate(30.631 94.043)">
+        <g id="pump" transform="translate(10 94)">
           <path
             fill="#afd46e"
             d="M0 0H6.45V2.471H0z"
