@@ -1,6 +1,6 @@
 import anime from "animejs";
 function IntroTextAnimations() {
-  function introScene() {
+  function introScene(finishedCallback) {
     anime
       .timeline({ loop: false })
       // Hi text fades in
@@ -24,22 +24,22 @@ function IntroTextAnimations() {
         },
         5000
       )
-      .add(
-        {
-          targets: ".scroll",
-          opacity: [0, 0.8],
-          easing: "easeInExpo",
-        },
-        15000
-      );
+      .finished.then(addScrollIcon(".scrollResume"), finishedCallback);
+  }
+  function addScrollIcon(target, finishedCallback) {
+    anime({
+      targets: target,
+      opacity: [0, 0.8],
+      easing: "easeInExpo",
+    }).finished.then(finishedCallback);
   }
   function removeScrollIcon() {
-    anime.remove([".scrollIcon", "#darkness", ".scroll"]);
+    anime.remove([".scrollIcon", "#darkness", ".scrollText"]);
     anime({
-      targets: [".scrollIcon", "#darkness", ".scroll"],
+      targets: [".scrollIcon", "#darkness", ".scrollText"],
       opacity: 0,
     });
   }
-  return { introScene, removeScrollIcon };
+  return { introScene, removeScrollIcon, addScrollIcon };
 }
 export default IntroTextAnimations;

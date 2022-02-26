@@ -38,7 +38,7 @@
   color: white;
   margin-left: 2rem;
 }
-.scroll {
+.scrollText {
   opacity: 0; /* Now it won't bother on developement */
   color: white;
   text-align: center;
@@ -90,6 +90,10 @@ article {
   /* font-size: 1rem; */
 }
 #backEndTwoTwo {
+  bottom: 15px;
+  /* font-size: 1rem; */
+}
+#microphoneOne {
   bottom: 15px;
   /* font-size: 1rem; */
 }
