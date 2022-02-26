@@ -13,10 +13,9 @@ function Play(isMobile, width, height, timeline = 0) {
     Camera.IntroScene(finished);
     BackgroundAnimations(timeline);
   }
-
-  function garageScene() {
+  function garageScene(finishedCallback) {
     // start sequence
-    Camera.LaptopView(laptopOne);
+    notebookTwoTwo();
     function laptopOne() {
       TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
     }
@@ -102,16 +101,32 @@ function Play(isMobile, width, height, timeline = 0) {
       TypewriterAnimation("#notebookTwoOne", 2_000, 100, 1000, notebookTwoTwo);
     }
     function notebookTwoTwo() {
-      TypewriterAnimation("#notebookTwoTwo", 2_000, 100, 1000, test);
+      TypewriterAnimation("#notebookTwoTwo", 2_000, 100, 1000, scroll);
     }
-
-    function test(e) {
-      console.log("done");
+    //scroll down to see the hobbies
+    function scroll() {
+      IntroTextAnimations().addScrollIcon(
+        ".scrollHobbies",
+        finishedCallback(true)
+      );
+    }
+  }
+  function hobbiesScene() {
+    IntroTextAnimations().removeScrollIcon();
+    microphoneCamera();
+    function microphoneCamera() {
+      Camera.microphoneView(microphoneOne);
+    }
+    function microphoneOne() {
+      TypewriterAnimation("#microphoneOne", 2_000, 100, 1000, test);
+    }
+    function test() {
+      console.log("hobbiesScene");
     }
   }
   function removeScrollIcon() {
     IntroTextAnimations().removeScrollIcon();
   }
-  return { introScene, garageScene, removeScrollIcon };
+  return { introScene, garageScene, removeScrollIcon, hobbiesScene };
 }
 export default Play;

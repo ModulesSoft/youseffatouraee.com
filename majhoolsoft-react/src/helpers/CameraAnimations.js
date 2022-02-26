@@ -52,6 +52,10 @@ class CameraAnimations {
         view: isMobile ? "1270 960 60 45" : "1270 962 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
+      microphone: {
+        view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
+        textPosition: isMobile ? "bottom" : "right",
+      },
     };
   }
   //Intro Scene
@@ -220,6 +224,24 @@ class CameraAnimations {
             viewBox: [
               this.library.notebookOne.view,
               this.library.notebookTwo.view,
+            ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  microphoneView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [
+              this.library.notebookTwo.view,
+              this.library.microphone.view,
             ],
           },
         ],
