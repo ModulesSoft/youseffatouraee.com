@@ -20,17 +20,11 @@ function BackgroundAnimations(timeline = null) {
     });
   anime.timeline({ loop: false }).add({
     targets: "#darkness",
-    keyframes: [
-      // fade in to day
-      { opacity: 0, duration: 3000, delay: 7000, easing: "linear" },
-      // fade in unless scroll
-      {
-        opacity: 0.7,
-        duration: 1000,
-        delay: 4000,
-        easing: "linear",
-      },
-    ],
+    // fade in to day
+    opacity: 0,
+    duration: 3000,
+    delay: 7000,
+    easing: "linear",
   });
 
   //thread four (headlights):

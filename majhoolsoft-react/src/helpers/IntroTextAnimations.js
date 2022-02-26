@@ -26,9 +26,9 @@ function IntroTextAnimations() {
     }).finished.then(finishedCallback);
   }
   function removeScrollIcon() {
-    anime.remove([".scrollIcon", "#darkness", ".scrollText"]);
+    anime.remove([".scrollIcon", ".scrollText"]);
     anime({
-      targets: [".scrollIcon", "#darkness", ".scrollText"],
+      targets: [".scrollIcon", ".scrollText"],
       opacity: 0,
     });
   }
