@@ -61,6 +61,7 @@ class CameraAnimations {
       },
     };
   }
+
   //Intro Scene
   IntroScene(finishedCallback) {
     // camera transition
