@@ -1,5 +1,4 @@
 function Car() {
-  // width="578" height="172"
   return (
     <svg y="900" x="-1000">
       <g id="car">

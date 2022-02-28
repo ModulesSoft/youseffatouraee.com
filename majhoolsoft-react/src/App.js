@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "./components/GetWindowDimensions";
 import Car from "./components/Car";
+import Sideview from "./components/faces/Sideview";
 import Background from "./components/Background";
 import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
@@ -29,24 +30,31 @@ function App() {
   let scrollDirection = useScroll().scrollDirection;
   let [allowScroll, setAllowScroll] = useState(false);
   let [showHobbies, setShowHobbies] = useState(false);
-  // remove scroll instruction whenever scrolled enough ( 140px)
-  if (scrollY > 10 && scrollDirection === "up" && allowScroll) {
-    Play().removeScrollIcon();
-    // if it's hobbies scene
-    if (showHobbies) {
-      Play(mobile, width, height).hobbiesScene();
-      setAllowScroll(false);
+  useEffect(() => {
+    // remove scroll instruction whenever scrolled enough ( 140px)
+    if (scrollY > 10 && scrollDirection === "up" && allowScroll) {
+      Play().removeScrollIcon();
+      // if it's hobbies scene
+      if (showHobbies) {
+        Play(mobile, width, height).hobbiesScene();
+        setShowHobbies(false);
+        setAllowScroll(false);
+      }
+    } else {
+      window.scrollTo(0, 0);
     }
-  } else {
-    window.scrollTo(0, 0);
-  }
+  }, [scrollY, scrollDirection, allowScroll, showHobbies]);
 
   // play intro
   useEffect(() => {
     Play(mobile, width, height).introScene(() => setAllowScroll(true));
+    // playGarage();
   }, []);
   // play garage
   function playGarage() {
+    setShowHobbies(false);
+    setAllowScroll(false);
+    window.scrollTo(0, 0);
     Play(mobile, width, height).garageScene(startHobbies);
     function startHobbies() {
       setAllowScroll(true);
@@ -69,6 +77,7 @@ function App() {
             }}
           />
           <Darkness />
+          <Sideview />
           <Car />
           <LightBeam />
           <ScrollDown />

@@ -15,6 +15,7 @@ function Play(isMobile, width, height, timeline = 0) {
   }
   function garageScene(finishedCallback) {
     // start sequence
+    // debugger;
     Camera.LaptopView(laptopOne);
     function laptopOne() {
       TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);

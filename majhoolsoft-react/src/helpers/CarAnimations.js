@@ -8,7 +8,7 @@ function CarAnimations(timeline = null) {
     easing: "easeOutQuad",
   });
   anime({
-    targets: "#car, #beam",
+    targets: "#car, #beam, #sideview",
     translateX: 1050,
     duration: 6000,
     delay: 5000,
