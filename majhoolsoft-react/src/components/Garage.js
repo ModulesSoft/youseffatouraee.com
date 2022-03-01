@@ -1,3 +1,5 @@
+import Desk from "./Desk";
+
 function Garage() {
   return (
     <svg
@@ -2975,6 +2977,7 @@ function Garage() {
             transform="translate(6.066 30.826)"
           ></circle>
         </g>
+        <Desk />
       </g>
     </svg>
   );

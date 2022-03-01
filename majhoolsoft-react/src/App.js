@@ -12,7 +12,6 @@ import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
-import Laptop from "./components/Desk";
 import Play from "./Play";
 
 function App() {
@@ -71,8 +70,6 @@ function App() {
           <Clouds />
           <Background />
           <Garage />
-
-          <Laptop />
           <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
