@@ -1,5 +1,5 @@
 import anime from "animejs";
-function CarAnimations(timeline = null) {
+function CarAnimations(finishedCallback) {
   anime({
     targets: "#rear-wheel , #front-wheel",
     rotate: "21turn",
@@ -14,7 +14,7 @@ function CarAnimations(timeline = null) {
     delay: 5000,
     // easing: "cubicBezier(1,0,.45,.45)",
     easing: "easeOutQuad",
-  });
+  }).finished.then(finishedCallback);
 }
 
 export default CarAnimations;
