@@ -13,6 +13,7 @@ import ScrollDown from "./components/ScrollDown";
 import useScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
+import Walking from "./components/walk/Walking";
 
 function App() {
   // get window properties
@@ -69,6 +70,7 @@ function App() {
           <Sun />
           <Clouds />
           <Background />
+          <Walking />
           <Garage />
           <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}

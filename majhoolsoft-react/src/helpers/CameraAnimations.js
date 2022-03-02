@@ -80,7 +80,7 @@ class CameraAnimations {
           // camera transition to Garage door
           {
             viewBox: [this.library.general.view, this.library.door.view],
-            delay: 5000,
+            delay: 500000,
           },
         ],
         easing: "easeOutQuad",

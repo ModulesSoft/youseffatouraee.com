@@ -3,12 +3,16 @@ import IntroTextAnimations from "./helpers/IntroTextAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
 import CameraAnimations from "./helpers/CameraAnimations";
 import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
+import WalkingAnimations from "./helpers/WalkingAnimations";
 
 function Play(isMobile, width, height, timeline = 0) {
   // setting camera
   const Camera = new CameraAnimations(isMobile, width, height, timeline);
   function introScene(finished) {
-    CarAnimations(timeline);
+    CarAnimations(walking);
+    function walking() {
+      WalkingAnimations();
+    }
     IntroTextAnimations().introScene();
     Camera.IntroScene(finished);
     BackgroundAnimations(timeline);
