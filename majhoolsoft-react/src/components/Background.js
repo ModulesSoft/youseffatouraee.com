@@ -1,5 +1,9 @@
 import anime from "animejs";
 import { useEffect } from "react";
+import House from "./House";
+import Walking from "./walk/Walking";
+import Sun from "./Sun";
+import Clouds from "./Clouds";
 // import  bgImage from "../images/background.svg";
 function Background() {
   useEffect(() => {
@@ -13,6 +17,8 @@ function Background() {
   return (
     <svg width="1920" height="1080">
       <g id="background">
+        <Sun />
+        <Clouds />
         <path
           fill="#31ae51"
           stroke="#707070"
@@ -327,7 +333,6 @@ function Background() {
               transform="translate(-.1 547.871)"
             ></path>
           </g>
-          {/* location of the house */}
           <g transform="translate(21 1347.886)">
             <g fillRule="evenodd" transform="translate(0 -608.621)">
               <path
@@ -495,6 +500,10 @@ function Background() {
             </g>
           </g>
         </g>
+
+        <Walking />
+        {/* location of the house */}
+        <House />
       </g>
     </svg>
   );
