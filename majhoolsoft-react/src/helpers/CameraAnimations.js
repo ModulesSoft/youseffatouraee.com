@@ -25,7 +25,7 @@ class CameraAnimations {
         textPosition: isMobile ? "bottom" : "right",
       },
       OS: {
-        view: isMobile ? "1250 900 60 45" : "1240 900 60 25",
+        view: isMobile ? "1252 900 60 45" : "1240 900 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
       firstRowEnd: {
@@ -57,6 +57,14 @@ class CameraAnimations {
       },
       motorcycle: {
         view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      garden: {
+        view: isMobile ? "0 850 390 220" : "0 850 200 180",
+        textPosition: isMobile ? "bottom" : "right",
+      },
+      mountain: {
+        view: isMobile ? "0 850 390 220" : "0 850 200 180",
         textPosition: isMobile ? "bottom" : "right",
       },
     };
@@ -265,6 +273,36 @@ class CameraAnimations {
               this.library.microphone.view,
               this.library.motorcycle.view,
             ],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  gardenView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [this.library.motorcycle.view, this.library.garden.view],
+          },
+        ],
+        easing: "easeOutQuad",
+      },
+      15000
+    ).finished.then(finishedCallback);
+  }
+  mountainView(finishedCallback) {
+    anime(
+      {
+        targets: ".page",
+        duration: 4000,
+        keyframes: [
+          {
+            viewBox: [this.library.garden.view, this.library.mountain.view],
           },
         ],
         easing: "easeOutQuad",
