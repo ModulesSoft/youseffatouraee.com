@@ -130,18 +130,53 @@ function Play(isMobile, width, height, timeline = 0) {
   }
   function hobbiesScene() {
     IntroTextAnimations().removeScrollIcon();
+
+    let microphone = getTexts("microphone");
+    let motorcycle = getTexts("motorcycle");
+    let garden = getTexts("garden");
+    let mountain = getTexts("mountain");
     microphoneCamera();
     function microphoneCamera() {
-      Camera.microphoneView(microphoneOne);
+      Camera.microphoneView(microphoneText);
     }
-    function microphoneOne() {
-      TypewriterAnimation("microphoneOne", 2_000, 100, 1000, motorcycleCamera);
+    function microphoneText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        microphone,
+        motorcycleCamera
+      );
     }
     function motorcycleCamera() {
-      Camera.motorcycleView(motorcycleOne);
+      Camera.motorcycleView(motorcycleText);
     }
-    function motorcycleOne() {
-      TypewriterAnimation("motorcycleOne", 2_000, 100, 1000, test);
+    function motorcycleText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        motorcycle,
+        gardenCamera
+      );
+    }
+    function gardenCamera() {
+      Camera.gardenView(gardenText);
+    }
+    function gardenText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        garden,
+        mountainCamera
+      );
+    }
+    function mountainCamera() {
+      Camera.mountainView(mountainText);
+    }
+    function mountainText() {
+      TypewriterAnimation("article", "text-background", 50, mountain, test);
     }
     function test() {
       console.log("hobbiesScene done");
