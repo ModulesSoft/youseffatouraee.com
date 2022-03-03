@@ -77,58 +77,11 @@ article {
   padding: 10px;
   padding-right: 20px;
   border-radius: 10px;
-
+  line-height: 4rem;
   /* margin-left: 30px; */
 }
 .text-animation {
   opacity: 0;
-}
-#laptopOne {
-  top: 20px;
-}
-#laptopTwo {
-  bottom: 5px;
-  font-size: 1rem;
-}
-#degreeOne {
-  bottom: 10px;
-  /* font-size: 2rem; */
-}
-#degreeTwo {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#OSOne {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#frontEndOneOne {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#frontEndOneTwo {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#frontEndTwoOne {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#frontEndTwoTwo {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#backEndTwoOne {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#backEndTwoTwo {
-  bottom: 15px;
-  /* font-size: 1rem; */
-}
-#microphoneOne {
-  bottom: 15px;
-  /* font-size: 1rem; */
 }
 
 /* .walking {
