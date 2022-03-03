@@ -25,7 +25,7 @@ class CameraAnimations {
         textPosition: isMobile ? "bottom" : "right",
       },
       OS: {
-        view: isMobile ? "1288 900 60 45" : "1240 900 60 25",
+        view: isMobile ? "1250 900 60 45" : "1240 900 60 25",
         textPosition: isMobile ? "bottom" : "right",
       },
       firstRowEnd: {
