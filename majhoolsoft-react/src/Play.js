@@ -17,96 +17,108 @@ function Play(isMobile, width, height, timeline = 0) {
     Camera.IntroScene(finished);
     BackgroundAnimations(timeline);
   }
+
   function garageScene(finishedCallback) {
     // start sequence
-    // debugger;
-    Camera.LaptopView(laptopOne);
-    function laptopOne() {
-      TypewriterAnimation("#laptopOne", 2_000, 100, 1000, laptopTwo);
-    }
-    function laptopTwo() {
-      TypewriterAnimation("#laptopTwo", 500, 100, 1000, degreeCamera);
+    let laptop = getTexts("laptop");
+    let degree = getTexts("degree");
+    let os = getTexts("os");
+    let frontEndOne = getTexts("frontEndOne");
+    let frontEndTwo = getTexts("frontEndTwo");
+    let backEnd = getTexts("backEnd");
+    let notebookOne = getTexts("notebookOne");
+    let notebookTwo = getTexts("notebookTwo");
+
+    Camera.LaptopView(laptopText);
+    function laptopText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        laptop,
+        degreeCamera
+      );
     }
     function degreeCamera() {
-      Camera.CertificateView(degreeOne);
+      Camera.CertificateView(degreeText);
     }
-    function degreeOne() {
-      TypewriterAnimation("#degreeOne", 2_000, 100, 1000, degreeTwo);
-    }
-    function degreeTwo() {
-      TypewriterAnimation("#degreeTwo", 2_000, 100, 1000, OSCamera);
+    function degreeText() {
+      TypewriterAnimation("article", "text-background", 50, degree, OSCamera);
     }
     function OSCamera() {
-      Camera.OSView(OSOne);
+      Camera.OSView(osText);
     }
-    function OSOne() {
-      TypewriterAnimation("#OSOne", 2_000, 100, 1000, frontEndOneCamera);
+    function osText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        os,
+        frontEndOneCamera
+      );
     }
     function frontEndOneCamera() {
-      Camera.frontEndOneView(frontEndOneOne);
+      Camera.frontEndOneView(frontEndOneText);
     }
     // front end
-    function frontEndOneOne() {
-      TypewriterAnimation("#frontEndOneOne", 2_000, 100, 1000, frontEndOneTwo);
-    }
-    function frontEndOneTwo() {
+    function frontEndOneText() {
       TypewriterAnimation(
-        "#frontEndOneTwo",
-        2_000,
-        100,
-        1000,
+        "article",
+        "text-background",
+        50,
+        frontEndOne,
         frontEndTwoCamera
       );
     }
     function frontEndTwoCamera() {
-      Camera.frontEndTwoView(frontEndTwoOne);
+      Camera.frontEndTwoView(frontEndTwoText);
     }
-    function frontEndTwoOne() {
-      TypewriterAnimation("#frontEndTwoOne", 2_000, 100, 1000, frontEndTwoTwo);
-    }
-    function frontEndTwoTwo() {
+    function frontEndTwoText() {
       TypewriterAnimation(
-        "#frontEndTwoTwo",
-        2_000,
-        100,
-        1000,
-        backEndOneCamera
+        "article",
+        "text-background",
+        50,
+        frontEndTwo,
+        backEndCamera
       );
     }
     // back end
-    function backEndOneCamera() {
-      Camera.backEndOneView(backEndOneOne);
+    function backEndCamera() {
+      Camera.backEndOneView(backEndText);
     }
-    function backEndOneOne() {
-      TypewriterAnimation("#backEndOneOne", 2_000, 100, 1000, backEndOneTwo);
-    }
-    function backEndOneTwo() {
+    function backEndText() {
       TypewriterAnimation(
-        "#backEndOneTwo",
-        2_000,
-        100,
-        1000,
+        "article",
+        "text-background",
+        50,
+        backEnd,
         notebookOneCamera
       );
     }
     // notebook view
     function notebookOneCamera() {
-      Camera.notebookOneView(notebookOneOne);
+      Camera.notebookOneView(notebookOneText);
     }
-    function notebookOneOne() {
-      TypewriterAnimation("#notebookOneOne", 2_000, 100, 1000, notebookOneTwo);
-    }
-    function notebookOneTwo() {
-      notebookTwoCamera();
+    function notebookOneText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        notebookOne,
+        notebookTwoCamera
+      );
     }
     function notebookTwoCamera() {
-      Camera.notebookTwoView(notebookTwoOne);
+      Camera.notebookTwoView(notebookTwoText);
     }
-    function notebookTwoOne() {
-      TypewriterAnimation("#notebookTwoOne", 2_000, 100, 1000, notebookTwoTwo);
-    }
-    function notebookTwoTwo() {
-      TypewriterAnimation("#notebookTwoTwo", 2_000, 100, 1000, scroll);
+    function notebookTwoText() {
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        notebookTwo,
+        scroll
+      );
     }
     //scroll down to see the hobbies
     function scroll() {
@@ -123,13 +135,13 @@ function Play(isMobile, width, height, timeline = 0) {
       Camera.microphoneView(microphoneOne);
     }
     function microphoneOne() {
-      TypewriterAnimation("#microphoneOne", 2_000, 100, 1000, motorcycleCamera);
+      TypewriterAnimation("microphoneOne", 2_000, 100, 1000, motorcycleCamera);
     }
     function motorcycleCamera() {
       Camera.motorcycleView(motorcycleOne);
     }
     function motorcycleOne() {
-      TypewriterAnimation("#motorcycleOne", 2_000, 100, 1000, test);
+      TypewriterAnimation("motorcycleOne", 2_000, 100, 1000, test);
     }
     function test() {
       console.log("hobbiesScene done");
@@ -137,6 +149,14 @@ function Play(isMobile, width, height, timeline = 0) {
   }
   function removeScrollIcon() {
     IntroTextAnimations().removeScrollIcon();
+  }
+  function getTexts(id) {
+    let temp = document.getElementById(id).children;
+    let result = [];
+    for (let i = 0; i < temp.length; i++) {
+      result.push(temp[i].innerText);
+    }
+    return result;
   }
   return { introScene, garageScene, removeScrollIcon, hobbiesScene };
 }
