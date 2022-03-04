@@ -34,7 +34,7 @@ function App() {
       Play().removeScrollIcon();
       // if it's hobbies scene
       if (showHobbies) {
-        Play(mobile, width, height).hobbiesScene();
+        Play(mobile, width, height).hobbiesScene(() => console.log("done"));
         setShowHobbies(false);
         setAllowScroll(false);
       }
@@ -45,14 +45,15 @@ function App() {
 
   // play intro
   useEffect(() => {
-    Play(mobile, width, height).introScene(() => setAllowScroll(true));
-    // playGarage();
+    // Play(mobile, width, height).introScene(() => setAllowScroll(true));
+    playGarage();
   }, []);
   function playGarage() {
-    setShowHobbies(false);
-    setAllowScroll(false);
-    window.scrollTo(0, 0);
-    Play(mobile, width, height).garageScene(startHobbies);
+    // setShowHobbies(false);
+    // setAllowScroll(false);
+    // window.scrollTo(0, 0);
+    // Play(mobile, width, height).garageScene(startHobbies);
+    startHobbies();
     function startHobbies() {
       setAllowScroll(true);
       setShowHobbies(true);
@@ -66,13 +67,13 @@ function App() {
         <svg className="page" xmlns="http://www.w3.org/2000/svg" style={size}>
           <Background />
           <Garage />
-          <GarageDoor
+          {/* <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
               e && playGarage();
             }}
           />
-          <Darkness />
+          <Darkness /> */}
           <Sideview />
           <Car />
           <LightBeam />

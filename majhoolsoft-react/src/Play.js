@@ -131,10 +131,10 @@ function Play(isMobile, width, height, timeline = 0) {
   function hobbiesScene() {
     IntroTextAnimations().removeScrollIcon();
 
-    let microphone = getTexts("microphone");
-    let motorcycle = getTexts("motorcycle");
-    let garden = getTexts("garden");
-    let mountain = getTexts("mountain");
+    const microphone = getTexts("microphone");
+    const motorcycle = getTexts("bike");
+    const garden = getTexts("garden");
+    const mountain = getTexts("mountain");
     microphoneCamera();
     function microphoneCamera() {
       Camera.microphoneView(microphoneText);
