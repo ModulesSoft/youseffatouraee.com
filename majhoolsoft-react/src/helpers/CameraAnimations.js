@@ -5,7 +5,7 @@ class CameraAnimations {
     this.timeline = timeline;
     this.library = {
       begin: {
-        view: "-1000 650 900 500",
+        view: isMobile ? "-780 650 900 500" : "-1000 650 900 500",
         textPosition: "",
       },
       general: {
