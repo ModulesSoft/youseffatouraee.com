@@ -60,11 +60,11 @@ class CameraAnimations {
         textPosition: isMobile ? "bottom" : "right",
       },
       garden: {
-        view: isMobile ? "0 850 390 220" : "0 850 200 180",
+        view: isMobile ? "20 550 600 420" : "20 550 600 420",
         textPosition: isMobile ? "bottom" : "right",
       },
       mountain: {
-        view: isMobile ? "0 850 390 220" : "0 850 200 180",
+        view: isMobile ? "300 250 600 420" : "150 250 600 420",
         textPosition: isMobile ? "bottom" : "right",
       },
     };

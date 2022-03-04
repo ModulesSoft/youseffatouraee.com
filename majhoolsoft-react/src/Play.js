@@ -20,14 +20,14 @@ function Play(isMobile, width, height, timeline = 0) {
 
   function garageScene(finishedCallback) {
     // start sequence
-    let laptop = getTexts("laptop");
-    let degree = getTexts("degree");
-    let os = getTexts("os");
-    let frontEndOne = getTexts("frontEndOne");
-    let frontEndTwo = getTexts("frontEndTwo");
-    let backEnd = getTexts("backEnd");
-    let notebookOne = getTexts("notebookOne");
-    let notebookTwo = getTexts("notebookTwo");
+    const laptop = getTexts("laptop");
+    const degree = getTexts("degree");
+    const os = getTexts("os");
+    const frontEndOne = getTexts("frontEndOne");
+    const frontEndTwo = getTexts("frontEndTwo");
+    const backEnd = getTexts("backEnd");
+    const notebookOne = getTexts("notebookOne");
+    const notebookTwo = getTexts("notebookTwo");
 
     Camera.LaptopView(laptopText);
     function laptopText() {
