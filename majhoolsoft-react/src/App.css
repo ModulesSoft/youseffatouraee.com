@@ -13,14 +13,11 @@
 .background {
   position: absolute;
   z-index: 1;
-  /* width: auto;
-  height: 100vh; */
 }
 .car {
   z-index: 2;
   position: absolute;
   top: 90vh;
-  /* display: none; */
 }
 #rear-wheel,
 #front-wheel {
@@ -55,10 +52,14 @@
   font-size: 2rem;
 }
 .hi,
-.welcome {
+.welcome,
+.download {
   opacity: 0;
 }
-
+.download {
+  position: fixed;
+  bottom: 0;
+}
 article {
   position: fixed;
   top: 0;
@@ -71,26 +72,16 @@ article {
   /* debug */
   margin-left: -15px !important;
 }
-/* typewriter animation properties */
 .text-background {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px;
   padding-right: 20px;
   border-radius: 10px;
   line-height: 4rem;
-  /* margin-left: 30px; */
 }
 .text-animation {
   opacity: 0;
 }
-
-/* .walking {
-  position: fixed;
-  left: 200px;
-  bottom: 0px;
-  opacity: 0;
-} */
 #walking {
   opacity: 0;
 }
-/*  */

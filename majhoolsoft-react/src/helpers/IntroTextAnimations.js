@@ -2,7 +2,7 @@ import anime from "animejs";
 function IntroTextAnimations() {
   function introScene(finishedCallback) {
     anime({
-      targets: [".hi", ".welcome"],
+      targets: [".hi", ".welcome", ".download"],
       keyframes: [
         {
           opacity: 1,

@@ -21,15 +21,15 @@ class CameraAnimations {
         textPosition: "",
       },
       certificate: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 25",
+        view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       OS: {
-        view: isMobile ? "1252 900 60 45" : "1240 900 60 25",
+        view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       firstRowEnd: {
-        view: isMobile ? "1230 900 60 45" : "1200 900 60 25",
+        view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
       },
       frontEndOne: {
         view: isMobile ? "1230 930 60 45" : "1200 930 60 25",
