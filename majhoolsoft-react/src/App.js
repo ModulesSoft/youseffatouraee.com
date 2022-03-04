@@ -80,8 +80,11 @@ function App() {
         </svg>
         <div className="decorative">
           <div className="intro">
-            <p className="hi">Hi</p>
+            <p className="hi">Hi, I'm Yousef Fatouraee</p>
             <p className="welcome">Ride with me to my world!</p>
+            <p className="download">
+              <a href="#">Download</a> resume
+            </p>
           </div>
           <p className="scrollResume scrollText">Scroll Down</p>
           <p className="scrollHobbies scrollText">
