@@ -135,7 +135,7 @@ function Play(isMobile, width, height, timeline = 0) {
     const motorcycle = getTexts("bike");
     const garden = getTexts("garden");
     const mountain = getTexts("mountain");
-    microphoneCamera();
+    gardenCamera();
     function microphoneCamera() {
       Camera.microphoneView(microphoneText);
     }
