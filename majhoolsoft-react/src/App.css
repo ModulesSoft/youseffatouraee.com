@@ -1,3 +1,6 @@
+#root {
+  overflow-x: hidden;
+}
 .container {
   position: relative;
   width: 100vw;

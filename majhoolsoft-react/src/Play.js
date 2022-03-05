@@ -5,7 +5,7 @@ import CameraAnimations from "./helpers/CameraAnimations";
 import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 
-function Play(isMobile, width, height, timeline = 0) {
+function Play(isMobile, width, height, texts, timeline = 0) {
   // setting camera
   const Camera = new CameraAnimations(isMobile, width, height, timeline);
   function introScene(finished) {
@@ -20,22 +20,13 @@ function Play(isMobile, width, height, timeline = 0) {
 
   function garageScene(finishedCallback) {
     // start sequence
-    const laptop = getTexts("laptop");
-    const degree = getTexts("degree");
-    const os = getTexts("os");
-    const frontEndOne = getTexts("frontEndOne");
-    const frontEndTwo = getTexts("frontEndTwo");
-    const backEnd = getTexts("backEnd");
-    const notebookOne = getTexts("notebookOne");
-    const notebookTwo = getTexts("notebookTwo");
-
     Camera.LaptopView(laptopText);
     function laptopText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        laptop,
+        texts.laptop,
         degreeCamera
       );
     }
@@ -43,7 +34,13 @@ function Play(isMobile, width, height, timeline = 0) {
       Camera.CertificateView(degreeText);
     }
     function degreeText() {
-      TypewriterAnimation("article", "text-background", 50, degree, OSCamera);
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        texts.degree,
+        OSCamera
+      );
     }
     function OSCamera() {
       Camera.OSView(osText);
@@ -53,7 +50,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        os,
+        texts.os,
         frontEndOneCamera
       );
     }
@@ -66,7 +63,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        frontEndOne,
+        texts.frontEndOne,
         frontEndTwoCamera
       );
     }
@@ -78,7 +75,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        frontEndTwo,
+        texts.frontEndTwo,
         backEndCamera
       );
     }
@@ -91,7 +88,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        backEnd,
+        texts.backEnd,
         notebookOneCamera
       );
     }
@@ -104,7 +101,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        notebookOne,
+        texts.notebookOne,
         notebookTwoCamera
       );
     }
@@ -116,7 +113,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        notebookTwo,
+        texts.notebookTwo,
         scroll
       );
     }
@@ -129,13 +126,10 @@ function Play(isMobile, width, height, timeline = 0) {
     }
   }
   function hobbiesScene() {
+    console.log("hobb");
     IntroTextAnimations().removeScrollIcon();
 
-    const microphone = getTexts("microphone");
-    const motorcycle = getTexts("bike");
-    const garden = getTexts("garden");
-    const mountain = getTexts("mountain");
-    gardenCamera();
+    microphoneCamera();
     function microphoneCamera() {
       Camera.microphoneView(microphoneText);
     }
@@ -144,7 +138,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        microphone,
+        texts.microphone,
         motorcycleCamera
       );
     }
@@ -156,7 +150,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        motorcycle,
+        texts.motorcycle,
         gardenCamera
       );
     }
@@ -168,7 +162,7 @@ function Play(isMobile, width, height, timeline = 0) {
         "article",
         "text-background",
         50,
-        garden,
+        texts.garden,
         mountainCamera
       );
     }
@@ -176,7 +170,13 @@ function Play(isMobile, width, height, timeline = 0) {
       Camera.mountainView(mountainText);
     }
     function mountainText() {
-      TypewriterAnimation("article", "text-background", 50, mountain, test);
+      TypewriterAnimation(
+        "article",
+        "text-background",
+        50,
+        texts.mountain,
+        test
+      );
     }
     function test() {
       console.log("hobbiesScene done");
@@ -185,14 +185,7 @@ function Play(isMobile, width, height, timeline = 0) {
   function removeScrollIcon() {
     IntroTextAnimations().removeScrollIcon();
   }
-  function getTexts(id) {
-    let temp = document.getElementById(id).children;
-    let result = [];
-    for (let i = 0; i < temp.length; i++) {
-      result.push(temp[i].innerText);
-    }
-    return result;
-  }
+
   return { introScene, garageScene, removeScrollIcon, hobbiesScene };
 }
 export default Play;

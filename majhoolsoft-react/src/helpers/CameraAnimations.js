@@ -32,23 +32,23 @@ class CameraAnimations {
         view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
       },
       frontEndOne: {
-        view: isMobile ? "1230 930 60 45" : "1200 930 60 25",
+        view: isMobile ? "1230 930 60 45" : "1200 930 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       frontEndTwo: {
-        view: isMobile ? "1257 920 60 45" : "1230 930 60 25",
+        view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       backEndOne: {
-        view: isMobile ? "1288 920 60 45" : "1260 930 60 25",
+        view: isMobile ? "1288 920 60 45" : "1260 930 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       notebookOne: {
-        view: isMobile ? "1252 960 60 45" : "1215 962 60 25",
+        view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       notebookTwo: {
-        view: isMobile ? "1270 960 60 45" : "1270 962 60 25",
+        view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
         textPosition: isMobile ? "bottom" : "right",
       },
       microphone: {
