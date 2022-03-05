@@ -26,14 +26,14 @@ function App() {
         width: width,
       };
   // get scroll properties
-  let scrollY = useScroll().scrollY / 10;
+  let scrollY = useScroll().scrollY;
   let scrollDirection = useScroll().scrollDirection;
+  // scenes activation
   let [allowScroll, setAllowScroll] = useState(true);
   let [showIntro, setShowIntro] = useState(true);
   let [showGarage, setShowGarage] = useState(false);
   let [showHobbies, setShowHobbies] = useState(false);
   useEffect(() => {
-    console.log("useeffect");
     !allowScroll && window.scrollTo(0, 0);
     if (showIntro) {
       // play intro
@@ -66,7 +66,7 @@ function App() {
         Play(mobile, width, height, texts).hobbiesScene(finish);
       }
       function finish() {
-        console.log("done");
+        console.log("the end");
         setAllowScroll(false);
       }
     }
