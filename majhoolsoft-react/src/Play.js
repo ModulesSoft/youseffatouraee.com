@@ -8,13 +8,13 @@ import WalkingAnimations from "./helpers/WalkingAnimations";
 function Play(isMobile, width, height, texts, timeline = 0) {
   // setting camera
   const Camera = new CameraAnimations(isMobile, width, height, timeline);
-  function introScene(finished) {
+  function introScene(finishedCallback) {
     CarAnimations(walking);
     function walking() {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
-    Camera.IntroScene(finished);
+    Camera.IntroScene(finishedCallback);
     BackgroundAnimations(timeline);
   }
 
@@ -125,8 +125,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
   }
-  function hobbiesScene() {
-    console.log("hobb");
+  function hobbiesScene(finishedCallback) {
     IntroTextAnimations().removeScrollIcon();
 
     microphoneCamera();
@@ -175,11 +174,8 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.mountain,
-        test
+        finishedCallback
       );
-    }
-    function test() {
-      console.log("hobbiesScene done");
     }
   }
   function removeScrollIcon() {
