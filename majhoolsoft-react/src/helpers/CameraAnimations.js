@@ -1,77 +1,8 @@
 import anime from "animejs";
 
-class CameraAnimations {
-  constructor(isMobile, width, height, timeline = null) {
-    this.timeline = timeline;
-    this.library = {
-      begin: {
-        view: isMobile ? "-780 650 900 500" : "-1000 650 900 500",
-        textPosition: "",
-      },
-      general: {
-        view: "0 0 1920 1080",
-      },
-      door: {
-        view: isMobile
-          ? `1000 ${1080 - height} ${width} ${height}`
-          : "1000 800 400 240",
-      },
-      laptop: {
-        view: "1328 920 60 60",
-        textPosition: "",
-      },
-      certificate: {
-        view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      OS: {
-        view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      firstRowEnd: {
-        view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
-      },
-      frontEndOne: {
-        view: isMobile ? "1230 930 60 45" : "1200 930 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      frontEndTwo: {
-        view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      backEndOne: {
-        view: isMobile ? "1288 920 60 45" : "1260 930 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      notebookOne: {
-        view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      notebookTwo: {
-        view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      microphone: {
-        view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      motorcycle: {
-        view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      garden: {
-        view: isMobile ? "20 550 600 420" : "20 550 600 420",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-      mountain: {
-        view: isMobile ? "300 250 600 420" : "150 250 600 420",
-        textPosition: isMobile ? "bottom" : "right",
-      },
-    };
-  }
-
+function CameraAnimations(library, timeline = 0) {
   //Intro Scene
-  IntroScene(finishedCallback) {
+  function IntroScene(finishedCallback) {
     // camera transition
     anime
       .timeline({ loop: false })
@@ -81,13 +12,13 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the car in the way home to the background
           {
-            viewBox: [this.library.begin.view, this.library.general.view],
-            duration: (this.timeline += 3000),
-            delay: (this.timeline += 1000),
+            viewBox: [library.begin.view, library.general.view],
+            duration: (timeline += 3000),
+            delay: (timeline += 1000),
           },
           // camera transition to Garage door
           {
-            viewBox: [this.library.general.view, this.library.door.view],
+            viewBox: [library.general.view, library.door.view],
             delay: 7000,
           },
         ],
@@ -97,7 +28,7 @@ class CameraAnimations {
   }
 
   // Garage Scene
-  LaptopView(finishedCallback) {
+  function LaptopView(finishedCallback) {
     anime
       .timeline({ loop: false })
       .add({
@@ -106,7 +37,7 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the GarageCamera door to the laptop
           {
-            viewBox: [this.library.door.view, this.library.laptop.view],
+            viewBox: [library.door.view, library.laptop.view],
             // viewBox: mobile ? doorViewMobile : doorViewDesktop,
           },
           {},
@@ -116,7 +47,7 @@ class CameraAnimations {
       .finished.then(finishedCallback);
   }
 
-  CertificateView(finishedCallback) {
+  function CertificateView(finishedCallback) {
     // Certificate View
     anime(
       {
@@ -124,7 +55,7 @@ class CameraAnimations {
         duration: 4000,
         keyframes: [
           {
-            viewBox: [this.library.laptop.view, this.library.certificate.view],
+            viewBox: [library.laptop.view, library.certificate.view],
           },
           {},
         ],
@@ -133,7 +64,7 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  OSView(finishedCallback) {
+  function OSView(finishedCallback) {
     // OS View
     anime(
       {
@@ -141,7 +72,7 @@ class CameraAnimations {
         duration: 4000,
         keyframes: [
           {
-            viewBox: [this.library.certificate.view, this.library.OS.view],
+            viewBox: [library.certificate.view, library.OS.view],
           },
         ],
         easing: "easeOutQuad",
@@ -149,7 +80,7 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  frontEndOneView(finishedCallback) {
+  function frontEndOneView(finishedCallback) {
     anime(
       {
         targets: ".page",
@@ -157,14 +88,11 @@ class CameraAnimations {
         keyframes: [
           // camera transition from the OS books to the end of the first row (left)
           {
-            viewBox: [this.library.OS.view, this.library.firstRowEnd.view],
+            viewBox: [library.OS.view, library.firstRowEnd.view],
           },
           // camera transition from the end of the first row (left) to the begining of the second row (left) html css js books
           {
-            viewBox: [
-              this.library.firstRowEnd.view,
-              this.library.frontEndOne.view,
-            ],
+            viewBox: [library.firstRowEnd.view, library.frontEndOne.view],
           },
         ],
         easing: "easeOutQuad",
@@ -172,17 +100,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  frontEndTwoView(finishedCallback) {
+  function frontEndTwoView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.frontEndOne.view,
-              this.library.frontEndTwo.view,
-            ],
+            viewBox: [library.frontEndOne.view, library.frontEndTwo.view],
           },
         ],
         easing: "easeOutQuad",
@@ -190,17 +115,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  backEndOneView(finishedCallback) {
+  function backEndOneView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.frontEndTwo.view,
-              this.library.backEndOne.view,
-            ],
+            viewBox: [library.frontEndTwo.view, library.backEndOne.view],
           },
         ],
         easing: "easeOutQuad",
@@ -208,17 +130,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  notebookOneView(finishedCallback) {
+  function notebookOneView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.backEndOne.view,
-              this.library.notebookOne.view,
-            ],
+            viewBox: [library.backEndOne.view, library.notebookOne.view],
           },
         ],
         easing: "easeOutQuad",
@@ -226,17 +145,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  notebookTwoView(finishedCallback) {
+  function notebookTwoView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.notebookOne.view,
-              this.library.notebookTwo.view,
-            ],
+            viewBox: [library.notebookOne.view, library.notebookTwo.view],
           },
         ],
         easing: "easeOutQuad",
@@ -244,17 +160,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  microphoneView(finishedCallback) {
+  function microphoneView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.notebookTwo.view,
-              this.library.microphone.view,
-            ],
+            viewBox: [library.notebookTwo.view, library.microphone.view],
           },
         ],
         easing: "easeOutQuad",
@@ -262,17 +175,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  motorcycleView(finishedCallback) {
+  function motorcycleView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [
-              this.library.microphone.view,
-              this.library.motorcycle.view,
-            ],
+            viewBox: [library.microphone.view, library.motorcycle.view],
           },
         ],
         easing: "easeOutQuad",
@@ -280,14 +190,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  gardenView(finishedCallback) {
+  function gardenView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [this.library.motorcycle.view, this.library.garden.view],
+            viewBox: [library.motorcycle.view, library.garden.view],
           },
         ],
         easing: "easeOutQuad",
@@ -295,14 +205,14 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
-  mountainView(finishedCallback) {
+  function mountainView(finishedCallback) {
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [this.library.garden.view, this.library.mountain.view],
+            viewBox: [library.garden.view, library.mountain.view],
           },
         ],
         easing: "easeOutQuad",
@@ -310,5 +220,20 @@ class CameraAnimations {
       15000
     ).finished.then(finishedCallback);
   }
+  return {
+    IntroScene,
+    LaptopView,
+    CertificateView,
+    OSView,
+    backEndOneView,
+    frontEndOneView,
+    gardenView,
+    frontEndTwoView,
+    microphoneView,
+    mountainView,
+    notebookOneView,
+    notebookTwoView,
+    motorcycleView,
+  };
 }
 export default CameraAnimations;
