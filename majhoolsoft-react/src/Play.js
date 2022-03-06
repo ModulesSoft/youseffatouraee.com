@@ -21,38 +21,78 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     },
     laptop: {
       view: "1328 920 60 60",
-      textPosition: "",
+      textPosition: isMobile
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : {
+            x: `${(1 / 2) * width}`,
+            y: `${(1 / 2) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     certificate: {
       view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: `${(1 / 2) * width}`,
+            y: `${(1 / 2) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     OS: {
       view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     firstRowEnd: {
       view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
     },
     frontEndOne: {
       view: isMobile ? "1230 930 60 45" : "1200 930 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : { x: 16, y: `${(1 / 2) * height}`, width: `${(1 / 2) * width}` },
     },
     frontEndTwo: {
       view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(20 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: `${(1 / 2) * width}`,
+            y: `${(20 / 100) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     backEndOne: {
-      view: isMobile ? "1288 920 60 45" : "1260 930 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: 16,
+            y: `${(25 / 100) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     notebookOne: {
       view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: 16,
+            y: `${(25 / 100) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     notebookTwo: {
       view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: `${(10 / 100) * width}`,
+            y: `${(90 / 100) * height}`,
+            width: `${(80 / 100) * width}`,
+          },
     },
     microphone: {
       view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
@@ -83,13 +123,15 @@ function Play(isMobile, width, height, texts, timeline = 0) {
 
   function garageScene(finishedCallback) {
     // start sequence
-    CameraAnimations(library, timeline).LaptopView(laptopText);
+    // CameraAnimations(library, timeline).LaptopView(laptopText);
+    notebookTwoCamera();
     function laptopText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
         texts.laptop,
+        library.laptop.textPosition,
         degreeCamera
       );
     }
@@ -102,6 +144,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.degree,
+        library.certificate.textPosition,
         OSCamera
       );
     }
@@ -114,6 +157,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.os,
+        library.OS.textPosition,
         frontEndOneCamera
       );
     }
@@ -127,6 +171,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.frontEndOne,
+        library.frontEndOne.textPosition,
         frontEndTwoCamera
       );
     }
@@ -139,6 +184,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.frontEndTwo,
+        library.frontEndTwo.textPosition,
         backEndCamera
       );
     }
@@ -152,6 +198,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.backEnd,
+        library.backEndOne.textPosition,
         notebookOneCamera
       );
     }
@@ -165,6 +212,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.notebookOne,
+        library.notebookOne.textPosition,
         notebookTwoCamera
       );
     }
@@ -177,6 +225,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.notebookTwo,
+        library.notebookTwo.textPosition,
         scroll
       );
     }
@@ -201,6 +250,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.microphone,
+        library.microphone.textPosition,
         motorcycleCamera
       );
     }
@@ -213,6 +263,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.motorcycle,
+        library.motorcycle.textPosition,
         gardenCamera
       );
     }
@@ -225,6 +276,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.garden,
+        library.garden.textPosition,
         mountainCamera
       );
     }
@@ -237,6 +289,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "text-background",
         50,
         texts.mountain,
+        library.mountain.textPosition,
         finishedCallback
       );
     }
