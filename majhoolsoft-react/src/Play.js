@@ -6,21 +6,84 @@ import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 
 function Play(isMobile, width, height, texts, timeline = 0) {
-  // setting camera
-  const Camera = new CameraAnimations(isMobile, width, height, timeline);
+  const library = {
+    begin: {
+      view: isMobile ? "-780 650 900 500" : "-1000 650 900 500",
+      textPosition: "",
+    },
+    general: {
+      view: "0 0 1920 1080",
+    },
+    door: {
+      view: isMobile
+        ? `1000 ${1080 - height} ${width} ${height}`
+        : "1000 800 400 240",
+    },
+    laptop: {
+      view: "1328 920 60 60",
+      textPosition: "",
+    },
+    certificate: {
+      view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    OS: {
+      view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    firstRowEnd: {
+      view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
+    },
+    frontEndOne: {
+      view: isMobile ? "1230 930 60 45" : "1200 930 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    frontEndTwo: {
+      view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    backEndOne: {
+      view: isMobile ? "1288 920 60 45" : "1260 930 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    notebookOne: {
+      view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    notebookTwo: {
+      view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    microphone: {
+      view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    motorcycle: {
+      view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    garden: {
+      view: isMobile ? "20 550 600 420" : "20 550 600 420",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+    mountain: {
+      view: isMobile ? "300 250 600 420" : "150 250 600 420",
+      textPosition: isMobile ? "bottom" : "right",
+    },
+  };
   function introScene(finishedCallback) {
     CarAnimations(walking);
     function walking() {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
-    Camera.IntroScene(finishedCallback);
+    CameraAnimations(library, timeline).IntroScene(finishedCallback);
     BackgroundAnimations(timeline);
   }
 
   function garageScene(finishedCallback) {
     // start sequence
-    Camera.LaptopView(laptopText);
+    CameraAnimations(library, timeline).LaptopView(laptopText);
     function laptopText() {
       TypewriterAnimation(
         "article",
@@ -31,7 +94,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function degreeCamera() {
-      Camera.CertificateView(degreeText);
+      CameraAnimations(library, timeline).CertificateView(degreeText);
     }
     function degreeText() {
       TypewriterAnimation(
@@ -43,7 +106,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function OSCamera() {
-      Camera.OSView(osText);
+      CameraAnimations(library, timeline).OSView(osText);
     }
     function osText() {
       TypewriterAnimation(
@@ -55,7 +118,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndOneCamera() {
-      Camera.frontEndOneView(frontEndOneText);
+      CameraAnimations(library, timeline).frontEndOneView(frontEndOneText);
     }
     // front end
     function frontEndOneText() {
@@ -68,7 +131,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndTwoCamera() {
-      Camera.frontEndTwoView(frontEndTwoText);
+      CameraAnimations(library, timeline).frontEndTwoView(frontEndTwoText);
     }
     function frontEndTwoText() {
       TypewriterAnimation(
@@ -81,7 +144,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     }
     // back end
     function backEndCamera() {
-      Camera.backEndOneView(backEndText);
+      CameraAnimations(library, timeline).backEndOneView(backEndText);
     }
     function backEndText() {
       TypewriterAnimation(
@@ -94,7 +157,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     }
     // notebook view
     function notebookOneCamera() {
-      Camera.notebookOneView(notebookOneText);
+      CameraAnimations(library, timeline).notebookOneView(notebookOneText);
     }
     function notebookOneText() {
       TypewriterAnimation(
@@ -106,7 +169,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function notebookTwoCamera() {
-      Camera.notebookTwoView(notebookTwoText);
+      CameraAnimations(library, timeline).notebookTwoView(notebookTwoText);
     }
     function notebookTwoText() {
       TypewriterAnimation(
@@ -130,7 +193,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
 
     microphoneCamera();
     function microphoneCamera() {
-      Camera.microphoneView(microphoneText);
+      CameraAnimations(library, timeline).microphoneView(microphoneText);
     }
     function microphoneText() {
       TypewriterAnimation(
@@ -142,7 +205,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function motorcycleCamera() {
-      Camera.motorcycleView(motorcycleText);
+      CameraAnimations(library, timeline).motorcycleView(motorcycleText);
     }
     function motorcycleText() {
       TypewriterAnimation(
@@ -154,7 +217,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function gardenCamera() {
-      Camera.gardenView(gardenText);
+      CameraAnimations(library, timeline).gardenView(gardenText);
     }
     function gardenText() {
       TypewriterAnimation(
@@ -166,7 +229,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function mountainCamera() {
-      Camera.mountainView(mountainText);
+      CameraAnimations(library, timeline).mountainView(mountainText);
     }
     function mountainText() {
       TypewriterAnimation(

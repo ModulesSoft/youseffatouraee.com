@@ -70,6 +70,9 @@ article {
   height: 100%;
   font-size: 2rem;
   color: #f5f5f5;
+  /* to position texts */
+  /* max-width: 200px; */
+  /* margin: 200px 1200px; */
 }
 .Typewriter__cursor {
   /* debug */
