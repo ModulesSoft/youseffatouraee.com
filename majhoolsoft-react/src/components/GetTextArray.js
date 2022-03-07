@@ -1,20 +1,18 @@
 function GetTextArray() {
-  return {
-    // resume
-    laptop: getTexts("laptop"),
-    degree: getTexts("degree"),
-    os: getTexts("os"),
-    frontEndOne: getTexts("frontEndOne"),
-    frontEndTwo: getTexts("frontEndTwo"),
-    backEnd: getTexts("backEnd"),
-    notebookOne: getTexts("notebookOne"),
-    notebookTwo: getTexts("notebookTwo"),
-    // hobbies
-    microphone: getTexts("microphone"),
-    motorcycle: getTexts("bike"),
-    garden: getTexts("garden"),
-    mountain: getTexts("mountain"),
-  };
+  let elements = document.getElementsByClassName("text-animation");
+  let elementsParrentsID = [];
+  [...elements].forEach((element) => {
+    elementsParrentsID.push(element.parentElement.id);
+  });
+  // remove duplications
+  elementsParrentsID = [...new Set(elementsParrentsID)];
+  // final object of text arrays
+  let texts = {};
+  elementsParrentsID.forEach((id) => {
+    texts = { ...texts, [id]: getTexts(id) };
+  });
+  return texts;
+
   function getTexts(id) {
     let temp = document.getElementById(id).children;
     let result = [];

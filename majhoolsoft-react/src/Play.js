@@ -29,7 +29,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
             width: `${(1 / 2) * width}`,
           },
     },
-    certificate: {
+    degree: {
       view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
@@ -39,7 +39,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
             width: `${(1 / 2) * width}`,
           },
     },
-    OS: {
+    os: {
       view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
@@ -111,58 +111,70 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       textPosition: isMobile ? "bottom" : "right",
     },
   };
+  // distinguish textposition and view for camera and typewriter data
+  let cameraData = {};
+  let typewriterData = {};
+  Object.keys(library).forEach(function (k) {
+    cameraData = { ...cameraData, ...{ [k]: { view: library[k]["view"] } } };
+    typewriterData = {
+      ...typewriterData,
+      ...{
+        [k]: { text: texts?.[k], textPosition: library[k]["textPosition"] },
+      },
+    };
+  });
+
   function introScene(finishedCallback) {
     CarAnimations(walking);
     function walking() {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
-    CameraAnimations(library, timeline).IntroScene(finishedCallback);
+    CameraAnimations(cameraData, timeline).IntroScene(finishedCallback);
     BackgroundAnimations(timeline);
   }
 
   function garageScene(finishedCallback) {
     // start sequence
-    // CameraAnimations(library, timeline).LaptopView(laptopText);
-    notebookTwoCamera();
+    CameraAnimations(cameraData, timeline).LaptopView(laptopText);
     function laptopText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.laptop,
-        library.laptop.textPosition,
+        typewriterData.laptop.text,
+        typewriterData.laptop.textPosition,
         degreeCamera
       );
     }
     function degreeCamera() {
-      CameraAnimations(library, timeline).CertificateView(degreeText);
+      CameraAnimations(cameraData, timeline).DegreeView(degreeText);
     }
     function degreeText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.degree,
-        library.certificate.textPosition,
+        typewriterData.degree.text,
+        typewriterData.degree.textPosition,
         OSCamera
       );
     }
     function OSCamera() {
-      CameraAnimations(library, timeline).OSView(osText);
+      CameraAnimations(cameraData, timeline).OSView(osText);
     }
     function osText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.os,
-        library.OS.textPosition,
+        typewriterData.os.text,
+        typewriterData.os.textPosition,
         frontEndOneCamera
       );
     }
     function frontEndOneCamera() {
-      CameraAnimations(library, timeline).frontEndOneView(frontEndOneText);
+      CameraAnimations(cameraData, timeline).frontEndOneView(frontEndOneText);
     }
     // front end
     function frontEndOneText() {
@@ -170,62 +182,62 @@ function Play(isMobile, width, height, texts, timeline = 0) {
         "article",
         "text-background",
         50,
-        texts.frontEndOne,
-        library.frontEndOne.textPosition,
+        typewriterData.frontEndOne.text,
+        typewriterData.frontEndOne.textPosition,
         frontEndTwoCamera
       );
     }
     function frontEndTwoCamera() {
-      CameraAnimations(library, timeline).frontEndTwoView(frontEndTwoText);
+      CameraAnimations(cameraData, timeline).frontEndTwoView(frontEndTwoText);
     }
     function frontEndTwoText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.frontEndTwo,
-        library.frontEndTwo.textPosition,
+        typewriterData.frontEndTwo.text,
+        typewriterData.frontEndTwo.textPosition,
         backEndCamera
       );
     }
     // back end
     function backEndCamera() {
-      CameraAnimations(library, timeline).backEndOneView(backEndText);
+      CameraAnimations(cameraData, timeline).backEndOneView(backEndText);
     }
     function backEndText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.backEnd,
-        library.backEndOne.textPosition,
+        typewriterData.backEndOne.text,
+        typewriterData.backEndOne.textPosition,
         notebookOneCamera
       );
     }
     // notebook view
     function notebookOneCamera() {
-      CameraAnimations(library, timeline).notebookOneView(notebookOneText);
+      CameraAnimations(cameraData, timeline).notebookOneView(notebookOneText);
     }
     function notebookOneText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.notebookOne,
-        library.notebookOne.textPosition,
+        typewriterData.notebookOne.text,
+        typewriterData.notebookOne.textPosition,
         notebookTwoCamera
       );
     }
     function notebookTwoCamera() {
-      CameraAnimations(library, timeline).notebookTwoView(notebookTwoText);
+      CameraAnimations(cameraData, timeline).notebookTwoView(notebookTwoText);
     }
     function notebookTwoText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.notebookTwo,
-        library.notebookTwo.textPosition,
+        typewriterData.notebookTwo.text,
+        typewriterData.notebookTwo.textPosition,
         scroll
       );
     }
@@ -242,54 +254,54 @@ function Play(isMobile, width, height, texts, timeline = 0) {
 
     microphoneCamera();
     function microphoneCamera() {
-      CameraAnimations(library, timeline).microphoneView(microphoneText);
+      CameraAnimations(cameraData, timeline).microphoneView(microphoneText);
     }
     function microphoneText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.microphone,
-        library.microphone.textPosition,
+        typewriterData.microphone.text,
+        typewriterData.microphone.textPosition,
         motorcycleCamera
       );
     }
     function motorcycleCamera() {
-      CameraAnimations(library, timeline).motorcycleView(motorcycleText);
+      CameraAnimations(cameraData, timeline).motorcycleView(motorcycleText);
     }
     function motorcycleText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.motorcycle,
-        library.motorcycle.textPosition,
+        typewriterData.motorcycle.text,
+        typewriterData.motorcycle.textPosition,
         gardenCamera
       );
     }
     function gardenCamera() {
-      CameraAnimations(library, timeline).gardenView(gardenText);
+      CameraAnimations(cameraData, timeline).gardenView(gardenText);
     }
     function gardenText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.garden,
-        library.garden.textPosition,
+        typewriterData.garden.text,
+        typewriterData.garden.textPosition,
         mountainCamera
       );
     }
     function mountainCamera() {
-      CameraAnimations(library, timeline).mountainView(mountainText);
+      CameraAnimations(cameraData, timeline).mountainView(mountainText);
     }
     function mountainText() {
       TypewriterAnimation(
         "article",
         "text-background",
         50,
-        texts.mountain,
-        library.mountain.textPosition,
+        typewriterData.mountain.text,
+        typewriterData.mountain.textPosition,
         finishedCallback
       );
     }
