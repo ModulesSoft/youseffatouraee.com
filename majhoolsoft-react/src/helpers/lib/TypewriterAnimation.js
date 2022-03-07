@@ -8,6 +8,14 @@ function TypewriterAnimation(
   position,
   finishedCallback
 ) {
+  // positioning
+  anime({
+    targets: ".article",
+    translateX: position.x,
+    translateY: position.y,
+    width: position.width,
+  }).finished.then();
+  // writing
   let tw = new Typewriter("." + pageClass, {
     strings: target,
     autoStart: true,
@@ -16,11 +24,5 @@ function TypewriterAnimation(
     deleteSpeed: 0.5,
   });
   tw.callFunction(finishedCallback);
-  anime({
-    targets: ".article",
-    translateX: position.x,
-    translateY: position.y,
-    width: position.width,
-  }).finished.then(console.log("ok"));
 }
 export default TypewriterAnimation;

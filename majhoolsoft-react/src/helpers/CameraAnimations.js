@@ -47,15 +47,15 @@ function CameraAnimations(library, timeline = 0) {
       .finished.then(finishedCallback);
   }
 
-  function CertificateView(finishedCallback) {
-    // Certificate View
+  function DegreeView(finishedCallback) {
+    // Degree View
     anime(
       {
         targets: ".page",
         duration: 4000,
         keyframes: [
           {
-            viewBox: [library.laptop.view, library.certificate.view],
+            viewBox: [library.laptop.view, library.degree.view],
           },
           {},
         ],
@@ -72,7 +72,7 @@ function CameraAnimations(library, timeline = 0) {
         duration: 4000,
         keyframes: [
           {
-            viewBox: [library.certificate.view, library.OS.view],
+            viewBox: [library.degree.view, library.os.view],
           },
         ],
         easing: "easeOutQuad",
@@ -88,7 +88,7 @@ function CameraAnimations(library, timeline = 0) {
         keyframes: [
           // camera transition from the OS books to the end of the first row (left)
           {
-            viewBox: [library.OS.view, library.firstRowEnd.view],
+            viewBox: [library.os.view, library.firstRowEnd.view],
           },
           // camera transition from the end of the first row (left) to the begining of the second row (left) html css js books
           {
@@ -223,7 +223,7 @@ function CameraAnimations(library, timeline = 0) {
   return {
     IntroScene,
     LaptopView,
-    CertificateView,
+    DegreeView,
     OSView,
     backEndOneView,
     frontEndOneView,
