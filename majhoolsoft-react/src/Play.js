@@ -1,14 +1,14 @@
 import CarAnimations from "./helpers/CarAnimations";
 import IntroTextAnimations from "./helpers/IntroTextAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import CameraAnimations from "./helpers/CameraAnimations";
-import TypewriterAnimation from "./helpers/lib/TypewriterAnimation";
+import Camera from "./helpers/lib/Camera";
+import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 
 function Play(isMobile, width, height, texts, timeline = 0) {
   const library = {
     begin: {
-      view: isMobile ? "-780 650 900 500" : "-1000 650 900 500",
+      view: "-1000 0 800 1080",
       textPosition: "",
     },
     general: {
@@ -130,23 +130,26 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
-    CameraAnimations().fromTo(
-      ".page",
-      cameraData.begin.view,
-      cameraData.general.view,
-      5000,
-      "easeOutQuad",
-      4000,
-      secondCamera
-    );
+    firstCamera();
+    function firstCamera() {
+      Camera().fromTo(
+        ".page",
+        cameraData.begin.view,
+        cameraData.general.view,
+        4000,
+        "easeOutQuart",
+        4000,
+        secondCamera
+      );
+    }
     function secondCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.general.view,
         cameraData.door.view,
-        3000,
+        1000,
         "easeOutQuad",
-        4000,
+        7000,
         finishedCallback
       );
     }
@@ -155,7 +158,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
 
   function garageScene(finishedCallback) {
     // start sequence
-    CameraAnimations().fromTo(
+    Camera().fromTo(
       ".page",
       cameraData.door.view,
       cameraData.laptop.view,
@@ -165,7 +168,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       laptopText
     );
     function laptopText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -175,7 +178,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function degreeCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.laptop.view,
         cameraData.degree.view,
@@ -186,7 +189,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function degreeText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -196,7 +199,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function OSCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.degree.view,
         cameraData.os.view,
@@ -207,7 +210,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function osText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -217,17 +220,20 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndOneCamera() {
-      CameraAnimations().fromTo(
-        ".page",
-        cameraData.os.view,
-        cameraData.firstRowEnd.view,
-        3000,
-        "easeOutQuad",
-        0,
-        secondCamera
-      );
+      firstCamera();
+      function firstCamera() {
+        Camera().fromTo(
+          ".page",
+          cameraData.os.view,
+          cameraData.firstRowEnd.view,
+          3000,
+          "easeOutQuad",
+          0,
+          secondCamera
+        );
+      }
       function secondCamera() {
-        CameraAnimations().fromTo(
+        Camera().fromTo(
           ".page",
           cameraData.firstRowEnd.view,
           cameraData.frontEndOne.view,
@@ -240,7 +246,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     }
     // front end
     function frontEndOneText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -250,7 +256,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndTwoCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.frontEndOne.view,
         cameraData.frontEndTwo.view,
@@ -261,7 +267,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndTwoText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -272,7 +278,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     }
     // back end
     function backEndCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.frontEndTwo.view,
         cameraData.backEndOne.view,
@@ -283,7 +289,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function backEndText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -294,7 +300,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     }
     // notebook view
     function notebookOneCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.backEndOne.view,
         cameraData.notebookOne.view,
@@ -305,7 +311,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function notebookOneText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -315,7 +321,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function notebookTwoCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.notebookOne.view,
         cameraData.notebookTwo.view,
@@ -326,7 +332,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function notebookTwoText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -348,7 +354,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
 
     microphoneCamera();
     function microphoneCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.notebookTwo.view,
         cameraData.microphone.view,
@@ -359,7 +365,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function microphoneText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -369,7 +375,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function motorcycleCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.microphone.view,
         cameraData.motorcycle.view,
@@ -380,7 +386,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function motorcycleText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -390,7 +396,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function gardenCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.motorcycle.view,
         cameraData.garden.view,
@@ -401,7 +407,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function gardenText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,
@@ -411,7 +417,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function mountainCamera() {
-      CameraAnimations().fromTo(
+      Camera().fromTo(
         ".page",
         cameraData.garden.view,
         cameraData.mountain.view,
@@ -422,7 +428,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function mountainText() {
-      TypewriterAnimation(
+      Typewriter(
         "article",
         "text-background",
         50,

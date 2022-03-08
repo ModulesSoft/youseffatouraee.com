@@ -1,6 +1,6 @@
 import anime from "animejs";
-import Typewriter from "typewriter-effect/dist/core";
-function TypewriterAnimation(
+import TW from "typewriter-effect/dist/core";
+function Typewriter(
   pageClass,
   wrapperClassName,
   speed,
@@ -16,7 +16,7 @@ function TypewriterAnimation(
     width: position.width,
   }).finished.then();
   // writing
-  let tw = new Typewriter("." + pageClass, {
+  let tw = new TW("." + pageClass, {
     strings: target,
     autoStart: true,
     delay: speed,
@@ -25,4 +25,4 @@ function TypewriterAnimation(
   });
   tw.callFunction(finishedCallback);
 }
-export default TypewriterAnimation;
+export default Typewriter;

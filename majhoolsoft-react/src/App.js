@@ -95,11 +95,11 @@ function App() {
               e && setShowGarage(true);
             }}
           />
-          <Darkness />
+          <ScrollDown />
           <Sideview />
           <Car />
+          <Darkness />
           <LightBeam />
-          <ScrollDown />
         </svg>
         <div className="decorative">
           <div className="intro">
@@ -109,7 +109,7 @@ function App() {
             </p>
             <p className="welcome">Ride with me to my world!</p>
             <p className="download">
-              or <a href="/">Download</a> resume
+              or <a href="/">download</a> resume
             </p>
           </div>
           <p className="scrollResume scrollText">Scroll Down</p>
