@@ -18,14 +18,34 @@ function BackgroundAnimations(timeline = null) {
       duration: 1000,
       translateY: "-300px",
     });
-  anime.timeline({ loop: false }).add({
-    targets: "#darkness",
-    // fade in to day
-    opacity: 0,
-    duration: 3000,
-    delay: 7000,
-    easing: "linear",
-  });
+  // fade in to day
+  anime
+    .timeline({ loop: false })
+    .add({
+      targets: "#darkness",
+      opacity: [1, 0],
+      duration: 2000,
+      delay: 7000,
+      easing: "linear",
+    })
+    .add(
+      {
+        targets: "#background",
+        opacity: [0, 1],
+        duration: 1000,
+        easing: "linear",
+      },
+      "-=3000"
+    )
+    .add(
+      {
+        targets: ".page",
+        "background-image": "linear-gradient(#87ceeb, #2a7936)",
+        duration: 2000,
+        easing: "linear",
+      },
+      "-=4500"
+    );
 
   //thread four (headlights):
   // turn off the head lights
@@ -41,11 +61,15 @@ function BackgroundAnimations(timeline = null) {
   // Scroll icon
   anime({
     targets: ".scrollIcon",
+    opacity: [0, 0.4],
+    delay: 15000,
+  });
+  anime({
+    targets: ".scrollIcon",
     translateY: -50,
     direction: "alternate",
     loop: true,
     easing: "spring(1, 80, 10, 0)",
-    opacity: 0.3,
   });
 }
 export default BackgroundAnimations;

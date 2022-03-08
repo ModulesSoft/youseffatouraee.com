@@ -4,7 +4,6 @@ import House from "./House";
 import Walking from "./walk/Walking";
 import Sun from "./Sun";
 import Clouds from "./Clouds";
-// import  bgImage from "../images/background.svg";
 function Background() {
   useEffect(() => {
     anime({

@@ -9,7 +9,7 @@ function Garage() {
       x="1003"
       y="900"
     >
-      <g clipPath="url(#b)">
+      <g clipPath="url(#b)" id="garage">
         <path fill="#fff" d="M0 0H384.264V136.105H0z"></path>
         <path fill="#fff" d="M0 0h384.264v136.1H0z"></path>
         <g transform="translate(2390 -351.355) translate(-2389 352.355)">

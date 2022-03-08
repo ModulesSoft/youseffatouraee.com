@@ -1,6 +1,6 @@
 function Walking() {
   return (
-    <svg className="" x="250" y="830">
+    <svg className="" x="250" y="850">
       <g id="walking">
         <defs>
           <circle id="circle" cx="50" cy="50" r="50"></circle>
@@ -9,7 +9,7 @@ function Walking() {
           <use overflow="visible" xlinkHref="#circle"></use>
         </clipPath>
         <image
-          transform="scale(2.5)"
+          transform="scale(2.2)"
           width="100"
           height="100"
           clipPath="url(#mask)"

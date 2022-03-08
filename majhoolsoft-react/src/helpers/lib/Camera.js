@@ -1,6 +1,5 @@
 import anime from "animejs";
-
-function CameraAnimations() {
+function Camera() {
   function fromTo(
     target,
     from,
@@ -19,20 +18,7 @@ function CameraAnimations() {
     }).finished.then(finishedCallback);
   }
   return {
-    // IntroScene,
-    // LaptopView,
-    // DegreeView,
-    // OSView,
-    // frontEndOneView,
-    // frontEndTwoView,
-    // backEndOneView,
-    // notebookOneView,
-    // notebookTwoView,
-    // microphoneView,
-    // motorcycleView,
-    // gardenView,
-    // mountainView,
     fromTo,
   };
 }
-export default CameraAnimations;
+export default Camera;
