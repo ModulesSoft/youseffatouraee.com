@@ -30,8 +30,8 @@ function App() {
   let scrollDirection = useScroll().scrollDirection;
   // scenes activation
   let [allowScroll, setAllowScroll] = useState(true);
-  let [showIntro, setShowIntro] = useState(true);
-  let [showGarage, setShowGarage] = useState(false);
+  let [showIntro, setShowIntro] = useState(false);
+  let [showGarage, setShowGarage] = useState(true);
   let [showHobbies, setShowHobbies] = useState(false);
   useEffect(() => {
     !allowScroll && window.scrollTo(0, 0);
@@ -89,12 +89,12 @@ function App() {
         <svg className="page" xmlns="http://www.w3.org/2000/svg" style={size}>
           <Background />
           <Garage />
-          <GarageDoor
+          {/* <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
               e && setShowGarage(true);
             }}
-          />
+          /> */}
           <ScrollDown />
           <Sideview />
           <Car />

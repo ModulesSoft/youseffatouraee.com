@@ -2,8 +2,7 @@ import anime from "animejs";
 function Camera() {
   function fromTo(
     target,
-    from,
-    to,
+    viewArray,
     duration,
     easing = null,
     delay = 0,
@@ -11,7 +10,7 @@ function Camera() {
   ) {
     anime({
       targets: target,
-      viewBox: [from, to],
+      viewBox: viewArray,
       easing: easing ? easing : "easeOutQuad",
       duration,
       delay,

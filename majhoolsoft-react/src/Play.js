@@ -130,29 +130,15 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
-    firstCamera();
-    function firstCamera() {
-      Camera().fromTo(
-        ".page",
-        cameraData.begin.view,
-        cameraData.general.view,
-        4000,
-        "easeOutQuart",
-        4000,
-        secondCamera
-      );
-    }
-    function secondCamera() {
-      Camera().fromTo(
-        ".page",
-        cameraData.general.view,
-        cameraData.door.view,
-        1000,
-        "easeOutQuad",
-        7000,
-        finishedCallback
-      );
-    }
+
+    Camera().fromTo(
+      ".page",
+      [cameraData.begin.view, cameraData.general.view, cameraData.door.view],
+      4000,
+      "easeOutQuart",
+      4000,
+      finishedCallback
+    );
     BackgroundAnimations(timeline);
   }
 
@@ -160,8 +146,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     // start sequence
     Camera().fromTo(
       ".page",
-      cameraData.door.view,
-      cameraData.laptop.view,
+      [cameraData.door.view, cameraData.laptop.view],
       3000,
       "easeOutQuad",
       0,
@@ -180,8 +165,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function degreeCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.laptop.view,
-        cameraData.degree.view,
+        [cameraData.laptop.view, cameraData.degree.view],
         3000,
         "easeOutQuad",
         0,
@@ -201,8 +185,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function OSCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.degree.view,
-        cameraData.os.view,
+        [cameraData.degree.view, cameraData.door.view, cameraData.os.view],
         3000,
         "easeOutQuad",
         0,
@@ -220,29 +203,18 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       );
     }
     function frontEndOneCamera() {
-      firstCamera();
-      function firstCamera() {
-        Camera().fromTo(
-          ".page",
+      Camera().fromTo(
+        ".page",
+        [
           cameraData.os.view,
           cameraData.firstRowEnd.view,
-          3000,
-          "easeOutQuad",
-          0,
-          secondCamera
-        );
-      }
-      function secondCamera() {
-        Camera().fromTo(
-          ".page",
-          cameraData.firstRowEnd.view,
           cameraData.frontEndOne.view,
-          3000,
-          "easeOutQuad",
-          0,
-          frontEndOneText
-        );
-      }
+        ],
+        3000,
+        "easeOutQuad",
+        0,
+        frontEndOneText
+      );
     }
     // front end
     function frontEndOneText() {
@@ -258,8 +230,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function frontEndTwoCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.frontEndOne.view,
-        cameraData.frontEndTwo.view,
+        [cameraData.frontEndOne.view, cameraData.frontEndTwo.view],
         3000,
         "easeOutQuad",
         0,
@@ -280,8 +251,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function backEndCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.frontEndTwo.view,
-        cameraData.backEndOne.view,
+        [cameraData.frontEndTwo.view, cameraData.backEndOne.view],
         3000,
         "easeOutQuad",
         0,
@@ -302,8 +272,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function notebookOneCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.backEndOne.view,
-        cameraData.notebookOne.view,
+        [cameraData.backEndOne.view, cameraData.notebookOne.view],
         3000,
         "easeOutQuad",
         0,
@@ -323,8 +292,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function notebookTwoCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.notebookOne.view,
-        cameraData.notebookTwo.view,
+        [cameraData.notebookOne.view, cameraData.notebookTwo.view],
         3000,
         "easeOutQuad",
         0,
@@ -356,8 +324,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function microphoneCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.notebookTwo.view,
-        cameraData.microphone.view,
+        [cameraData.notebookTwo.view, cameraData.microphone.view],
         3000,
         "easeOutQuad",
         0,
@@ -377,8 +344,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function motorcycleCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.microphone.view,
-        cameraData.motorcycle.view,
+        [cameraData.microphone.view, cameraData.motorcycle.view],
         3000,
         "easeOutQuad",
         0,
@@ -398,8 +364,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function gardenCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.motorcycle.view,
-        cameraData.garden.view,
+        [cameraData.motorcycle.view, cameraData.garden.view],
         3000,
         "easeOutQuad",
         0,
@@ -419,8 +384,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function mountainCamera() {
       Camera().fromTo(
         ".page",
-        cameraData.garden.view,
-        cameraData.mountain.view,
+        [cameraData.garden.view, cameraData.mountain.view],
         3000,
         "easeOutQuad",
         0,
