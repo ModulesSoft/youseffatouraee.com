@@ -10,7 +10,7 @@ function CarAnimations(finishedCallback) {
     translateY: [
       { value: -5, easing: "linear", duration: 200, delay: 1000 },
       { value: 0, easing: "easeOutBounce", duration: 1000 },
-      { value: -10, easing: "linear", duration: 200 },
+      { value: -7, easing: "linear", duration: 200 },
       { value: 0, easing: "easeOutBounce" },
     ],
     easing: "easeOutQuad",

@@ -4,7 +4,7 @@ import BackgroundAnimations from "./helpers/BackgroundAnimations";
 import Camera from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
-
+import FaceAnimations from "./helpers/FaceAnimations";
 function Play(isMobile, width, height, texts, timeline = 0) {
   const library = {
     begin: {
@@ -130,15 +130,28 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       WalkingAnimations();
     }
     IntroTextAnimations().introScene();
+    firstCamera();
+    function firstCamera() {
+      Camera().fromTo(
+        ".page",
+        [cameraData.begin.view, cameraData.general.view],
+        4000,
+        "easeOutQuart",
+        4000,
+        secondCamera
+      );
+    }
+    function secondCamera() {
+      Camera().fromTo(
+        ".page",
+        [cameraData.general.view, cameraData.door.view],
+        4000,
+        "easeOutQuart",
+        6000,
+        finishedCallback
+      );
+    }
 
-    Camera().fromTo(
-      ".page",
-      [cameraData.begin.view, cameraData.general.view, cameraData.door.view],
-      4000,
-      "easeOutQuart",
-      4000,
-      finishedCallback
-    );
     BackgroundAnimations(timeline);
   }
 
@@ -153,6 +166,8 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       laptopText
     );
     function laptopText() {
+      // additional smile face pop right for laptop and straight face for mobile
+      FaceAnimations(isMobile, "#straightFace", "#smileFace");
       Typewriter(
         "article",
         "text-background",
