@@ -272,7 +272,11 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function notebookOneCamera() {
       Camera().fromTo(
         ".page",
-        [cameraData.backEndOne.view, cameraData.notebookOne.view],
+        [
+          cameraData.backEndOne.view,
+          cameraData.door.view,
+          cameraData.notebookOne.view,
+        ],
         3000,
         "easeOutQuad",
         0,
@@ -324,7 +328,11 @@ function Play(isMobile, width, height, texts, timeline = 0) {
     function microphoneCamera() {
       Camera().fromTo(
         ".page",
-        [cameraData.notebookTwo.view, cameraData.microphone.view],
+        [
+          cameraData.notebookTwo.view,
+          cameraData.door.view,
+          cameraData.microphone.view,
+        ],
         3000,
         "easeOutQuad",
         0,
