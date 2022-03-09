@@ -1,5 +1,6 @@
 import Desk from "./Desk";
-
+import StraightFace from "./faces/Straight";
+import SmileFace from "./faces/Smile";
 function Garage() {
   return (
     <svg
@@ -2977,6 +2978,9 @@ function Garage() {
             transform="translate(6.066 30.826)"
           ></circle>
         </g>
+
+        <SmileFace />
+        <StraightFace />
         <Desk />
       </g>
     </svg>

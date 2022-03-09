@@ -1,7 +1,7 @@
 function Straight() {
   return (
-    <svg x="332" y="50">
-      <g id="straightFace" transform="scale(0.45)">
+    <svg id="straightFace" x="332" y="50">
+      <g transform="scale(0.45)">
         <ellipse cx="15.7" cy="19.7" fill="#B48066" rx="9.1" ry="6.8"></ellipse>
         <ellipse cx="10.6" cy="18.3" fill="#FFF" rx="2.4" ry="1"></ellipse>
         <ellipse cx="21" cy="18.1" fill="#FFF" rx="2.4" ry="1"></ellipse>

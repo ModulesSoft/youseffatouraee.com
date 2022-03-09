@@ -24,7 +24,8 @@
   top: 90vh;
 }
 #rear-wheel,
-#front-wheel {
+#front-wheel,
+#smileFace {
   transform-origin: center;
   transform-box: fill-box;
 }
