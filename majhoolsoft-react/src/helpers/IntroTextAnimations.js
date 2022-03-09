@@ -7,12 +7,12 @@ function IntroTextAnimations() {
         {
           opacity: 1,
           easing: "easeInExpo",
-          delay: anime.stagger(2000, { start: 1000 }),
+          delay: anime.stagger(1500, { start: 500 }),
         },
         {
           opacity: 0,
           easing: "easeOutExpo",
-          delay: anime.stagger(5000, { start: 4000, direction: "reverse" }),
+          delay: anime.stagger(2000, { start: 4000, direction: "reverse" }),
         },
       ],
     }).finished.then(addScrollIcon(".scrollResume", finishedCallback, 15000));
