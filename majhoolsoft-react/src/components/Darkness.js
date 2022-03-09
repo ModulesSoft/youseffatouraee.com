@@ -6,7 +6,7 @@ function Darkness() {
         data-name="Rectangle 148"
         width="10000"
         height="10000"
-        fill="rgba(0,0,0,0.9)"
+        fill="rgba(0,0,0,0.85)"
       />
     </svg>
   );
