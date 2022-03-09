@@ -62,7 +62,7 @@ function BackgroundAnimations(timeline = null) {
   anime({
     targets: ".scrollIcon",
     opacity: [0, 0.4],
-    delay: 15000,
+    delay: 16000,
   });
   anime({
     targets: ".scrollIcon",
