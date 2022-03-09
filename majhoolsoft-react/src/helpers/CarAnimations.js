@@ -3,15 +3,16 @@ function CarAnimations(finishedCallback) {
   anime({
     targets: "#rear-wheel , #front-wheel",
     rotate: [{ value: "21turn", duration: 11000 }],
+    easing: "easeOutQuad",
+  });
+  anime({
+    targets: "#wheels",
     translateY: [
-      { value: 1, easing: "easeInSine", duration: 100, delay: 1000 },
-      { value: -1, easing: "easeInSine", duration: 100 },
-      { value: 0, easing: "easeInSine", duration: 300 },
-      { value: -1, easing: "easeInSine", duration: 100, delay: 1000 },
-      { value: 1, easing: "easeInSine", duration: 100 },
-      { value: 0, easing: "easeInSine", duration: 300 },
+      { value: -5, easing: "linear", duration: 200, delay: 1000 },
+      { value: 0, easing: "easeOutBounce", duration: 1000 },
+      { value: -10, easing: "linear", duration: 200 },
+      { value: 0, easing: "easeOutBounce" },
     ],
-    // easing: "cubicBezier(1,0,.45,.45)",
     easing: "easeOutQuad",
   });
   anime({
@@ -20,12 +21,11 @@ function CarAnimations(finishedCallback) {
     duration: 6000,
     delay: 5000,
     translateY: [
-      { value: -2, easing: "easeInSine", duration: 200, delay: 1200 },
-      { value: 2, easing: "easeInSine", duration: 200 },
-      { value: -2, easing: "easeInSine", duration: 200, delay: 1200 },
-      { value: 2, easing: "easeInSine", duration: 200 },
+      { value: -1, easing: "linear", duration: 200, delay: 1100 },
+      { value: 0, easing: "easeOutBounce", duration: 900 },
+      { value: -3, easing: "linear", duration: 200 },
+      { value: 0, easing: "easeOutBounce" },
     ],
-    // easing: "cubicBezier(1,0,.45,.45)",
     easing: "easeOutQuad",
   }).finished.then(finishedCallback);
 }
