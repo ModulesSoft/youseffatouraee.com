@@ -1,6 +1,6 @@
 function Smile() {
   return (
-    <svg x="330" y="60">
+    <svg x="333" y="57" width="30" height="30" viewBox="0 0 35 30">
       <g id="smileFace">
         <g transform="scale(0.45)">
           <path

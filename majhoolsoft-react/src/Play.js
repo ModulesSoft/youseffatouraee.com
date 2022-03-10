@@ -23,11 +23,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       view: "1328 920 60 60",
       textPosition: isMobile
         ? { x: 16, y: 16, width: `${width - 16}` }
-        : {
-            x: `${(1 / 2) * width}`,
-            y: `${(1 / 2) * height}`,
-            width: `${(1 / 2) * width}`,
-          },
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     degree: {
       view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
@@ -43,7 +39,7 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: 16, width: `${width - 16}` },
+        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     firstRowEnd: {
       view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
@@ -58,21 +54,13 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(20 / 100) * height}`, width: `${width - 16}` }
-        : {
-            x: `${(1 / 2) * width}`,
-            y: `${(20 / 100) * height}`,
-            width: `${(1 / 2) * width}`,
-          },
+        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     backEndOne: {
       view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : {
-            x: 16,
-            y: `${(25 / 100) * height}`,
-            width: `${(1 / 2) * width}`,
-          },
+        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     notebookOne: {
       view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
@@ -88,27 +76,41 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : {
-            x: `${(10 / 100) * width}`,
-            y: `${(90 / 100) * height}`,
-            width: `${(80 / 100) * width}`,
-          },
+        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     microphone: {
       view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: {
+        x: 16,
+        y: `${(90 / 100) * height}`,
+        width: `${width - 16}`,
+      },
     },
     motorcycle: {
       view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: isMobile
+        ? { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` }
+        : {
+            x: `${(1 / 2) * width}`,
+            y: `${(1 / 2) * height}`,
+            width: `${(1 / 2) * width}`,
+          },
     },
     garden: {
       view: isMobile ? "20 550 600 420" : "20 550 600 420",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: {
+        x: 16,
+        y: `${(10 / 100) * height}`,
+        width: `${width - 16}`,
+      },
     },
     mountain: {
       view: isMobile ? "300 250 600 420" : "150 250 600 420",
-      textPosition: isMobile ? "bottom" : "right",
+      textPosition: {
+        x: 16,
+        y: `${(90 / 100) * height}`,
+        width: `${width - 16}`,
+      },
     },
   };
   // distinguish textposition and view for camera and typewriter data

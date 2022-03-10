@@ -21,7 +21,7 @@ function FaceAnimations(isMobile, mobileTarget, desktopTarget) {
         duration: 2000,
         easing: "easeOutQuad",
         translateX: 20,
-        translateY: -3,
+        translateY: -6,
         // rotate: [{ rotate: "20deg", duration: 1000 }],
         rotate: "50deg",
       });
