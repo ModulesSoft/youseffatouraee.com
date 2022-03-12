@@ -1,23 +1,15 @@
-import anime from "animejs";
-function Camera() {
-  function fromTo(
-    target,
-    viewArray,
-    duration,
-    easing = null,
-    delay = 0,
-    finishedCallback
-  ) {
-    anime({
-      targets: target,
-      viewBox: viewArray,
-      easing: easing ? easing : "easeOutQuad",
-      duration,
-      delay,
-    }).finished.then(finishedCallback);
+function Camera(target, viewArray, scroll, finishedCallback) {
+  let from = viewArray[0];
+  let to = viewArray[1];
+  let sub = viewArray[2];
+  let currentView = [];
+  for (let i = 0; i < 4; i++) {
+    currentView.push(scroll * sub[i] + from[i]);
   }
-  return {
-    fromTo,
-  };
+  if (currentView === to) {
+    finishedCallback();
+  } else {
+    return currentView;
+  }
 }
 export default Camera;

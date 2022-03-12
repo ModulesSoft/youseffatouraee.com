@@ -5,7 +5,7 @@ import Camera from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
-function Play(isMobile, width, height, texts, timeline = 0) {
+function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
   const library = {
     begin: {
       view: "-1000 0 800 1080",
@@ -125,312 +125,324 @@ function Play(isMobile, width, height, texts, timeline = 0) {
       },
     };
   });
-
-  function introScene(finishedCallback) {
-    CarAnimations(walking);
-    function walking() {
-      WalkingAnimations();
-    }
-    IntroTextAnimations().introScene();
-    firstCamera();
-    function firstCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.begin.view, cameraData.general.view],
-        4000,
-        "easeOutQuart",
-        4000,
-        secondCamera
-      );
-    }
-    function secondCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.general.view, cameraData.door.view],
-        4000,
-        "easeOutQuart",
-        6000,
-        finishedCallback
-      );
-    }
-
-    BackgroundAnimations(timeline);
-  }
-
-  function garageScene(finishedCallback) {
-    // start sequence
-    Camera().fromTo(
+  let from = cameraData.door.view.split(" ").map(Number);
+  if (scroll > 0 && scroll < maxScroll) {
+    from = Camera(
       ".page",
-      [cameraData.door.view, cameraData.laptop.view],
-      3000,
-      "easeOutQuad",
-      0,
+      calculateView(cameraData.laptop.view),
+      scroll,
       laptopText
     );
-    function laptopText() {
-      // additional smile face pop right for laptop and straight face for mobile
-      FaceAnimations(isMobile, "#straightFace", "#smileFace");
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.laptop.text,
-        typewriterData.laptop.textPosition,
-        degreeCamera
-      );
-    }
-    function degreeCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.laptop.view, cameraData.degree.view],
-        3000,
-        "easeOutQuad",
-        0,
-        degreeText
-      );
-    }
-    function degreeText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.degree.text,
-        typewriterData.degree.textPosition,
-        OSCamera
-      );
-    }
-    function OSCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.degree.view, cameraData.door.view, cameraData.os.view],
-        3000,
-        "easeOutQuad",
-        0,
-        osText
-      );
-    }
-    function osText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.os.text,
-        typewriterData.os.textPosition,
-        frontEndOneCamera
-      );
-    }
-    function frontEndOneCamera() {
-      Camera().fromTo(
-        ".page",
-        [
-          cameraData.os.view,
-          cameraData.firstRowEnd.view,
-          cameraData.frontEndOne.view,
-        ],
-        3000,
-        "easeOutQuad",
-        0,
-        frontEndOneText
-      );
-    }
-    // front end
-    function frontEndOneText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.frontEndOne.text,
-        typewriterData.frontEndOne.textPosition,
-        frontEndTwoCamera
-      );
-    }
-    function frontEndTwoCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.frontEndOne.view, cameraData.frontEndTwo.view],
-        3000,
-        "easeOutQuad",
-        0,
-        frontEndTwoText
-      );
-    }
-    function frontEndTwoText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.frontEndTwo.text,
-        typewriterData.frontEndTwo.textPosition,
-        backEndCamera
-      );
-    }
-    // back end
-    function backEndCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.frontEndTwo.view, cameraData.backEndOne.view],
-        3000,
-        "easeOutQuad",
-        0,
-        backEndText
-      );
-    }
-    function backEndText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.backEndOne.text,
-        typewriterData.backEndOne.textPosition,
-        notebookOneCamera
-      );
-    }
-    // notebook view
-    function notebookOneCamera() {
-      Camera().fromTo(
-        ".page",
-        [
-          cameraData.backEndOne.view,
-          cameraData.door.view,
-          cameraData.notebookOne.view,
-        ],
-        3000,
-        "easeOutQuad",
-        0,
-        notebookOneText
-      );
-    }
-    function notebookOneText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.notebookOne.text,
-        typewriterData.notebookOne.textPosition,
-        notebookTwoCamera
-      );
-    }
-    function notebookTwoCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.notebookOne.view, cameraData.notebookTwo.view],
-        3000,
-        "easeOutQuad",
-        0,
-        notebookTwoText
-      );
-    }
-    function notebookTwoText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.notebookTwo.text,
-        typewriterData.notebookTwo.textPosition,
-        scroll
-      );
-    }
-    //scroll down to see the hobbies
-    function scroll() {
-      IntroTextAnimations().addScrollIcon(
-        ".scrollHobbies",
-        finishedCallback(true)
-      );
-    }
+    console.log(from);
+  } else if (scroll > 20 && scroll < 40) {
+  } else if (scroll > 40 && scroll < 60) {
   }
-  function hobbiesScene(finishedCallback) {
-    IntroTextAnimations().removeScrollIcon();
+  function calculateView(view) {
+    let to = view.split(" ").map(Number);
+    let sub = [];
+    for (let i = 0; i < from.length; i++) {
+      sub.push(Math.ceil((to[i] - from[i]) / maxScroll));
+    }
+    return [from, to, sub];
+  }
+  // function introScene(finishedCallback) {
+  //   CarAnimations(walking);
+  //   function walking() {
+  //     WalkingAnimations();
+  //   }
+  //   IntroTextAnimations().introScene();
+  //   firstCamera();
+  //   function firstCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [cameraData.begin.view, cameraData.general.view],
+  //       4000,
+  //       "easeOutQuart",
+  //       4000,
+  //       secondCamera
+  //     );
+  //   }
+  //   function secondCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [cameraData.general.view, cameraData.door.view],
+  //       4000,
+  //       "easeOutQuart",
+  //       6000,
+  //       finishedCallback
+  //     );
+  //   }
 
-    microphoneCamera();
-    function microphoneCamera() {
-      Camera().fromTo(
-        ".page",
-        [
-          cameraData.notebookTwo.view,
-          cameraData.door.view,
-          cameraData.microphone.view,
-        ],
-        3000,
-        "easeOutQuad",
-        0,
-        microphoneText
-      );
-    }
-    function microphoneText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.microphone.text,
-        typewriterData.microphone.textPosition,
-        motorcycleCamera
-      );
-    }
-    function motorcycleCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.microphone.view, cameraData.motorcycle.view],
-        3000,
-        "easeOutQuad",
-        0,
-        motorcycleText
-      );
-    }
-    function motorcycleText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.motorcycle.text,
-        typewriterData.motorcycle.textPosition,
-        gardenCamera
-      );
-    }
-    function gardenCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.motorcycle.view, cameraData.garden.view],
-        3000,
-        "easeOutQuad",
-        0,
-        gardenText
-      );
-    }
-    function gardenText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.garden.text,
-        typewriterData.garden.textPosition,
-        mountainCamera
-      );
-    }
-    function mountainCamera() {
-      Camera().fromTo(
-        ".page",
-        [cameraData.garden.view, cameraData.mountain.view],
-        3000,
-        "easeOutQuad",
-        0,
-        mountainText
-      );
-    }
-    function mountainText() {
-      Typewriter(
-        "article",
-        "text-background",
-        50,
-        typewriterData.mountain.text,
-        typewriterData.mountain.textPosition,
-        finishedCallback
-      );
-    }
+  //   BackgroundAnimations(timeline);
+  // }
+
+  // function garageScene(finishedCallback) {
+  // function laptopCamera(scroll, view) {
+  //   Camera().fromTo(".page", view, scroll, laptopText);
+  // }
+  function laptopText() {
+    // additional smile face pop right for laptop and straight face for mobile
+    FaceAnimations(isMobile, "#straightFace", "#smileFace");
+    Typewriter(
+      "article",
+      "text-background",
+      50,
+      typewriterData.laptop.text,
+      typewriterData.laptop.textPosition
+    );
   }
+  // function degreeCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [cameraData.laptop.view, cameraData.degree.view],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     degreeText
+  //   );
+  // }
+  // function degreeText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.degree.text,
+  //     typewriterData.degree.textPosition,
+  //     OSCamera
+  //   );
+  // }
+  // function OSCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [cameraData.degree.view, cameraData.door.view, cameraData.os.view],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     osText
+  //   );
+  // }
+  // function osText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.os.text,
+  //     typewriterData.os.textPosition,
+  //     frontEndOneCamera
+  //   );
+  // }
+  // function frontEndOneCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [
+  //       cameraData.os.view,
+  //       cameraData.firstRowEnd.view,
+  //       cameraData.frontEndOne.view,
+  //     ],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     frontEndOneText
+  //   );
+  // }
+  // // front end
+  // function frontEndOneText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.frontEndOne.text,
+  //     typewriterData.frontEndOne.textPosition,
+  //     frontEndTwoCamera
+  //   );
+  // }
+  // function frontEndTwoCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [cameraData.frontEndOne.view, cameraData.frontEndTwo.view],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     frontEndTwoText
+  //   );
+  // }
+  // function frontEndTwoText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.frontEndTwo.text,
+  //     typewriterData.frontEndTwo.textPosition,
+  //     backEndCamera
+  //   );
+  // }
+  // // back end
+  // function backEndCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [cameraData.frontEndTwo.view, cameraData.backEndOne.view],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     backEndText
+  //   );
+  // }
+  // function backEndText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.backEndOne.text,
+  //     typewriterData.backEndOne.textPosition,
+  //     notebookOneCamera
+  //   );
+  // }
+  // // notebook view
+  // function notebookOneCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [
+  //       cameraData.backEndOne.view,
+  //       cameraData.door.view,
+  //       cameraData.notebookOne.view,
+  //     ],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     notebookOneText
+  //   );
+  // }
+  // function notebookOneText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.notebookOne.text,
+  //     typewriterData.notebookOne.textPosition,
+  //     notebookTwoCamera
+  //   );
+  // }
+  // function notebookTwoCamera() {
+  //   Camera().fromTo(
+  //     ".page",
+  //     [cameraData.notebookOne.view, cameraData.notebookTwo.view],
+  //     3000,
+  //     "easeOutQuad",
+  //     0,
+  //     notebookTwoText
+  //   );
+  // }
+  // function notebookTwoText() {
+  //   Typewriter(
+  //     "article",
+  //     "text-background",
+  //     50,
+  //     typewriterData.notebookTwo.text,
+  //     typewriterData.notebookTwo.textPosition,
+  //     scroll
+  //   );
+  // }
+  //scroll down to see the hobbies
+  // function scroll() {
+  //   IntroTextAnimations().addScrollIcon(
+  //     ".scrollHobbies",
+  //     finishedCallback(true)
+  //   );
+  // }
+  // }
+  // function hobbiesScene(finishedCallback) {
+  //   IntroTextAnimations().removeScrollIcon();
+
+  //   microphoneCamera();
+  //   function microphoneCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [
+  //         cameraData.notebookTwo.view,
+  //         cameraData.door.view,
+  //         cameraData.microphone.view,
+  //       ],
+  //       3000,
+  //       "easeOutQuad",
+  //       0,
+  //       microphoneText
+  //     );
+  //   }
+  //   function microphoneText() {
+  //     Typewriter(
+  //       "article",
+  //       "text-background",
+  //       50,
+  //       typewriterData.microphone.text,
+  //       typewriterData.microphone.textPosition,
+  //       motorcycleCamera
+  //     );
+  //   }
+  //   function motorcycleCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [cameraData.microphone.view, cameraData.motorcycle.view],
+  //       3000,
+  //       "easeOutQuad",
+  //       0,
+  //       motorcycleText
+  //     );
+  //   }
+  //   function motorcycleText() {
+  //     Typewriter(
+  //       "article",
+  //       "text-background",
+  //       50,
+  //       typewriterData.motorcycle.text,
+  //       typewriterData.motorcycle.textPosition,
+  //       gardenCamera
+  //     );
+  //   }
+  //   function gardenCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [cameraData.motorcycle.view, cameraData.garden.view],
+  //       3000,
+  //       "easeOutQuad",
+  //       0,
+  //       gardenText
+  //     );
+  //   }
+  //   function gardenText() {
+  //     Typewriter(
+  //       "article",
+  //       "text-background",
+  //       50,
+  //       typewriterData.garden.text,
+  //       typewriterData.garden.textPosition,
+  //       mountainCamera
+  //     );
+  //   }
+  //   function mountainCamera() {
+  //     Camera().fromTo(
+  //       ".page",
+  //       [cameraData.garden.view, cameraData.mountain.view],
+  //       3000,
+  //       "easeOutQuad",
+  //       0,
+  //       mountainText
+  //     );
+  //   }
+  //   function mountainText() {
+  //     Typewriter(
+  //       "article",
+  //       "text-background",
+  //       50,
+  //       typewriterData.mountain.text,
+  //       typewriterData.mountain.textPosition,
+  //       finishedCallback
+  //     );
+  //   }
+  // }
   function removeScrollIcon() {
     IntroTextAnimations().removeScrollIcon();
   }
 
-  return { introScene, garageScene, removeScrollIcon, hobbiesScene };
+  return { removeScrollIcon };
 }
 export default Play;
