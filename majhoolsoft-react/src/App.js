@@ -28,59 +28,48 @@ function App() {
   // get scroll properties
   let scrollY = useScroll().scrollY;
   let scrollDirection = useScroll().scrollDirection;
+  let maxScroll = 20;
   // scenes activation
   let [allowScroll, setAllowScroll] = useState(true);
-  let [showIntro, setShowIntro] = useState(true);
-  let [showGarage, setShowGarage] = useState(false);
-  let [showHobbies, setShowHobbies] = useState(false);
   useEffect(() => {
     !allowScroll && window.scrollTo(0, 0);
-    if (showIntro) {
-      // play intro
-      setShowIntro(false);
-      setAllowScroll(false);
-      Play(mobile, width, height, texts).introScene(initGarage);
-      function initGarage() {
-        setAllowScroll(true);
-      }
-    } else if (showGarage) {
-      // play garage
-      CheckScroll(scrollY, scrollDirection, allowScroll, startGarage); // to remove scroll icon
-      function startGarage() {
-        Play().removeScrollIcon();
-        setShowGarage(false);
-        setAllowScroll(false);
-        Play(mobile, width, height, texts).garageScene(initHobbies);
-      }
-      function initHobbies() {
-        setAllowScroll(true);
-        setShowHobbies(true);
-      }
-    } else if (showHobbies) {
-      // play hobbies
-      CheckScroll(scrollY, scrollDirection, allowScroll, startHobbies);
-      function startHobbies() {
-        Play().removeScrollIcon();
-        setAllowScroll(false);
-        setShowHobbies(false);
-        Play(mobile, width, height, texts).hobbiesScene(finish);
-      }
-      function finish() {
-        console.log("the end");
-        setAllowScroll(false);
-      }
-    }
-  }, [
-    height,
-    width,
-    mobile,
-    allowScroll,
-    showHobbies,
-    showGarage,
-    showIntro,
-    scrollY,
-    scrollDirection,
-  ]);
+    Play(scrollY, maxScroll, mobile, width, height, texts);
+    // if (showIntro) {
+    //   // play intro
+    //   setShowIntro(false);
+    //   setAllowScroll(false);
+    //   Play(mobile, width, height, texts).introScene(initGarage);
+    //   function initGarage() {
+    //     setAllowScroll(true);
+    //   }
+    // } else if (showGarage) {
+    //   // play garage
+    //   CheckScroll(scrollY, scrollDirection, allowScroll, startGarage); // to remove scroll icon
+    //   function startGarage() {
+    //     Play().removeScrollIcon();
+    //     setShowGarage(false);
+    //     setAllowScroll(false);
+    //     Play(mobile, width, height, texts).garageScene(initHobbies);
+    //   }
+    //   function initHobbies() {
+    //     setAllowScroll(true);
+    //     setShowHobbies(true);
+    //   }
+    // } else if (showHobbies) {
+    //   // play hobbies
+    //   CheckScroll(scrollY, scrollDirection, allowScroll, startHobbies);
+    //   function startHobbies() {
+    //     Play().removeScrollIcon();
+    //     setAllowScroll(false);
+    //     setShowHobbies(false);
+    //     Play(mobile, width, height, texts).hobbiesScene(finish);
+    //   }
+    // function finish() {
+    //   console.log("the end");
+    //   setAllowScroll(false);
+    // }
+    // }
+  }, [height, width, mobile, allowScroll, scrollY, scrollDirection]);
 
   return (
     <div className="App">
@@ -89,12 +78,12 @@ function App() {
         <svg className="page" xmlns="http://www.w3.org/2000/svg" style={size}>
           <Background />
           <Garage />
-          <GarageDoor
+          {/* <GarageDoor
             scrollY={scrollDirection === "up" && allowScroll && scrollY}
             doorOpened={(e) => {
               e && setShowGarage(true);
             }}
-          />
+          /> */}
           <ScrollDown />
           <Sideview />
           <Car />
