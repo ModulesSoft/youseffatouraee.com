@@ -5,8 +5,6 @@ import { View, Camera } from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
-import { useState } from "react";
-let show = true;
 function Play(
   scroll,
   scrollStage,
@@ -16,7 +14,7 @@ function Play(
   texts,
   timeline = 0
 ) {
-  const library = {
+  var library = {
     begin: {
       view: "-1000 0 800 1080",
       textPosition: "",
@@ -123,37 +121,38 @@ function Play(
       },
     },
   };
-  // distinguish textposition and view for camera and typewriter data
-  let cameraData = {};
-  let typewriterData = {};
+  // add texts to library
   Object.keys(library).forEach(function (k) {
-    cameraData = { ...cameraData, ...{ [k]: { view: library[k]["view"] } } };
-    typewriterData = {
-      ...typewriterData,
+    library = {
+      ...library,
       ...{
-        [k]: { text: texts?.[k], textPosition: library[k]["textPosition"] },
+        [k]: {
+          text: texts?.[k],
+          textPosition: library[k]["textPosition"],
+          view: library[k]["view"],
+        },
       },
     };
   });
-
+  // operate animations
   let fromView = "";
   if (scroll > 0 && scroll < scrollStage) {
     // additional smile face pop right for laptop and straight face for mobile
     FaceAnimations(isMobile, "#straightFace", "#smileFace");
     laptopText();
   } else if (scroll > scrollStage && scroll < scrollStage * 2) {
-    fromView = cameraData.laptop.view;
+    fromView = library.laptop.view;
     Camera(
       ".page",
-      calculateView(cameraData.notebookTwo.view),
+      calculateView(library.notebookTwo.view),
       scroll - scrollStage,
       notebookTwoText
     );
   } else if (scroll > scrollStage * 2 && scroll < scrollStage * 3) {
-    // fromView = cameraData.notebookTwo.view;
+    // fromView = library.notebookTwo.view;
     // Camera(
     //   ".page",
-    //   calculateView(cameraData.notebookTwo.view),
+    //   calculateView(library.notebookTwo.view),
     //   scroll,
     //   notebookOneText
     // );
@@ -177,7 +176,7 @@ function Play(
   //   function firstCamera() {
   //     Camera().fromTo(
   //       ".page",
-  //       [cameraData.begin.view, cameraData.general.view],
+  //       [library.begin.view, library.general.view],
   //       4000,
   //       "easeOutQuart",
   //       4000,
@@ -187,7 +186,7 @@ function Play(
   //   function secondCamera() {
   //     Camera().fromTo(
   //       ".page",
-  //       [cameraData.general.view, cameraData.door.view],
+  //       [library.general.view, library.door.view],
   //       4000,
   //       "easeOutQuart",
   //       6000,
@@ -203,21 +202,21 @@ function Play(
   //   Camera().fromTo(".page", view, scroll, laptopText);
   // }
   function initCamera() {
-    View(".page", cameraData.laptop.view);
+    View(".page", library.laptop.view);
   }
   function laptopText() {
     Typewriter(
       "article",
       "text-background",
       50,
-      typewriterData.laptop.text,
-      typewriterData.laptop.textPosition
+      library.laptop.text,
+      library.laptop.textPosition
     );
   }
   // function degreeCamera() {
   //   Camera().fromTo(
   //     ".page",
-  //     [cameraData.laptop.view, cameraData.degree.view],
+  //     [library.laptop.view, library.degree.view],
   //     3000,
   //     "easeOutQuad",
   //     0,
@@ -229,15 +228,15 @@ function Play(
   //     "article",
   //     "text-background",
   //     50,
-  //     typewriterData.degree.text,
-  //     typewriterData.degree.textPosition,
+  //     library.degree.text,
+  //     library.degree.textPosition,
   //     OSCamera
   //   );
   // }
   // function OSCamera() {
   //   Camera().fromTo(
   //     ".page",
-  //     [cameraData.degree.view, cameraData.door.view, cameraData.os.view],
+  //     [library.degree.view, library.door.view, library.os.view],
   //     3000,
   //     "easeOutQuad",
   //     0,
@@ -249,8 +248,8 @@ function Play(
   //     "article",
   //     "text-background",
   //     50,
-  //     typewriterData.os.text,
-  //     typewriterData.os.textPosition,
+  //     library.os.text,
+  //     library.os.textPosition,
   //     frontEndOneCamera
   //   );
   // }
@@ -258,9 +257,9 @@ function Play(
   //   Camera().fromTo(
   //     ".page",
   //     [
-  //       cameraData.os.view,
-  //       cameraData.firstRowEnd.view,
-  //       cameraData.frontEndOne.view,
+  //       library.os.view,
+  //       library.firstRowEnd.view,
+  //       library.frontEndOne.view,
   //     ],
   //     3000,
   //     "easeOutQuad",
@@ -274,15 +273,15 @@ function Play(
   //     "article",
   //     "text-background",
   //     50,
-  //     typewriterData.frontEndOne.text,
-  //     typewriterData.frontEndOne.textPosition,
+  //     library.frontEndOne.text,
+  //     library.frontEndOne.textPosition,
   //     frontEndTwoCamera
   //   );
   // }
   // function frontEndTwoCamera() {
   //   Camera().fromTo(
   //     ".page",
-  //     [cameraData.frontEndOne.view, cameraData.frontEndTwo.view],
+  //     [library.frontEndOne.view, library.frontEndTwo.view],
   //     3000,
   //     "easeOutQuad",
   //     0,
@@ -294,8 +293,8 @@ function Play(
   //     "article",
   //     "text-background",
   //     50,
-  //     typewriterData.frontEndTwo.text,
-  //     typewriterData.frontEndTwo.textPosition,
+  //     library.frontEndTwo.text,
+  //     library.frontEndTwo.textPosition,
   //     backEndCamera
   //   );
   // }
@@ -303,7 +302,7 @@ function Play(
   // function backEndCamera() {
   //   Camera().fromTo(
   //     ".page",
-  //     [cameraData.frontEndTwo.view, cameraData.backEndOne.view],
+  //     [library.frontEndTwo.view, library.backEndOne.view],
   //     3000,
   //     "easeOutQuad",
   //     0,
@@ -315,8 +314,8 @@ function Play(
   //     "article",
   //     "text-background",
   //     50,
-  //     typewriterData.backEndOne.text,
-  //     typewriterData.backEndOne.textPosition,
+  //     library.backEndOne.text,
+  //     library.backEndOne.textPosition,
   //     notebookOneCamera
   //   );
   // }
@@ -325,9 +324,9 @@ function Play(
   //   Camera().fromTo(
   //     ".page",
   //     [
-  //       cameraData.backEndOne.view,
-  //       cameraData.door.view,
-  //       cameraData.notebookOne.view,
+  //       library.backEndOne.view,
+  //       library.door.view,
+  //       library.notebookOne.view,
   //     ],
   //     3000,
   //     "easeOutQuad",
@@ -340,15 +339,15 @@ function Play(
       "article",
       "text-background",
       50,
-      typewriterData.notebookOne.text,
-      typewriterData.notebookOne.textPosition
+      library.notebookOne.text,
+      library.notebookOne.textPosition
       // notebookTwoCamera
     );
   }
   // function notebookTwoCamera() {
   //   Camera().fromTo(
   //     ".page",
-  //     [cameraData.notebookOne.view, cameraData.notebookTwo.view],
+  //     [library.notebookOne.view, library.notebookTwo.view],
   //     3000,
   //     "easeOutQuad",
   //     0,
@@ -360,8 +359,8 @@ function Play(
       "article",
       "text-background",
       50,
-      typewriterData.notebookTwo.text,
-      typewriterData.notebookTwo.textPosition
+      library.notebookTwo.text,
+      library.notebookTwo.textPosition
     );
   }
   //scroll down to see the hobbies
@@ -380,9 +379,9 @@ function Play(
   //     Camera().fromTo(
   //       ".page",
   //       [
-  //         cameraData.notebookTwo.view,
-  //         cameraData.door.view,
-  //         cameraData.microphone.view,
+  //         library.notebookTwo.view,
+  //         library.door.view,
+  //         library.microphone.view,
   //       ],
   //       3000,
   //       "easeOutQuad",
@@ -395,15 +394,15 @@ function Play(
   //       "article",
   //       "text-background",
   //       50,
-  //       typewriterData.microphone.text,
-  //       typewriterData.microphone.textPosition,
+  //       library.microphone.text,
+  //       library.microphone.textPosition,
   //       motorcycleCamera
   //     );
   //   }
   //   function motorcycleCamera() {
   //     Camera().fromTo(
   //       ".page",
-  //       [cameraData.microphone.view, cameraData.motorcycle.view],
+  //       [library.microphone.view, library.motorcycle.view],
   //       3000,
   //       "easeOutQuad",
   //       0,
@@ -415,15 +414,15 @@ function Play(
   //       "article",
   //       "text-background",
   //       50,
-  //       typewriterData.motorcycle.text,
-  //       typewriterData.motorcycle.textPosition,
+  //       library.motorcycle.text,
+  //       library.motorcycle.textPosition,
   //       gardenCamera
   //     );
   //   }
   //   function gardenCamera() {
   //     Camera().fromTo(
   //       ".page",
-  //       [cameraData.motorcycle.view, cameraData.garden.view],
+  //       [library.motorcycle.view, library.garden.view],
   //       3000,
   //       "easeOutQuad",
   //       0,
@@ -435,15 +434,15 @@ function Play(
   //       "article",
   //       "text-background",
   //       50,
-  //       typewriterData.garden.text,
-  //       typewriterData.garden.textPosition,
+  //       library.garden.text,
+  //       library.garden.textPosition,
   //       mountainCamera
   //     );
   //   }
   //   function mountainCamera() {
   //     Camera().fromTo(
   //       ".page",
-  //       [cameraData.garden.view, cameraData.mountain.view],
+  //       [library.garden.view, library.mountain.view],
   //       3000,
   //       "easeOutQuad",
   //       0,
@@ -455,8 +454,8 @@ function Play(
   //       "article",
   //       "text-background",
   //       50,
-  //       typewriterData.mountain.text,
-  //       typewriterData.mountain.textPosition,
+  //       library.mountain.text,
+  //       library.mountain.textPosition,
   //       finishedCallback
   //     );
   //   }
