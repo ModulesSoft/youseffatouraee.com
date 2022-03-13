@@ -1,11 +1,21 @@
 import CarAnimations from "./helpers/CarAnimations";
 import IntroTextAnimations from "./helpers/IntroTextAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import Camera from "./helpers/lib/Camera";
+import { View, Camera } from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
-function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
+import { useState } from "react";
+let show = true;
+function Play(
+  scroll,
+  scrollStage,
+  isMobile,
+  width,
+  height,
+  texts,
+  timeline = 0
+) {
   const library = {
     begin: {
       view: "-1000 0 800 1080",
@@ -125,23 +135,35 @@ function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
       },
     };
   });
-  let from = cameraData.door.view.split(" ").map(Number);
-  if (scroll > 0 && scroll < maxScroll) {
-    from = Camera(
+
+  let fromView = "";
+  if (scroll > 0 && scroll < scrollStage) {
+    // additional smile face pop right for laptop and straight face for mobile
+    FaceAnimations(isMobile, "#straightFace", "#smileFace");
+    laptopText();
+  } else if (scroll > scrollStage && scroll < scrollStage * 2) {
+    fromView = cameraData.laptop.view;
+    Camera(
       ".page",
-      calculateView(cameraData.laptop.view),
-      scroll,
-      laptopText
+      calculateView(cameraData.notebookTwo.view),
+      scroll - scrollStage,
+      notebookTwoText
     );
-    console.log(from);
-  } else if (scroll > 20 && scroll < 40) {
-  } else if (scroll > 40 && scroll < 60) {
+  } else if (scroll > scrollStage * 2 && scroll < scrollStage * 3) {
+    // fromView = cameraData.notebookTwo.view;
+    // Camera(
+    //   ".page",
+    //   calculateView(cameraData.notebookTwo.view),
+    //   scroll,
+    //   notebookOneText
+    // );
   }
-  function calculateView(view) {
-    let to = view.split(" ").map(Number);
+  function calculateView(toView) {
+    let from = fromView.split(" ").map(Number);
+    let to = toView.split(" ").map(Number);
     let sub = [];
     for (let i = 0; i < from.length; i++) {
-      sub.push(Math.ceil((to[i] - from[i]) / maxScroll));
+      sub.push((to[i] - from[i]) / scrollStage);
     }
     return [from, to, sub];
   }
@@ -180,9 +202,10 @@ function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
   // function laptopCamera(scroll, view) {
   //   Camera().fromTo(".page", view, scroll, laptopText);
   // }
+  function initCamera() {
+    View(".page", cameraData.laptop.view);
+  }
   function laptopText() {
-    // additional smile face pop right for laptop and straight face for mobile
-    FaceAnimations(isMobile, "#straightFace", "#smileFace");
     Typewriter(
       "article",
       "text-background",
@@ -312,16 +335,16 @@ function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
   //     notebookOneText
   //   );
   // }
-  // function notebookOneText() {
-  //   Typewriter(
-  //     "article",
-  //     "text-background",
-  //     50,
-  //     typewriterData.notebookOne.text,
-  //     typewriterData.notebookOne.textPosition,
-  //     notebookTwoCamera
-  //   );
-  // }
+  function notebookOneText() {
+    Typewriter(
+      "article",
+      "text-background",
+      50,
+      typewriterData.notebookOne.text,
+      typewriterData.notebookOne.textPosition
+      // notebookTwoCamera
+    );
+  }
   // function notebookTwoCamera() {
   //   Camera().fromTo(
   //     ".page",
@@ -332,16 +355,15 @@ function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
   //     notebookTwoText
   //   );
   // }
-  // function notebookTwoText() {
-  //   Typewriter(
-  //     "article",
-  //     "text-background",
-  //     50,
-  //     typewriterData.notebookTwo.text,
-  //     typewriterData.notebookTwo.textPosition,
-  //     scroll
-  //   );
-  // }
+  function notebookTwoText() {
+    Typewriter(
+      "article",
+      "text-background",
+      50,
+      typewriterData.notebookTwo.text,
+      typewriterData.notebookTwo.textPosition
+    );
+  }
   //scroll down to see the hobbies
   // function scroll() {
   //   IntroTextAnimations().addScrollIcon(
@@ -443,6 +465,6 @@ function Play(scroll, maxScroll, isMobile, width, height, texts, timeline = 0) {
     IntroTextAnimations().removeScrollIcon();
   }
 
-  return { removeScrollIcon };
+  return { removeScrollIcon, initCamera };
 }
 export default Play;

@@ -8,11 +8,13 @@ import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
-import useScroll from "./helpers/GetScroll";
+import getScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
 import GetTextArray from "./components/GetTextArray";
 import CheckScroll from "./helpers/CheckScroll";
+import scrollToTop from "./helpers/lib/ScrollToTop";
+const scrollStage = 20;
 const texts = GetTextArray();
 function App() {
   // get window properties
@@ -25,52 +27,15 @@ function App() {
     : {
         width: width,
       };
-  // get scroll properties
-  let scrollY = useScroll().scrollY;
-  let scrollDirection = useScroll().scrollDirection;
-  let maxScroll = 20;
-  // scenes activation
-  let [allowScroll, setAllowScroll] = useState(true);
+  let [scroll, setScroll] = useState(0);
   useEffect(() => {
-    !allowScroll && window.scrollTo(0, 0);
-    Play(scrollY, maxScroll, mobile, width, height, texts);
-    // if (showIntro) {
-    //   // play intro
-    //   setShowIntro(false);
-    //   setAllowScroll(false);
-    //   Play(mobile, width, height, texts).introScene(initGarage);
-    //   function initGarage() {
-    //     setAllowScroll(true);
-    //   }
-    // } else if (showGarage) {
-    //   // play garage
-    //   CheckScroll(scrollY, scrollDirection, allowScroll, startGarage); // to remove scroll icon
-    //   function startGarage() {
-    //     Play().removeScrollIcon();
-    //     setShowGarage(false);
-    //     setAllowScroll(false);
-    //     Play(mobile, width, height, texts).garageScene(initHobbies);
-    //   }
-    //   function initHobbies() {
-    //     setAllowScroll(true);
-    //     setShowHobbies(true);
-    //   }
-    // } else if (showHobbies) {
-    //   // play hobbies
-    //   CheckScroll(scrollY, scrollDirection, allowScroll, startHobbies);
-    //   function startHobbies() {
-    //     Play().removeScrollIcon();
-    //     setAllowScroll(false);
-    //     setShowHobbies(false);
-    //     Play(mobile, width, height, texts).hobbiesScene(finish);
-    //   }
-    // function finish() {
-    //   console.log("the end");
-    //   setAllowScroll(false);
-    // }
-    // }
-  }, [height, width, mobile, allowScroll, scrollY, scrollDirection]);
-
+    // when component did mount:
+    scrollToTop();
+    Play().initCamera();
+    getScroll(setScroll);
+  }, []); //Be carefull - scroll must not be a dependency!
+  // play using scrolling
+  Play(scroll, scrollStage, mobile, width, height, texts);
   return (
     <div className="App">
       <header className="App-header"></header>
