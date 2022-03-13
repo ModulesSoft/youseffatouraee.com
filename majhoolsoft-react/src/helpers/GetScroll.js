@@ -1,45 +1,24 @@
-import { useState, useEffect, useCallback } from "react";
-
-export const useScroll = () => {
-  const [state, setState] = useState({
-    lastScrollTop: 0,
-    bodyOffset: document.body.getBoundingClientRect(),
-    scrollY: document.body.getBoundingClientRect().top,
-    scrollX: document.body.getBoundingClientRect().left,
-    scrollDirection: "", // down, up
-  });
-
-  const handleScrollEvent = useCallback((e) => {
-    setState((prevState) => {
-      const prevLastScrollTop = prevState.lastScrollTop;
-      const bodyOffset = document.body.getBoundingClientRect();
-
-      return {
-        setBodyOffset: bodyOffset,
-        scrollY: -bodyOffset.top,
-        scrollX: bodyOffset.left,
-        scrollDirection: prevLastScrollTop > -bodyOffset.top ? "down" : "up",
-        lastScrollTop: -bodyOffset.top,
-      };
-    });
-  }, []);
-
-  useEffect(() => {
-    const scrollListener = (e) => {
-      handleScrollEvent(e);
-    };
-    window.addEventListener("scroll", scrollListener);
-
-    return () => {
-      window.removeEventListener("scroll", scrollListener);
-    };
-  }, [handleScrollEvent]);
-
-  return {
-    scrollY: state.scrollY / 10,
-    scrollX: state.scrollX,
-    scrollDirection: state.scrollDirection,
-  };
+export const GetScroll = (result) => {
+  // scroll event listener
+  var lastScrollTop = 0;
+  var counter = 0;
+  // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+  window.addEventListener(
+    "scroll",
+    function () {
+      var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+      if (st > lastScrollTop) {
+        // downscroll code
+        counter++;
+      } else {
+        // upscroll code
+        counter--;
+      }
+      lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      return result(counter);
+    },
+    false
+  );
 };
 
-export default useScroll;
+export default GetScroll;

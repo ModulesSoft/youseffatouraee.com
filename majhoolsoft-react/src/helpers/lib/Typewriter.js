@@ -6,7 +6,7 @@ function Typewriter(
   speed,
   target,
   position,
-  finishedCallback
+  finishedCallback = () => {}
 ) {
   // positioning
   anime({
