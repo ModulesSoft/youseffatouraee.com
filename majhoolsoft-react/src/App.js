@@ -28,14 +28,15 @@ function App() {
         width: width,
       };
   let [scroll, setScroll] = useState(0);
+  let [scene, setScene] = useState(0);
   useEffect(() => {
     // when component did mount:
     scrollToTop();
     Play().initCamera();
-    getScroll(setScroll);
+    getScroll(setScroll, setScene, scrollStage);
   }, []); //Be carefull - scroll must not be a dependency!
   // play using scrolling
-  Play(scroll, scrollStage, mobile, width, height, texts);
+  Play(scroll, scrollStage, scene, mobile, width, height, texts);
   return (
     <div className="App">
       <header className="App-header"></header>
