@@ -140,7 +140,6 @@ function Play(
   });
   // operate animations
   let state = library.laptop;
-  let cameraEnd = false;
   let limitedScroll = scroll - sceneNumber * scrollStage;
   switch (sceneNumber) {
     case 0:
