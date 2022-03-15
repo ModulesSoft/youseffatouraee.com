@@ -35,10 +35,16 @@
   position: fixed;
   top: 0;
 }
-.scrollText {
+.scroll {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+}
+.scrollText,
+.scrollIcon {
+  opacity: 0;
   position: absolute;
   margin-top: 0;
-  opacity: 0; /* Now it won't bother on developement */
   color: white;
   text-align: center;
   display: flex;
@@ -47,7 +53,6 @@
   width: 100%;
   height: 100%;
   font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 .intro {
   position: absolute;

@@ -5,6 +5,7 @@ import Camera from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
+import scrollIconHandler from "./helpers/scrollIconHandler";
 var closeToViewAccuracy = 1;
 var fromView = null;
 var once = false;
@@ -32,6 +33,9 @@ function Play(
       view: isMobile
         ? `1000 ${1080 - height} ${width} ${height}`
         : "1000 800 400 240",
+    },
+    laptopAlone: {
+      view: "1328 920 60 60",
     },
     laptop: {
       view: "1328 920 60 60",
@@ -69,6 +73,9 @@ function Play(
       textPosition: isMobile
         ? { x: 16, y: `${(20 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
+    },
+    backEndOneAlone: {
+      view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
     },
     backEndOne: {
       view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
@@ -143,24 +150,34 @@ function Play(
   // operate animations
   let state = library.laptop;
   let limitedScroll = scroll - sceneNumber * scrollStage;
+  console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
     case 0:
-      console.log("scene num : " + sceneNumber);
-      state = library.laptop;
-      isMobile
-        ? FaceAnimations("#pokerFace", "#smileFace").poker()
-        : FaceAnimations("#pokerFace", "#smileFace").smile();
+      state = library.laptopAlone;
+      // check if scrolled remove scroll icon and continue playing animations
+      scrollIconHandler(
+        ".scroll",
+        ".scrollIcon",
+        ".scrollResume",
+        scroll,
+        scrollStage,
+        sceneNumber,
+        scrollStage / 4,
+        () => {
+          state = library.laptop;
+          isMobile
+            ? FaceAnimations("#pokerFace", "#smileFace").poker()
+            : FaceAnimations("#pokerFace", "#smileFace").smile();
+        }
+      );
       break;
     case 1:
-      console.log("scene num : " + sceneNumber);
       state = library.notebookTwo;
       break;
     case 2:
-      console.log("scene num : " + sceneNumber);
       state = library.notebookOne;
       break;
     case 3:
-      console.log("scene num : " + sceneNumber);
       state = library.degree;
       break;
     case 4:
@@ -176,31 +193,36 @@ function Play(
       state = library.backEndOne;
       break;
     case 8:
-      state = library.backEndOne;
+      state = library.backEndOneAlone;
+      // hobbies
+      scrollIconHandler(
+        ".scroll",
+        ".scrollIcon",
+        ".scrollHobbies",
+        scroll,
+        scrollStage,
+        sceneNumber,
+        scrollStage,
+        () => {
+          state = library.microphone;
+        }
+      );
       break;
     case 9:
-      // hobbies
-      break;
-    case 10:
-      state = library.microphone;
-      break;
-    case 11:
       state = library.motorcycle;
       break;
-    case 12:
+    case 10:
       state = library.door;
       // change faces for variety
       isMobile
         ? FaceAnimations("#pokerFace", "#smileFace").smile()
         : FaceAnimations("#pokerFace", "#smileFace").poker();
-      break;
-    case 13:
       state = library.garden;
       break;
-    case 14:
+    case 11:
       state = library.mountain;
       break;
-    case 15:
+    case 12:
       // car animation
       break;
     default:
@@ -252,9 +274,6 @@ function Play(
     }
     return arrayToString(currentView);
   }
-  function initCamera() {
-    Camera(".page", library.laptop.view, "linear");
-  }
 
   function areClose(par1, par2, accuracy) {
     let closeArray = [];
@@ -295,10 +314,10 @@ function Play(
       return string.split(" ").map(Number);
     }
   }
-  function removeScrollIcon() {
-    IntroTextAnimations().removeScrollIcon();
+  function initCamera() {
+    state = library.laptopAlone;
+    Camera(".page", library.laptopAlone.view, "linear");
   }
-
-  return { removeScrollIcon, initCamera };
+  return { initCamera };
 }
 export default Play;

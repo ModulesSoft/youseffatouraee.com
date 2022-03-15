@@ -1,5 +1,5 @@
 import anime from "animejs";
-function BackgroundAnimations(timeline = null) {
+function BackgroundAnimations() {
   anime
     .timeline({ loop: false })
     // sun sets
@@ -55,21 +55,6 @@ function BackgroundAnimations(timeline = null) {
     opacity: 0,
     easing: "easeOutQuad",
     delay: 10000,
-  });
-
-  //last thread - infinite loop (scroll icon):
-  // Scroll icon
-  anime({
-    targets: ".scrollIcon",
-    opacity: [0, 0.4],
-    delay: 16000,
-  });
-  anime({
-    targets: ".scrollIcon",
-    translateY: -50,
-    direction: "alternate",
-    loop: true,
-    easing: "spring(1, 80, 10, 0)",
   });
 }
 export default BackgroundAnimations;
