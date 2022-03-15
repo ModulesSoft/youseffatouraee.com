@@ -1,5 +1,5 @@
 import Desk from "./Desk";
-import StraightFace from "./faces/Straight";
+import PokerFace from "./faces/Poker";
 import SmileFace from "./faces/Smile";
 function Garage() {
   return (
@@ -2980,7 +2980,7 @@ function Garage() {
         </g>
 
         <SmileFace />
-        <StraightFace />
+        <PokerFace />
         <Desk />
       </g>
     </svg>
