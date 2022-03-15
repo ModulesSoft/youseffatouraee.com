@@ -160,6 +160,7 @@ function Play(
     case 3:
       console.log("scene num : " + sceneNumber);
       state = library.degree;
+      FaceAnimations(isMobile, "#pokerFace", "#smileFace", true); //face up
       break;
     case 4:
       state = library.os;
@@ -186,7 +187,6 @@ function Play(
       state = library.motorcycle;
       break;
     case 12:
-      FaceAnimations(isMobile, "#pokerFace", "#smileFace", true); //face up
       state = library.door;
       break;
     case 13:
