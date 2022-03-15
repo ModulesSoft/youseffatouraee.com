@@ -145,12 +145,12 @@ function Play(
   switch (sceneNumber) {
     case 0:
       console.log("scene num : " + sceneNumber);
-      FaceAnimations(isMobile, "#straightFace", "#smileFace");
+      FaceAnimations(isMobile, "#pokerFace", "#smileFace");
       state = library.laptop;
       break;
     case 1:
       console.log("scene num : " + sceneNumber);
-      state = library.notebookTwo;
+      state = library.door;
       break;
     case 2:
       console.log("scene num : " + sceneNumber);
@@ -159,6 +159,42 @@ function Play(
     case 3:
       console.log("scene num : " + sceneNumber);
       state = library.degree;
+      break;
+    case 4:
+      state = library.os;
+      break;
+    case 5:
+      state = library.frontEndOne;
+      break;
+    case 6:
+      state = library.frontEndTwo;
+      break;
+    case 7:
+      state = library.backEndOne;
+      break;
+    case 8:
+      state = library.backEndOne;
+      break;
+    case 9:
+      // hobbies
+      break;
+    case 10:
+      state = library.microphone;
+      break;
+    case 11:
+      state = library.motorcycle;
+      break;
+    case 12:
+      state = library.door;
+      break;
+    case 13:
+      state = library.garden;
+      break;
+    case 14:
+      state = library.mountain;
+      break;
+    case 15:
+      // car animation
       break;
     default:
       console.log("scene num : default");
