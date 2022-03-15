@@ -1,7 +1,8 @@
 import anime from "animejs";
 function FaceAnimations(isMobile, mobileTarget, desktopTarget) {
-  console.log(isMobile);
-  function smile() {
+  if (isMobile === undefined) return;
+  function smile(finished) {
+    if (isMobile) return finished;
     anime
       .timeline({ loop: false })
       .add({
@@ -26,7 +27,9 @@ function FaceAnimations(isMobile, mobileTarget, desktopTarget) {
         translateY: 6,
         rotate: "-50deg",
       })
-      .finished.then(() => {});
+      .finished.then(() => {
+        finished();
+      });
   }
   function poker() {
     anime({
@@ -36,9 +39,10 @@ function FaceAnimations(isMobile, mobileTarget, desktopTarget) {
       y: 45,
     });
   }
-  if (isMobile) {
-    poker();
-  } else {
-  }
+  smile(poker);
+  // if (isMobile) {
+  //   poker();
+  // } else {
+  // }
 }
 export default FaceAnimations;
