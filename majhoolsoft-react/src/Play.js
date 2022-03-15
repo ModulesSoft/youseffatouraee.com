@@ -5,19 +5,19 @@ import Camera from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
+var closeToViewAccuracy = 1;
 var fromView = null;
+var once = false;
 function Play(
-  scroll,
-  scrollStage,
-  sceneNumber,
+  scroll = 0,
+  scrollStage = 20,
+  sceneNumber = 0,
   isMobile,
   width,
   height,
   texts,
   timeline = 0
 ) {
-  console.log("scrollStage " + scrollStage);
-
   var library = {
     begin: {
       view: "-1000 0 800 1080",
@@ -144,42 +144,51 @@ function Play(
   let limitedScroll = scroll - sceneNumber * scrollStage;
   switch (sceneNumber) {
     case 0:
-      console.log("sceneNumber number : " + sceneNumber);
+      console.log("scene num : " + sceneNumber);
       FaceAnimations(isMobile, "#straightFace", "#smileFace");
       state = library.laptop;
       break;
     case 1:
-      console.log("sceneNumber number : " + sceneNumber);
+      console.log("scene num : " + sceneNumber);
       state = library.notebookTwo;
       break;
     case 2:
-      console.log("sceneNumber number : " + sceneNumber);
+      console.log("scene num : " + sceneNumber);
       state = library.notebookOne;
       break;
     case 3:
-      console.log("sceneNumber number : " + sceneNumber);
+      console.log("scene num : " + sceneNumber);
       state = library.degree;
       break;
     default:
-      console.log("sceneNumber number : default");
+      console.log("scene num : default");
       break;
   }
   if (!fromView) {
     fromView = state.view;
   } else {
     if (state) {
-      let currentView = calculateView(state.view);
-      Camera(".page", currentView, "linear");
-      currentView === state.view && //change to are close
-        Typewriter(
-          "article",
-          "text-background",
-          50,
-          state.text,
-          state.textPosition
+      try {
+        let currentView = calculateView(state.view);
+        Camera(".page", currentView, "linear");
+        let approached = areClose(
+          stringToArray(currentView),
+          stringToArray(state.view),
+          closeToViewAccuracy
         );
+        preventRepetition(approached) &&
+          Typewriter(
+            "article",
+            "text-background",
+            50,
+            state.text,
+            state.textPosition
+          );
 
-      fromView = currentView;
+        fromView = currentView;
+      } catch (e) {
+        console.error("is it first render?" + e);
+      }
     }
   }
   function calculateView(toView) {
@@ -216,6 +225,20 @@ function Play(
     }
     return closeArray.filter((t) => t === true).length === 2;
   }
+  function preventRepetition(boolean) {
+    if (boolean) {
+      // has not been triggered
+      if (!once) {
+        once = true;
+        return boolean;
+      } else {
+        return false;
+      }
+    } else {
+      once = false;
+      return boolean;
+    }
+  }
   function arrayToString(array) {
     let result = "";
     array.forEach((element) => {
@@ -225,7 +248,9 @@ function Play(
     return result;
   }
   function stringToArray(string) {
-    return string.split(" ").map(Number);
+    if (string) {
+      return string.split(" ").map(Number);
+    }
   }
   function removeScrollIcon() {
     IntroTextAnimations().removeScrollIcon();
