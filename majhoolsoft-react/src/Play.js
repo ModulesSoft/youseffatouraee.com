@@ -18,6 +18,8 @@ function Play(
   texts,
   timeline = 0
 ) {
+  if (isMobile === undefined)
+    return console.error("Undefined parameters may cause problems!");
   var library = {
     begin: {
       view: "-1000 0 800 1080",
@@ -149,7 +151,7 @@ function Play(
       break;
     case 1:
       console.log("scene num : " + sceneNumber);
-      state = library.door;
+      state = library.notebookTwo;
       break;
     case 2:
       console.log("scene num : " + sceneNumber);
@@ -184,6 +186,7 @@ function Play(
       state = library.motorcycle;
       break;
     case 12:
+      FaceAnimations(isMobile, "#pokerFace", "#smileFace", true); //face up
       state = library.door;
       break;
     case 13:
