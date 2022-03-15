@@ -12,7 +12,6 @@ import getScroll from "./helpers/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
 import GetTextArray from "./components/GetTextArray";
-import CheckScroll from "./helpers/CheckScroll";
 import scrollToTop from "./helpers/lib/ScrollToTop";
 const scrollStage = 20;
 const texts = GetTextArray();
@@ -50,10 +49,9 @@ function App() {
               e && setShowGarage(true);
             }}
           /> */}
-          <ScrollDown />
           <Sideview />
           <Car />
-          <Darkness />
+          {/* <Darkness /> */}
           <LightBeam />
         </svg>
         <div className="decorative">
@@ -67,10 +65,13 @@ function App() {
               or <a href="/">download</a> resume
             </p>
           </div>
-          <p className="scrollResume scrollText">Scroll Down</p>
-          <p className="scrollHobbies scrollText">
-            Scroll Down to see my hobbies
-          </p>
+          <div className="scroll">
+            <ScrollDown />
+            <p className="scrollResume scrollText">Scroll Down</p>
+            <p className="scrollHobbies scrollText">
+              Scroll Down to see my hobbies
+            </p>
+          </div>
         </div>
       </div>
     </div>

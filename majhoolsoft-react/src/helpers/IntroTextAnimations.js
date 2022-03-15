@@ -15,23 +15,35 @@ function IntroTextAnimations() {
           delay: anime.stagger(2000, { start: 4000, direction: "reverse" }),
         },
       ],
-    }).finished.then(addScrollIcon(".scrollResume", finishedCallback, 15000));
+    }).finished.then(addScroll(".scrollResume", finishedCallback, 15000));
   }
-  function addScrollIcon(target, finishedCallback, delay = 0) {
+  function addScroll(scrollClass, scrollIconClass, scrollTextClass) {
     anime({
-      targets: target,
-      opacity: [0, 0.8],
+      targets: [scrollClass, scrollTextClass],
+      duration: 1000,
       easing: "easeInExpo",
-      delay: delay,
-    }).finished.then(finishedCallback);
-  }
-  function removeScrollIcon() {
-    anime.remove([".scrollIcon", ".scrollText"]);
+      opacity: 1,
+    });
     anime({
-      targets: [".scrollIcon", ".scrollText"],
+      targets: scrollIconClass,
+      duration: 2000,
+      easing: "easeInExpo",
+      opacity: 0.6,
+    });
+    anime({
+      targets: scrollIconClass,
+      translateY: -50,
+      direction: "alternate",
+      loop: true,
+      easing: "spring(1, 80, 10, 0)",
+    });
+  }
+  function removeScroll(scrollClass, scrollTextClass) {
+    anime({
+      targets: [scrollClass, scrollTextClass],
       opacity: 0,
     });
   }
-  return { introScene, removeScrollIcon, addScrollIcon };
+  return { introScene, removeScroll, addScroll };
 }
 export default IntroTextAnimations;
