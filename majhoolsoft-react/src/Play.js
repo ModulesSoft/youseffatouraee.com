@@ -146,8 +146,10 @@ function Play(
   switch (sceneNumber) {
     case 0:
       console.log("scene num : " + sceneNumber);
-      FaceAnimations(isMobile, "#pokerFace", "#smileFace");
       state = library.laptop;
+      isMobile
+        ? FaceAnimations("#pokerFace", "#smileFace").poker()
+        : FaceAnimations("#pokerFace", "#smileFace").smile();
       break;
     case 1:
       console.log("scene num : " + sceneNumber);
@@ -160,7 +162,6 @@ function Play(
     case 3:
       console.log("scene num : " + sceneNumber);
       state = library.degree;
-      FaceAnimations(isMobile, "#pokerFace", "#smileFace", true); //face up
       break;
     case 4:
       state = library.os;
@@ -188,6 +189,10 @@ function Play(
       break;
     case 12:
       state = library.door;
+      // change faces for variety
+      isMobile
+        ? FaceAnimations("#pokerFace", "#smileFace").smile()
+        : FaceAnimations("#pokerFace", "#smileFace").poker();
       break;
     case 13:
       state = library.garden;
