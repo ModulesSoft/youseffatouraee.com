@@ -217,12 +217,14 @@ function Play(
       isMobile
         ? FaceAnimations("#pokerFace", "#smileFace").smile()
         : FaceAnimations("#pokerFace", "#smileFace").poker();
-      state = library.garden;
       break;
     case 11:
-      state = library.mountain;
+      state = library.garden;
       break;
     case 12:
+      state = library.mountain;
+      break;
+    case 13:
       // car animation
       break;
     default:
@@ -315,8 +317,8 @@ function Play(
     }
   }
   function initCamera() {
-    state = library.laptopAlone;
-    Camera(".page", library.laptopAlone.view, "linear");
+    state = library.general;
+    Camera(".page", library.general.view, "linear");
   }
   return { initCamera };
 }

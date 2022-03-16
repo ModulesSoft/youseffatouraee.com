@@ -1,28 +1,29 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
 function GarageDoor({ scrollY, doorOpened }) {
+  console.log(scrollY);
   let transform = {
-    transform: `translateY(${scrollY < 140 && -1 * scrollY}px)`,
+    transform: `translateY(${scrollY * 7}px)`,
   };
 
   // checkwhether the door is finished opening
   // flag to prevent multiple door open notice
-  let [enterOnce, setEnterOnce] = useState(true);
-  let [show, setShow] = useState(true);
-  useEffect(() => {
-    if (scrollY > 135 && enterOnce) {
-      doorOpened(true);
-      setEnterOnce(false);
-      setShow(false);
-    } else {
-      doorOpened(false);
-    }
-  }, [scrollY, enterOnce]);
-  return !show ? null : (
+  // let [enterOnce, setEnterOnce] = useState(true);
+  // let [show, setShow] = useState(true);
+  if (scrollY > 19) {
+    console.log("umadf");
+    doorOpened(false);
+    transform = {
+      transform: "translateY(140px)",
+    };
+    // setEnterOnce(false);
+    // setShow(false);
+  } else {
+    doorOpened(true);
+  }
+  return (
     <svg
       width="384.264"
-      height="136.105"
-      viewBox="0 0 384.264 136.105"
+      height="300"
+      viewBox="0 140 384.264 300"
       x="1003"
       y="900"
     >
