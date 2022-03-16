@@ -1,23 +1,12 @@
-function GarageDoor({ scrollY, doorOpened }) {
-  console.log(scrollY);
+function GarageDoor({ scrollY }) {
   let transform = {
     transform: `translateY(${scrollY * 7}px)`,
   };
-
   // checkwhether the door is finished opening
-  // flag to prevent multiple door open notice
-  // let [enterOnce, setEnterOnce] = useState(true);
-  // let [show, setShow] = useState(true);
   if (scrollY > 19) {
-    console.log("umadf");
-    doorOpened(false);
     transform = {
       transform: "translateY(140px)",
     };
-    // setEnterOnce(false);
-    // setShow(false);
-  } else {
-    doorOpened(true);
   }
   return (
     <svg
