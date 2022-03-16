@@ -3,21 +3,9 @@ function WalkingAnimations() {
   anime
     .timeline({ loop: false })
     .add({
-      targets: "#sideview",
-      translateY: 5,
-      duration: 500,
-      delay: 0,
-    })
-    .add({
-      targets: "#sideview",
-      opacity: 0,
-      duration: 1,
-      delay: 0,
-    })
-    .add({
       targets: "#walking",
       opacity: 1,
-      duration: 100,
+      duration: 2000,
       delay: 0,
       easing: "easeInExpo",
     })
@@ -25,14 +13,25 @@ function WalkingAnimations() {
       targets: "#walking",
       translateX: 450,
       duration: 3000,
-      delay: 100,
       easing: "linear",
     })
     .add({
       targets: "#walking",
+      translateY: 50,
       opacity: 0,
-      delay: 0,
-      easing: "easeInExpo",
+    })
+    .add(
+      {
+        targets: "#sideview",
+        opacity: 1,
+      },
+      "-=1000"
+    )
+    .add({
+      targets: "#sideview",
+      translateY: 5,
+      duration: 500,
+      easing: "spring(1, 80, 10, 0)",
     });
 }
 export default WalkingAnimations;
