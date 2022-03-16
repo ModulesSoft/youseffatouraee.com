@@ -317,8 +317,8 @@ function Play(
     }
   }
   function initCamera() {
-    state = library.general;
-    Camera(".page", library.general.view, "linear");
+    state = library.laptopAlone;
+    Camera(".page", library.laptopAlone.view, "linear");
   }
   return { initCamera };
 }
