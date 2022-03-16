@@ -31,13 +31,13 @@ function FaceAnimations(pokerFace, smileFace) {
       })
       .add({
         targets: pokerFace,
-        duration: 2000,
+        duration: 1000,
         easing: "easeOutQuad",
         y: 60,
       })
       .add({
         targets: smileFace,
-        duration: 2000,
+        duration: 1000,
         easing: "easeOutQuad",
         translateX: 20,
         translateY: -6,

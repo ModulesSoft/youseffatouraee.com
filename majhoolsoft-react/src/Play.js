@@ -8,7 +8,9 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import scrollIconHandler from "./helpers/scrollIconHandler";
 var closeToViewAccuracy = 1;
 var fromView = null;
+var state;
 var once = false;
+
 function Play(
   scroll = 0,
   scrollStage = 20,
@@ -31,20 +33,20 @@ function Play(
     },
     door: {
       view: isMobile
-        ? `1000 ${1080 - height} ${width} ${height}`
-        : "1000 800 400 240",
+        ? `262 ${1080 - height} ${width} ${height}`
+        : "262 800 400 240",
     },
     laptopAlone: {
-      view: "1328 920 60 60",
+      view: "590 920 60 60",
     },
     laptop: {
-      view: "1328 920 60 60",
+      view: "590 920 60 60",
       textPosition: isMobile
         ? { x: 16, y: 16, width: `${width - 16}` }
         : { x: 16, y: 16, width: `${width - 16}` },
     },
     degree: {
-      view: isMobile ? "1288 900 60 45" : "1288 900 60 28",
+      view: isMobile ? "550 900 60 45" : "550 900 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : {
@@ -54,37 +56,37 @@ function Play(
           },
     },
     os: {
-      view: isMobile ? "1252 900 60 45" : "1240 900 60 28",
+      view: isMobile ? "514 900 60 45" : "502 900 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     firstRowEnd: {
-      view: isMobile ? "1230 900 60 45" : "1200 900 60 28",
+      view: isMobile ? "492 900 60 45" : "462 900 60 28",
     },
     frontEndOne: {
-      view: isMobile ? "1230 930 60 45" : "1200 930 60 28",
+      view: isMobile ? "492 930 60 45" : "462 930 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(1 / 2) * height}`, width: `${(1 / 2) * width}` },
     },
     frontEndTwo: {
-      view: isMobile ? "1257 920 60 45" : "1230 930 60 28",
+      view: isMobile ? "519 920 60 45" : "492 930 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(20 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     backEndOneAlone: {
-      view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
+      view: isMobile ? "550 930 60 45" : "522 930 60 28",
     },
     backEndOne: {
-      view: isMobile ? "1288 930 60 45" : "1260 930 60 28",
+      view: isMobile ? "550 930 60 45" : "522 930 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     notebookOne: {
-      view: isMobile ? "1252 960 60 45" : "1215 962 60 28",
+      view: isMobile ? "514 960 60 45" : "477 962 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : {
@@ -94,13 +96,13 @@ function Play(
           },
     },
     notebookTwo: {
-      view: isMobile ? "1270 960 60 45" : "1270 962 60 28",
+      view: isMobile ? "532 960 60 45" : "532 962 60 28",
       textPosition: isMobile
         ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
         : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
     },
     microphone: {
-      view: isMobile ? "1130 900 100 62" : "1130 900 100 62",
+      view: isMobile ? "392 900 100 62" : "392 900 100 62",
       textPosition: {
         x: 16,
         y: `${(90 / 100) * height}`,
@@ -108,7 +110,7 @@ function Play(
       },
     },
     motorcycle: {
-      view: isMobile ? "1010 850 390 220" : "1000 850 200 180",
+      view: isMobile ? "272 850 390 220" : "262 850 200 180",
       textPosition: isMobile
         ? { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` }
         : {
@@ -118,7 +120,7 @@ function Play(
           },
     },
     garden: {
-      view: isMobile ? "20 550 600 420" : "20 550 600 420",
+      view: isMobile ? "758 550 600 420" : "758 550 600 420",
       textPosition: {
         x: 16,
         y: `${(10 / 100) * height}`,
@@ -126,7 +128,7 @@ function Play(
       },
     },
     mountain: {
-      view: isMobile ? "300 250 600 420" : "150 250 600 420",
+      view: isMobile ? "1038 250 600 420" : "888 250 600 420",
       textPosition: {
         x: 16,
         y: `${(90 / 100) * height}`,
@@ -148,7 +150,6 @@ function Play(
     };
   });
   // operate animations
-  let state = library.laptop;
   let limitedScroll = scroll - sceneNumber * scrollStage;
   console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
@@ -164,10 +165,10 @@ function Play(
         sceneNumber,
         scrollStage / 4,
         () => {
-          state = library.laptop;
           isMobile
             ? FaceAnimations("#pokerFace", "#smileFace").poker()
             : FaceAnimations("#pokerFace", "#smileFace").smile();
+          state = library.laptop;
         }
       );
       break;
@@ -202,7 +203,7 @@ function Play(
         scroll,
         scrollStage,
         sceneNumber,
-        scrollStage,
+        scrollStage / 4,
         () => {
           state = library.microphone;
         }
@@ -243,6 +244,7 @@ function Play(
           stringToArray(state.view),
           closeToViewAccuracy
         );
+        // console.log(`once ${once} approached ${approached} prevent ${preventRepetition(approached)}`);
         preventRepetition(approached) &&
           Typewriter(
             "article",
@@ -290,6 +292,7 @@ function Play(
     return closeArray.filter((t) => t === true).length === 2;
   }
   function preventRepetition(boolean) {
+    console.log("umd");
     if (boolean) {
       // has not been triggered
       if (!once) {
@@ -317,8 +320,8 @@ function Play(
     }
   }
   function initCamera() {
-    state = library.laptopAlone;
-    Camera(".page", library.laptopAlone.view, "linear");
+    // Camera(".page", library.laptopAlone.view, "linear");
+    Camera(".page", library.general.view, "linear");
   }
   return { initCamera };
 }
