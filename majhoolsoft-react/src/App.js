@@ -43,12 +43,12 @@ function App() {
         <svg className="page" xmlns="http://www.w3.org/2000/svg" style={size}>
           <Background />
           <Garage />
-          {/* <GarageDoor
-            scrollY={scrollDirection === "up" && allowScroll && scrollY}
+          <GarageDoor
+            scrollY={scene >= 10 && scroll - 10 * scrollStage}
             doorOpened={(e) => {
-              e && setShowGarage(true);
+              // e && setShowGarage(true);
             }}
-          /> */}
+          />
           <Sideview />
           <Car />
           {/* <Darkness /> */}
