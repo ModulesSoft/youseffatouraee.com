@@ -1,6 +1,6 @@
 function Car() {
   return (
-    <svg y="900" x="-1000">
+    <svg y="900" x="1300">
       <g id="car">
         <g data-name="Group 3" transform="translate(400.797 18.616)">
           <path
