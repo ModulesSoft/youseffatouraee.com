@@ -154,7 +154,9 @@ function Play(
   console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
     case 0:
-      state = library.laptopAlone;
+      WalkingAnimations();
+
+      state = library.general;
       // check if scrolled remove scroll icon and continue playing animations
       scrollIconHandler(
         ".scroll",
@@ -227,6 +229,7 @@ function Play(
       break;
     case 13:
       // car animation
+      // state = library.general;
       break;
     default:
       console.log("scene num : default");
