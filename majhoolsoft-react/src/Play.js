@@ -1,11 +1,12 @@
-import CarAnimations from "./helpers/CarAnimations";
-import IntroTextAnimations from "./helpers/IntroTextAnimations";
-import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import Camera from "./helpers/lib/Camera";
-import Typewriter from "./helpers/lib/Typewriter";
-import WalkingAnimations from "./helpers/WalkingAnimations";
-import FaceAnimations from "./helpers/FaceAnimations";
 import scrollIconHandler from "./helpers/lib/scrollIconHandler";
+import Typewriter from "./helpers/lib/Typewriter";
+import Camera from "./helpers/lib/Camera";
+import IntroTextAnimations from "./helpers/IntroTextAnimations";
+import WalkingAnimations from "./helpers/WalkingAnimations";
+import CarAnimations from "./helpers/CarAnimations";
+import FaceAnimations from "./helpers/FaceAnimations";
+import TreeAnimations from "./helpers/TreeAnimations";
+// import BackgroundAnimations from "./helpers/BackgroundAnimations";
 var closeToViewAccuracy = 1;
 var fromView = null;
 var state;
@@ -221,6 +222,8 @@ function Play(
       break;
     case 12:
       state = library.garden;
+      animation = "TreeAnimations";
+      // tree shaking animation
       break;
     case 13:
       state = library.mountain;
@@ -260,6 +263,9 @@ function Play(
                 break;
               case "WalkingAnimations":
                 WalkingAnimations(CarAnimations);
+                break;
+              case "TreeAnimations":
+                TreeAnimations();
                 break;
               default:
                 console.error("Provided animation does not exist");
