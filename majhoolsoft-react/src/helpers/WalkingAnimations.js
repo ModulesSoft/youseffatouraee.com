@@ -1,12 +1,13 @@
 import anime from "animejs";
 function WalkingAnimations() {
+  console.log("walkingg");
+
   anime
     .timeline({ loop: false })
     .add({
       targets: "#walking",
       opacity: 1,
       duration: 2000,
-      delay: 0,
       easing: "easeInExpo",
     })
     .add({
