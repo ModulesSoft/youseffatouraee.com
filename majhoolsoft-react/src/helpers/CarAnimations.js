@@ -19,7 +19,7 @@ function CarAnimations(finishedCallback) {
     targets: "#car, #beam, #sideview",
     translateX: 1050,
     duration: 6000,
-    delay: 5000,
+    // delay: 5000,
     translateY: [
       { value: -1, easing: "linear", duration: 200, delay: 1100 },
       { value: 0, easing: "easeOutBounce", duration: 900 },

@@ -9,6 +9,7 @@ import scrollIconHandler from "./helpers/scrollIconHandler";
 var closeToViewAccuracy = 1;
 var fromView = null;
 var state;
+var animation;
 var once = false;
 
 function Play(
@@ -26,8 +27,7 @@ function Play(
     return console.error("Undefined parameters may cause problems!");
   var library = {
     begin: {
-      view: "-1000 0 800 1080",
-      textPosition: "",
+      view: "590 800 60 60",
     },
     general: {
       view: "0 0 1920 1080",
@@ -152,12 +152,9 @@ function Play(
   });
   // operate animations
   let limitedScroll = scroll - sceneNumber * scrollStage;
-  let animation = null;
   console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
     case 0:
-      state = library.laptopAlone;
-      // check if scrolled remove scroll icon and continue playing animations
       scrollIconHandler(
         ".scroll",
         ".scrollIcon",
@@ -167,13 +164,15 @@ function Play(
         sceneNumber,
         scrollStage / 4,
         () => {
-          animation = "FirstFace";
           state = library.laptop;
+          animation = "FirstFace";
         }
       );
       break;
     case 1:
       state = library.notebookTwo;
+      // change faces for variety
+      // animation = "SecondFace";
       break;
     case 2:
       state = library.notebookOne;
@@ -214,9 +213,6 @@ function Play(
       break;
     case 10:
       state = library.door;
-      // change faces for variety
-      animation = "SecondFace";
-
       break;
     case 11:
       // walking and car animation
@@ -234,7 +230,9 @@ function Play(
       break;
   }
   if (!fromView) {
-    fromView = state.view;
+    // initial state
+    fromView = library.begin.view;
+    IntroTextAnimations().introScene(() => {});
   } else {
     if (state) {
       try {
@@ -245,34 +243,37 @@ function Play(
           stringToArray(state.view),
           closeToViewAccuracy
         );
-        if (animation) {
-          switch (animation) {
-            case "FirstFace":
-              isMobile
-                ? FaceAnimations("#pokerFace", "#smileFace").poker()
-                : FaceAnimations("#pokerFace", "#smileFace").smile();
-              break;
-            case "SecondFace":
-              isMobile
-                ? FaceAnimations("#pokerFace", "#smileFace").smile()
-                : FaceAnimations("#pokerFace", "#smileFace").poker();
-              break;
-            case "WalkingAnimations":
-              preventRepetition(approached) && WalkingAnimations();
-              break;
-            default:
-              console.error("Provided animation does not exist");
-              break;
+        if (preventRepetition(approached)) {
+          console.log(animation);
+          if (animation) {
+            switch (animation) {
+              case "FirstFace":
+                console.log("FirstFace");
+                isMobile
+                  ? FaceAnimations("#pokerFace", "#smileFace").poker()
+                  : FaceAnimations("#pokerFace", "#smileFace").smile();
+                break;
+              case "SecondFace":
+                isMobile
+                  ? FaceAnimations("#pokerFace", "#smileFace").smile()
+                  : FaceAnimations("#pokerFace", "#smileFace").poker();
+                break;
+              case "WalkingAnimations":
+                WalkingAnimations(CarAnimations);
+                break;
+              default:
+                console.error("Provided animation does not exist");
+                break;
+            }
+            animation = null;
           }
-        } else {
-          preventRepetition(approached) &&
-            Typewriter(
-              "article",
-              "text-background",
-              50,
-              state.text,
-              state.textPosition
-            );
+          Typewriter(
+            "article",
+            "text-background",
+            50,
+            state.text,
+            state.textPosition
+          );
         }
         fromView = currentView;
       } catch (e) {
@@ -339,7 +340,7 @@ function Play(
     }
   }
   function initCamera() {
-    Camera(".page", library.laptopAlone.view, "linear");
+    // Camera(".page", library.begin.view, "linear");
   }
   return { initCamera };
 }

@@ -1,7 +1,6 @@
 import anime from "animejs";
-function WalkingAnimations() {
-  console.log("walkingg");
-
+function WalkingAnimations(finishedCallback) {
+  console.log("walking");
   anime
     .timeline({ loop: false })
     .add({
@@ -33,6 +32,14 @@ function WalkingAnimations() {
       translateY: 5,
       duration: 500,
       easing: "spring(1, 80, 10, 0)",
-    });
+    })
+    // .add({
+    //   //to prevent showing again
+    //   targets: "#walking",
+    //   x: 1450,
+    //   opacity: 0,
+    //   easing: "linear",
+    // })
+    .finished.then(finishedCallback);
 }
 export default WalkingAnimations;

@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     // when component did mount:
     scrollToTop();
-    Play(scroll, scrollStage, scene, mobile, width, height, texts).initCamera();
+    // Play(scroll, scrollStage, scene, mobile, width, height, texts).initCamera();
     getScroll(setScroll, setScene, scrollStage);
   }, []); //Be carefull - scroll must not be a dependency!
   // play using scrolling
