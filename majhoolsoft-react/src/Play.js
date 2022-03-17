@@ -19,7 +19,8 @@ function Play(
   width,
   height,
   texts,
-  timeline = 0
+  enterOnce,
+  setEnterOnce
 ) {
   if (isMobile === undefined)
     return console.error("Undefined parameters may cause problems!");
@@ -151,12 +152,11 @@ function Play(
   });
   // operate animations
   let limitedScroll = scroll - sceneNumber * scrollStage;
+  let animation = null;
   console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
     case 0:
-      WalkingAnimations();
-
-      state = library.general;
+      state = library.laptopAlone;
       // check if scrolled remove scroll icon and continue playing animations
       scrollIconHandler(
         ".scroll",
@@ -167,9 +167,7 @@ function Play(
         sceneNumber,
         scrollStage / 4,
         () => {
-          isMobile
-            ? FaceAnimations("#pokerFace", "#smileFace").poker()
-            : FaceAnimations("#pokerFace", "#smileFace").smile();
+          animation = "FirstFace";
           state = library.laptop;
         }
       );
@@ -217,19 +215,19 @@ function Play(
     case 10:
       state = library.door;
       // change faces for variety
-      isMobile
-        ? FaceAnimations("#pokerFace", "#smileFace").smile()
-        : FaceAnimations("#pokerFace", "#smileFace").poker();
+      animation = "SecondFace";
+
       break;
     case 11:
-      state = library.garden;
+      // walking and car animation
+      state = library.general;
+      animation = "WalkingAnimations"; //to prevent multiple run
       break;
     case 12:
-      state = library.mountain;
+      state = library.garden;
       break;
     case 13:
-      // car animation
-      // state = library.general;
+      state = library.mountain;
       break;
     default:
       console.log("scene num : default");
@@ -247,16 +245,35 @@ function Play(
           stringToArray(state.view),
           closeToViewAccuracy
         );
-        // console.log(`once ${once} approached ${approached} prevent ${preventRepetition(approached)}`);
-        preventRepetition(approached) &&
-          Typewriter(
-            "article",
-            "text-background",
-            50,
-            state.text,
-            state.textPosition
-          );
-
+        if (animation) {
+          switch (animation) {
+            case "FirstFace":
+              isMobile
+                ? FaceAnimations("#pokerFace", "#smileFace").poker()
+                : FaceAnimations("#pokerFace", "#smileFace").smile();
+              break;
+            case "SecondFace":
+              isMobile
+                ? FaceAnimations("#pokerFace", "#smileFace").smile()
+                : FaceAnimations("#pokerFace", "#smileFace").poker();
+              break;
+            case "WalkingAnimations":
+              preventRepetition(approached) && WalkingAnimations();
+              break;
+            default:
+              console.error("Provided animation does not exist");
+              break;
+          }
+        } else {
+          preventRepetition(approached) &&
+            Typewriter(
+              "article",
+              "text-background",
+              50,
+              state.text,
+              state.textPosition
+            );
+        }
         fromView = currentView;
       } catch (e) {
         console.error("is it first render?" + e);
@@ -295,7 +312,6 @@ function Play(
     return closeArray.filter((t) => t === true).length === 2;
   }
   function preventRepetition(boolean) {
-    console.log("umd");
     if (boolean) {
       // has not been triggered
       if (!once) {
@@ -323,8 +339,7 @@ function Play(
     }
   }
   function initCamera() {
-    // Camera(".page", library.laptopAlone.view, "linear");
-    Camera(".page", library.general.view, "linear");
+    Camera(".page", library.laptopAlone.view, "linear");
   }
   return { initCamera };
 }
