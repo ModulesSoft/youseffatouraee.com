@@ -1,5 +1,6 @@
 import anime from "animejs";
 function FaceAnimations(pokerFace, smileFace) {
+  console.log("face");
   function poker() {
     anime
       .timeline({ loop: false })
