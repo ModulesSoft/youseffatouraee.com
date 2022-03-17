@@ -5,7 +5,7 @@ import Camera from "./helpers/lib/Camera";
 import Typewriter from "./helpers/lib/Typewriter";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
-import scrollIconHandler from "./helpers/scrollIconHandler";
+import scrollIconHandler from "./helpers/lib/scrollIconHandler";
 var closeToViewAccuracy = 1;
 var fromView = null;
 var state;
@@ -121,7 +121,7 @@ function Play(
           },
     },
     garden: {
-      view: isMobile ? "758 550 600 420" : "758 550 600 420",
+      view: isMobile ? "1258 550 600 420" : "1258 550 600 420",
       textPosition: {
         x: 16,
         y: `${(10 / 100) * height}`,

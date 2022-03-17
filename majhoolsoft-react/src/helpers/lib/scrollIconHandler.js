@@ -1,4 +1,4 @@
-import IntroTextAnimations from "./IntroTextAnimations";
+import IntroTextAnimations from "../IntroTextAnimations";
 function scrollIconHandler(
   scrollClass,
   scrollIconClass,

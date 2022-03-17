@@ -8,7 +8,7 @@ import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import GarageDoor from "./components/GarageDoor";
 import ScrollDown from "./components/ScrollDown";
-import getScroll from "./helpers/GetScroll";
+import getScroll from "./helpers/lib/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
 import GetTextArray from "./components/GetTextArray";
