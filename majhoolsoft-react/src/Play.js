@@ -32,7 +32,7 @@ function Play(
       view: "0 0 1920 1080",
     },
     walking: {
-      view: "300 0 1620 1080",
+      view: isMobile ? "800 0 1120 1080" : "300 0 1620 1080",
     },
     door: {
       view: isMobile
