@@ -165,7 +165,7 @@ function Play(
         scrollStage,
         0,
         sceneNumber,
-        scrollStage / 4,
+        scrollStage / 2,
         () => {
           state = library.laptop;
           animation = "FirstFace";
@@ -206,7 +206,7 @@ function Play(
         scrollStage,
         0,
         sceneNumber,
-        scrollStage / 4,
+        scrollStage / 2,
         () => {
           state = library.microphone;
         }
