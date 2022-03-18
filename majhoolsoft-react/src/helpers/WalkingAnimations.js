@@ -5,8 +5,8 @@ function WalkingAnimations(finishedCallback) {
     .timeline({ loop: false })
     .add({
       targets: "#walking",
-      translateX: 880,
-      duration: 7000,
+      translateX: 550,
+      duration: 4500,
       easing: "linear",
     })
     .add({

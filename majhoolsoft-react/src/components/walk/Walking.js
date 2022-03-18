@@ -1,6 +1,6 @@
 function Walking() {
   return (
-    <svg className="" x="600" y="850">
+    <svg className="" x="900" y="850">
       <g id="walking">
         <defs>
           <circle id="circle" cx="50" cy="50" r="50"></circle>
