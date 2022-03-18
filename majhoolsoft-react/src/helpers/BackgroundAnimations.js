@@ -38,14 +38,6 @@ function BackgroundAnimations() {
         },
         "-=4000"
       );
-    // turn off the head lights
-    anime({
-      targets: "#beam",
-      duration: 500,
-      opacity: 0,
-      easing: "easeOutQuad",
-      delay: 10000,
-    });
     // to prevent appearing again
     anime({
       targets: "#darkness",
