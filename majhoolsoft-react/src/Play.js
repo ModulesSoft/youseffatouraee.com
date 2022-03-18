@@ -7,7 +7,7 @@ import CarAnimations from "./helpers/CarAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
-// import BackgroundAnimations from "./helpers/BackgroundAnimations";
+import BackgroundAnimations from "./helpers/BackgroundAnimations";
 var closeToViewAccuracy = 5;
 var fromView = null;
 var state;
@@ -214,16 +214,20 @@ function Play(
       state = library.door;
       break;
     case 11:
+      state = library.general;
+      animation = "BackgroundAnimations";
+      break;
+    case 12:
       // walking and car animation
       state = library.general;
       animation = "WalkingAnimations"; //to prevent multiple run
       break;
-    case 12:
+    case 13:
       state = library.garden;
       animation = "TreeAnimations";
       // tree shaking animation
       break;
-    case 13:
+    case 14:
       state = library.mountain;
       animation = "FlagAnimations";
       break;
@@ -237,9 +241,10 @@ function Play(
      to debug animations and debug with the general view.
     */
 
-    fromView = library.general.view;
-    IntroTextAnimations().introScene(() => {});
-    // Camera(".page", library.general.view, "linear");
+    // fromView = library.general.view;
+    // IntroTextAnimations().introScene(() => {});
+    Camera(".page", library.general.view, "linear");
+    BackgroundAnimations();
   } else {
     if (state) {
       try {
@@ -266,6 +271,9 @@ function Play(
                 break;
               case "WalkingAnimations":
                 WalkingAnimations(CarAnimations);
+                break;
+              case "BackgroundAnimations":
+                BackgroundAnimations();
                 break;
               case "TreeAnimations":
                 TreeAnimations();
