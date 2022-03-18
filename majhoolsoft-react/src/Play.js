@@ -217,10 +217,11 @@ function Play(
       break;
     case 10:
       state = library.door;
+      animation = "night";
       break;
     case 11:
       state = library.general;
-      animation = "BackgroundAnimations";
+      animation = "day";
       break;
     case 12:
       // walking and car animation
@@ -274,8 +275,11 @@ function Play(
               case "WalkingAnimations":
                 WalkingAnimations(CarAnimations);
                 break;
-              case "BackgroundAnimations":
-                BackgroundAnimations();
+              case "day":
+                BackgroundAnimations().day();
+                break;
+              case "night":
+                BackgroundAnimations().night();
                 break;
               case "TreeAnimations":
                 TreeAnimations();

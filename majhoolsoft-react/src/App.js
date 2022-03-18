@@ -46,7 +46,7 @@ function App() {
           <GarageDoor scrollY={scene >= 10 && scroll - 10 * scrollStage} />
           <Sideview />
           <Car />
-          {/* <Darkness /> */}
+          <Darkness />
           <LightBeam />
         </svg>
         <div className="decorative">
