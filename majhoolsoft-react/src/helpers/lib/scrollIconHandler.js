@@ -5,6 +5,7 @@ function scrollIconHandler(
   scrollTextClass,
   scroll,
   scrollStage,
+  delay,
   sceneNumber,
   threshold,
   callbackfn
@@ -16,7 +17,8 @@ function scrollIconHandler(
     IntroTextAnimations().addScroll(
       scrollClass,
       scrollIconClass,
-      scrollTextClass
+      scrollTextClass,
+      delay
     );
   } else {
     IntroTextAnimations().removeScroll(scrollClass, scrollTextClass);

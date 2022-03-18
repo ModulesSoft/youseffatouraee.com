@@ -56,10 +56,11 @@
 }
 .intro {
   position: absolute;
-  margin-top: 2rem;
   color: white;
-  margin-left: 2rem;
+  padding: 2rem;
   font-size: 2rem;
+  width: 100%;
+  height: 100%;
 }
 .hi,
 .welcome,
