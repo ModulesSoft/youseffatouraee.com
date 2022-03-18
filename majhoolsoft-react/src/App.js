@@ -13,7 +13,7 @@ import Garage from "./components/Garage";
 import Play from "./Play";
 import GetTextArray from "./components/GetTextArray";
 import scrollToTop from "./helpers/lib/ScrollToTop";
-const scrollStage = 20;
+const scrollStage = 10;
 const texts = GetTextArray();
 function App() {
   // get window properties
