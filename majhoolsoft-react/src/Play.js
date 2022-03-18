@@ -6,13 +6,13 @@ import WalkingAnimations from "./helpers/WalkingAnimations";
 import CarAnimations from "./helpers/CarAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
+import FlagAnimations from "./helpers/FlagAnimations";
 // import BackgroundAnimations from "./helpers/BackgroundAnimations";
-var closeToViewAccuracy = 1;
+var closeToViewAccuracy = 5;
 var fromView = null;
 var state;
 var animation;
 var once = false;
-
 function Play(
   scroll = 0,
   scrollStage = 20,
@@ -20,11 +20,9 @@ function Play(
   isMobile,
   width,
   height,
-  texts,
-  enterOnce,
-  setEnterOnce
+  texts
 ) {
-  if (isMobile === undefined)
+  if (isMobile === undefined || isMobile === null)
     return console.error("Undefined parameters may cause problems!");
   var library = {
     begin: {
@@ -122,7 +120,7 @@ function Play(
           },
     },
     garden: {
-      view: isMobile ? "1258 550 600 420" : "1258 550 600 420",
+      view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
       textPosition: {
         x: 16,
         y: `${(10 / 100) * height}`,
@@ -227,15 +225,21 @@ function Play(
       break;
     case 13:
       state = library.mountain;
+      animation = "FlagAnimations";
       break;
     default:
       console.log("scene num : default");
       break;
   }
   if (!fromView) {
-    // initial state
-    fromView = library.begin.view;
+    /* initial state
+     comment 2 first lines and set the Camera to general 
+     to debug animations and debug with the general view.
+    */
+
+    fromView = library.general.view;
     IntroTextAnimations().introScene(() => {});
+    // Camera(".page", library.general.view, "linear");
   } else {
     if (state) {
       try {
@@ -247,7 +251,6 @@ function Play(
           closeToViewAccuracy
         );
         if (preventRepetition(approached)) {
-          console.log(animation);
           if (animation) {
             switch (animation) {
               case "FirstFace":
@@ -266,6 +269,9 @@ function Play(
                 break;
               case "TreeAnimations":
                 TreeAnimations();
+                break;
+              case "FlagAnimations":
+                FlagAnimations();
                 break;
               default:
                 console.error("Provided animation does not exist");
