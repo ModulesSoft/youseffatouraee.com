@@ -31,6 +31,9 @@ function Play(
     general: {
       view: "0 0 1920 1080",
     },
+    walking: {
+      view: "300 0 1620 1080",
+    },
     door: {
       view: isMobile
         ? `262 ${1080 - height} ${width} ${height}`
@@ -219,7 +222,7 @@ function Play(
       break;
     case 12:
       // walking and car animation
-      state = library.general;
+      state = library.walking;
       animation = "WalkingAnimations"; //to prevent multiple run
       break;
     case 13:
@@ -241,10 +244,10 @@ function Play(
      to debug animations and debug with the general view.
     */
 
-    // fromView = library.general.view;
-    // IntroTextAnimations().introScene(() => {});
-    Camera(".page", library.general.view, "linear");
-    BackgroundAnimations();
+    fromView = library.general.view;
+    IntroTextAnimations().introScene(() => {});
+    // Camera(".page", library.general.view, "linear");
+    // BackgroundAnimations();
   } else {
     if (state) {
       try {

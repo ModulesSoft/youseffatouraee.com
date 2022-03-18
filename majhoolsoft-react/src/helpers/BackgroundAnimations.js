@@ -37,15 +37,12 @@ function BackgroundAnimations() {
       },
       "-=3000"
     )
-    .add(
-      {
-        targets: ".page",
-        "background-image": "linear-gradient(#87ceeb, #2a7936)",
-        duration: 2000,
-        easing: "linear",
-      },
-      "-=4500"
-    );
+    .add({
+      targets: ".page",
+      backgroundColor: "#87CEEB",
+      duration: 2000,
+      easing: "linear",
+    });
 
   //thread four (headlights):
   // turn off the head lights
