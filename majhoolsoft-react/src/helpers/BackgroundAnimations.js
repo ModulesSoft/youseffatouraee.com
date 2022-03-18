@@ -10,7 +10,7 @@ function BackgroundAnimations() {
         translateY: "-650px",
         easing: "easeOutQuad",
       },
-      6000 //delay to start
+      1000 //delay to start
     )
     // clouds come up
     .add({
