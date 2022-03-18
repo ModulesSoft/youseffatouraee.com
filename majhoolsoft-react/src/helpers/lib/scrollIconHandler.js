@@ -21,7 +21,12 @@ function scrollIconHandler(
       delay
     );
   } else {
-    IntroTextAnimations().removeScroll(scrollClass, scrollTextClass);
+    IntroTextAnimations().removeScroll(
+      scrollClass,
+      scrollIconClass,
+      scrollTextClass,
+      delay
+    );
     callbackfn();
   }
 }

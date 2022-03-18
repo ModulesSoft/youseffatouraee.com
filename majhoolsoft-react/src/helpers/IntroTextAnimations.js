@@ -20,14 +20,14 @@ function IntroTextAnimations() {
   function addScroll(scrollClass, scrollIconClass, scrollTextClass, delay = 0) {
     anime({
       targets: [scrollClass, scrollTextClass],
-      duration: 2000,
+      duration: 0,
       easing: "easeInExpo",
       opacity: 1,
       delay,
     });
     anime({
       targets: scrollIconClass,
-      duration: 2000,
+      duration: 0,
       easing: "easeInExpo",
       opacity: 0.6,
     });
@@ -39,9 +39,10 @@ function IntroTextAnimations() {
       easing: "spring(1, 80, 10, 0)",
     });
   }
-  function removeScroll(scrollClass, scrollTextClass) {
+  function removeScroll(scrollClass, scrollIconClass, scrollTextClass) {
     anime({
-      targets: [scrollClass, scrollTextClass],
+      targets: [scrollClass, scrollIconClass, scrollTextClass],
+      duration: 0,
       opacity: 0,
     });
   }

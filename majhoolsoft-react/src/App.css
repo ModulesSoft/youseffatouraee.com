@@ -66,6 +66,7 @@
 .welcome,
 .download {
   opacity: 0;
+  top: 10%;
 }
 .download {
   position: fixed;
