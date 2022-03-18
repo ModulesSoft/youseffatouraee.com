@@ -4,6 +4,8 @@ import House from "./House";
 import Walking from "./walk/Walking";
 import Sun from "./Sun";
 import Clouds from "./Clouds";
+import Flag from "./Flag";
+
 function Background() {
   useEffect(() => {
     anime({
@@ -505,6 +507,7 @@ function Background() {
         <Walking />
         {/* location of the house */}
         <House />
+        <Flag />
       </g>
     </svg>
   );
