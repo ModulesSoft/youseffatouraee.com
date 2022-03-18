@@ -163,6 +163,7 @@ function Play(
         ".scrollResume",
         scroll,
         scrollStage,
+        4000,
         sceneNumber,
         scrollStage / 4,
         () => {
@@ -203,6 +204,7 @@ function Play(
         ".scrollHobbies",
         scroll,
         scrollStage,
+        0,
         sceneNumber,
         scrollStage / 4,
         () => {
@@ -240,14 +242,11 @@ function Play(
   }
   if (!fromView) {
     /* initial state
-     comment 2 first lines and set the Camera to general 
+     comment first line and set the Camera to general 
      to debug animations and debug with the general view.
     */
-
-    fromView = library.general.view;
-    IntroTextAnimations().introScene(() => {});
+    fromView = library.begin.view;
     // Camera(".page", library.general.view, "linear");
-    // BackgroundAnimations();
   } else {
     if (state) {
       try {
@@ -363,7 +362,7 @@ function Play(
     }
   }
   function initCamera() {
-    // Camera(".page", library.begin.view, "linear");
+    IntroTextAnimations().introScene();
   }
   return { initCamera };
 }

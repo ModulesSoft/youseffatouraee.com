@@ -2,7 +2,7 @@ import anime from "animejs";
 function IntroTextAnimations() {
   function introScene(finishedCallback) {
     anime({
-      targets: [".hi", ".welcome", ".download"],
+      targets: ".hi,.welcome,.download",
       keyframes: [
         {
           opacity: 1,
@@ -15,14 +15,15 @@ function IntroTextAnimations() {
           delay: anime.stagger(2000, { start: 4000, direction: "reverse" }),
         },
       ],
-    }).finished.then(addScroll(".scrollResume", finishedCallback, 15000));
+    }).finished.then(finishedCallback);
   }
-  function addScroll(scrollClass, scrollIconClass, scrollTextClass) {
+  function addScroll(scrollClass, scrollIconClass, scrollTextClass, delay = 0) {
     anime({
       targets: [scrollClass, scrollTextClass],
-      duration: 1000,
+      duration: 2000,
       easing: "easeInExpo",
       opacity: 1,
+      delay,
     });
     anime({
       targets: scrollIconClass,

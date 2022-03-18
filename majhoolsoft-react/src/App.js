@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     // when component did mount:
     scrollToTop();
-    // Play(scroll, scrollStage, scene, mobile, width, height, texts).initCamera();
+    Play(scroll, scrollStage, scene, mobile, width, height, texts).initCamera();
     getScroll(setScroll, setScene, scrollStage);
   }, []); //Be carefull - scroll must not be a dependency!
   // play using scrolling
@@ -53,9 +53,9 @@ function App() {
           <div className="intro">
             <p className="hi">
               Hi,
-              <br /> I'm Yousef Fatouraee
+              <br /> My name is Yousef Fatouraee
             </p>
-            <p className="welcome">Ride with me to my world!</p>
+            <p className="welcome">welcome to my scrolling world!</p>
             <p className="download">
               or <a href="/">download</a> resume
             </p>
