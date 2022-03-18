@@ -1,5 +1,12 @@
 import anime from "animejs";
 function CarAnimations(finishedCallback) {
+  // turn off the head lights
+  anime({
+    targets: "#beam",
+    duration: 0,
+    opacity: 0,
+    easing: "easeOutQuad",
+  });
   anime({
     targets: "#rear-wheel , #front-wheel",
     rotate: [{ value: "21turn", duration: 11000 }],
