@@ -163,7 +163,7 @@ function Play(
         ".scrollResume",
         scroll,
         scrollStage,
-        4000,
+        0,
         sceneNumber,
         scrollStage / 4,
         () => {
@@ -245,7 +245,7 @@ function Play(
      comment first line and set the Camera to general 
      to debug animations and debug with the general view.
     */
-    fromView = library.begin.view;
+    fromView = library.door.view;
     // Camera(".page", library.general.view, "linear");
   } else {
     if (state) {
