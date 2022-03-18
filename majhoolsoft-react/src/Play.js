@@ -128,7 +128,7 @@ function Play(
       },
     },
     mountain: {
-      view: isMobile ? "1038 250 600 420" : "888 250 600 420",
+      view: isMobile ? "1000 250 600 420" : "888 150 600 420",
       textPosition: {
         x: 16,
         y: `${(90 / 100) * height}`,
