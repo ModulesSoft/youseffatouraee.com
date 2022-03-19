@@ -2395,15 +2395,11 @@ function Garage() {
               https://persoulio.com
             </tspan>
             <tspan fill="#31475e">
-              <tspan
-                onClick={() => {
-                  window.location.href = "http://www.w3schools.com";
-                }}
-                x="0"
-                y="10.25"
-              >
-                https://majhoolsoft.com
-              </tspan>
+              <a href="https://developer.mozilla.org/">
+                <tspan x="0" y="10.25">
+                  https://majhoolsoft.com
+                </tspan>
+              </a>
             </tspan>
           </text>
           <text

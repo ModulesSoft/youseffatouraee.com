@@ -123,6 +123,9 @@ article,
 #darkness {
   opacity: 0;
 }
+#garage {
+  z-index: 10;
+}
 @media screen and (max-width: 768px) {
   .container {
     font-size: 1rem;

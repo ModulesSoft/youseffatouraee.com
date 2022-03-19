@@ -168,6 +168,7 @@ function Play(
         sceneNumber,
         scrollStage / 3,
         () => {
+          removeSVGOverlays();
           state = library.laptop;
           animation = "FirstFace";
         }
@@ -194,9 +195,11 @@ function Play(
       state = library.frontEndTwo;
       break;
     case 7:
+      removeSVGOverlays();
       state = library.backEndOne;
       break;
     case 8:
+      addSVGOverlays();
       state = library.backEndOneAlone;
       // hobbies
       scrollIconHandler(
@@ -209,6 +212,7 @@ function Play(
         sceneNumber,
         scrollStage / 3,
         () => {
+          removeSVGOverlays();
           state = library.microphone;
         }
       );
@@ -217,6 +221,7 @@ function Play(
       state = library.motorcycle;
       break;
     case 10:
+      addSVGOverlays();
       state = library.door;
       animation = "night";
       break;
@@ -230,6 +235,7 @@ function Play(
       animation = "WalkingAnimations"; //to prevent multiple run
       break;
     case 13:
+      removeSVGOverlays();
       state = library.garden;
       animation = "TreeAnimations";
       // tree shaking animation
@@ -365,6 +371,18 @@ function Play(
     if (string) {
       return string.split(" ").map(Number);
     }
+  }
+  function removeSVGOverlays() {
+    if (document.getElementById("decorative"))
+      document.getElementById("decorative").style.visibility = "hidden";
+    if (document.getElementById("darkness"))
+      document.getElementById("darkness").style.visibility = "hidden";
+  }
+  function addSVGOverlays() {
+    if (document.getElementById("decorative"))
+      document.getElementById("decorative").style.visibility = "";
+    if (document.getElementById("darkness"))
+      document.getElementById("darkness").style.visibility = "";
   }
   function initCamera() {
     IntroTextAnimations().introScene();
