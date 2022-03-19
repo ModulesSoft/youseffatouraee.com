@@ -26,7 +26,7 @@ function Play(
     return console.error("Undefined parameters may cause problems!");
   var library = {
     begin: {
-      view: "590 800 60 60",
+      view: "590 800 5 5",
     },
     general: {
       view: "0 0 1920 1080",
@@ -38,6 +38,7 @@ function Play(
       view: isMobile
         ? `262 ${1080 - height} ${width} ${height}`
         : "262 800 400 240",
+      textPosition: { x: 0, y: 0, width: 0 },
     },
     laptopAlone: {
       view: "590 920 60 60",
@@ -246,7 +247,7 @@ function Play(
      comment first line and set the Camera to general 
      to debug animations and debug with the general view.
     */
-    fromView = library.door.view;
+    fromView = library.begin.view;
     // Camera(".page", library.general.view, "linear");
   } else {
     if (state) {
@@ -367,6 +368,7 @@ function Play(
   }
   function initCamera() {
     IntroTextAnimations().introScene();
+    Camera(".page", library.begin.view, "linear");
   }
   return { initCamera };
 }

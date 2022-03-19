@@ -7,7 +7,6 @@ import Background from "./components/Background";
 import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import GarageDoor from "./components/GarageDoor";
-import ScrollDown from "./components/ScrollDown";
 import getScroll from "./helpers/lib/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
@@ -49,25 +48,6 @@ function App() {
           <Darkness />
           <LightBeam />
         </svg>
-        <div className="decorative">
-          <div className="intro">
-            <p className="hi">
-              Hi,
-              <br /> My name is Yousef Fatouraee
-            </p>
-            <p className="welcome">welcome to my scrolling world!</p>
-            <p className="download">
-              or <a href="/">download</a> resume
-            </p>
-          </div>
-          <div className="scroll">
-            <ScrollDown />
-            <p className="scrollResume scrollText">Scroll Down</p>
-            <p className="scrollHobbies scrollText">
-              Scroll Down to see my hobbies
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

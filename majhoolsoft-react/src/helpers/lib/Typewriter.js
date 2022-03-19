@@ -10,7 +10,7 @@ function Typewriter(
 ) {
   // positioning
   anime({
-    targets: ".article",
+    targets: "." + pageClass,
     translateX: position.x,
     translateY: position.y,
     width: position.width,

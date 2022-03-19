@@ -26,12 +26,27 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <style>
-      .article{
-        /* debug - to prevent first page load texts */
-        opacity: 0;
-      }
-    </style>
+    <div class="decorative">
+      <div class="scroll">
+        <img src="scrollIcon.svg" alt="" class="scrollIcon">
+        <p class="scrollResume scrollText">Scroll Down</p>
+        <p class="scrollHobbies scrollText">
+          Scroll Down to see my hobbies
+        </p>
+      </div>
+      <div class="intro">
+        <p class="hi">
+          Hi,
+          <br />
+        </p>
+        <p class="welcome">My name is Yousef Fatouraee</p>
+        <p class="download">
+          or
+          <a href="https://majhoolsoft.com/">download</a>
+          resume
+        </p>
+      </div>
+    </div>
     <article class="article">
       <div class="resume">
         <div id="laptop">
@@ -111,5 +126,12 @@
         </div>
       </div>
     </article>
+     
+    <style>
+      .article {
+        /* debug - to prevent first page load texts */
+        opacity: 0;
+      }
+    </style>
   </body>
 </html>
