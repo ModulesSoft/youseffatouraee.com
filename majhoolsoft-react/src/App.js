@@ -18,13 +18,7 @@ function App() {
   // get window properties
   const { height, width } = useWindowDimensions();
   const mobile = width < height;
-  const size = mobile
-    ? {
-        height: height,
-      }
-    : {
-        width: width,
-      };
+  const size = mobile ? { height: height } : { width: width };
   let [scroll, setScroll] = useState(0);
   let [scene, setScene] = useState(0);
   useEffect(() => {
