@@ -186,7 +186,7 @@ function Desk() {
           <g
             id="laptop-back"
             data-name="Group 186"
-            transform="translate(-20.387 .501)"
+            transform="translate(-20.387 -0.6)"
           >
             <path
               fill="#656565"
@@ -199,7 +199,7 @@ function Desk() {
             <path
               fill="#727272"
               d="M1073.571-1402.75h-28.3v-2.017h28.3v2.017"
-              transform="translate(-1024.865 1422.604)"
+              transform="translate(-1024.865 1423)"
             ></path>
           </g>
           <g
@@ -329,7 +329,7 @@ function Desk() {
                 </g>
               </g>
             </g>
-            <g transform="translate(13.5 9)">
+            <g id="js" transform="translate(-12 8)">
               <path
                 fill="#ffd600"
                 d="M-27 31v-2h2v2z"
