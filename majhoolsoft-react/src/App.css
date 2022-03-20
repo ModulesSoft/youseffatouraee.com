@@ -153,3 +153,6 @@ article,
     font-size: 1.5rem;
   }
 }
+.path {
+  stroke-dasharray: 100;
+}
