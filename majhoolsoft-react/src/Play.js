@@ -39,7 +39,7 @@ function Play(
       view: isMobile
         ? `262 ${1080 - height} ${width} ${height}`
         : "262 800 400 240",
-      textPosition: { x: 0, y: 0, width: 0 },
+      textPosition: { x: 0, y: height, width: 0 },
     },
     laptopAlone: {
       view: "590 920 60 60",
@@ -128,8 +128,8 @@ function Play(
       view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
       textPosition: {
         x: 16,
-        y: `${(10 / 100) * height}`,
-        width: `${(1 / 2) * width}`,
+        y: `${(90 / 100) * height}`,
+        width: `${width - 16}`,
       },
     },
     mountain: {
@@ -390,8 +390,9 @@ function Play(
     SvgLinksAnimations("#motorcycle");
     SvgLinksAnimations("#microphone");
     SvgLinksAnimations("#aut");
+    SvgLinksAnimations("#treeOne");
     SvgLinksAnimations("#treeTwo");
-    Camera(".page", library.door.view, "linear");
+    Camera(".page", library.begin.view, "linear");
   }
   return { initCamera };
 }
