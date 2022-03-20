@@ -374,6 +374,7 @@ function Play(
     }
   }
   function removeSVGOverlays() {
+    document.getElementById("intro").style.visibility = "hidden";
     if (document.getElementById("decorative"))
       document.getElementById("decorative").style.visibility = "hidden";
     if (document.getElementById("darkness"))
