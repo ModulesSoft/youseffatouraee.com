@@ -313,7 +313,7 @@ function Garage() {
             transform="translate(-108.517 -379.846)"
           ></path>
         </g>
-        <a href="https://majhoolsoft.com">
+        <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmg3p82mr6h09pByA1qbUft">
           <g id="motorcycle" stroke="blue" transform="translate(20 44)">
             <path
               fill="#a59585"
@@ -2381,23 +2381,33 @@ function Garage() {
             letterSpacing=".04em"
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 8.625)"
           >
-            <tspan x="0" y="0">
-              https://www.deedban.net
-            </tspan>
-            <tspan x="0" y="2.05">
-              https://biofluids.aut.ac.ir
-            </tspan>
-            <tspan x="0" y="4.1">
-              https://icbme.ir
-            </tspan>
-            <tspan x="0" y="6.15">
-              https://azarshiga.com
-            </tspan>
-            <tspan x="0" y="8.2">
-              https://persoulio.com
-            </tspan>
+            <a href="https://www.deedban.net">
+              <tspan x="0" y="0">
+                https://www.deedban.net
+              </tspan>
+            </a>
+            <a href="https://biofluids.aut.ac.ir">
+              <tspan x="0" y="2.05">
+                https://biofluids.aut.ac.ir
+              </tspan>
+            </a>
+            <a href="https://icbme.ir">
+              <tspan x="0" y="4.1">
+                https://icbme.ir
+              </tspan>
+            </a>
+            <a href="https://azarshiga.com">
+              <tspan x="0" y="6.15">
+                https://azarshiga.com
+              </tspan>
+            </a>
+            <a href="https://persoulio.com">
+              <tspan x="0" y="8.2">
+                https://persoulio.com
+              </tspan>
+            </a>
             <tspan fill="#31475e">
-              <a href="https://developer.mozilla.org/">
+              <a href="https://majhoolsoft.com">
                 <tspan x="0" y="10.25">
                   https://majhoolsoft.com
                 </tspan>
@@ -2943,7 +2953,7 @@ function Garage() {
             ></path>
           </g>
         </g>
-        <a href="https://majhoolsoft.com">
+        <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmtzksQp5IjbJV5k_rNS7Q5">
           <g id="microphone" stroke="blue" transform="translate(136)">
             <path
               fill="#0f0f0f"

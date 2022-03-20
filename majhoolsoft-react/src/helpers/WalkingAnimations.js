@@ -1,6 +1,5 @@
 import anime from "animejs";
 function WalkingAnimations(finishedCallback) {
-  console.log("walking");
   anime
     .timeline({ loop: false })
     .add({

@@ -156,7 +156,6 @@ function Play(
   });
   // operate animations
   let limitedScroll = scroll - sceneNumber * scrollStage;
-  console.log("scene num : " + sceneNumber);
   switch (sceneNumber) {
     case 0:
       scrollIconHandler(
@@ -246,16 +245,12 @@ function Play(
       animation = "FlagAnimations";
       break;
     default:
-      console.log("scene num : default");
+      // console.log("scene num : default");
       break;
   }
   if (!fromView) {
-    /* initial state
-     comment first line and set the Camera to general 
-     to debug animations and debug with the general view.
-    */
+    // initial state
     fromView = library.begin.view;
-    // Camera(".page", library.general.view, "linear");
   } else {
     if (state) {
       try {
@@ -270,7 +265,6 @@ function Play(
           if (animation) {
             switch (animation) {
               case "FirstFace":
-                console.log("FirstFace");
                 isMobile
                   ? FaceAnimations("#pokerFace", "#smileFace").poker()
                   : FaceAnimations("#pokerFace", "#smileFace").smile();
