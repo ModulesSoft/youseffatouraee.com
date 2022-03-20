@@ -8,6 +8,7 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
+import SvgLinksAnimations from "./helpers/SvgLinksAnimations";
 var closeToViewAccuracy = 5;
 var fromView = null;
 var state;
@@ -128,7 +129,7 @@ function Play(
       textPosition: {
         x: 16,
         y: `${(10 / 100) * height}`,
-        width: `${width - 16}`,
+        width: `${(1 / 2) * width}`,
       },
     },
     mountain: {
@@ -386,7 +387,11 @@ function Play(
   }
   function initCamera() {
     IntroTextAnimations().introScene();
-    Camera(".page", library.begin.view, "linear");
+    SvgLinksAnimations("#motorcycle");
+    SvgLinksAnimations("#microphone");
+    SvgLinksAnimations("#aut");
+    SvgLinksAnimations("#treeTwo");
+    Camera(".page", library.door.view, "linear");
   }
   return { initCamera };
 }
