@@ -1,6 +1,5 @@
 import anime from "animejs";
 function TreeAnimations(finishedCallback) {
-  console.log("tree");
   anime({
     targets: "#treeOne",
     transformOrigin: "125px 250px 0",

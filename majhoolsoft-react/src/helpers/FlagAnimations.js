@@ -1,6 +1,5 @@
 import anime from "animejs";
 function FlagAnimations(finishedCallback) {
-  console.log("flag");
   anime
     .timeline({ loop: false })
     .add({

@@ -1,5 +1,5 @@
 import anime from "animejs";
-function CarAnimations(finishedCallback) {
+function CarAnimations() {
   // turn off the head lights
   anime({
     targets: "#beam",
@@ -34,7 +34,11 @@ function CarAnimations(finishedCallback) {
       { value: 0, easing: "easeOutBounce" },
     ],
     easing: "easeOutQuad",
-  }).finished.then(finishedCallback);
+  }).finished.then(() => {
+    document.getElementById("#car").style.visibility = "hidden";
+    document.getElementById("#beam").style.visibility = "hidden";
+    document.getElementById("#sideview").style.visibility = "hidden";
+  });
 }
 
 export default CarAnimations;
