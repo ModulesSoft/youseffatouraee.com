@@ -1,4 +1,14 @@
 {
-    "display": "standalone",
-    "orientation": "landscape"
+  "short_name": "Yousef Fatouraee",
+  "name": "Profile",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "blue",
+  "background_color": "red"
 }
