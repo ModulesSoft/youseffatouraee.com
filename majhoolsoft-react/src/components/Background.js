@@ -341,7 +341,7 @@ function Background() {
           </g>
           <g transform="translate(1238 739.265)">
             <a href="https://majhoolsoft.com">
-              <g id="treeOne">
+              <g id="treeOne" stroke="blue">
                 <g fillRule="evenodd">
                   <path
                     fill="#034b04"
