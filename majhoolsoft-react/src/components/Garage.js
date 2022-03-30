@@ -314,7 +314,7 @@ function Garage() {
           ></path>
         </g>
         <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmg3p82mr6h09pByA1qbUft">
-          <g id="motorcycle" stroke="blue" transform="translate(20 44)">
+          <g id="motorcycle" transform="translate(20 44)">
             <path
               fill="#a59585"
               d="M1271.66 657.36a2.052 2.052 0 01.127 1.142c-.167.372-2.494 2.648-3.689 1.938l2.438-3.275c.004-.017.854-.499 1.124.195z"
@@ -2804,7 +2804,7 @@ function Garage() {
             letterSpacing=".01em"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(.265 9.989)"
           >
-            <tspan id="aut" stroke="blue" x="0" y="0">
+            <tspan id="aut" x="0" y="0">
               <a href="https://www.usnews.com/education/best-global-universities/amirkabir-university-of-technology-aut-506266">
                 Amirkabir University of Technology
               </a>
@@ -2954,7 +2954,7 @@ function Garage() {
           </g>
         </g>
         <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmtzksQp5IjbJV5k_rNS7Q5">
-          <g id="microphone" stroke="blue" transform="translate(136)">
+          <g id="microphone" transform="translate(136)">
             <path
               fill="#0f0f0f"
               fillRule="evenodd"

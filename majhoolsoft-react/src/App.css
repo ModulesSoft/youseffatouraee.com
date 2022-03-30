@@ -126,6 +126,26 @@ article,
 #garage {
   z-index: 10;
 }
+.page a {
+  stroke: blue;
+  stroke-width: 0.004rem;
+  text-decoration: underline;
+}
+.page a:hover {
+  stroke-width: 0.01rem;
+}
+#treeOne,
+#treeTwo,
+#motorcycle,
+#microphone {
+  stroke-width: 0.02rem;
+}
+#treeOne:hover,
+#treeTwo:hover,
+#motorcycle:hover,
+#microphone:hover {
+  stroke-width: 0.05rem;
+}
 @media screen and (max-width: 768px) {
   .container {
     font-size: 1rem;

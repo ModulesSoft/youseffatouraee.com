@@ -341,7 +341,7 @@ function Background() {
           </g>
           <g transform="translate(1238 739.265)">
             <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEnRwi8dKKNkGEe4SlggJqsl">
-              <g id="treeOne" stroke="blue">
+              <g id="treeOne">
                 <g fillRule="evenodd">
                   <path
                     fill="#034b04"
@@ -415,7 +415,7 @@ function Background() {
                   ></path>
                 </g>
               </g>
-              <g id="treeTwo" stroke="blue">
+              <g id="treeTwo">
                 <g fillRule="evenodd" transform="translate(300 0)">
                   <path
                     fill="#034b04"
