@@ -8,11 +8,12 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import SvgLinksAnimations from "./helpers/SvgLinksAnimations";
+import { useEffect } from "react";
 var closeToViewAccuracy = 5;
 var state = [];
 var currentView = null;
 var enteredOnce = false;
+var lastScrollDir = "down";
 function Play(
   scroll = 0,
   scrollDir = "down",
@@ -157,7 +158,10 @@ function Play(
       },
     };
   });
-  let limitedScroll = scroll - sceneNumber * scrollStage;
+  let limitedScroll = Number.parseFloat(
+    scroll - sceneNumber * scrollStage
+  ).toFixed(2);
+  scrollDir === "up" && sceneNumber > 0 && sceneNumber--;
   switch (sceneNumber) {
     case 0:
       IntroTextAnimations().introScene();
@@ -191,7 +195,6 @@ function Play(
       state.push(library.notebookTwo);
       break;
     case 3:
-      // link animations begin
       state.push(library.degree);
       break;
     case 4:
@@ -260,7 +263,8 @@ function Play(
       state.push("end");
       break;
   }
-  if (state.length > 2) {
+
+  if (state.length > 2 && state[state.length - 1] !== "end") {
     if (
       JSON.stringify(state[state.length - 1]) ===
       JSON.stringify(state[state.length - 2])
@@ -271,6 +275,7 @@ function Play(
       // allow animations
       enteredOnce = false;
     }
+
     try {
       currentView = calculateView();
       Camera(".page", currentView, "linear");
@@ -292,18 +297,14 @@ function Play(
       console.error("is it first render?\n" + e);
     }
   }
+
+  lastScrollDir = scrollDir;
   function animate(animation = null) {
     if (!enteredOnce) {
       if (animation) {
         enteredOnce = true;
         switch (animation) {
           case "FirstFace":
-            // activate svg links glowings
-            SvgLinksAnimations("#motorcycle");
-            SvgLinksAnimations("#microphone");
-            SvgLinksAnimations("#aut");
-            SvgLinksAnimations("#treeOne");
-            SvgLinksAnimations("#treeTwo");
             //
             isMobile
               ? FaceAnimations("#pokerFace", "#smileFace").poker()
@@ -339,7 +340,7 @@ function Play(
     }
   }
   function calculateView() {
-    if (state[state.length - 1] === "end") return;
+    if (!state[state.length - 1]) return;
     let from = stringToArray(state[state.length - 2].view);
     let to = stringToArray(state[state.length - 1].view);
     if (scrollDir === "up") {
