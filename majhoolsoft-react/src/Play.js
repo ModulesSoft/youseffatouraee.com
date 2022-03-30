@@ -8,14 +8,19 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import SvgLinksAnimations from "./helpers/SvgLinksAnimations";
 var closeToViewAccuracy = 5;
-var fromView = null;
-var state;
-var animation;
-var once = false;
+var state = [];
+var currentView = null;
+var enteredOnce = false;
+// link animations begin
+// SvgLinksAnimations("#motorcycle");
+// SvgLinksAnimations("#microphone");
+// SvgLinksAnimations("#aut");
+// SvgLinksAnimations("#treeOne");
+// SvgLinksAnimations("#treeTwo");
 function Play(
   scroll = 0,
+  scrollDir = "down",
   scrollStage = 20,
   sceneNumber = 0,
   isMobile,
@@ -29,6 +34,7 @@ function Play(
     begin: {
       view: "590 800 5 5",
     },
+    end: { view: "0 0 0 0" },
     general: {
       view: "0 0 1920 1080",
     },
@@ -42,7 +48,7 @@ function Play(
       textPosition: { x: 0, y: height, width: 0 },
     },
     laptopAlone: {
-      view: "590 920 60 60",
+      view: "590 920 60 61",
     },
     laptop: {
       view: "590 920 60 60",
@@ -50,93 +56,95 @@ function Play(
         ? { x: 16, y: 16, width: `${width - 16}` }
         : { x: 16, y: 16, width: `${width - 16}` },
     },
-    degree: {
-      view: isMobile ? "550 900 60 45" : "550 900 60 28",
+    notebookOne: {
+      view: "550 952 60 35",
       textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : { x: 16, y: 16, width: `${width - 16}` },
+    },
+    notebookTwo: {
+      view: isMobile ? "510 952 60 35" : "480 952 60 35",
+      textPosition: isMobile
+        ? { x: 16, y: `${(50 / 100) * height}`, width: `${width - 16}` }
+        : { x: 16, y: `${(50 / 100) * height}`, width: `${width - 16}` },
+    },
+    degree: {
+      view: isMobile ? "550 890 60 45" : "550 890 60 35",
+      textPosition: isMobile
+        ? { x: 16, y: 16, width: `${width - 16}` }
         : {
-            x: `${(1 / 2) * width}`,
-            y: `${(1 / 2) * height}`,
-            width: `${(1 / 2) * width}`,
+            x: `${(50 / 100) * width}`,
+            y: `${(50 / 100) * height}`,
+            width: `${(50 / 100) * width}`,
           },
     },
     os: {
-      view: isMobile ? "514 900 60 45" : "502 900 60 28",
+      view: isMobile ? "514 890 60 45" : "502 890 60 35",
       textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     firstRowEnd: {
-      view: isMobile ? "492 900 60 45" : "462 900 60 28",
+      view: isMobile ? "492 890 60 45" : "462 890 60 35",
     },
     frontEndOne: {
-      view: isMobile ? "492 930 60 45" : "462 930 60 28",
+      view: isMobile ? "492 920 60 45" : "462 920 60 35",
       textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(1 / 2) * height}`, width: `${(1 / 2) * width}` },
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : { x: 16, y: `${(50 / 100) * height}`, width: `${(1 / 2) * width}` },
     },
     frontEndTwo: {
-      view: isMobile ? "519 920 60 45" : "492 930 60 28",
-      textPosition: isMobile
-        ? { x: 16, y: `${(20 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
+      view: isMobile ? "519 920 60 45" : "492 920 60 35",
+      textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     backEndOneAlone: {
-      view: isMobile ? "550 930 60 45" : "522 930 60 28",
+      view: isMobile ? "550 920 60 46" : "522 920 60 36",
     },
     backEndOne: {
-      view: isMobile ? "550 930 60 45" : "522 930 60 28",
-      textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
-    },
-    notebookOne: {
-      view: isMobile ? "514 960 60 45" : "477 962 60 28",
-      textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : {
-            x: 16,
-            y: `${(25 / 100) * height}`,
-            width: `${(1 / 2) * width}`,
-          },
-    },
-    notebookTwo: {
-      view: isMobile ? "532 960 60 45" : "532 962 60 28",
-      textPosition: isMobile
-        ? { x: 16, y: `${(65 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` },
+      view: isMobile ? "550 920 60 45" : "522 920 60 35",
+      textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     microphone: {
       view: isMobile ? "392 900 100 62" : "392 900 100 62",
-      textPosition: {
-        x: 16,
-        y: `${(90 / 100) * height}`,
-        width: `${width - 16}`,
-      },
+      textPosition: isMobile
+        ? {
+            x: 16,
+            y: 16,
+            width: `${width - 16}`,
+          }
+        : {
+            x: `${(50 / 100) * width}`,
+            y: `${(50 / 100) * height}`,
+            width: `${(50 / 100) * width}`,
+          },
     },
     motorcycle: {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
       textPosition: isMobile
-        ? { x: 16, y: `${(90 / 100) * height}`, width: `${width - 16}` }
+        ? {
+            x: 16,
+            y: 16,
+            width: `${width - 16}`,
+          }
         : {
-            x: `${(1 / 2) * width}`,
-            y: `${(1 / 2) * height}`,
-            width: `${(1 / 2) * width}`,
+            x: `${(50 / 100) * width}`,
+            y: `${(50 / 100) * height}`,
+            width: `${(50 / 100) * width}`,
           },
     },
     garden: {
       view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
       textPosition: {
         x: 16,
-        y: `${(90 / 100) * height}`,
+        y: 16,
         width: `${width - 16}`,
       },
     },
     mountain: {
-      view: isMobile ? "1000 250 600 420" : "888 150 600 420",
+      view: isMobile ? "1000 220 600 420" : "888 150 600 420",
       textPosition: {
         x: 16,
-        y: `${(90 / 100) * height}`,
+        y: 16,
         width: `${width - 16}`,
       },
     },
@@ -154,171 +162,193 @@ function Play(
       },
     };
   });
-  // operate animations
   let limitedScroll = scroll - sceneNumber * scrollStage;
   switch (sceneNumber) {
     case 0:
-      scrollIconHandler(
-        ".scroll",
-        ".scrollIcon",
-        ".scrollResume",
-        scroll,
-        scrollStage,
-        0,
-        sceneNumber,
-        scrollStage / 3,
-        () => {
-          removeSVGOverlays();
-          state = library.laptop;
-          animation = "FirstFace";
-        }
-      );
+      IntroTextAnimations().introScene();
+      if (scrollDir === "down") {
+        scrollIconHandler(
+          ".scroll",
+          ".scrollIcon",
+          ".scrollResume",
+          scroll,
+          scrollStage,
+          0,
+          sceneNumber,
+          scrollStage / 2,
+          () => {
+            state.push(library.laptopAlone);
+          },
+          () => {
+            state.push(library.laptop);
+            animate("FirstFace");
+          }
+        );
+      } else {
+        state.push(library.laptop);
+        animate("FirstFace");
+      }
       break;
     case 1:
-      state = library.notebookTwo;
-      // change faces for variety
-      // animation = "SecondFace";
+      state.push(library.notebookOne);
       break;
     case 2:
-      state = library.notebookOne;
+      state.push(library.notebookTwo);
       break;
     case 3:
-      state = library.degree;
+      state.push(library.degree);
       break;
     case 4:
-      state = library.os;
+      state.push(library.os);
       break;
     case 5:
-      state = library.frontEndOne;
+      state.push(library.frontEndOne);
       break;
     case 6:
-      state = library.frontEndTwo;
+      state.push(library.frontEndTwo);
       break;
     case 7:
-      removeSVGOverlays();
-      state = library.backEndOne;
+      state.push(library.backEndOne);
       break;
     case 8:
-      addSVGOverlays();
-      state = library.backEndOneAlone;
       // hobbies
-      scrollIconHandler(
-        ".scroll",
-        ".scrollIcon",
-        ".scrollHobbies",
-        scroll,
-        scrollStage,
-        0,
-        sceneNumber,
-        scrollStage / 3,
-        () => {
-          removeSVGOverlays();
-          state = library.microphone;
-        }
-      );
+      if (scrollDir === "down" && limitedScroll > scrollStage / 4) {
+        scrollIconHandler(
+          ".scroll",
+          ".scrollIcon",
+          ".scrollHobbies",
+          scroll,
+          scrollStage,
+          0,
+          sceneNumber,
+          scrollStage / 2,
+          () => {
+            state.push(library.backEndOneAlone);
+          },
+          () => {
+            state.push(library.microphone);
+          }
+        );
+      } else {
+        state.push(library.microphone);
+      }
       break;
     case 9:
-      state = library.motorcycle;
+      // change faces for variety
+      animate("SecondFace");
+      state.push(library.motorcycle);
       break;
     case 10:
-      addSVGOverlays();
-      state = library.door;
-      animation = "night";
+      animate("night");
+      state.push(library.door);
       break;
     case 11:
-      state = library.general;
-      animation = "day";
+      animate("day");
+      state.push(library.general);
       break;
     case 12:
       // walking and car animation
-      state = library.walking;
-      animation = "WalkingAnimations"; //to prevent multiple run
+      animate("WalkingAnimations");
+      state.push(library.walking);
       break;
     case 13:
-      removeSVGOverlays();
-      state = library.garden;
-      animation = "TreeAnimations";
       // tree shaking animation
+      animate("TreeAnimations");
+      state.push(library.garden);
       break;
     case 14:
-      state = library.mountain;
-      animation = "FlagAnimations";
+      animate("FlagAnimations");
+      state.push(library.mountain);
       break;
     default:
-      // console.log("scene num : default");
+      state.push("end");
       break;
   }
-  if (!fromView) {
-    // initial state
-    fromView = library.begin.view;
-  } else {
-    if (state) {
-      try {
-        let currentView = calculateView(state.view);
-        Camera(".page", currentView, "linear");
-        let approached = areClose(
-          stringToArray(currentView),
-          stringToArray(state.view),
-          closeToViewAccuracy
+  if (state.length > 2) {
+    if (
+      JSON.stringify(state[state.length - 1]) ===
+      JSON.stringify(state[state.length - 2])
+    ) {
+      // remove last duplication
+      state.pop();
+    } else {
+      // allow animations
+      enteredOnce = false;
+    }
+    try {
+      currentView = calculateView();
+      Camera(".page", currentView, "linear");
+
+      let approached = areClose(
+        stringToArray(currentView),
+        stringToArray(state[state.length - 1].view),
+        closeToViewAccuracy
+      );
+      approached &&
+        Typewriter(
+          "article",
+          "text-background",
+          50,
+          state[state.length - 1].text,
+          state[state.length - 1].textPosition
         );
-        if (preventRepetition(approached)) {
-          if (animation) {
-            switch (animation) {
-              case "FirstFace":
-                isMobile
-                  ? FaceAnimations("#pokerFace", "#smileFace").poker()
-                  : FaceAnimations("#pokerFace", "#smileFace").smile();
-                break;
-              case "SecondFace":
-                isMobile
-                  ? FaceAnimations("#pokerFace", "#smileFace").smile()
-                  : FaceAnimations("#pokerFace", "#smileFace").poker();
-                break;
-              case "WalkingAnimations":
-                WalkingAnimations(CarAnimations);
-                break;
-              case "day":
-                BackgroundAnimations().day();
-                break;
-              case "night":
-                BackgroundAnimations().night();
-                break;
-              case "TreeAnimations":
-                TreeAnimations();
-                break;
-              case "FlagAnimations":
-                FlagAnimations();
-                break;
-              default:
-                console.error("Provided animation does not exist");
-                break;
-            }
-            animation = null;
-          }
-          Typewriter(
-            "article",
-            "text-background",
-            50,
-            state.text,
-            state.textPosition
-          );
+    } catch (e) {
+      console.error("is it first render?\n" + e);
+    }
+  }
+  function animate(animation = null) {
+    if (!enteredOnce) {
+      if (animation) {
+        enteredOnce = true;
+        switch (animation) {
+          case "FirstFace":
+            isMobile
+              ? FaceAnimations("#pokerFace", "#smileFace").poker()
+              : FaceAnimations("#pokerFace", "#smileFace").smile();
+            break;
+          case "SecondFace":
+            isMobile
+              ? FaceAnimations("#pokerFace", "#smileFace").smile()
+              : FaceAnimations("#pokerFace", "#smileFace").poker();
+            break;
+          case "WalkingAnimations":
+            WalkingAnimations(CarAnimations);
+            break;
+          case "night":
+            console.log("night");
+            BackgroundAnimations().night();
+            break;
+          case "day":
+            console.log("day");
+            BackgroundAnimations().day();
+            break;
+          case "TreeAnimations":
+            TreeAnimations();
+            break;
+          case "FlagAnimations":
+            FlagAnimations();
+            break;
+          default:
+            console.error("Provided animation does not exist");
+            break;
         }
-        fromView = currentView;
-      } catch (e) {
-        console.error("is it first render?" + e);
       }
     }
   }
-  function calculateView(toView) {
-    let from = stringToArray(fromView);
-    let to = stringToArray(toView);
+  function calculateView() {
+    if (state[state.length - 1] === "end") return;
+    let from = stringToArray(state[state.length - 2].view);
+    let to = stringToArray(state[state.length - 1].view);
+    if (scrollDir === "up") {
+      [from, to] = [to, from];
+    }
     if (from.length !== to.length) {
       return console.error("Arrays don't match!");
     }
     let currentView = [];
     for (let i = 0; i < from.length; i++) {
       let sub = (to[i] - from[i]) / scrollStage;
-      currentView.push(Math.ceil(limitedScroll * sub + from[i]));
+      currentView.push(limitedScroll * sub + from[i]);
     }
     for (let i = 0; i < from.length; i++) {
       if (isNaN(from[i]) || isNaN(to[i]) || isNaN(currentView[i])) {
@@ -340,20 +370,6 @@ function Play(
     }
     return closeArray.filter((t) => t === true).length === 2;
   }
-  function preventRepetition(boolean) {
-    if (boolean) {
-      // has not been triggered
-      if (!once) {
-        once = true;
-        return boolean;
-      } else {
-        return false;
-      }
-    } else {
-      once = false;
-      return boolean;
-    }
-  }
   function arrayToString(array) {
     let result = "";
     array.forEach((element) => {
@@ -367,28 +383,5 @@ function Play(
       return string.split(" ").map(Number);
     }
   }
-  function removeSVGOverlays() {
-    document.getElementById("intro").style.visibility = "hidden";
-    if (document.getElementById("decorative"))
-      document.getElementById("decorative").style.visibility = "hidden";
-    if (document.getElementById("darkness"))
-      document.getElementById("darkness").style.visibility = "hidden";
-  }
-  function addSVGOverlays() {
-    if (document.getElementById("decorative"))
-      document.getElementById("decorative").style.visibility = "";
-    if (document.getElementById("darkness"))
-      document.getElementById("darkness").style.visibility = "";
-  }
-  function initCamera() {
-    IntroTextAnimations().introScene();
-    SvgLinksAnimations("#motorcycle");
-    SvgLinksAnimations("#microphone");
-    SvgLinksAnimations("#aut");
-    SvgLinksAnimations("#treeOne");
-    SvgLinksAnimations("#treeTwo");
-    Camera(".page", library.begin.view, "linear");
-  }
-  return { initCamera };
 }
 export default Play;

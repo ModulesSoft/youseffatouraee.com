@@ -48,6 +48,8 @@ function BackgroundAnimations() {
     });
   }
   function night() {
+    if (document.getElementById("darkness"))
+      document.getElementById("darkness").style.visibility = "";
     anime({
       targets: "#darkness",
       duration: 0,

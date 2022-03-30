@@ -8,7 +8,8 @@ function scrollIconHandler(
   delay,
   sceneNumber,
   threshold,
-  callbackfn
+  fnBefore,
+  fnAfter
 ) {
   if (
     scroll < sceneNumber * scrollStage + threshold &&
@@ -20,6 +21,7 @@ function scrollIconHandler(
       scrollTextClass,
       delay
     );
+    fnBefore();
   } else {
     IntroTextAnimations().removeScroll(
       scrollClass,
@@ -27,7 +29,7 @@ function scrollIconHandler(
       scrollTextClass,
       delay
     );
-    callbackfn();
+    fnAfter();
   }
 }
 export default scrollIconHandler;
