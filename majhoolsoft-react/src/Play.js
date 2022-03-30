@@ -8,16 +8,11 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
+import SvgLinksAnimations from "./helpers/SvgLinksAnimations";
 var closeToViewAccuracy = 5;
 var state = [];
 var currentView = null;
 var enteredOnce = false;
-// link animations begin
-// SvgLinksAnimations("#motorcycle");
-// SvgLinksAnimations("#microphone");
-// SvgLinksAnimations("#aut");
-// SvgLinksAnimations("#treeOne");
-// SvgLinksAnimations("#treeTwo");
 function Play(
   scroll = 0,
   scrollDir = "down",
@@ -141,7 +136,7 @@ function Play(
       },
     },
     mountain: {
-      view: isMobile ? "1000 220 600 420" : "888 150 600 420",
+      view: "970 110 600 420",
       textPosition: {
         x: 16,
         y: 16,
@@ -196,6 +191,7 @@ function Play(
       state.push(library.notebookTwo);
       break;
     case 3:
+      // link animations begin
       state.push(library.degree);
       break;
     case 4:
@@ -302,6 +298,13 @@ function Play(
         enteredOnce = true;
         switch (animation) {
           case "FirstFace":
+            // activate svg links glowings
+            SvgLinksAnimations("#motorcycle");
+            SvgLinksAnimations("#microphone");
+            SvgLinksAnimations("#aut");
+            SvgLinksAnimations("#treeOne");
+            SvgLinksAnimations("#treeTwo");
+            //
             isMobile
               ? FaceAnimations("#pokerFace", "#smileFace").poker()
               : FaceAnimations("#pokerFace", "#smileFace").smile();
