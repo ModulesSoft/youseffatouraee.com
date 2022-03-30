@@ -18,6 +18,7 @@ function IntroTextAnimations() {
     }).finished.then(finishedCallback);
   }
   function addScroll(scrollClass, scrollIconClass, scrollTextClass, delay = 0) {
+    addSVGOverlays();
     anime({
       targets: [scrollClass, scrollTextClass],
       duration: 0,
@@ -45,6 +46,17 @@ function IntroTextAnimations() {
       duration: 0,
       opacity: 0,
     });
+    removeSVGOverlays();
+  }
+
+  function removeSVGOverlays() {
+    document.getElementById("intro").style.visibility = "hidden";
+    if (document.getElementById("decorative"))
+      document.getElementById("decorative").style.visibility = "hidden";
+  }
+  function addSVGOverlays() {
+    if (document.getElementById("decorative"))
+      document.getElementById("decorative").style.visibility = "";
   }
   return { introScene, removeScroll, addScroll };
 }

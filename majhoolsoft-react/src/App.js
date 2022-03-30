@@ -20,15 +20,17 @@ function App() {
   const mobile = width < height;
   const size = mobile ? { height: height } : { width: width };
   let [scroll, setScroll] = useState(0);
+  let [scrollDir, setScrollDir] = useState("down");
   let [scene, setScene] = useState(0);
   useEffect(() => {
     // when component did mount:
     scrollToTop();
-    Play(scroll, scrollStage, scene, mobile, width, height, texts).initCamera();
-    getScroll(setScroll, setScene, scrollStage);
+    if (document.getElementById("darkness"))
+      document.getElementById("darkness").style.visibility = "hidden";
+    getScroll(setScroll, setScrollDir, setScene, scrollStage);
   }, []); //Be carefull - scroll must not be a dependency!
   // play using scrolling
-  Play(scroll, scrollStage, scene, mobile, width, height, texts);
+  Play(scroll, scrollDir, scrollStage, scene, mobile, width, height, texts);
   return (
     <div className="App">
       <header className="App-header"></header>

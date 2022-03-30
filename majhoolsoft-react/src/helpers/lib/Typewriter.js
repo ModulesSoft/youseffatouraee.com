@@ -5,9 +5,12 @@ function Typewriter(
   wrapperClassName,
   speed,
   target,
-  position,
+  position = null,
   finishedCallback = () => {}
 ) {
+  if (!position) {
+    return;
+  }
   // positioning
   anime({
     targets: "." + pageClass,
