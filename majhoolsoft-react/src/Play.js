@@ -8,12 +8,10 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import { useEffect } from "react";
 var closeToViewAccuracy = 5;
 var state = [];
 var currentView = null;
 var enteredOnce = false;
-var lastScrollDir = "down";
 function Play(
   scroll = 0,
   scrollDir = "down",
@@ -298,7 +296,6 @@ function Play(
     }
   }
 
-  lastScrollDir = scrollDir;
   function animate(animation = null) {
     if (!enteredOnce) {
       if (animation) {
