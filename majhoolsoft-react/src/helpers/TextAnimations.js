@@ -1,5 +1,5 @@
 import anime from "animejs";
-function IntroTextAnimations() {
+function TextAnimations() {
   function introScene(finishedCallback) {
     anime({
       targets: ".hi,.welcome,.download",
@@ -60,4 +60,4 @@ function IntroTextAnimations() {
   }
   return { introScene, removeScroll, addScroll };
 }
-export default IntroTextAnimations;
+export default TextAnimations;

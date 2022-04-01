@@ -1,7 +1,6 @@
-import scrollIconHandler from "./helpers/lib/scrollIconHandler";
 import Typewriter from "./helpers/lib/Typewriter";
 import Camera from "./helpers/lib/Camera";
-import IntroTextAnimations from "./helpers/IntroTextAnimations";
+import TextAnimations from "./helpers/TextAnimations";
 import WalkingAnimations from "./helpers/WalkingAnimations";
 import CarAnimations from "./helpers/CarAnimations";
 import FaceAnimations from "./helpers/FaceAnimations";
@@ -11,11 +10,11 @@ import BackgroundAnimations from "./helpers/BackgroundAnimations";
 var closeToViewAccuracy = 5;
 var state = [];
 var currentView = null;
-var enteredOnce = false;
+var prevAnimation = "";
 function Play(
   scroll = 0,
   scrollDir = "down",
-  scrollStage = 20,
+  scrollStage = 10,
   sceneNumber = 0,
   isMobile,
   width,
@@ -26,7 +25,7 @@ function Play(
     return console.error("Undefined parameters may cause problems!");
   var library = {
     begin: {
-      view: "590 800 5 5",
+      view: "590 890 60 60",
     },
     end: { view: "0 0 0 0" },
     general: {
@@ -40,9 +39,6 @@ function Play(
         ? `262 ${1080 - height} ${width} ${height}`
         : "262 800 400 240",
       textPosition: { x: 0, y: height, width: 0 },
-    },
-    laptopAlone: {
-      view: "590 920 60 61",
     },
     laptop: {
       view: "590 920 60 60",
@@ -114,17 +110,11 @@ function Play(
     },
     motorcycle: {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
-      textPosition: isMobile
-        ? {
-            x: 16,
-            y: 16,
-            width: `${width - 16}`,
-          }
-        : {
-            x: `${(50 / 100) * width}`,
-            y: `${(50 / 100) * height}`,
-            width: `${(50 / 100) * width}`,
-          },
+      textPosition: {
+        x: 16,
+        y: 16,
+        width: `${width - 16}`,
+      },
     },
     garden: {
       view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
@@ -156,33 +146,28 @@ function Play(
       },
     };
   });
-  let limitedScroll = Number.parseFloat(
-    scroll - sceneNumber * scrollStage
-  ).toFixed(2);
-  scrollDir === "up" && sceneNumber > 0 && sceneNumber--;
+  var limitedScroll = 0;
+  if (scrollDir === "down") {
+    limitedScroll = Number.parseFloat(
+      scroll - sceneNumber * scrollStage
+    ).toFixed(2);
+  } else {
+    sceneNumber > 0 && sceneNumber--;
+    limitedScroll = Number.parseFloat(
+      scroll - (sceneNumber + 1) * scrollStage
+    ).toFixed(2);
+  }
+  if (limitedScroll >= scrollStage) limitedScroll = scrollStage - 0.01;
+  if (limitedScroll < 0) limitedScroll = 0.01;
+  state.length === 0 && state.push(library.begin);
   switch (sceneNumber) {
     case 0:
-      IntroTextAnimations().introScene();
-      if (scrollDir === "down") {
-        scrollIconHandler(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollResume",
-          scroll,
-          scrollStage,
-          0,
-          sceneNumber,
-          scrollStage / 2,
-          () => {
-            state.push(library.laptopAlone);
-          },
-          () => {
-            state.push(library.laptop);
-            animate("FirstFace");
-          }
-        );
+      state.push(library.laptop);
+      if (Number.parseInt(limitedScroll) === 0) {
+        animate("introScene");
+      } else if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
+        animate("introSceneScrollRemove");
       } else {
-        state.push(library.laptop);
         animate("FirstFace");
       }
       break;
@@ -209,73 +194,56 @@ function Play(
       break;
     case 8:
       // hobbies
-      if (scrollDir === "down" && limitedScroll > scrollStage / 4) {
-        scrollIconHandler(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollHobbies",
-          scroll,
-          scrollStage,
-          0,
-          sceneNumber,
-          scrollStage / 2,
-          () => {
-            state.push(library.backEndOneAlone);
-          },
-          () => {
-            state.push(library.microphone);
-          }
-        );
+      state.push(library.microphone);
+      if (scrollDir === "down" && limitedScroll < scrollStage / 4) {
+        animate("hobbiesAddScroll");
       } else {
-        state.push(library.microphone);
+        animate("hobbiesRemoveScroll");
       }
       break;
     case 9:
       // change faces for variety
-      animate("SecondFace");
       state.push(library.motorcycle);
+      animate("SecondFace");
       break;
     case 10:
-      animate("night");
       state.push(library.door);
+      animate("night");
       break;
     case 11:
-      animate("day");
       state.push(library.general);
+      animate("day");
       break;
     case 12:
-      // walking and car animation
-      animate("WalkingAnimations");
       state.push(library.walking);
+      animate("WalkingAnimations");
       break;
     case 13:
-      // tree shaking animation
-      animate("TreeAnimations");
       state.push(library.garden);
+      if (limitedScroll > (scrollStage * 75) / 100) animate("TreeAnimations");
       break;
     case 14:
-      animate("FlagAnimations");
       state.push(library.mountain);
+      if (limitedScroll > (scrollStage * 75) / 100) animate("FlagAnimations");
       break;
     default:
       state.push("end");
       break;
   }
-
-  if (state.length > 2 && state[state.length - 1] !== "end") {
+  if (state.length > 2) {
     if (
       JSON.stringify(state[state.length - 1]) ===
       JSON.stringify(state[state.length - 2])
     ) {
       // remove last duplication
       state.pop();
-    } else {
-      // allow animations
-      enteredOnce = false;
     }
-
+    if (state[state.length - 1] === "end" || state[state.length - 2] === "end")
+      return;
     try {
       currentView = calculateView();
+      if (!currentView) return;
+
       Camera(".page", currentView, "linear");
 
       let approached = areClose(
@@ -284,6 +252,7 @@ function Play(
         closeToViewAccuracy
       );
       approached &&
+        state[state.length - 1].text &&
         Typewriter(
           "article",
           "text-background",
@@ -292,59 +261,87 @@ function Play(
           state[state.length - 1].textPosition
         );
     } catch (e) {
-      console.error("is it first render?\n" + e);
+      console.error(e);
+      console.error(state);
     }
   }
 
-  function animate(animation = null) {
-    if (!enteredOnce) {
-      if (animation) {
-        enteredOnce = true;
-        switch (animation) {
-          case "FirstFace":
-            //
-            isMobile
-              ? FaceAnimations("#pokerFace", "#smileFace").poker()
-              : FaceAnimations("#pokerFace", "#smileFace").smile();
-            break;
-          case "SecondFace":
-            isMobile
-              ? FaceAnimations("#pokerFace", "#smileFace").smile()
-              : FaceAnimations("#pokerFace", "#smileFace").poker();
-            break;
-          case "WalkingAnimations":
-            WalkingAnimations(CarAnimations);
-            break;
-          case "night":
-            console.log("night");
-            BackgroundAnimations().night();
-            break;
-          case "day":
-            console.log("day");
-            BackgroundAnimations().day();
-            break;
-          case "TreeAnimations":
-            TreeAnimations();
-            break;
-          case "FlagAnimations":
-            FlagAnimations();
-            break;
-          default:
-            console.error("Provided animation does not exist");
-            break;
-        }
+  function animate(animation = "") {
+    if (prevAnimation !== animation) {
+      prevAnimation = animation;
+      switch (animation) {
+        case "introScene":
+          TextAnimations().introScene();
+          TextAnimations().addScroll(
+            ".scroll",
+            ".scrollIcon",
+            ".scrollResume",
+            1000
+          );
+          break;
+        case "introSceneScrollRemove":
+          TextAnimations().removeScroll(
+            ".scroll",
+            ".scrollIcon",
+            ".scrollResume"
+          );
+          break;
+        case "hobbiesAddScroll":
+          TextAnimations().addScroll(
+            ".scroll",
+            ".scrollIcon",
+            ".scrollHobbies",
+            500
+          );
+          break;
+        case "hobbiesRemoveScroll":
+          TextAnimations().removeScroll(
+            ".scroll",
+            ".scrollIcon",
+            ".scrollHobbies"
+          );
+          break;
+        case "FirstFace":
+          isMobile
+            ? FaceAnimations("#pokerFace", "#smileFace").poker()
+            : FaceAnimations("#pokerFace", "#smileFace").smile();
+          break;
+        case "SecondFace":
+          isMobile
+            ? FaceAnimations("#pokerFace", "#smileFace").smile()
+            : FaceAnimations("#pokerFace", "#smileFace").poker();
+          break;
+        case "WalkingAnimations":
+          WalkingAnimations(CarAnimations);
+          break;
+        case "night":
+          BackgroundAnimations().night();
+          break;
+        case "day":
+          BackgroundAnimations().day();
+          break;
+        case "TreeAnimations":
+          TreeAnimations();
+          break;
+        case "FlagAnimations":
+          FlagAnimations();
+          break;
+        default:
+          console.error("Provided animation does not exist");
+          break;
       }
     }
   }
   function calculateView() {
-    if (!state[state.length - 1]) return;
+    if (!state[state.length - 1] || !state[state.length - 2]) return false;
     let from = stringToArray(state[state.length - 2].view);
     let to = stringToArray(state[state.length - 1].view);
-    if (scrollDir === "up") {
+    if (scrollDir !== "down") {
       [from, to] = [to, from];
     }
     if (from.length !== to.length) {
-      return console.error("Arrays don't match!");
+      console.error("Arrays don't match!");
+      return false;
     }
     let currentView = [];
     for (let i = 0; i < from.length; i++) {
@@ -352,8 +349,16 @@ function Play(
       currentView.push(limitedScroll * sub + from[i]);
     }
     for (let i = 0; i < from.length; i++) {
-      if (isNaN(from[i]) || isNaN(to[i]) || isNaN(currentView[i])) {
-        return console.error("Arrays don't have valid values!");
+      if (
+        isNaN(from[i]) ||
+        isNaN(to[i]) ||
+        isNaN(currentView[i]) ||
+        currentView[i] < 0 ||
+        to[i] < 0 ||
+        from[i] < 0
+      ) {
+        console.error("Arrays don't have valid values!");
+        return false;
       }
     }
     return arrayToString(currentView);
