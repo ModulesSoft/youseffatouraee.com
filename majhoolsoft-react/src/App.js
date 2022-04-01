@@ -7,12 +7,12 @@ import Background from "./components/Background";
 import Darkness from "./components/Darkness";
 import LightBeam from "./components/LightBeam";
 import GarageDoor from "./components/GarageDoor";
-import getScroll from "./helpers/lib/GetScroll";
 import Garage from "./components/Garage";
 import Play from "./Play";
 import GetTextArray from "./components/GetTextArray";
 import scrollToTop from "./helpers/lib/ScrollToTop";
 const scrollStage = 10;
+var lastScrl = 0;
 const texts = GetTextArray();
 function App() {
   // get window properties
@@ -22,15 +22,34 @@ function App() {
   let [scroll, setScroll] = useState(0);
   let [scrollDir, setScrollDir] = useState("down");
   let [scene, setScene] = useState(0);
+  // when component did mount:
   useEffect(() => {
-    // when component did mount:
     scrollToTop();
     if (document.getElementById("darkness"))
       document.getElementById("darkness").style.visibility = "hidden";
-    getScroll(setScroll, setScrollDir, setScene, scrollStage);
-  }, []); //Be carefull - scroll must not be a dependency!
+  }, []);
+  useEffect(() => {
+    const getScroll = () => {
+      let scrl =
+        (window.pageYOffset || document.documentElement.scrollTop) / 50;
+      setScroll(Number.parseFloat(scrl).toFixed(2));
+      setScene(Math.floor(scrl / scrollStage));
+      if (scrl > lastScrl) {
+        setScrollDir("down");
+      } else {
+        setScrollDir("up");
+      }
+      lastScrl = scrl;
+    };
+    window.addEventListener("scroll", getScroll, { passive: true });
+    // clean up code
+    return () => window.removeEventListener("scroll", getScroll);
+  }, [scrollDir]);
   // play using scrolling
-  Play(scroll, scrollDir, scrollStage, scene, mobile, width, height, texts);
+  useEffect(() => {
+    Play(scroll, scrollDir, scrollStage, scene, mobile, width, height, texts);
+  }, [scroll, height, mobile, scene, scrollDir, width]);
+
   return (
     <div className="App">
       <header className="App-header"></header>

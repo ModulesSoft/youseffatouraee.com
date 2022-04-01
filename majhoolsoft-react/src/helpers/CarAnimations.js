@@ -35,9 +35,11 @@ function CarAnimations() {
     ],
     easing: "easeOutQuad",
   }).finished.then(() => {
-    document.getElementById("#car").style.visibility = "hidden";
-    document.getElementById("#beam").style.visibility = "hidden";
-    document.getElementById("#sideview").style.visibility = "hidden";
+    if (document.getElementById("#car")) {
+      document.getElementById("#car").style.visibility = "hidden";
+      document.getElementById("#beam").style.visibility = "hidden";
+      document.getElementById("#sideview").style.visibility = "hidden";
+    }
   });
 }
 
