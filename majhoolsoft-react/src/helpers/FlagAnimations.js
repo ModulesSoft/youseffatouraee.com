@@ -1,16 +1,20 @@
 import anime from "animejs";
-function FlagAnimations(finishedCallback) {
+function FlagAnimations(flagId, finishedCallback = () => {}) {
   anime
     .timeline({ loop: false })
     .add({
-      targets: "#flag",
+      targets: flagId,
       opacity: 1,
     })
     .add({
-      targets: "#flag",
+      targets: flagId,
       duration: 1000,
       translateY: 150,
       easing: "linear",
+    })
+    .finished.then(() => {
+      anime.remove(flagId);
+      finishedCallback();
     });
 }
 export default FlagAnimations;

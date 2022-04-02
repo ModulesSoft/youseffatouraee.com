@@ -1,5 +1,6 @@
 function Car() {
   return (
+    // 647.47 183.33
     <svg y="900" x="1300">
       <g id="car">
         <g data-name="Group 3" transform="translate(400.797 18.616)">
@@ -46,7 +47,7 @@ function Car() {
         </g>
         <g id="wheels">
           <g data-name="Group 37" transform="translate(100.003 92.409)">
-            <g id="rear-wheel" data-name="Component 14 – 1">
+            <g id="rearWheel" data-name="Component 14 – 1">
               <path
                 fill="#757679"
                 d="M451.235 628.417a39.517 39.517 0 11-39.518-39.517 39.517 39.517 0 0139.517 39.517z"
@@ -260,7 +261,7 @@ function Car() {
             </g>
           </g>
           <g data-name="Group 37_2" transform="translate(420 92.409)">
-            <g id="front-wheel" data-name="Group 37_2">
+            <g id="frontWheel" data-name="Group 37_2">
               <path
                 fill="#757679"
                 d="M1006.135 628.417a39.517 39.517 0 11-39.518-39.517 39.518 39.518 0 0139.518 39.517z"
