@@ -1,21 +1,11 @@
 import anime from "animejs";
+var anim = anime.timeline({ loop: false });
 function Camera(target, view, easing, finishedCallback = () => {}) {
-  anime({
+  anim.add({
     targets: target,
     viewBox: view,
-    duration: 10,
+    duration: 0,
     easing: easing ? easing : "linear",
-  });
-  anime({
-    targets: "#motorcycle",
-    strokeDashoffset: [anime.setDashoffset, 0],
-    easing: "easeInOutSine",
-    duration: 1500,
-    delay: function (el, i) {
-      return i * 250;
-    },
-    direction: "alternate",
-    loop: true,
   });
 }
 export default Camera;

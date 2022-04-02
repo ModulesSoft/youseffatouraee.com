@@ -16,7 +16,8 @@ function FaceAnimations(pokerFace, smileFace) {
         duration: 2000,
         easing: "easeOutQuad",
         y: 45,
-      });
+      })
+      .finished.then(() => anime.remove(smileFace, pokerFace));
   }
   function smile() {
     anime
@@ -42,7 +43,8 @@ function FaceAnimations(pokerFace, smileFace) {
         translateX: 20,
         translateY: -6,
         rotate: "50deg",
-      });
+      })
+      .finished.then(() => anime.remove(smileFace, pokerFace));
   }
   return { poker, smile };
 }

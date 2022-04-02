@@ -13,19 +13,24 @@ function Typewriter(
   }
   // positioning
   anime({
-    targets: "." + pageClass,
+    targets: pageClass,
     translateX: position.x,
     translateY: position.y,
     width: position.width,
-  }).finished.then();
-  // writing
-  let tw = new TW("." + pageClass, {
-    strings: target,
-    autoStart: true,
-    delay: speed,
-    wrapperClassName: wrapperClassName,
-    deleteSpeed: 0.5,
+  }).finished.then(() => {
+    // writing
+    let tw = new TW(pageClass, {
+      strings: target,
+      autoStart: true,
+      delay: speed,
+      wrapperClassName: wrapperClassName,
+      deleteSpeed: 0.5,
+    });
+    tw.callFunction(() => {
+      anime.remove(pageClass);
+      tw.stop();
+      finishedCallback();
+    });
   });
-  tw.callFunction(finishedCallback);
 }
 export default Typewriter;

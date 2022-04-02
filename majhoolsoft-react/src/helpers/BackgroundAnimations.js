@@ -1,12 +1,12 @@
 import anime from "animejs";
-function BackgroundAnimations() {
+function BackgroundAnimations(pageClass, darknessId, cloudsId, sunId) {
   function day() {
     anime
       .timeline({ loop: false })
       // sun sets
       .add(
         {
-          targets: "#sun",
+          targets: sunId,
           duration: 3000,
           translateY: "-650px",
           easing: "easeOutQuad",
@@ -15,13 +15,13 @@ function BackgroundAnimations() {
       )
       // clouds come up
       .add({
-        targets: "#clouds",
+        targets: cloudsId,
         duration: 1000,
         translateY: "-300px",
       })
       .add(
         {
-          targets: "#darkness",
+          targets: darknessId,
           opacity: 0,
           duration: 2000,
           easing: "linear",
@@ -31,32 +31,30 @@ function BackgroundAnimations() {
 
       .add(
         {
-          targets: ".page",
+          targets: pageClass,
           backgroundColor: "#87CEEB",
           duration: 2000,
           easing: "linear",
         },
         "-=4000"
-      );
-    // to prevent appearing again
-    anime({
-      targets: "#darkness",
-      translateY: 1080,
-      duration: 500,
-      easing: "linear",
-      delay: 6000,
-    });
+      )
+      .finished.then(() => {
+        anime.remove(`${sunId},${cloudsId},${darknessId},${pageClass}`);
+        if (document.querySelector(darknessId)) {
+          document.querySelector(darknessId).style.visibility = "hidden";
+        }
+      });
   }
   function night() {
-    if (document.getElementById("darkness"))
-      document.getElementById("darkness").style.visibility = "";
+    if (document.querySelector(darknessId))
+      document.querySelector(darknessId).style.visibility = "";
     anime({
-      targets: "#darkness",
+      targets: darknessId,
       duration: 0,
       opacity: 1,
       easing: "easeOutQuad",
       delay: 0,
-    });
+    }).finished.then(() => anime.remove(darknessId));
   }
   return { night, day };
 }

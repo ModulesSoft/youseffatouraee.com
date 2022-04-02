@@ -1,19 +1,26 @@
 import anime from "animejs";
-function CarAnimations() {
+function CarAnimations(
+  carId,
+  beamId,
+  rearWheelId,
+  frontWheelId,
+  wheelsId,
+  sideviewId
+) {
   // turn off the head lights
   anime({
-    targets: "#beam",
+    targets: beamId,
     duration: 0,
     opacity: 0,
     easing: "easeOutQuad",
   });
   anime({
-    targets: "#rear-wheel , #front-wheel",
+    targets: [rearWheelId, frontWheelId],
     rotate: [{ value: "21turn", duration: 11000 }],
     easing: "easeOutQuad",
   });
   anime({
-    targets: "#wheels",
+    targets: wheelsId,
     translateY: [
       { value: -5, easing: "linear", duration: 200, delay: 1000 },
       { value: 0, easing: "easeOutBounce", duration: 1000 },
@@ -23,7 +30,7 @@ function CarAnimations() {
     easing: "easeOutQuad",
   });
   anime({
-    targets: "#car, #beam, #sideview",
+    targets: `${carId},${beamId},${sideviewId}`,
     translateX: 1050,
     duration: 6000,
     // delay: 5000,
@@ -35,10 +42,13 @@ function CarAnimations() {
     ],
     easing: "easeOutQuad",
   }).finished.then(() => {
-    if (document.getElementById("#car")) {
-      document.getElementById("#car").style.visibility = "hidden";
-      document.getElementById("#beam").style.visibility = "hidden";
-      document.getElementById("#sideview").style.visibility = "hidden";
+    anime.remove(
+      `${carId},${beamId},${rearWheelId},${frontWheelId},${wheelsId},${sideviewId}`
+    );
+    if (document.querySelector(carId)) {
+      document.querySelector(carId).style.visibility = "hidden";
+      document.querySelector(beamId).style.visibility = "hidden";
+      document.querySelector(sideviewId).style.visibility = "hidden";
     }
   });
 }

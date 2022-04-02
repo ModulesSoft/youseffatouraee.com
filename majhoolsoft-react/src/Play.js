@@ -7,10 +7,13 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
-var closeToViewAccuracy = 5;
+var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
 var prevAnimation = "";
+var day = false;
+var limitedScroll = 0;
+
 function Play(
   scroll = 0,
   scrollDir = "down",
@@ -29,10 +32,12 @@ function Play(
     },
     end: { view: "0 0 0 0" },
     general: {
-      view: "0 0 1920 1080",
+      view: isMobile
+        ? `462 ${1080 - height} ${width} ${height}`
+        : "0 0 1920 1080",
     },
     walking: {
-      view: isMobile ? "800 0 1120 1080" : "300 0 1620 1080",
+      view: isMobile ? `1300 0 620 1080` : "300 0 1620 1080",
     },
     door: {
       view: isMobile
@@ -87,11 +92,8 @@ function Play(
       view: isMobile ? "519 920 60 45" : "492 920 60 35",
       textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
-    backEndOneAlone: {
-      view: isMobile ? "550 920 60 46" : "522 920 60 36",
-    },
     backEndOne: {
-      view: isMobile ? "550 920 60 45" : "522 920 60 35",
+      view: isMobile ? "550 920 60 45" : "540 920 60 35",
       textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     microphone: {
@@ -125,7 +127,7 @@ function Play(
       },
     },
     mountain: {
-      view: "970 110 600 420",
+      view: "970 100 600 420",
       textPosition: {
         x: 16,
         y: 16,
@@ -146,7 +148,6 @@ function Play(
       },
     };
   });
-  var limitedScroll = 0;
   if (scrollDir === "down") {
     limitedScroll = Number.parseFloat(
       scroll - sceneNumber * scrollStage
@@ -159,7 +160,11 @@ function Play(
   }
   if (limitedScroll >= scrollStage) limitedScroll = scrollStage - 0.01;
   if (limitedScroll < 0) limitedScroll = 0.01;
-  state.length === 0 && state.push(library.begin);
+  if (state.length === 0) {
+    // init
+    state.push(library.begin);
+    Camera(".page", "0 0 0 0", "linear");
+  }
   switch (sceneNumber) {
     case 0:
       state.push(library.laptop);
@@ -208,10 +213,11 @@ function Play(
       break;
     case 10:
       state.push(library.door);
-      animate("night");
+      !day && animate("night");
       break;
     case 11:
       state.push(library.general);
+      day = true;
       animate("day");
       break;
     case 12:
@@ -254,7 +260,7 @@ function Play(
       approached &&
         state[state.length - 1].text &&
         Typewriter(
-          "article",
+          ".article",
           "text-background",
           50,
           state[state.length - 1].text,
@@ -271,19 +277,22 @@ function Play(
       prevAnimation = animation;
       switch (animation) {
         case "introScene":
-          TextAnimations().introScene();
+          TextAnimations().introScene(".hi,.welcome,.download");
           TextAnimations().addScroll(
             ".scroll",
             ".scrollIcon",
             ".scrollResume",
-            1000
+            "#intro",
+            "#decorative",
+            3000
           );
           break;
         case "introSceneScrollRemove":
           TextAnimations().removeScroll(
             ".scroll",
             ".scrollIcon",
-            ".scrollResume"
+            ".scrollResume",
+            "#decorative"
           );
           break;
         case "hobbiesAddScroll":
@@ -291,6 +300,8 @@ function Play(
             ".scroll",
             ".scrollIcon",
             ".scrollHobbies",
+            "#intro",
+            "#decorative",
             500
           );
           break;
@@ -298,7 +309,8 @@ function Play(
           TextAnimations().removeScroll(
             ".scroll",
             ".scrollIcon",
-            ".scrollHobbies"
+            ".scrollHobbies",
+            "#decorative"
           );
           break;
         case "FirstFace":
@@ -312,19 +324,28 @@ function Play(
             : FaceAnimations("#pokerFace", "#smileFace").poker();
           break;
         case "WalkingAnimations":
-          WalkingAnimations(CarAnimations);
+          WalkingAnimations("#walking", "#sideview", () =>
+            CarAnimations(
+              "#car",
+              "#beam",
+              "#rearWheel",
+              "#frontWheel",
+              "#wheels",
+              "#sideview"
+            )
+          );
           break;
         case "night":
-          BackgroundAnimations().night();
+          BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
           break;
         case "day":
-          BackgroundAnimations().day();
+          BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
           break;
         case "TreeAnimations":
-          TreeAnimations();
+          TreeAnimations("#treeOne", "treeTwo");
           break;
         case "FlagAnimations":
-          FlagAnimations();
+          FlagAnimations("#flag");
           break;
         default:
           console.error("Provided animation does not exist");

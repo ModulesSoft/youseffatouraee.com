@@ -1,38 +1,34 @@
 import anime from "animejs";
-function WalkingAnimations(finishedCallback) {
+function WalkingAnimations(walkingId, sideviewId, finishedCallback = () => {}) {
   anime
     .timeline({ loop: false })
     .add({
-      targets: "#walking",
+      targets: walkingId,
       translateX: 550,
       duration: 4500,
       easing: "linear",
     })
     .add({
-      targets: "#walking",
+      targets: walkingId,
       translateY: 50,
       opacity: 0,
     })
     .add(
       {
-        targets: "#sideview",
+        targets: sideviewId,
         opacity: 1,
       },
       "-=1000"
     )
     .add({
-      targets: "#sideview",
+      targets: sideviewId,
       translateY: 5,
       duration: 500,
       easing: "spring(1, 80, 10, 0)",
     })
-    // .add({
-    //   //to prevent showing again
-    //   targets: "#walking",
-    //   x: 1450,
-    //   opacity: 0,
-    //   easing: "linear",
-    // })
-    .finished.then(finishedCallback);
+    .finished.then(() => {
+      anime.remove(`${walkingId},${sideviewId}`);
+      finishedCallback();
+    });
 }
 export default WalkingAnimations;

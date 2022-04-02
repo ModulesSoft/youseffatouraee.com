@@ -15,14 +15,6 @@
   bottom: 0;
   left: 0;
 }
-.background {
-  position: absolute;
-}
-.car {
-  position: absolute;
-  top: 90vh;
-}
-
 article,
 .decorative {
   position: fixed;
@@ -108,8 +100,8 @@ article,
   opacity: 0;
 }
 
-#rear-wheel,
-#front-wheel,
+#rearWheel,
+#frontWheel,
 #smileFace {
   transform-origin: center;
   transform-box: fill-box;
@@ -150,7 +142,10 @@ article,
   .container {
     font-size: 1rem;
   }
-
+  .intro {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
   .hi,
   .welcome {
     font-size: 1.5rem;
@@ -159,7 +154,10 @@ article,
     grid-column-start: 1;
     margin: 1rem;
   }
-  .welcome,
+  .welcome {
+    grid-row-start: 2;
+    grid-column-end: -1;
+  }
   .download {
     grid-column-start: 2;
     grid-column-end: -1;
@@ -167,7 +165,7 @@ article,
     font-size: 1.5rem;
   }
   .download {
-    grid-row-start: 4;
+    grid-row-start: 3;
   }
   .scrollText {
     font-size: 1.5rem;

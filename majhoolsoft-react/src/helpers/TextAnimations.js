@@ -1,13 +1,13 @@
 import anime from "animejs";
 function TextAnimations() {
-  function introScene(finishedCallback) {
+  function introScene(targets, finishedCallback = () => {}) {
     anime({
-      targets: ".hi,.welcome,.download",
+      targets: targets,
       keyframes: [
         {
           opacity: 1,
           easing: "easeInExpo",
-          delay: anime.stagger(1500, { start: 500 }),
+          delay: anime.stagger(1500, { start: 0 }),
         },
         {
           opacity: 0,
@@ -15,48 +15,71 @@ function TextAnimations() {
           delay: anime.stagger(2000, { start: 4000, direction: "reverse" }),
         },
       ],
-    }).finished.then(finishedCallback);
-  }
-  function addScroll(scrollClass, scrollIconClass, scrollTextClass, delay = 0) {
-    addSVGOverlays();
-    anime({
-      targets: [scrollClass, scrollTextClass],
-      duration: 0,
-      easing: "easeInExpo",
-      opacity: 1,
-      delay,
-    });
-    anime({
-      targets: scrollIconClass,
-      duration: 0,
-      easing: "easeInExpo",
-      opacity: 0.6,
-    });
-    anime({
-      targets: scrollIconClass,
-      translateY: -50,
-      direction: "alternate",
-      loop: true,
-      easing: "spring(1, 80, 10, 0)",
+    }).finished.then(() => {
+      anime.remove(targets);
+      finishedCallback();
     });
   }
-  function removeScroll(scrollClass, scrollIconClass, scrollTextClass) {
+  function addScroll(
+    scrollClass,
+    scrollIconClass,
+    scrollTextClass,
+    introId,
+    decorativeId,
+    delay = 0
+  ) {
+    addSVGOverlays(introId, decorativeId);
+    anime
+      .timeline({ loop: false })
+      .add({
+        targets: [scrollClass, scrollTextClass],
+        duration: 10,
+        easing: "easeInExpo",
+        opacity: 1,
+        delay,
+      })
+      .add({
+        targets: scrollIconClass,
+        duration: 0,
+        easing: "easeInExpo",
+        opacity: 0.6,
+      })
+      .finished.then(() => {
+        anime({
+          targets: scrollIconClass,
+          translateY: -50,
+          direction: "alternate",
+          loop: true,
+          easing: "spring(1, 80, 10, 0)",
+        }).finished.then(() => anime.remove(scrollIconClass));
+        anime.remove(`${scrollClass},  ${scrollTextClass}`);
+      });
+  }
+  function removeScroll(
+    scrollClass,
+    scrollIconClass,
+    scrollTextClass,
+    decorativeId
+  ) {
     anime({
       targets: [scrollClass, scrollIconClass, scrollTextClass],
       duration: 0,
       opacity: 0,
-    });
-    removeSVGOverlays();
+    }).finished.then(() =>
+      anime.remove(`${scrollClass}, ${scrollIconClass}, ${scrollTextClass}`)
+    );
+    removeSVGOverlays(decorativeId);
   }
 
-  function removeSVGOverlays() {
-    document.getElementById("intro").style.visibility = "hidden";
-    if (document.getElementById("decorative"))
-      document.getElementById("decorative").style.visibility = "hidden";
+  function removeSVGOverlays(introId, decorativeId) {
+    if (document.querySelector(introId))
+      document.querySelector(introId).style.visibility = "hidden";
+    if (document.querySelector(decorativeId))
+      document.querySelector(decorativeId).style.visibility = "hidden";
   }
-  function addSVGOverlays() {
-    if (document.getElementById("decorative"))
-      document.getElementById("decorative").style.visibility = "";
+  function addSVGOverlays(decorativeId) {
+    if (document.querySelector(decorativeId))
+      document.querySelector(decorativeId).style.visibility = "";
   }
   return { introScene, removeScroll, addScroll };
 }
