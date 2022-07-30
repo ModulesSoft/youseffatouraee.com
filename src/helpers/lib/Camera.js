@@ -1,11 +1,10 @@
-import anime from "animejs";
-var anim = anime.timeline({ loop: false });
-function Camera(target, view, easing, finishedCallback = () => {}) {
-  anim.add({
-    targets: target,
-    viewBox: view,
-    duration: 0,
-    easing: easing ? easing : "linear",
-  });
+function Camera(target, view) {
+  // anim.add({
+  //   targets: target,
+  //   viewBox: view,
+  //   duration: 0,
+  //   easing: easing ? easing : "linear",
+  // });
+  target.current?.setAttribute("viewBox", view);
 }
 export default Camera;
