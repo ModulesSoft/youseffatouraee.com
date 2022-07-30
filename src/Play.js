@@ -15,6 +15,7 @@ var day = false;
 var limitedScroll = 0;
 
 function Play(
+  pageRef,
   scroll = 0,
   scrollDir = "down",
   scrollStage = 10,
@@ -24,6 +25,8 @@ function Play(
   height,
   texts
 ) {
+  console.log(scroll);
+
   if (isMobile === undefined || isMobile === null)
     return console.error("Undefined parameters may cause problems!");
   var library = {
@@ -163,7 +166,7 @@ function Play(
   if (state.length === 0) {
     // init
     state.push(library.begin);
-    Camera(".page", "0 0 0 0", "linear");
+    Camera(pageRef, "0 0 0 0", "linear");
   }
   switch (sceneNumber) {
     case 0:
@@ -250,7 +253,7 @@ function Play(
       currentView = calculateView();
       if (!currentView) return;
 
-      Camera(".page", currentView, "linear");
+      Camera(pageRef, currentView, "linear");
 
       let approached = areClose(
         stringToArray(currentView),
