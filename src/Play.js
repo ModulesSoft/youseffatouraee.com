@@ -25,8 +25,6 @@ function Play(
   height,
   texts
 ) {
-  console.log(scroll);
-
   if (isMobile === undefined || isMobile === null)
     return console.error("Undefined parameters may cause problems!");
   var library = {
