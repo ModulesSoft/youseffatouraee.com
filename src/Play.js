@@ -1,7 +1,7 @@
 import calculateView, { areClose } from "./lib/CalculateView";
 import Typewriter from "./lib/Typewriter";
 import Camera from "./lib/Camera";
-import animate from "./lib/Animate";
+import animate, { slideDoor } from "./lib/Animate";
 var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
@@ -244,9 +244,8 @@ function Play(
     if (state[state.length - 1] === "end" || state[state.length - 2] === "end")
       return;
 
-    if (state[state.length - 1] === library.door) {
-      console.log(limitedScroll);
-    }
+    if (scroll > 10 * scrollStage) slideDoor(limitedScroll);
+    if (scroll > 11 * scrollStage) slideDoor(-1);
     try {
       currentView = calculateView(state, scrollDir, scrollStage, limitedScroll);
       if (!currentView) return;

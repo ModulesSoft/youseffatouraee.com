@@ -72,23 +72,9 @@ export function animate(isMobile, animation = "") {
         );
         break;
       case "night":
-        // scrollY={scene >= 10 && scroll - 10 * scrollStage}
-        // console.log(scrollY);
-        // let transform = {
-        //   transform: `translateY(${scrollY * 7}px)`,
-        // };
-        // checkwhether the door is finished opening
-        // if (scrollY > 19) {
-        //   transform = {
-        //     transform: "translateY(140px)",
-        //   };
-        // }
-        // DoorAnimations("#garage-door", limitedScroll * 7);
         BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
         break;
       case "day":
-        // DoorAnimations("#garage-door", limitedScroll * -7);
-
         BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
         break;
       case "TreeAnimations":
@@ -103,4 +89,14 @@ export function animate(isMobile, animation = "") {
     }
   }
 }
+export function slideDoor(scroll) {
+  if (scroll === -1) {
+    //finished
+    DoorAnimations("#garage-door", "140px");
+  } else {
+    //slide the door
+    DoorAnimations("#garage-door", scroll * 10);
+  }
+}
+
 export default animate;
