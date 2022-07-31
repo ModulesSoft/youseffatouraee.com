@@ -1,7 +1,13 @@
 function calculateView(state, scrollDir, scrollStage, limitedScroll) {
   if (!state[state.length - 1] || !state[state.length - 2]) return false;
-  let from = stringToArray(state[state.length - 2].view);
-  let to = stringToArray(state[state.length - 1].view);
+  let from =
+    scrollDir === "down"
+      ? stringToArray(state[state.length - 2].view)
+      : stringToArray(state[state.length - 1].view);
+  let to =
+    scrollDir === "down"
+      ? stringToArray(state[state.length - 1].view)
+      : stringToArray(state[state.length - 2].view);
   if (scrollDir !== "down") {
     [from, to] = [to, from];
   }
