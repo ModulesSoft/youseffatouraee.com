@@ -55,18 +55,14 @@ function Play(
     notebookTwo: {
       view: isMobile ? "510 952 60 35" : "480 952 60 35",
       textPosition: isMobile
-        ? { x: 16, y: `${(50 / 100) * height}`, width: `${width - 16}` }
-        : { x: 16, y: `${(50 / 100) * height}`, width: `${width - 16}` },
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     degree: {
       view: isMobile ? "550 890 60 45" : "550 890 60 35",
       textPosition: isMobile
         ? { x: 16, y: 16, width: `${width - 16}` }
-        : {
-            x: `${(50 / 100) * width}`,
-            y: `${(50 / 100) * height}`,
-            width: `${(50 / 100) * width}`,
-          },
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     os: {
       view: isMobile ? "514 890 60 45" : "502 890 60 35",
@@ -81,7 +77,7 @@ function Play(
       view: isMobile ? "492 920 60 45" : "462 920 60 35",
       textPosition: isMobile
         ? { x: 16, y: 16, width: `${width - 16}` }
-        : { x: 16, y: `${(50 / 100) * height}`, width: `${(1 / 2) * width}` },
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     frontEndTwo: {
       view: isMobile ? "519 920 60 45" : "492 920 60 35",
@@ -94,40 +90,20 @@ function Play(
     microphone: {
       view: isMobile ? "392 900 100 62" : "392 900 100 62",
       textPosition: isMobile
-        ? {
-            x: 16,
-            y: 16,
-            width: `${width - 16}`,
-          }
-        : {
-            x: `${(50 / 100) * width}`,
-            y: `${(50 / 100) * height}`,
-            width: `${(50 / 100) * width}`,
-          },
+        ? { x: 16, y: 16, width: `${width - 16}` }
+        : { x: 16, y: 16, width: `${width - 16}` },
     },
     motorcycle: {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
-      textPosition: {
-        x: 16,
-        y: 16,
-        width: `${width - 16}`,
-      },
+      textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     garden: {
       view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
-      textPosition: {
-        x: 16,
-        y: 16,
-        width: `${width - 16}`,
-      },
+      textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     mountain: {
       view: "970 100 600 420",
-      textPosition: {
-        x: 16,
-        y: 16,
-        width: `${width - 16}`,
-      },
+      textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
   };
   // add texts to library
