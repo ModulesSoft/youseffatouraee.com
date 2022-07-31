@@ -1,3 +1,4 @@
+import calculateView, { areClose } from "./helpers/lib/CalculateView";
 import Typewriter from "./helpers/lib/Typewriter";
 import Camera from "./helpers/lib/Camera";
 import TextAnimations from "./helpers/TextAnimations";
@@ -7,6 +8,7 @@ import FaceAnimations from "./helpers/FaceAnimations";
 import TreeAnimations from "./helpers/TreeAnimations";
 import FlagAnimations from "./helpers/FlagAnimations";
 import BackgroundAnimations from "./helpers/BackgroundAnimations";
+import DoorAnimations from "./helpers/DoorAnimations";
 var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
@@ -247,15 +249,19 @@ function Play(
     }
     if (state[state.length - 1] === "end" || state[state.length - 2] === "end")
       return;
+
+    if (state[state.length - 1] === library.door) {
+      console.log(limitedScroll);
+    }
     try {
-      currentView = calculateView();
+      currentView = calculateView(state, scrollDir, scrollStage, limitedScroll);
       if (!currentView) return;
 
       Camera(pageRef, currentView, "linear");
 
       let approached = areClose(
-        stringToArray(currentView),
-        stringToArray(state[state.length - 1].view),
+        currentView,
+        state[state.length - 1].view,
         closeToViewAccuracy
       );
       approached &&
@@ -337,9 +343,23 @@ function Play(
           );
           break;
         case "night":
+          // scrollY={scene >= 10 && scroll - 10 * scrollStage}
+          // console.log(scrollY);
+          // let transform = {
+          //   transform: `translateY(${scrollY * 7}px)`,
+          // };
+          // checkwhether the door is finished opening
+          // if (scrollY > 19) {
+          //   transform = {
+          //     transform: "translateY(140px)",
+          //   };
+          // }
+          // DoorAnimations("#garage-door", limitedScroll * 7);
           BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
           break;
         case "day":
+          // DoorAnimations("#garage-door", limitedScroll * -7);
+
           BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
           break;
         case "TreeAnimations":
@@ -352,63 +372,6 @@ function Play(
           console.error("Provided animation does not exist");
           break;
       }
-    }
-  }
-  function calculateView() {
-    if (!state[state.length - 1] || !state[state.length - 2]) return false;
-    let from = stringToArray(state[state.length - 2].view);
-    let to = stringToArray(state[state.length - 1].view);
-    if (scrollDir !== "down") {
-      [from, to] = [to, from];
-    }
-    if (from.length !== to.length) {
-      console.error("Arrays don't match!");
-      return false;
-    }
-    let currentView = [];
-    for (let i = 0; i < from.length; i++) {
-      let sub = (to[i] - from[i]) / scrollStage;
-      currentView.push(limitedScroll * sub + from[i]);
-    }
-    for (let i = 0; i < from.length; i++) {
-      if (
-        isNaN(from[i]) ||
-        isNaN(to[i]) ||
-        isNaN(currentView[i]) ||
-        currentView[i] < 0 ||
-        to[i] < 0 ||
-        from[i] < 0
-      ) {
-        console.error("Arrays don't have valid values!");
-        return false;
-      }
-    }
-    return arrayToString(currentView);
-  }
-
-  function areClose(par1, par2, accuracy) {
-    let closeArray = [];
-    //check x and y of view port to be close
-    for (let i = 0; i < 2; i++) {
-      if (par1[i] + accuracy >= par2[i] && par1[i] - accuracy <= par2[i]) {
-        closeArray.push(true);
-      } else {
-        closeArray.push(false);
-      }
-    }
-    return closeArray.filter((t) => t === true).length === 2;
-  }
-  function arrayToString(array) {
-    let result = "";
-    array.forEach((element) => {
-      result += element + " ";
-    });
-    result = result.trim();
-    return result;
-  }
-  function stringToArray(string) {
-    if (string) {
-      return string.split(" ").map(Number);
     }
   }
 }
