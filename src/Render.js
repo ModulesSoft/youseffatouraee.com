@@ -27,7 +27,8 @@ export const Render = (pageRef, mobile, width, height, texts) => {
     scrollToTop();
     if (document.getElementById("darkness"))
       document.getElementById("darkness").style.visibility = "hidden";
-
+    // initial call
+    Play(pageRef, 0, "down", scrollStage, 0, mobile, width, height, texts);
     window.addEventListener("scroll", getScroll, { passive: true });
     // clean up code
     return () => {
