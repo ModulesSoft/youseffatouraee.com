@@ -30,7 +30,7 @@ function App() {
         >
           <Background />
           <Garage />
-          {/* <GarageDoor scrollY={scene >= 10 && scroll - 10 * scrollStage} /> */}
+          <GarageDoor />
           <Sideview />
           <Car />
           <Darkness />
