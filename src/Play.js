@@ -1,18 +1,10 @@
 import calculateView, { areClose } from "./helpers/lib/CalculateView";
 import Typewriter from "./helpers/lib/Typewriter";
 import Camera from "./helpers/lib/Camera";
-import TextAnimations from "./helpers/TextAnimations";
-import WalkingAnimations from "./helpers/WalkingAnimations";
-import CarAnimations from "./helpers/CarAnimations";
-import FaceAnimations from "./helpers/FaceAnimations";
-import TreeAnimations from "./helpers/TreeAnimations";
-import FlagAnimations from "./helpers/FlagAnimations";
-import BackgroundAnimations from "./helpers/BackgroundAnimations";
-import DoorAnimations from "./helpers/DoorAnimations";
+import animate from "./helpers/lib/Animate";
 var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
-var prevAnimation = "";
 var day = false;
 var limitedScroll = 0;
 
@@ -172,11 +164,11 @@ function Play(
     case 0:
       state.push(library.laptop);
       if (Number.parseInt(limitedScroll) === 0) {
-        animate("introScene");
+        animate(isMobile, "introScene");
       } else if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
-        animate("introSceneScrollRemove");
+        animate(isMobile, "introSceneScrollRemove");
       } else {
-        animate("FirstFace");
+        animate(isMobile, "FirstFace");
       }
       break;
     case 1:
@@ -204,36 +196,38 @@ function Play(
       // hobbies
       state.push(library.microphone);
       if (scrollDir === "down" && limitedScroll < scrollStage / 4) {
-        animate("hobbiesAddScroll");
+        animate(isMobile, "hobbiesAddScroll");
       } else {
-        animate("hobbiesRemoveScroll");
+        animate(isMobile, "hobbiesRemoveScroll");
       }
       break;
     case 9:
       // change faces for variety
       state.push(library.motorcycle);
-      animate("SecondFace");
+      animate(isMobile, "SecondFace");
       break;
     case 10:
       state.push(library.door);
-      !day && animate("night");
+      !day && animate(isMobile, "night");
       break;
     case 11:
       state.push(library.general);
       day = true;
-      animate("day");
+      animate(isMobile, "day");
       break;
     case 12:
       state.push(library.walking);
-      animate("WalkingAnimations");
+      animate(isMobile, "WalkingAnimations");
       break;
     case 13:
       state.push(library.garden);
-      if (limitedScroll > (scrollStage * 75) / 100) animate("TreeAnimations");
+      if (limitedScroll > (scrollStage * 75) / 100)
+        animate(isMobile, "TreeAnimations");
       break;
     case 14:
       state.push(library.mountain);
-      if (limitedScroll > (scrollStage * 75) / 100) animate("FlagAnimations");
+      if (limitedScroll > (scrollStage * 75) / 100)
+        animate(isMobile, "FlagAnimations");
       break;
     default:
       state.push("end");
@@ -276,102 +270,6 @@ function Play(
     } catch (e) {
       console.error(e);
       console.error(state);
-    }
-  }
-
-  function animate(animation = "") {
-    if (prevAnimation !== animation) {
-      prevAnimation = animation;
-      switch (animation) {
-        case "introScene":
-          TextAnimations().introScene(".hi,.welcome,.download");
-          TextAnimations().addScroll(
-            ".scroll",
-            ".scrollIcon",
-            ".scrollResume",
-            "#intro",
-            "#decorative",
-            3000
-          );
-          break;
-        case "introSceneScrollRemove":
-          TextAnimations().removeScroll(
-            ".scroll",
-            ".scrollIcon",
-            ".scrollResume",
-            "#decorative"
-          );
-          break;
-        case "hobbiesAddScroll":
-          TextAnimations().addScroll(
-            ".scroll",
-            ".scrollIcon",
-            ".scrollHobbies",
-            "#intro",
-            "#decorative",
-            500
-          );
-          break;
-        case "hobbiesRemoveScroll":
-          TextAnimations().removeScroll(
-            ".scroll",
-            ".scrollIcon",
-            ".scrollHobbies",
-            "#decorative"
-          );
-          break;
-        case "FirstFace":
-          isMobile
-            ? FaceAnimations("#pokerFace", "#smileFace").poker()
-            : FaceAnimations("#pokerFace", "#smileFace").smile();
-          break;
-        case "SecondFace":
-          isMobile
-            ? FaceAnimations("#pokerFace", "#smileFace").smile()
-            : FaceAnimations("#pokerFace", "#smileFace").poker();
-          break;
-        case "WalkingAnimations":
-          WalkingAnimations("#walking", "#sideview", () =>
-            CarAnimations(
-              "#car",
-              "#beam",
-              "#rearWheel",
-              "#frontWheel",
-              "#wheels",
-              "#sideview"
-            )
-          );
-          break;
-        case "night":
-          // scrollY={scene >= 10 && scroll - 10 * scrollStage}
-          // console.log(scrollY);
-          // let transform = {
-          //   transform: `translateY(${scrollY * 7}px)`,
-          // };
-          // checkwhether the door is finished opening
-          // if (scrollY > 19) {
-          //   transform = {
-          //     transform: "translateY(140px)",
-          //   };
-          // }
-          // DoorAnimations("#garage-door", limitedScroll * 7);
-          BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
-          break;
-        case "day":
-          // DoorAnimations("#garage-door", limitedScroll * -7);
-
-          BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
-          break;
-        case "TreeAnimations":
-          TreeAnimations("#treeOne", "treeTwo");
-          break;
-        case "FlagAnimations":
-          FlagAnimations("#flag");
-          break;
-        default:
-          console.error("Provided animation does not exist");
-          break;
-      }
     }
   }
 }
