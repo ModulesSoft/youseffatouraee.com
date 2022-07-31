@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Play from "./Play";
-import scrollToTop from "./helpers/lib/ScrollToTop";
+import scrollToTop from "./lib/ScrollToTop";
 export const Render = (pageRef, mobile, width, height, texts) => {
   const scrollStage = 10;
   var lastScrl = 0; // to detect scroll direction changes

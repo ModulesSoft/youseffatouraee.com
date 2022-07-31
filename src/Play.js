@@ -1,7 +1,7 @@
-import calculateView, { areClose } from "./helpers/lib/CalculateView";
-import Typewriter from "./helpers/lib/Typewriter";
-import Camera from "./helpers/lib/Camera";
-import animate from "./helpers/lib/Animate";
+import calculateView, { areClose } from "./lib/CalculateView";
+import Typewriter from "./lib/Typewriter";
+import Camera from "./lib/Camera";
+import animate from "./lib/Animate";
 var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
