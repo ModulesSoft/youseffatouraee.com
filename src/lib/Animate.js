@@ -1,11 +1,11 @@
-import TextAnimations from "../TextAnimations";
-import WalkingAnimations from "../WalkingAnimations";
-import CarAnimations from "../CarAnimations";
-import FaceAnimations from "../FaceAnimations";
-import TreeAnimations from "../TreeAnimations";
-import FlagAnimations from "../FlagAnimations";
-import BackgroundAnimations from "../BackgroundAnimations";
-import DoorAnimations from "../DoorAnimations";
+import TextAnimations from "../helpers/TextAnimations";
+import WalkingAnimations from "../helpers/WalkingAnimations";
+import CarAnimations from "../helpers/CarAnimations";
+import FaceAnimations from "../helpers/FaceAnimations";
+import TreeAnimations from "../helpers/TreeAnimations";
+import FlagAnimations from "../helpers/FlagAnimations";
+import BackgroundAnimations from "../helpers/BackgroundAnimations";
+import DoorAnimations from "../helpers/DoorAnimations";
 
 let prevAnimation = "";
 export function animate(isMobile, animation = "") {
