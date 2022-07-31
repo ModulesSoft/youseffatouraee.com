@@ -1,8 +1,7 @@
-import calculateView, { areClose } from "./lib/CalculateView";
+import calculateView from "./lib/CalculateView";
 import Typewriter from "./lib/Typewriter";
 import Camera from "./lib/Camera";
 import animate, { slideDoor } from "./lib/Animate";
-var closeToViewAccuracy = 3;
 var state = [];
 var currentView = null;
 var day = false;
@@ -21,7 +20,7 @@ function Play(
 ) {
   if (isMobile === undefined || isMobile === null)
     return console.error("Undefined parameters may cause problems!");
-  var library = {
+  let library = {
     begin: {
       view: "590 890 60 60",
     },
@@ -131,46 +130,40 @@ function Play(
   }
   if (limitedScroll >= scrollStage) limitedScroll = scrollStage - 0.01;
   if (limitedScroll < 0) limitedScroll = 0.01;
-  if (state.length === 0) {
-    // init
-    state.push(library.begin);
-    Camera(pageRef, "0 0 0 0", "linear");
-  }
+  let newState = null;
   switch (sceneNumber) {
     case 0:
-      state.push(library.laptop);
-      if (Number.parseInt(limitedScroll) === 0) {
-        animate(isMobile, "introScene");
-      } else if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
+      newState = library.laptop;
+      if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
         animate(isMobile, "introSceneScrollRemove");
       } else {
         animate(isMobile, "FirstFace");
       }
       break;
     case 1:
-      state.push(library.notebookOne);
+      newState = library.notebookOne;
       break;
     case 2:
-      state.push(library.notebookTwo);
+      newState = library.notebookTwo;
       break;
     case 3:
-      state.push(library.degree);
+      newState = library.degree;
       break;
     case 4:
-      state.push(library.os);
+      newState = library.os;
       break;
     case 5:
-      state.push(library.frontEndOne);
+      newState = library.frontEndOne;
       break;
     case 6:
-      state.push(library.frontEndTwo);
+      newState = library.frontEndTwo;
       break;
     case 7:
-      state.push(library.backEndOne);
+      newState = library.backEndOne;
       break;
     case 8:
       // hobbies
-      state.push(library.microphone);
+      newState = library.microphone;
       if (scrollDir === "down" && limitedScroll < scrollStage / 4) {
         animate(isMobile, "hobbiesAddScroll");
       } else {
@@ -179,67 +172,70 @@ function Play(
       break;
     case 9:
       // change faces for variety
-      state.push(library.motorcycle);
+      newState = library.motorcycle;
       animate(isMobile, "SecondFace");
       break;
     case 10:
-      state.push(library.door);
+      newState = library.door;
       !day && animate(isMobile, "night");
       break;
     case 11:
-      state.push(library.general);
+      newState = library.general;
       day = true;
       animate(isMobile, "day");
       break;
     case 12:
-      state.push(library.walking);
+      newState = library.walking;
       animate(isMobile, "WalkingAnimations");
       break;
     case 13:
-      state.push(library.garden);
-      if (limitedScroll > (scrollStage * 75) / 100)
-        animate(isMobile, "TreeAnimations");
+      newState = library.garden;
+      // if (limitedScroll > (scrollStage * 75) / 100)
+      animate(isMobile, "TreeAnimations");
       break;
     case 14:
-      state.push(library.mountain);
-      if (limitedScroll > (scrollStage * 75) / 100)
-        animate(isMobile, "FlagAnimations");
+      newState = library.mountain;
+      // if (limitedScroll > (scrollStage * 75) / 100)
+      animate(isMobile, "FlagAnimations");
       break;
     default:
-      state.push("end");
+      newState = "end";
       break;
   }
-  if (state.length > 2) {
-    if (
-      JSON.stringify(state[state.length - 1]) ===
-      JSON.stringify(state[state.length - 2])
-    ) {
-      // remove last duplication
-      state.pop();
-    }
-    if (state[state.length - 1] === "end" || state[state.length - 2] === "end")
-      return;
-
-    if (scroll > 10 * scrollStage) slideDoor(limitedScroll);
-    if (scroll > 11 * scrollStage) slideDoor(-1);
-    try {
-      currentView = calculateView(state, scrollDir, scrollStage, limitedScroll);
-      if (!currentView) return;
-
-      Camera(pageRef, currentView, "linear");
-
-      if (state[state.length - 2].text) {
-        Typewriter(
-          ".article",
-          "text-background",
-          0,
-          state[state.length - 2].text,
-          state[state.length - 2].textPosition
-        );
+  //init
+  if (state.length === 0) {
+    state.push(library.begin);
+    animate(isMobile, "introScene");
+  } else if (state.length > 0) {
+    let lastState = state[state.length - 1];
+    if (JSON.stringify(lastState) !== JSON.stringify(newState)) {
+      if (scrollDir === "up") {
+        state.pop();
+        if (state.length === 2) {
+          state = [];
+          return;
+        }
+      } else {
+        state.push(newState);
       }
-    } catch (e) {
-      console.error(e);
-      console.error(state);
+    }
+
+    if (lastState === "end") return;
+    if (scroll > 10 * scrollStage) slideDoor(limitedScroll);
+    if (scroll > 11 * scrollStage) slideDoor(-1); //close the door
+    currentView = calculateView(state, scrollDir, scrollStage, limitedScroll);
+    if (!currentView) {
+      return;
+    }
+    Camera(pageRef, currentView, "linear");
+    if (state[state.length - 2].text) {
+      Typewriter(
+        ".article",
+        "text-background",
+        0,
+        state[state.length - 2].text,
+        state[state.length - 2].textPosition
+      );
     }
   }
 }
