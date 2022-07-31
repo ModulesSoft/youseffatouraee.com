@@ -1,16 +1,18 @@
 import anime from "animejs";
 import TW from "typewriter-effect/dist/core";
+let prevText = "";
 function Typewriter(
   pageClass,
   wrapperClassName,
-  speed,
-  target,
+  delay,
+  textArray,
   position = null,
   finishedCallback = () => {}
 ) {
-  if (!position) {
+  if (!position || prevText === textArray) {
     return;
   }
+  prevText = textArray;
   // positioning
   anime({
     targets: pageClass,
@@ -20,9 +22,9 @@ function Typewriter(
   }).finished.then(() => {
     // writing
     let tw = new TW(pageClass, {
-      strings: target,
+      strings: textArray,
       autoStart: true,
-      delay: speed,
+      delay: delay,
       wrapperClassName: wrapperClassName,
       deleteSpeed: 0.5,
     });

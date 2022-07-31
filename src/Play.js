@@ -252,20 +252,15 @@ function Play(
 
       Camera(pageRef, currentView, "linear");
 
-      let approached = areClose(
-        currentView,
-        state[state.length - 1].view,
-        closeToViewAccuracy
-      );
-      approached &&
-        state[state.length - 1].text &&
+      if (state[state.length - 2].text) {
         Typewriter(
           ".article",
           "text-background",
-          50,
-          state[state.length - 1].text,
-          state[state.length - 1].textPosition
+          0,
+          state[state.length - 2].text,
+          state[state.length - 2].textPosition
         );
+      }
     } catch (e) {
       console.error(e);
       console.error(state);
