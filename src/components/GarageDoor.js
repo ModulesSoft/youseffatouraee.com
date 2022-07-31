@@ -1,13 +1,4 @@
-function GarageDoor({ scrollY }) {
-  let transform = {
-    transform: `translateY(${scrollY * 7}px)`,
-  };
-  // checkwhether the door is finished opening
-  if (scrollY > 19) {
-    transform = {
-      transform: "translateY(140px)",
-    };
-  }
+function GarageDoor() {
   return (
     <svg
       width="384.264"
@@ -16,7 +7,7 @@ function GarageDoor({ scrollY }) {
       x="265"
       y="900"
     >
-      <g id="garage-door" style={transform}>
+      <g id="garage-door">
         <defs>
           <clipPath id="clip-path">
             <path fill="none" d="M0 0H384.264V136.105H0z"></path>
