@@ -19,7 +19,7 @@ function Play(
 
   const limitedScroll = Number.parseFloat(
     scroll - sceneNumber * scrollStage
-  ).toFixed(1);
+  ).toFixed(2);
   let newState = null;
   switch (sceneNumber) {
     case 0:
@@ -81,7 +81,7 @@ function Play(
     case 13:
       newState = library.garden;
       // if (limitedScroll > (scrollStage * 75) / 100)
-      animate(isMobile, "TreeAnimations");
+      animate(isMobile, "TreeAnimations", limitedScroll);
       break;
     case 14:
       newState = library.mountain;

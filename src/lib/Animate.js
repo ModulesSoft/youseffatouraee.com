@@ -8,8 +8,8 @@ import BackgroundAnimations from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
 
 let prevAnimation = "";
-export function animate(isMobile, animation = "") {
-  if (prevAnimation !== animation) {
+export function animate(isMobile, animation = "", scroll = 0) {
+  if (prevAnimation !== animation || scroll > 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
@@ -78,7 +78,7 @@ export function animate(isMobile, animation = "") {
         BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
         break;
       case "TreeAnimations":
-        TreeAnimations("#treeOne", "treeTwo");
+        TreeAnimations("#treeOne", "#treeTwo", scroll);
         break;
       case "FlagAnimations":
         FlagAnimations("#flag");
