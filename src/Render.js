@@ -105,10 +105,11 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
   });
   var lastScrl = 0; // to detect scroll direction changes
   const getScroll = () => {
-    let scrl = (window.pageYOffset || document.documentElement.scrollTop) / 50;
-    let scroll = Number.parseFloat(scrl).toFixed(2);
-    let scene = Math.floor(scrl / scrollStage);
-    let scrollDir = scrl > lastScrl ? "down" : "up";
+    const scrl =
+      (window.pageYOffset || document.documentElement.scrollTop) / 50;
+    const scroll = Number.parseFloat(scrl).toFixed(2);
+    const scene = Math.floor(scrl / scrollStage);
+    const scrollDir = scrl > lastScrl ? "down" : "up";
     Play(pageRef, scroll, scrollDir, scrollStage, scene, isMobile, library);
     lastScrl = scrl;
   };
@@ -124,6 +125,6 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
     return () => {
       window.removeEventListener("scroll", getScroll);
     };
-  });
+  }, []);
 };
 export default Render;

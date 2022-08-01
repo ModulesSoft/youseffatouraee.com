@@ -95,6 +95,7 @@ function Play(
   if (state.length === 0) {
     //init
     state.push(library.begin);
+    Camera(pageRef, "0 0 0 0");
     animate(isMobile, "introScene");
   } else if (state.length > 0) {
     if (JSON.stringify(state[state.length - 1]) !== JSON.stringify(newState)) {
