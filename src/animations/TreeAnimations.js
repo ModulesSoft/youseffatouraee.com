@@ -1,18 +1,20 @@
 import anime from "animejs";
-function TreeAnimations(treeOneId, treeTwoId, finishedCallback = () => {}) {
+function TreeAnimations(treeOneId, treeTwoId, scroll) {
   anime({
     targets: treeOneId,
-    transformOrigin: "125px 250px 0",
-    rotate: ["10deg", "0deg"],
-    easing: "spring(1, 80, 10, 0)",
-    duration: 10000,
-  }).finished.then(() => anime.remove(treeOneId));
+    duration: 0,
+    transformOrigin: "0 0 0",
+    translateX: scroll + "px",
+  }).finished.then(() => {
+    anime.remove(treeOneId);
+  });
   anime({
     targets: treeTwoId,
-    transformOrigin: "425px 250px 0",
-    rotate: ["10deg", "0deg"],
-    easing: "spring(1, 80, 10, 0)",
-    duration: 10000,
-  }).finished.then(() => anime.remove(treeTwoId));
+    duration: 0,
+    transformOrigin: "0 0 0",
+    translateX: -1 * scroll + "px",
+  }).finished.then(() => {
+    anime.remove(treeTwoId);
+  });
 }
 export default TreeAnimations;

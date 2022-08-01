@@ -9,7 +9,7 @@ function FlagAnimations(flagId, finishedCallback = () => {}) {
     .add({
       targets: flagId,
       duration: 1000,
-      translateY: 150,
+      translateY: 160,
       easing: "linear",
     })
     .finished.then(() => {
