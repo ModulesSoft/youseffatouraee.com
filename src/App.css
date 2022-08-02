@@ -21,7 +21,8 @@ article,
   top: 0;
   width: 100vw;
   color: #f5f5f5;
-  font-size: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
   /* debug - to prevent first page load texts */
   opacity: 1 !important;
 }
@@ -114,9 +115,6 @@ article,
 }
 #darkness {
   opacity: 0;
-}
-#garage {
-  z-index: 10;
 }
 .page a {
   stroke: blue;
