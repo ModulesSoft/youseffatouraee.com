@@ -10,7 +10,7 @@ function Garage() {
       x="265"
       y="900"
     >
-      <g clipPath="url(#b)" id="garage">
+      <g id="garage">
         <path fill="#fff" d="M0 0H384.264V136.105H0z"></path>
         <path fill="#fff" d="M0 0h384.264v136.1H0z"></path>
         <g transform="translate(2390 -351.355) translate(-2389 352.355)">
@@ -2039,7 +2039,7 @@ function Garage() {
         ></path>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="2"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) rotate(90 8.952 19.48)"
         >
@@ -2049,9 +2049,9 @@ function Garage() {
         </text>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="2"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) rotate(90 12.707 25.366)"
+          transform="translate(-212.227 -1325) translate(441.296 1325.052) rotate(90 12.707 25.366)"
         >
           <tspan x="0" y="0">
             Linux
@@ -2249,10 +2249,10 @@ function Garage() {
         ></path>
         <text
           fill="#707070"
-          fontFamily="Tahoma-Bold, Tahoma"
-          fontSize="1.5"
+          fontFamily=""
+          fontSize="2"
           fontWeight="700"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(11.681 39.537)"
+          transform="translate(-212.5 -1322) translate(441.296 1325.052) translate(11.681 39.537)"
         >
           <tspan x="0" y="0">
             JS
@@ -2260,19 +2260,8 @@ function Garage() {
         </text>
         <text
           fill="#707070"
-          fontFamily="Tahoma-Bold, Tahoma"
-          fontSize="1.5"
-          fontWeight="700"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(10.436 41.537)"
-        >
-          <tspan x="0" y="0">
-            (ES6)
-          </tspan>
-        </text>
-        <text
-          fill="#707070"
-          fontFamily="Tahoma-Bold, Tahoma"
-          fontSize="1"
+          fontFamily=""
+          fontSize="1.1"
           fontWeight="700"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(4.192 39.108)"
         >
@@ -2282,7 +2271,7 @@ function Garage() {
         </text>
         <text
           fill="#707070"
-          fontFamily="Tahoma-Bold, Tahoma"
+          fontFamily=""
           fontSize="1"
           fontWeight="700"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(5.54 40.108)"
@@ -2293,8 +2282,8 @@ function Garage() {
         </text>
         <text
           fill="#707070"
-          fontFamily="Tahoma-Bold, Tahoma"
-          fontSize="1"
+          fontFamily=""
+          fontSize="1.1"
           fontWeight="700"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(4.646 41.108)"
         >
@@ -2304,7 +2293,7 @@ function Garage() {
         </text>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="1"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(32.626 51)"
         >
@@ -2314,7 +2303,7 @@ function Garage() {
         </text>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="1"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(34.898 48.618)"
         >
@@ -2324,7 +2313,7 @@ function Garage() {
         </text>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="1"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(33.603 53.4)"
         >
@@ -2334,7 +2323,7 @@ function Garage() {
         </text>
         <text
           fill="#fff"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="1.5"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(57.909 44)"
         >
@@ -2344,7 +2333,7 @@ function Garage() {
         </text>
         <text
           fill="#707070"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="2"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(69.931 41)"
         >
@@ -2354,7 +2343,7 @@ function Garage() {
         </text>
         <text
           fill="#707070"
-          fontFamily="Tahoma"
+          fontFamily=""
           fontSize="2"
           transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(63.531 41)"
         >
@@ -2376,7 +2365,7 @@ function Garage() {
           ></path>
           <text
             fill="#31ae51"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".04em"
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 8.625)"
@@ -2416,7 +2405,7 @@ function Garage() {
           </text>
           <text
             fill="#31475e"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".04em"
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.066 4.57)"
@@ -2427,7 +2416,7 @@ function Garage() {
           </text>
           <text
             fill="#034b04"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".04em"
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 6.597)"
@@ -2438,7 +2427,7 @@ function Garage() {
           </text>
           <text
             fill="#31475e"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".04em"
             transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.126 2.466)"
@@ -2737,7 +2726,7 @@ function Garage() {
             ></path>
             <text
               fill="#fff"
-              fontFamily="Tahoma"
+              fontFamily=""
               fontSize="1"
               transform="translate(21.472 -1447) translate(231.693 1511.429) translate(5.205 16.735)"
             >
@@ -2747,7 +2736,7 @@ function Garage() {
             </text>
             <text
               fill="#fff"
-              fontFamily="Tahoma"
+              fontFamily=""
               fontSize="1"
               transform="translate(21.472 -1447) translate(231.693 1511.429) translate(4.833 19.071)"
             >
@@ -2790,7 +2779,7 @@ function Garage() {
           ></path>
           <text
             fill="#707070"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(1.645 19.446)"
           >
@@ -2799,7 +2788,7 @@ function Garage() {
             </tspan>
           </text>
           <text
-            fontFamily="Tahoma"
+            fontFamily="arial"
             fontSize="1"
             letterSpacing=".01em"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(.265 9.989)"
@@ -2811,7 +2800,7 @@ function Garage() {
             </tspan>
           </text>
           <text
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".01em"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(3.455 11.989)"
@@ -2822,18 +2811,18 @@ function Garage() {
           </text>
           <text
             fill="#034b04"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".01em"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(3.625 13.989)"
           >
             <tspan x="0" y="0">
-              Bachelor of science{" "}
+              Bachelor of science
             </tspan>
           </text>
           <text
             fill="#034b04"
-            fontFamily="Tahoma"
+            fontFamily=""
             fontSize="1"
             letterSpacing=".01em"
             transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(1.544 14.989)"
