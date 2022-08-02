@@ -1,4 +1,4 @@
-import TextAnimations from "../animations/TextAnimations";
+import OverlayAnimations from "../animations/OverlayAnimations";
 import WalkingAnimations from "../animations/WalkingAnimations";
 import CarAnimations from "../animations/CarAnimations";
 import FaceAnimations from "../animations/FaceAnimations";
@@ -6,47 +6,48 @@ import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import BackgroundAnimations from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
-
+const overlayAnimations = new OverlayAnimations(".decorative__scroll__image");
 let prevAnimation = "";
 export function animate(isMobile, animation = "", scroll = 0) {
   if (prevAnimation !== animation || scroll > 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
-        TextAnimations().introScene(".hi,.welcome,.download");
-        TextAnimations().addScroll(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollResume",
-          "#intro",
-          "#decorative",
-          3000
+        overlayAnimations.addMultipleText("#hi", "#welcome", "#download");
+        overlayAnimations.addAnimationAndShow(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollResume",
+          "#darkness"
         );
         break;
       case "introSceneScrollRemove":
-        TextAnimations().removeScroll(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollResume",
-          "#decorative"
+        overlayAnimations.removeAnimationAndHide(
+          "#hi",
+          "#welcome",
+          "#download"
+        );
+        overlayAnimations.removeAnimationAndHide(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollResume",
+          "#darkness"
         );
         break;
       case "hobbiesAddScroll":
-        TextAnimations().addScroll(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollHobbies",
-          "#intro",
-          "#decorative",
-          500
+        overlayAnimations.addAnimationAndShow(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollHobbies",
+          "#darkness"
         );
         break;
       case "hobbiesRemoveScroll":
-        TextAnimations().removeScroll(
-          ".scroll",
-          ".scrollIcon",
-          ".scrollHobbies",
-          "#decorative"
+        overlayAnimations.removeAnimationAndHide(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollHobbies",
+          "#darkness"
         );
         break;
       case "FirstFace":
