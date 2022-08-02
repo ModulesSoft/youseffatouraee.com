@@ -4,7 +4,7 @@ function TreeAnimations(treeOneId, treeTwoId, scroll) {
     targets: treeOneId,
     duration: 0,
     transformOrigin: "0 0 0",
-    translateX: scroll + "px",
+    translateX: 10 * scroll + "px",
   }).finished.then(() => {
     anime.remove(treeOneId);
   });
@@ -12,7 +12,7 @@ function TreeAnimations(treeOneId, treeTwoId, scroll) {
     targets: treeTwoId,
     duration: 0,
     transformOrigin: "0 0 0",
-    translateX: -1 * scroll + "px",
+    translateX: -10 * scroll + "px",
   }).finished.then(() => {
     anime.remove(treeTwoId);
   });
