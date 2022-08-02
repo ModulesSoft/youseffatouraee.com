@@ -124,7 +124,7 @@ function Play(
         scrollDir !== "down"
       ) {
         Typewriter(
-          ".article",
+          ".resume",
           "text-background",
           0,
           state[state.length - 1].text,
