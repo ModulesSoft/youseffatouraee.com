@@ -872,23 +872,6 @@ function House() {
             ></path>
           </g>
         </g>
-        <path
-          fill="none"
-          stroke="#28324e"
-          strokeLinecap="round"
-          strokeWidth="50"
-          d="M0 0.438L473.326 0"
-          data-name="Line 6"
-          transform="translate(675.024 541.669)"
-        ></path>
-        <path
-          fill="none"
-          stroke="#28324e"
-          strokeLinecap="round"
-          strokeWidth="50"
-          d="M0 541.669h244.831"
-          data-name="Path 951"
-        ></path>
         <g data-name="Group 158" transform="translate(8.694 458.895)">
           <path
             fill="#97d1e3"
