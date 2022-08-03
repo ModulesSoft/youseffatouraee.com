@@ -72,6 +72,7 @@ function Play(
     case 11:
       newState = library.general;
       day = true;
+      animate(isMobile, "door", limitedScroll);
       animate(isMobile, "day");
       break;
     case 12:
@@ -109,9 +110,6 @@ function Play(
       }
     }
     if (state[state.length - 1] === "end") return;
-    if (scroll < 10 * scrollStage) slideDoor(0); // keep the door open
-    if (scroll > 10 * scrollStage) slideDoor(limitedScroll); // slide the door
-    if (scroll > 11 * scrollStage) slideDoor(-1); // close the door
     if (state.length > 1) {
       currentView = calculateView(state, scrollDir, scrollStage, limitedScroll);
       if (!currentView) {

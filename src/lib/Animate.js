@@ -68,6 +68,9 @@ export function animate(isMobile, animation = "", scroll = 0) {
           )
         );
         break;
+      case "door":
+        DoorAnimations("#garage-door", scroll);
+        break;
       case "night":
         BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
         break;
@@ -84,15 +87,6 @@ export function animate(isMobile, animation = "", scroll = 0) {
         console.error("Provided animation does not exist");
         break;
     }
-  }
-}
-export function slideDoor(scroll) {
-  if (scroll === -1) {
-    //finished
-    DoorAnimations("#garage-door", "140px");
-  } else {
-    //slide the door
-    DoorAnimations("#garage-door", scroll * 10);
   }
 }
 
