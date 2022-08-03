@@ -31,13 +31,17 @@
     <div id="root"></div>
     <div class="decorative" id="decorative">
       <div class="decorative__scroll">
-        <img class="decorative__scroll__image" src="scrollIcon.svg" alt="" />
+        <picture class="decorative__scroll__image">
+          <source media="(min-width: 768px)" srcset="./scrollIcon.svg" />
+          <source media="(max-width: 768px)" srcset="./touchIcon.svg" />
+          <img src="scrollIcon.svg" alt="" />
+        </picture>
         <p
           class="decorative__scroll__text"
           id="scrollResume"
           class="scrollText"
         >
-          Scroll Down
+          Scroll Down Slowly
         </p>
         <p
           class="decorative__scroll__text"
