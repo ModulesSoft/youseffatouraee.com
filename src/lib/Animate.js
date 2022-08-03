@@ -4,7 +4,7 @@ import CarAnimations from "../animations/CarAnimations";
 import { poker, smile } from "../animations/FaceAnimations";
 import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
-import BackgroundAnimations from "../animations/BackgroundAnimations";
+import { day, night } from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
 const overlayAnimations = new OverlayAnimations(".decorative__scroll__image");
 let prevAnimation = "";
@@ -72,10 +72,10 @@ export function animate(isMobile, animation = "", scroll = 0) {
         DoorAnimations("#garage-door", scroll);
         break;
       case "night":
-        BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").night();
+        night("#darkness");
         break;
       case "day":
-        BackgroundAnimations(".page", "#darkness", "#clouds", "#sun").day();
+        day(".page", "#darkness", "#clouds", "#sun", scroll);
         break;
       case "TreeAnimations":
         TreeAnimations("#treeOne", "#treeTwo", scroll);
