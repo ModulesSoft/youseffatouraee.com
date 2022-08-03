@@ -2,7 +2,7 @@ import React from "react";
 
 function Flag() {
   return (
-    <svg x="670" y="100" viewBox="0 0 800 700">
+    <svg x="1024" y="-100">
       <g id="flag">
         <path
           fill="#280403"
