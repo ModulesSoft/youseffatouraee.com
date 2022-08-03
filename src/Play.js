@@ -4,7 +4,6 @@ import Camera from "./lib/Camera";
 import animate, { slideDoor } from "./lib/Animate";
 let state = [];
 let currentView = null;
-let day = false;
 function Play(
   pageRef,
   scroll = 0,
@@ -63,17 +62,15 @@ function Play(
     case 9:
       // change faces for variety
       newState = library.motorcycle;
-      // animate(isMobile, "SecondFace", limitedScroll);
       break;
     case 10:
       newState = library.door;
-      !day && animate(isMobile, "night");
+      animate(isMobile, "night");
       break;
     case 11:
       newState = library.general;
-      day = true;
       animate(isMobile, "door", limitedScroll);
-      animate(isMobile, "day");
+      animate(isMobile, "day", limitedScroll);
       break;
     case 12:
       newState = library.walking;
@@ -81,7 +78,6 @@ function Play(
       break;
     case 13:
       newState = library.garden;
-      // if (limitedScroll > (scrollStage * 75) / 100)
       animate(isMobile, "TreeAnimations", limitedScroll);
       break;
     case 14:
