@@ -78,7 +78,7 @@ export function animate(isMobile, animation = "", scroll = 0) {
         TreeAnimations("#treeOne", "#treeTwo", scroll);
         break;
       case "FlagAnimations":
-        FlagAnimations("#flag");
+        FlagAnimations("#flag", scroll);
         break;
       default:
         console.error("Provided animation does not exist");

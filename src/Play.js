@@ -85,8 +85,7 @@ function Play(
       break;
     case 14:
       newState = library.mountain;
-      // if (limitedScroll > (scrollStage * 75) / 100)
-      animate(isMobile, "FlagAnimations");
+      animate(isMobile, "FlagAnimations", limitedScroll);
       break;
     default:
       newState = "end";
