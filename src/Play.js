@@ -27,7 +27,7 @@ function Play(
       if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
         animate(isMobile, "introSceneScrollRemove");
       } else {
-        animate(isMobile, "FirstFace");
+        animate(isMobile, "FirstFace", limitedScroll);
       }
       break;
     case 1:
@@ -63,7 +63,7 @@ function Play(
     case 9:
       // change faces for variety
       newState = library.motorcycle;
-      animate(isMobile, "SecondFace");
+      // animate(isMobile, "SecondFace", limitedScroll);
       break;
     case 10:
       newState = library.door;
