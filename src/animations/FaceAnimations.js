@@ -1,51 +1,17 @@
 import anime from "animejs";
-function FaceAnimations(pokerFace, smileFace) {
-  function poker() {
-    anime
-      .timeline({ loop: false })
-      .add({
-        targets: smileFace,
-        opacity: 0,
-      })
-      .add({
-        targets: pokerFace,
-        opacity: 1,
-      })
-      .add({
-        targets: pokerFace,
-        duration: 2000,
-        easing: "easeOutQuad",
-        y: 45,
-      })
-      .finished.then(() => anime.remove(smileFace, pokerFace));
-  }
-  function smile() {
-    anime
-      .timeline({ loop: false })
-      .add({
-        targets: pokerFace,
-        opacity: 0,
-      })
-      .add({
-        targets: smileFace,
-        opacity: 1,
-      })
-      .add({
-        targets: pokerFace,
-        duration: 1000,
-        easing: "easeOutQuad",
-        y: 60,
-      })
-      .add({
-        targets: smileFace,
-        duration: 1000,
-        easing: "easeOutQuad",
-        translateX: 20,
-        translateY: -6,
-        rotate: "50deg",
-      })
-      .finished.then(() => anime.remove(smileFace, pokerFace));
-  }
-  return { poker, smile };
+export function poker(pokerFaceId, scroll) {
+  anime({
+    targets: pokerFaceId,
+    easing: "easeOutQuad",
+    translateY: -1 * scroll,
+  }).finished.then(() => anime.remove(pokerFaceId));
 }
-export default FaceAnimations;
+export function smile(smileFaceId, scroll) {
+  anime({
+    targets: smileFaceId,
+    easing: "easeOutQuad",
+    translateX: 2 * scroll,
+    translateY: (-1 / 2) * scroll,
+    rotate: 5 * scroll + "deg",
+  }).finished.then(() => anime.remove(smileFaceId));
+}

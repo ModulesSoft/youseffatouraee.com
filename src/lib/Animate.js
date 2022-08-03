@@ -1,7 +1,7 @@
 import OverlayAnimations from "../animations/OverlayAnimations";
 import WalkingAnimations from "../animations/WalkingAnimations";
 import CarAnimations from "../animations/CarAnimations";
-import FaceAnimations from "../animations/FaceAnimations";
+import { poker, smile } from "../animations/FaceAnimations";
 import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import BackgroundAnimations from "../animations/BackgroundAnimations";
@@ -51,14 +51,10 @@ export function animate(isMobile, animation = "", scroll = 0) {
         );
         break;
       case "FirstFace":
-        isMobile
-          ? FaceAnimations("#pokerFace", "#smileFace").poker()
-          : FaceAnimations("#pokerFace", "#smileFace").smile();
+        isMobile ? poker("#pokerFace", scroll) : smile("#smileFace", scroll);
         break;
       case "SecondFace":
-        isMobile
-          ? FaceAnimations("#pokerFace", "#smileFace").smile()
-          : FaceAnimations("#pokerFace", "#smileFace").poker();
+        isMobile ? smile("#smileFace", scroll) : poker("#pokerFace", scroll);
         break;
       case "WalkingAnimations":
         WalkingAnimations("#walking", "#sideview", () =>
