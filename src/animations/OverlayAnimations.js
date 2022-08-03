@@ -32,7 +32,7 @@ export default class OverlayAnimations {
     overlays.forEach((overlay) => {
       if (document.querySelector(overlay))
         document.querySelector(overlay).style.visibility = "hidden";
-      anime.remove(overlay);
+      // anime.remove(overlay);
     });
   }
   addAnimationAndShow(...overlays) {
