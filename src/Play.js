@@ -1,7 +1,7 @@
 import calculateView from "./lib/CalculateView";
 import Typewriter from "./lib/Typewriter";
 import Camera from "./lib/Camera";
-import animate, { slideDoor } from "./lib/Animate";
+import animate from "./lib/Animate";
 let state = [];
 let currentView = null;
 function Play(
