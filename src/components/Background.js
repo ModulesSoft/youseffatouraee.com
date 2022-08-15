@@ -19,19 +19,19 @@ function Background() {
       height="1080"
       viewBox="0 0 1920 1080"
     >
-      <Sun />
-      <Clouds />
-      <Mountains />
-      <Trees />
-      <Walking />
-      <House />
-      <Flag />
-      <Garage />
-      <GarageDoor />
-      <Sideview />
-      <Car />
-      <Darkness />
-      <LightBeam />
+      <Sun loading="lazy" />
+      <Clouds loading="lazy" />
+      <Mountains loading="lazy" />
+      <Trees loading="lazy" />
+      <Walking loading="lazy" />
+      <House loading="lazy" />
+      <Flag loading="lazy" />
+      <Garage loading="lazy" />
+      <GarageDoor loading="lazy" />
+      <Sideview loading="lazy" />
+      <Car loading="lazy" />
+      <Darkness loading="lazy" />
+      <LightBeam loading="lazy" />
     </svg>
   );
 }
