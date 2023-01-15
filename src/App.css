@@ -62,6 +62,12 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
+.decorative__intro__text__link {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
 #hi,
 #welcome,
 #download {
@@ -174,10 +180,4 @@
 #cycle7,
 #cycle8 {
   opacity: 0;
-}
-.decorative__intro__text__link {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin-right: 5px;
 }

@@ -27,7 +27,8 @@ function Typewriter(
     autoStart: true,
     delay: delay,
     wrapperClassName: wrapperClassName,
-    deleteSpeed: 0.5,
+    pauseFor: delay + 3000,
+    deleteSpeed: 50,
   });
   //   tw.callFunction(() => {
   //     anime.remove(pageClass);

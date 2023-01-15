@@ -1255,17 +1255,17 @@ function Library() {
           fill="#fff"
           fontFamily=""
           fontSize="1"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(32.626 51)"
+          transform="translate(258 52)"
         >
           <tspan x="0" y="0">
-            GraphQL client
+            Bootstrap, Tailwind CSS, W3.CSS
           </tspan>
         </text>
         <text
           fill="#fff"
           fontFamily=""
-          fontSize="1"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(34.898 48.618)"
+          fontSize="1.1"
+          transform="translate(263 49.5)"
         >
           <tspan x="0" y="0">
             Sass
@@ -1274,11 +1274,11 @@ function Library() {
         <text
           fill="#fff"
           fontFamily=""
-          fontSize="1"
-          transform="translate(-212.227 -1324.052) translate(441.296 1325.052) translate(33.603 53.4)"
+          fontSize="0.7"
+          transform="translate(262.3 54.2)"
         >
           <tspan x="0" y="0">
-            TypeScript
+            REST API, GraphQL
           </tspan>
         </text>
         <text
