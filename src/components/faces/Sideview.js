@@ -1,6 +1,6 @@
 function Sideview() {
   return (
-    <svg x="1560" y="917">
+    <svg x="1560" y="922">
       <g id="sideview">
         <path
           fill="#fc9"
