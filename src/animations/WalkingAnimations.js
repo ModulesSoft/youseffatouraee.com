@@ -6,35 +6,36 @@ function WalkingAnimations(
   scroll,
   finishedCallback = () => {}
 ) {
-  const roundedScroll = (Math.ceil(scroll * 2) % 8) + 1;
-  console.log(roundedScroll);
+  const roundedScroll = Math.ceil(scroll * 2) % 8;
   anime({
     targets: cycleIds,
     duration: 0,
     opacity: 0,
   });
-  if (roundedScroll > 0 && scroll <= 8) {
+  if (roundedScroll >= 0 && scroll < 8) {
     anime({
       targets: cycleIds[roundedScroll],
       duration: 0,
       opacity: 1,
     });
-  }
-  anime({
-    targets: walkingId,
-    translateX: 55 * scroll,
-    duration: 0,
-    easing: "linear",
-  });
-  if (scroll > 8) {
     anime({
-      targets: cycleIds,
+      targets: walkingId,
+      translateX: 55 * scroll,
       duration: 0,
-      opacity: 0,
+      easing: "linear",
     });
+  } else {
     anime({
       targets: sideviewId,
       opacity: 1,
+      duration: 500,
+    });
+    // never show walking again
+    anime({
+      targets: walkingId,
+      opacity: 0,
+      duration: 0,
+      easing: "linear",
     });
     finishedCallback();
   }
