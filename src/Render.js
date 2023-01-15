@@ -12,11 +12,11 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
     end: { view: "0 0 0 0" },
     general: {
       view: isMobile
-        ? `462 ${1080 - height} ${width} ${height}`
+        ? `600 ${1080 - height} ${width} ${height}`
         : "0 0 1920 1080",
     },
     walking: {
-      view: isMobile ? `1300 0 620 1080` : "300 0 1620 1080",
+      view: isMobile ? "1300 0 620 1080" : "300 0 1620 1080",
     },
     door: {
       view: isMobile
@@ -82,7 +82,7 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
       textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     garden: {
-      view: isMobile ? "1258 600 600 420" : "1258 600 600 420",
+      view: isMobile ? "1400 600 600 420" : "1258 600 600 420",
       textPosition: { x: 16, y: 16, width: `${width - 16}` },
     },
     mountain: {
