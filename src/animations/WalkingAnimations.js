@@ -5,9 +5,23 @@ function WalkingAnimations(
   scroll,
   finishedCallback = () => {}
 ) {
+  const roundedScroll = Math.ceil(scroll % 8);
+  console.log("scroll" + roundedScroll);
+  anime({
+    targets: "#cycle1,#cycle2,#cycle3,#cycle4,#cycle5,#cycle6,#cycle7,#cycle8",
+    duration: 0,
+    opacity: 0,
+  });
+  if (roundedScroll > 0) {
+    anime({
+      targets: `#cycle${roundedScroll}`,
+      duration: 0,
+      opacity: 1,
+    });
+  }
   anime({
     targets: walkingId,
-    translateX: 55 * scroll,
+    translateX: 55 * roundedScroll,
     easing: "linear",
   });
   // anime
