@@ -1,6 +1,7 @@
 import anime from "animejs";
 function WalkingAnimations(
   walkingId,
+  cycleIds,
   sideviewId,
   scroll,
   finishedCallback = () => {}
@@ -8,13 +9,13 @@ function WalkingAnimations(
   const roundedScroll = (Math.ceil(scroll * 2) % 8) + 1;
   console.log(roundedScroll);
   anime({
-    targets: "#cycle1,#cycle2,#cycle3,#cycle4,#cycle5,#cycle6,#cycle7,#cycle8",
+    targets: cycleIds,
     duration: 0,
     opacity: 0,
   });
   if (roundedScroll > 0 && scroll <= 8) {
     anime({
-      targets: `#cycle${roundedScroll}`,
+      targets: cycleIds[roundedScroll],
       duration: 0,
       opacity: 1,
     });
@@ -27,8 +28,7 @@ function WalkingAnimations(
   });
   if (scroll > 8) {
     anime({
-      targets:
-        "#cycle1,#cycle2,#cycle3,#cycle4,#cycle5,#cycle6,#cycle7,#cycle8",
+      targets: cycleIds,
       duration: 0,
       opacity: 0,
     });

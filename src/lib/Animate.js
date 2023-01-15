@@ -57,15 +57,29 @@ export function animate(isMobile, animation = "", scroll = 0) {
         isMobile ? smile("#smileFace", scroll) : poker("#pokerFace", scroll);
         break;
       case "WalkingAnimations":
-        WalkingAnimations("#walking", "#sideview", scroll, () =>
-          CarAnimations(
-            "#car",
-            "#beam",
-            "#rearWheel",
-            "#frontWheel",
-            "#wheels",
-            "#sideview"
-          )
+        WalkingAnimations(
+          "#walking",
+          [
+            "#cycle1",
+            "#cycle2",
+            "#cycle3",
+            "#cycle4",
+            "#cycle5",
+            "#cycle6",
+            "#cycle7",
+            "#cycle8",
+          ],
+          "#sideview",
+          scroll,
+          () =>
+            CarAnimations(
+              "#car",
+              "#beam",
+              "#rearWheel",
+              "#frontWheel",
+              "#wheels",
+              "#sideview"
+            )
         );
         break;
       case "door":
