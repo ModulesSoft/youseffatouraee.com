@@ -74,7 +74,7 @@ function Play(
       break;
     case 12:
       newState = library.walking;
-      animate(isMobile, "WalkingAnimations");
+      animate(isMobile, "WalkingAnimations", limitedScroll);
       break;
     case 13:
       newState = library.garden;

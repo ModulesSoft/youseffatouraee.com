@@ -57,7 +57,7 @@ export function animate(isMobile, animation = "", scroll = 0) {
         isMobile ? smile("#smileFace", scroll) : poker("#pokerFace", scroll);
         break;
       case "WalkingAnimations":
-        WalkingAnimations("#walking", "#sideview", () =>
+        WalkingAnimations("#walking", "#sideview", scroll, () =>
           CarAnimations(
             "#car",
             "#beam",
