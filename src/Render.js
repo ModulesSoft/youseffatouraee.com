@@ -7,7 +7,7 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
   // view points data
   let library = {
     begin: {
-      view: "590 890 60 60",
+      view: "540 880 120 120",
     },
     end: { view: "0 0 0 0" },
     general: {
