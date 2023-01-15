@@ -1324,77 +1324,89 @@ function Library() {
           transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(-2506.041 1650.989)"
         ></path>
         <text
-          fill="#31ae51"
-          fontFamily=""
-          fontSize="1"
-          letterSpacing=".04em"
-          transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 8.625)"
-        >
-          <a href="https://www.deedban.net">
-            <tspan x="0" y="0">
-              https://www.deedban.net
-            </tspan>
-          </a>
-          <a href="https://biofluids.aut.ac.ir">
-            <tspan x="0" y="2.05">
-              https://biofluids.aut.ac.ir
-            </tspan>
-          </a>
-          <a href="https://icbme.ir">
-            <tspan x="0" y="4.1">
-              https://icbme.ir
-            </tspan>
-          </a>
-          <a href="https://azarshiga.com">
-            <tspan x="0" y="6.15">
-              https://azarshiga.com
-            </tspan>
-          </a>
-          <a href="https://persoulio.com">
-            <tspan x="0" y="8.2">
-              https://persoulio.com
-            </tspan>
-          </a>
-          <tspan fill="#31475e">
-            <a href="https://majhoolsoft.com">
-              <tspan x="0" y="10.25">
-                https://majhoolsoft.com
-              </tspan>
-            </a>
-          </tspan>
-        </text>
-        <text
-          fill="#31475e"
-          fontFamily=""
-          fontSize="1"
-          letterSpacing=".04em"
-          transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.066 4.57)"
+          fill="red"
+          fontFamily="arial"
+          fontSize="0.7"
+          letterSpacing=".05"
+          transform="translate(271 66.4)"
         >
           <tspan x="0" y="0">
-            medium.com/majhoolsoft
+            Social:
           </tspan>
-        </text>
-        <text
-          fill="#034b04"
-          fontFamily=""
-          fontSize="1"
-          letterSpacing=".04em"
-          transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.103 6.597)"
-        >
-          <tspan x="0" y="0">
-            Online public websites:
+          <a
+            href="https://GitHub.com/majhoolsoft"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="1">
+              GitHub.com/majhoolsoft
+            </tspan>
+          </a>
+          <a
+            href="https://medium.com/@majhoolsoft"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="2">
+              Medium.com/@majhoolsoft
+            </tspan>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/yousef-fatouraee/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="3">
+              linkedin.com/in/yousef-fatouraee/
+            </tspan>
+          </a>
+
+          <tspan x="0" y="8">
+            Latest developed websites:
           </tspan>
-        </text>
-        <text
-          fill="#31475e"
-          fontFamily=""
-          fontSize="1"
-          letterSpacing=".04em"
-          transform="translate(21.472 -1447) translate(247.114 1508.974) translate(.306 .861) translate(2.126 2.466)"
-        >
-          <tspan x="0" y="0">
-            GitHub.com/majhoolsoft
-          </tspan>
+          <a
+            href="https://www.publicipinfo.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="9">
+              Publicipinfo.com
+            </tspan>
+          </a>
+          <a
+            href="https://biofluids.aut.ac.ir"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="10">
+              Biofluids.aut.ac.ir
+            </tspan>
+          </a>
+          <a href="https://icbme.ir" target="_blank" rel="noreferrer">
+            <tspan x="0" y="11">
+              ICBME.ir
+            </tspan>
+          </a>
+          <a
+            href="https://majhoolsoft.github.io/Next.js-SPA-Portfolio"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="12">
+              Azarshiga.ir
+            </tspan>
+          </a>
+          <a href="https://majhoolsoft.com" target="_blank" rel="noreferrer">
+            <tspan x="0" y="13">
+              Majhoolsoft.com
+            </tspan>
+          </a>
+          <a href="https://persoulio.com" target="_blank" rel="noreferrer">
+            <tspan x="0" y="14">
+              Persoulio.com
+            </tspan>
+          </a>
         </text>
         <path
           fill="#31475e"
@@ -1754,7 +1766,11 @@ function Library() {
           transform="translate(586.432 -1176.019) translate(-301.432 1175.819) translate(0 1.014) translate(1.381 1.061) translate(.265 9.989)"
         >
           <tspan id="aut" x="0" y="0">
-            <a href="https://www.usnews.com/education/best-global-universities/amirkabir-university-of-technology-aut-506266">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.usnews.com/education/best-global-universities/amirkabir-university-of-technology-aut-506266"
+            >
               Amirkabir University of Technology
             </a>
           </tspan>
