@@ -9,7 +9,7 @@ import Eighth from "./cycle/Eighth";
 
 function Walking({ cycle = 1 }) {
   return (
-    <svg x="900" y="440">
+    <svg x="560" y="430">
       <g id="walking">
         <First />
         <Second />
