@@ -21,14 +21,10 @@ function Garage() {
         <GarageBackground />
         <Window />
         <Tools />
-        <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmg3p82mr6h09pByA1qbUft">
-          <Motorcycle />
-        </a>
+        <Motorcycle />
         <Pump />
         <Library />
-        <a href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEmtzksQp5IjbJV5k_rNS7Q5">
-          <Microphone />
-        </a>
+        <Microphone />
         <SmileFace />
         <PokerFace />
         <Desk />
