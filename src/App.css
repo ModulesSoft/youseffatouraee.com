@@ -175,3 +175,9 @@
 #cycle8 {
   opacity: 0;
 }
+.decorative__intro__text__link {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 5px;
+}
