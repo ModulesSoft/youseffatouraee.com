@@ -1331,7 +1331,7 @@ function Library() {
           transform="translate(271 66.4)"
         >
           <tspan x="0" y="0">
-            Social:
+            Social Networks:
           </tspan>
           <a
             href="https://GitHub.com/majhoolsoft"
@@ -1353,20 +1353,29 @@ function Library() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/yousef-fatouraee/"
+            href="https://www.youtube.com/@majhoolsoft"
             target="_blank"
             rel="noreferrer"
           >
             <tspan x="0" y="3">
-              linkedin.com/in/yousef-fatouraee/
+              YouTube.com/@majhoolsoft
+            </tspan>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yousef-fatouraee/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <tspan x="0" y="4">
+              Linkedin.com/in/yousef-fatouraee
             </tspan>
           </a>
 
-          <tspan x="0" y="8">
+          <tspan x="0" y="8.1">
             Latest developed websites:
           </tspan>
           <a
-            href="https://www.publicipinfo.com"
+            href="http://www.publicipinfo.com"
             target="_blank"
             rel="noreferrer"
           >
@@ -1400,11 +1409,6 @@ function Library() {
           <a href="https://majhoolsoft.com" target="_blank" rel="noreferrer">
             <tspan x="0" y="13">
               Majhoolsoft.com
-            </tspan>
-          </a>
-          <a href="https://persoulio.com" target="_blank" rel="noreferrer">
-            <tspan x="0" y="14">
-              Persoulio.com
             </tspan>
           </a>
         </text>
