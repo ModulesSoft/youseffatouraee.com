@@ -6,7 +6,7 @@ function WalkingAnimations(
   scroll,
   finishedCallback = () => {}
 ) {
-  const roundedScroll = Math.ceil(scroll * 2) % 8;
+  const roundedScroll = Math.ceil(scroll * 2.5) % 8;
   anime({
     targets: cycleIds,
     duration: 0,
