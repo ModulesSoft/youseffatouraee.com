@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import Play from "./Play";
-import scrollToTop from "./lib/ScrollToTop";
+import Play from "../Play";
+import scrollToTop from "./ScrollToTop";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-import viewsAndTexts from "./lib/ViewsAndTexts";
+import viewsAndTexts from "./ViewsAndTexts";
 export const useRender = (pageRef, isMobile, width, height, texts) => {
   const scrollSteps = 50; // the number to devide scroll by
   const scrollWait = 40; // for performance (should be less than scrollSteps)
