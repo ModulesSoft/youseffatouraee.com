@@ -1,7 +1,7 @@
 import "./App.css";
 import useWindowDimensions from "./lib/useWindowDimensions";
 import Background from "./components/Background";
-import GetTextArray from "./components/GetTextArray";
+import GetTextArray from "./lib/GetTextArray";
 import useRender from "./lib/useRender";
 import { useRef } from "react";
 const texts = GetTextArray();
