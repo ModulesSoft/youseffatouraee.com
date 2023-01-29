@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import Play from "./Play";
 import scrollToTop from "./lib/ScrollToTop";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 export const Render = (pageRef, isMobile, width, height, texts) => {
   // stage scroll steps
-  const scrollStage = 10;
+  const scrollSteps = 50; // the number to devide scroll by
+  const scrollWait = 40; // for performance (should be less than scrollSteps)
+  const scrollStage = 10; // the number of scrolls for each scence
   // view points data
   let library = {
     begin: {
@@ -103,28 +106,27 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
       },
     };
   });
-  var lastScrl = 0; // to detect scroll direction changes
-  const getScroll = () => {
-    const scrl =
-      (window.pageYOffset || document.documentElement.scrollTop) / 50;
-    const scroll = Number.parseFloat(scrl).toFixed(2);
-    const scene = Math.floor(scrl / scrollStage);
-    const scrollDir = scrl > lastScrl ? "down" : "up";
-    Play(pageRef, scroll, scrollDir, scrollStage, scene, isMobile, library);
-    lastScrl = scrl;
-  };
+  console.log("comes");
   useEffect(() => {
     // when component did mount:
     scrollToTop();
-    if (document.getElementById("darkness"))
-      document.getElementById("darkness").style.visibility = "hidden";
     // initial call
     Play(pageRef, 0, "down", scrollStage, 0, isMobile, library);
-    window.addEventListener("scroll", getScroll, { passive: true });
-    // clean up code
-    return () => {
-      window.removeEventListener("scroll", getScroll);
-    };
+    // if (document.getElementById("darkness"))
+    //   document.getElementById("darkness").style.visibility = "hidden";
   }, []);
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const scrollDir = currPos.y < prevPos.y ? "down" : "up";
+      const scrl = Math.abs(currPos.y) / scrollSteps;
+      const scroll = Number.parseFloat(scrl).toFixed(1);
+      const scene = Math.floor(scrl / scrollStage);
+      Play(pageRef, scroll, scrollDir, scrollStage, scene, isMobile, library);
+    },
+    undefined,
+    undefined,
+    undefined,
+    scrollWait
+  );
 };
 export default Render;
