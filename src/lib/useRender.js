@@ -8,13 +8,6 @@ export const useRender = (pageRef, isMobile, width, height, texts) => {
   const scrollWait = 25; // for performance (should be less than scrollSteps)
   const scrollStage = 10; // the number of scrolls for each scene
   const library = viewsAndTexts(isMobile, width, height, texts); // view points data
-  useEffect(() => {
-    // lights, camera...
-    scrollToTop();
-    Play(pageRef, 0, "down", scrollStage, 0, isMobile, library);
-    // if (document.getElementById("darkness"))
-    //   document.getElementById("darkness").style.visibility = "hidden";
-  }, []);
   useScrollPosition(
     ({ prevPos, currPos }) => {
       const scrollDir = currPos.y < prevPos.y ? "down" : "up";
@@ -29,5 +22,10 @@ export const useRender = (pageRef, isMobile, width, height, texts) => {
     undefined,
     scrollWait
   );
+  useEffect(() => {
+    // lights, camera...
+    scrollToTop();
+    Play(pageRef, 0, "down", scrollStage, 0, isMobile, library);
+  }, []);
 };
 export default useRender;
