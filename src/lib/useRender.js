@@ -5,7 +5,7 @@ import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import viewsAndTexts from "./ViewsAndTexts";
 export const useRender = (pageRef, isMobile, width, height, texts) => {
   const scrollSteps = 50; // the number to devide scroll by
-  const scrollWait = 40; // for performance (should be less than scrollSteps)
+  const scrollWait = 25; // for performance (should be less than scrollSteps)
   const scrollStage = 10; // the number of scrolls for each scene
   const library = viewsAndTexts(isMobile, width, height, texts); // view points data
   useEffect(() => {
