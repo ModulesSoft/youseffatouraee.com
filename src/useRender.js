@@ -3,7 +3,7 @@ import Play from "./Play";
 import scrollToTop from "./lib/ScrollToTop";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import viewsAndTexts from "./lib/ViewsAndTexts";
-export const Render = (pageRef, isMobile, width, height, texts) => {
+export const useRender = (pageRef, isMobile, width, height, texts) => {
   const scrollSteps = 50; // the number to devide scroll by
   const scrollWait = 40; // for performance (should be less than scrollSteps)
   const scrollStage = 10; // the number of scrolls for each scene
@@ -30,4 +30,4 @@ export const Render = (pageRef, isMobile, width, height, texts) => {
     scrollWait
   );
 };
-export default Render;
+export default useRender;

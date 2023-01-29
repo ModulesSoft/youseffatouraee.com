@@ -1,8 +1,8 @@
 import "./App.css";
-import useWindowDimensions from "./components/GetWindowDimensions";
+import useWindowDimensions from "./components/useWindowDimensions";
 import Background from "./components/Background";
 import GetTextArray from "./components/GetTextArray";
-import Render from "./Render";
+import useRender from "./useRender";
 import { useRef } from "react";
 const texts = GetTextArray();
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const mobile = width < height;
   const size = mobile ? { height: height } : { width: width };
   const pageRef = useRef();
-  Render(pageRef, mobile, width, height, texts);
+  useRender(pageRef, mobile, width, height, texts);
   return (
     <div className="App">
       <header className="App-header"></header>
