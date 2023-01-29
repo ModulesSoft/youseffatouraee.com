@@ -1,4 +1,3 @@
-// import anime from "animejs";
 import TW from "typewriter-effect/dist/core";
 let prevText = "";
 function Typewriter(
@@ -6,23 +5,13 @@ function Typewriter(
   wrapperClassName,
   delay,
   textArray,
-  position = null,
-  finishedCallback = () => {}
+  position = null
 ) {
   if (!position || prevText === textArray) {
     return;
   }
   prevText = textArray;
-  // positioning
-  // anime({
-  //   targets: pageClass,
-  //   translateX: position.x,
-  //   translateY: position.y,
-  //   width: position.width,
-  // }).finished.then(() => {
-  // writing
-  // let tw =
-  new TW(pageClass, {
+  const tw = new TW(pageClass, {
     strings: textArray,
     autoStart: true,
     delay: delay,
@@ -30,11 +19,10 @@ function Typewriter(
     pauseFor: delay + 3000,
     deleteSpeed: 50,
   });
-  //   tw.callFunction(() => {
-  //     anime.remove(pageClass);
-  //     tw.stop();
-  //     finishedCallback();
-  //   });
-  // });
+  return tw;
 }
-export default Typewriter;
+const CleanTypewriter = (pageClass) => {
+  const tw = new TW(pageClass).stop();
+  return tw;
+};
+export { Typewriter, CleanTypewriter };

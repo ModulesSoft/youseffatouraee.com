@@ -1,8 +1,8 @@
 import calculateView from "./lib/CalculateView";
-import Typewriter from "./lib/Typewriter";
+import { Typewriter, CleanTypewriter } from "./lib/Typewriter";
 import Camera from "./lib/Camera";
 import animate from "./lib/Animate";
-let state = [];
+const state = [];
 let currentView = null;
 function Play(
   pageRef,
@@ -91,8 +91,10 @@ function Play(
   if (state.length === 0) {
     //init
     state.push(library.begin);
-    Camera(pageRef, "0 0 0 0");
+    Camera(pageRef, library.begin.view);
     animate(isMobile, "introScene");
+    animate(isMobile, "door", 0); //to debug halfway door after page refresh
+    CleanTypewriter(".resume");
   } else if (state.length > 0) {
     if (JSON.stringify(state[state.length - 1]) !== JSON.stringify(newState)) {
       if (scrollDir === "down") {

@@ -26,7 +26,6 @@
 }
 .decorative {
   z-index: 1;
-  margin-top: 2px;
   height: 100vh;
 }
 .decorative__scroll {
