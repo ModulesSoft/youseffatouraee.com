@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Play from "../Play";
+import Play from "./Play";
 import scrollToTop from "./ScrollToTop";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import viewsAndTexts from "./ViewsAndTexts";

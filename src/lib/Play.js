@@ -1,7 +1,7 @@
-import calculateView from "./lib/CalculateView";
-import { Typewriter, CleanTypewriter } from "./lib/Typewriter";
-import Camera from "./lib/Camera";
-import animate from "./lib/Animate";
+import calculateView from "./CalculateView";
+import { Typewriter, CleanTypewriter } from "./Typewriter";
+import Camera from "./Camera";
+import animate from "./Animate";
 const state = [];
 let currentView = null;
 function Play(
