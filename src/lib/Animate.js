@@ -13,7 +13,6 @@ export function animate(isMobile, animation = "", scroll = 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
-        overlayAnimations.addMultipleText("#hi", "#welcome", "#download");
         overlayAnimations.addAnimationAndShow(
           ".decorative",
           ".decorative__scroll",
