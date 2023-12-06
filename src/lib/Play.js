@@ -11,7 +11,7 @@ function Play(
   scrollStage = 10,
   sceneNumber = 0,
   isMobile,
-  library
+  viewsAndTexts
 ) {
   if (isMobile === undefined || isMobile === null)
     return console.error("Undefined parameters may cause problems!");
@@ -22,7 +22,7 @@ function Play(
   let newState = null;
   switch (sceneNumber) {
     case 0:
-      newState = library.laptop;
+      newState = viewsAndTexts.laptop;
       if (limitedScroll > 0 && limitedScroll < scrollStage / 2) {
         animate(isMobile, "introSceneScrollRemove");
       } else {
@@ -30,29 +30,29 @@ function Play(
       }
       break;
     case 1:
-      newState = library.notebookOne;
+      newState = viewsAndTexts.notebookOne;
       break;
     case 2:
-      newState = library.notebookTwo;
+      newState = viewsAndTexts.notebookTwo;
       break;
     case 3:
-      newState = library.degree;
+      newState = viewsAndTexts.degree;
       break;
     case 4:
-      newState = library.os;
+      newState = viewsAndTexts.os;
       break;
     case 5:
-      newState = library.frontEndOne;
+      newState = viewsAndTexts.frontEndOne;
       break;
     case 6:
-      newState = library.frontEndTwo;
+      newState = viewsAndTexts.frontEndTwo;
       break;
     case 7:
-      newState = library.backEndOne;
+      newState = viewsAndTexts.backEndOne;
       break;
     case 8:
       // hobbies
-      newState = library.microphone;
+      newState = viewsAndTexts.microphone;
       if (scrollDir === "down" && limitedScroll < scrollStage / 4) {
         animate(isMobile, "hobbiesAddScroll");
       } else {
@@ -61,27 +61,27 @@ function Play(
       break;
     case 9:
       // change faces for variety
-      newState = library.motorcycle;
+      newState = viewsAndTexts.motorcycle;
       break;
     case 10:
-      newState = library.door;
+      newState = viewsAndTexts.door;
       animate(isMobile, "night");
       break;
     case 11:
-      newState = library.general;
+      newState = viewsAndTexts.general;
       animate(isMobile, "door", limitedScroll);
       animate(isMobile, "day", limitedScroll);
       break;
     case 12:
-      newState = library.walking;
+      newState = viewsAndTexts.walking;
       animate(isMobile, "WalkingAnimations", limitedScroll);
       break;
     case 13:
-      newState = library.garden;
+      newState = viewsAndTexts.garden;
       animate(isMobile, "TreeAnimations", limitedScroll);
       break;
     case 14:
-      newState = library.mountain;
+      newState = viewsAndTexts.mountain;
       animate(isMobile, "FlagAnimations", limitedScroll);
       break;
     default:
@@ -90,8 +90,8 @@ function Play(
   }
   if (state.length === 0) {
     //init
-    state.push(library.begin);
-    Camera(pageRef, library.begin.view);
+    state.push(viewsAndTexts.begin);
+    Camera(pageRef, viewsAndTexts.begin.view);
     animate(isMobile, "introScene");
     animate(isMobile, "door", 0); //to debug halfway door after page refresh
     CleanTypewriter(".resume");
