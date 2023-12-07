@@ -1,4 +1,7 @@
-import OverlayAnimations from "../animations/OverlayAnimations";
+import {
+  removeAnimationAndHide,
+  addAnimationAndShow,
+} from "../animations/OverlayAnimations";
 import WalkingAnimations from "../animations/WalkingAnimations";
 import CarAnimations from "../animations/CarAnimations";
 import { poker, smile } from "../animations/FaceAnimations";
@@ -6,44 +9,34 @@ import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import { day, night } from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
-const overlayAnimations = new OverlayAnimations(".decorative__scroll__image");
 let prevAnimation = "";
 export function animate(isMobile, animation = "", scroll = 0) {
   if (prevAnimation !== animation || scroll > 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
-        overlayAnimations.addAnimationAndShow(
-          ".decorative",
+        addAnimationAndShow(
           ".decorative__scroll",
           "#scrollResume",
           "#darkness"
         );
         break;
       case "introSceneScrollRemove":
-        overlayAnimations.removeAnimationAndHide(
-          "#hi",
-          "#welcome",
-          "#download"
-        );
-        overlayAnimations.removeAnimationAndHide(
-          ".decorative",
+        removeAnimationAndHide(
           ".decorative__scroll",
           "#scrollResume",
           "#darkness"
         );
         break;
       case "hobbiesAddScroll":
-        overlayAnimations.addAnimationAndShow(
-          ".decorative",
+        addAnimationAndShow(
           ".decorative__scroll",
           "#scrollHobbies",
           "#darkness"
         );
         break;
       case "hobbiesRemoveScroll":
-        overlayAnimations.removeAnimationAndHide(
-          ".decorative",
+        removeAnimationAndHide(
           ".decorative__scroll",
           "#scrollHobbies",
           "#darkness"

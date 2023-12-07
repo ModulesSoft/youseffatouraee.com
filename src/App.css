@@ -37,19 +37,49 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-direction: column;
 }
-.decorative__scroll__text {
-  position: absolute;
+.decorative__scroll p {
   opacity: 0;
   color: white;
 }
-.decorative__scroll__image {
+
+.mouse {
+  width: 50px;
+  height: 90px;
+  border: 3px solid white;
+  border-radius: 60px;
   position: relative;
-  top: -20%;
-  width: 100%;
-  height: 10%;
-  /* fill: white; */
+  &::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;
+    animation: wheel 2s infinite;
+    -webkit-animation: wheel 2s infinite;
+  }
 }
+
+@keyframes wheel {
+  to {
+    opacity: 0;
+    top: 60px;
+  }
+}
+
+@-webkit-keyframes wheel {
+  to {
+    opacity: 0;
+    top: 60px;
+  }
+}
+
 .decorative__intro {
   position: absolute;
   color: white;
@@ -66,26 +96,6 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-}
-
-#hi,
-#welcome,
-#download {
-  opacity: 0;
-}
-#hi {
-  grid-row-start: 1;
-  text-align: left;
-  margin-left: 1rem;
-}
-#welcome,
-#download {
-  grid-row-start: 2;
-  text-align: center;
-}
-#download {
-  grid-column-start: 4;
-  grid-column-end: 4;
 }
 
 .Typewriter__cursor {
@@ -146,25 +156,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  #hi {
-    font-size: 1.5rem;
-    flex-grow: 1;
-    align-self: flex-start;
-  }
-  #welcome {
-    font-size: 1.5rem;
-    flex-grow: 10;
-  }
-  #download {
-    font-size: 1.5rem;
-    flex-grow: 1;
-  }
-  #download {
-    grid-row-start: 3;
-  }
-  .decorative__scroll__text {
-    font-size: 1.5rem;
   }
 }
 .path {
