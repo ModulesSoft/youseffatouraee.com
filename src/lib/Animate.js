@@ -15,32 +15,16 @@ export function animate(isMobile, animation = "", scroll = 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
-        addAnimationAndShow(
-          ".decorative__scroll",
-          "#scrollResume",
-          "#darkness"
-        );
+        addAnimationAndShow(".decorative__scroll", "#scrollResume");
         break;
       case "introSceneScrollRemove":
-        removeAnimationAndHide(
-          ".decorative__scroll",
-          "#scrollResume",
-          "#darkness"
-        );
+        removeAnimationAndHide(".decorative__scroll", "#scrollResume");
         break;
       case "hobbiesAddScroll":
-        addAnimationAndShow(
-          ".decorative__scroll",
-          "#scrollHobbies",
-          "#darkness"
-        );
+        addAnimationAndShow(".decorative__scroll", "#scrollHobbies");
         break;
       case "hobbiesRemoveScroll":
-        removeAnimationAndHide(
-          ".decorative__scroll",
-          "#scrollHobbies",
-          "#darkness"
-        );
+        removeAnimationAndHide(".decorative__scroll", "#scrollHobbies");
         break;
       case "FirstFace":
         isMobile ? poker("#pokerFace", scroll) : smile("#smileFace", scroll);
