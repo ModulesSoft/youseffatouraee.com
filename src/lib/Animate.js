@@ -15,10 +15,18 @@ export function animate(isMobile, animation = "", scroll = 0) {
     prevAnimation = animation;
     switch (animation) {
       case "introScene":
-        addAnimationAndShow(".decorative__scroll", "#scrollResume");
+        addAnimationAndShow(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollResume"
+        );
         break;
       case "introSceneScrollRemove":
-        removeAnimationAndHide(".decorative__scroll", "#scrollResume");
+        removeAnimationAndHide(
+          ".decorative",
+          ".decorative__scroll",
+          "#scrollResume"
+        );
         break;
       case "hobbiesAddScroll":
         addAnimationAndShow(".decorative__scroll", "#scrollHobbies");
