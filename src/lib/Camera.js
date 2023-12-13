@@ -1,3 +1,4 @@
+import calculateView from "./CalculateView";
 class Camera {
   constructor(screen) {
     this.screen = screen;
@@ -6,39 +7,14 @@ class Camera {
     this.screen.current?.setAttribute("viewBox", view);
   }
   zoom(from, to, level, maxLevel) {
-    // Parse viewport values from strings
-    const fromViewport = from.split(" ").map(parseFloat);
-    const toViewport = to.split(" ").map(parseFloat);
-
-    // Calculate the intermediate viewport based on the zoom level
-    const intermediateViewport = fromViewport.map((value, index) => {
-      const delta = (toViewport[index] - value) * (level / maxLevel);
-      const result = value + delta;
-      return Math.max(result, 0); // Ensure non-negative values
-    });
-
-    // Construct the intermediate viewport string
-    const intermediateViewportString = intermediateViewport.join(" ");
-
-    // Update viewBox
+    // Construct the intermediate viewport string and construct the intermediate viewport string
+    const intermediateViewportString = calculateView(from, to, level, maxLevel);
     this.screen.current?.setAttribute("viewBox", intermediateViewportString);
   }
 
   move(from, to, steps, maxSteps) {
-    // Parse viewport values from strings
-    const fromViewport = from.split(" ").map(parseFloat);
-    const toViewport = to.split(" ").map(parseFloat);
-
-    // Calculate the intermediate viewport based on the move steps
-    const intermediateViewport = fromViewport.map((value, index) => {
-      const delta = (toViewport[index] - value) * (steps / maxSteps);
-      return value + delta;
-    });
-
-    // Construct the intermediate viewport string
-    const intermediateViewportString = intermediateViewport.join(" ");
-
-    // Update viewBox
+    // Calculate the intermediate viewport based on the move steps and construct the intermediate viewport string
+    const intermediateViewportString = calculateView(from, to, steps, maxSteps);
     this.screen.current?.setAttribute("viewBox", intermediateViewportString);
   }
 }

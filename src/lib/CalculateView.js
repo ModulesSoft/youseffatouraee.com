@@ -1,66 +1,24 @@
-function calculateView(state, scrollDir, scrollStage, limitedScroll) {
-  if (!state[state.length - 1] || !state[state.length - 2]) return false;
-  let from =
-    scrollDir === "down"
-      ? stringToArray(state[state.length - 2].view)
-      : stringToArray(state[state.length - 1].view);
-  let to =
-    scrollDir === "down"
-      ? stringToArray(state[state.length - 1].view)
-      : stringToArray(state[state.length - 2].view);
-  if (scrollDir !== "down") {
-    [from, to] = [to, from];
-  }
-  if (from.length !== to.length) {
-    console.error("Arrays don't match!");
-    return false;
-  }
-  let currentView = [];
-  for (let i = 0; i < from.length; i++) {
-    let sub = (to[i] - from[i]) / scrollStage;
-    currentView.push(limitedScroll * sub + from[i]);
-  }
-  for (let i = 0; i < from.length; i++) {
-    if (
-      isNaN(from[i]) ||
-      isNaN(to[i]) ||
-      isNaN(currentView[i]) ||
-      currentView[i] < 0 ||
-      to[i] < 0 ||
-      from[i] < 0
-    ) {
-      console.error("Arrays don't have valid values!");
-      return false;
-    }
-  }
-  return arrayToString(currentView);
+/*
+ * Calculates the intermediate viewport between two viewports based on move steps.
+ *
+ * @param {string} from - The starting viewport represented as a space-separated string of four numbers.
+ * @param {string} to - The destination viewport represented as a space-separated string of four numbers.
+ * @param {number} steps - The number of steps for the viewport move.
+ * @param {number} maxSteps - The maximum number of steps for the viewport move.
+ * @returns {string} - The calculated viewport represented as a space-separated string of four numbers.
+ */
+function calculateView(from, to, steps, maxSteps) {
+  // Parse viewport values from strings
+  const fromViewport = from.split(" ").map(parseFloat);
+  const toViewport = to.split(" ").map(parseFloat);
+  // Calculate the intermediate viewport based on the move steps
+  const intermediateViewport = fromViewport.map((value, index) => {
+    const delta = (toViewport[index] - value) * (steps / maxSteps);
+    const result = value + delta;
+    return Math.max(result, 0); // Ensure non-negative values
+  });
+  // Return the intermediate viewport string
+  return intermediateViewport.join(" ");
 }
 
-export function areClose(par1, par2, accuracy) {
-  let arg1 = stringToArray(par1);
-  let arg2 = stringToArray(par2);
-  let closeArray = [];
-  //check x and y of view port to be close
-  for (let i = 0; i < 2; i++) {
-    if (arg1[i] + accuracy >= arg2[i] && arg1[i] - accuracy <= arg2[i]) {
-      closeArray.push(true);
-    } else {
-      closeArray.push(false);
-    }
-  }
-  return closeArray.filter((t) => t === true).length === 2;
-}
-function arrayToString(array) {
-  let result = "";
-  array.forEach((element) => {
-    result += element + " ";
-  });
-  result = result.trim();
-  return result;
-}
-function stringToArray(string) {
-  if (string) {
-    return string.split(" ").map(Number);
-  }
-}
 export default calculateView;
