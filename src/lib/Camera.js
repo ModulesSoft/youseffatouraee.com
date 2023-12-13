@@ -24,6 +24,22 @@ class Camera {
     this.screen.current?.setAttribute("viewBox", intermediateViewportString);
   }
 
-  move(from, to, steps) {}
+  move(from, to, steps, maxSteps) {
+    // Parse viewport values from strings
+    const fromViewport = from.split(" ").map(parseFloat);
+    const toViewport = to.split(" ").map(parseFloat);
+
+    // Calculate the intermediate viewport based on the move steps
+    const intermediateViewport = fromViewport.map((value, index) => {
+      const delta = (toViewport[index] - value) * (steps / maxSteps);
+      return value + delta;
+    });
+
+    // Construct the intermediate viewport string
+    const intermediateViewportString = intermediateViewport.join(" ");
+
+    // Update viewBox
+    this.screen.current?.setAttribute("viewBox", intermediateViewportString);
+  }
 }
 export default Camera;
