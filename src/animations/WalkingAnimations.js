@@ -1,73 +1,22 @@
-import anime from "animejs";
-function WalkingAnimations(
-  walkingId,
-  cycleIds,
-  sideviewId,
-  scroll,
-  finishedCallback = () => {}
-) {
-  const roundedScroll = Math.ceil(scroll * 2.5) % 8;
-  anime({
-    targets: cycleIds,
-    duration: 0,
-    opacity: 0,
+function WalkingAnimations(walkingId, cycleIds, sideviewId, step, maxStep) {
+  const roundedStep = Math.floor((step / maxStep) * 9); // 9 to make sure it exceeds 8 and enters else condition
+  // Hide the other cycles
+  cycleIds.forEach((cycleId) => {
+    document.querySelector(cycleId).style.opacity = 0;
   });
-  if (roundedScroll >= 0 && scroll < 8) {
-    anime({
-      targets: cycleIds[roundedScroll],
-      duration: 0,
-      opacity: 1,
-    });
-    anime({
-      targets: walkingId,
-      translateX: 55 * scroll,
-      duration: 0,
-      easing: "linear",
-    });
+  if (roundedStep >= 0 && roundedStep < 8) {
+    console.log(roundedStep);
+    // Show the current cycle
+    document.querySelector(cycleIds[roundedStep]).style.opacity = 1;
+    // Move the body
+    document.querySelector(walkingId).style.transform = `translateX(${
+      roundedStep * 60
+    }px)`;
   } else {
-    anime({
-      targets: sideviewId,
-      opacity: 1,
-      duration: 500,
-    });
-    // never show walking again
-    anime({
-      targets: walkingId,
-      opacity: 0,
-      duration: 0,
-      easing: "linear",
-    });
-    finishedCallback();
+    // Show the face in the car
+    document.querySelector(sideviewId).style.opacity = 1;
+    // Never show the body again
+    document.querySelector(walkingId).style.opacity = 0;
   }
-  // anime
-  //   .timeline({ loop: false })
-  //   .add({
-  //     targets: walkingId,
-  //     translateX: 550,
-  //     duration: 4500,
-  //     easing: "linear",
-  //   })
-  //   .add({
-  //     targets: walkingId,
-  //     translateY: 50,
-  //     opacity: 0,
-  //   })
-  //   .add(
-  //     {
-  //       targets: sideviewId,
-  //       opacity: 1,
-  //     },
-  //     "-=1000"
-  //   )
-  //   .add({
-  //     targets: sideviewId,
-  //     translateY: 5,
-  //     duration: 500,
-  //     easing: "spring(1, 80, 10, 0)",
-  //   })
-  //   .finished.then(() => {
-  //     anime.remove(`${walkingId},${sideviewId}`);
-  //     finishedCallback();
-  //   });
 }
 export default WalkingAnimations;
