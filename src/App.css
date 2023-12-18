@@ -122,12 +122,6 @@
 #sideview {
   opacity: 0;
 }
-#flag {
-  opacity: 0;
-}
-#darkness {
-  opacity: 0;
-}
 .page a {
   stroke: blue;
   stroke-width: 0.004rem;
