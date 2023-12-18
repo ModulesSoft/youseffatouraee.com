@@ -9,83 +9,65 @@ import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import { day, night } from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
-let prevAnimation = "";
-export function animate(isMobile, animation = "", scroll = 0) {
-  if (prevAnimation !== animation || scroll > 0) {
-    prevAnimation = animation;
-    switch (animation) {
-      case "introScene":
-        addAnimationAndShow(
-          ".decorative",
-          ".decorative__scroll",
-          "#scrollResume"
-        );
-        break;
-      case "introSceneScrollRemove":
-        removeAnimationAndHide(
-          ".decorative",
-          ".decorative__scroll",
-          "#scrollResume"
-        );
-        break;
-      case "hobbiesAddScroll":
-        addAnimationAndShow(".decorative__scroll", "#scrollHobbies");
-        break;
-      case "hobbiesRemoveScroll":
-        removeAnimationAndHide(".decorative__scroll", "#scrollHobbies");
-        break;
-      case "FirstFace":
-        isMobile ? poker("#pokerFace", scroll) : smile("#smileFace", scroll);
-        break;
-      case "SecondFace":
-        isMobile ? smile("#smileFace", scroll) : poker("#pokerFace", scroll);
-        break;
-      case "WalkingAnimations":
-        WalkingAnimations(
-          "#walking",
-          [
-            "#cycle1",
-            "#cycle2",
-            "#cycle3",
-            "#cycle4",
-            "#cycle5",
-            "#cycle6",
-            "#cycle7",
-            "#cycle8",
-          ],
-          "#sideview",
-          scroll,
-          () =>
-            CarAnimations(
-              "#car",
-              "#beam",
-              "#rearWheel",
-              "#frontWheel",
-              "#wheels",
-              "#sideview"
-            )
-        );
-        break;
-      case "door":
-        DoorAnimations("#garage-door", scroll);
-        break;
-      case "night":
-        night("#darkness");
-        break;
-      case "day":
-        day(".page", "#darkness", "#clouds", "#sun", scroll);
-        break;
-      case "TreeAnimations":
-        TreeAnimations("#treeOne", "#treeTwo", scroll);
-        break;
-      case "FlagAnimations":
-        FlagAnimations("#flag", scroll);
-        break;
-      default:
-        console.error("Provided animation does not exist");
-        break;
-    }
-  }
-}
 
-export default animate;
+export default class Animate {
+  constructor(isMobile) {
+    this.isMobile = isMobile;
+  }
+  scrollInstruction() {
+    addAnimationAndShow(".decorative", ".decorative__scroll", "#scrollResume");
+  }
+  removeScrollInstruction() {
+    removeAnimationAndHide(
+      ".decorative",
+      ".decorative__scroll",
+      "#scrollResume"
+    );
+  }
+  face(step) {
+    this.isMobile ? poker("#pokerFace", step) : smile("#smileFace", step);
+  }
+  door(step, maxStep) {
+    DoorAnimations("#garage-door", step, maxStep);
+  }
+  dayAndNight(step, maxStep) {
+    night(".page", step, maxStep);
+    day(".page", "#clouds", "#sun", step, maxStep);
+  }
+  walk(step, maxStep) {
+    WalkingAnimations(
+      "#walking",
+      [
+        "#cycle1",
+        "#cycle2",
+        "#cycle3",
+        "#cycle4",
+        "#cycle5",
+        "#cycle6",
+        "#cycle7",
+        "#cycle8",
+      ],
+      "#sideview",
+      step,
+      maxStep
+    );
+  }
+  drive(step, maxStep) {
+    CarAnimations(
+      "#car",
+      "#beam",
+      "#rearWheel",
+      "#frontWheel",
+      "#sideview",
+      step,
+      maxStep
+    );
+  }
+  trees(step, maxStep) {
+    TreeAnimations("#treeOne", "#treeTwo", step, maxStep);
+  }
+  flag(step, maxStep) {
+    FlagAnimations("#flag", step, maxStep);
+  }
+  // Remove hardcoded values and pass them up
+}
