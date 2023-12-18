@@ -1,10 +1,6 @@
-import anime from "animejs";
-function FlagAnimations(flagId, scroll) {
-  let translateAmount = parseInt(scroll) * 50;
-  anime({
-    targets: flagId,
-    translateY: translateAmount + "px",
-    opacity: 1,
-  });
+function FlagAnimations(flagId, step, maxStep) {
+  document.querySelector(flagId).style.transform = `translateY(${
+    (step / maxStep) * 450
+  }px)`;
 }
 export default FlagAnimations;
