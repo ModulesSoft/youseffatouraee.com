@@ -119,9 +119,6 @@
   transform-origin: center;
   transform-box: fill-box;
 }
-#sideview {
-  opacity: 0;
-}
 .page a {
   stroke: blue;
   stroke-width: 0.004rem;
