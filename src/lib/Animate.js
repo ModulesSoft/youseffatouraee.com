@@ -47,21 +47,12 @@ export default class Animate {
         "#cycle7",
         "#cycle8",
       ],
-      "#sideview",
       step,
       maxStep
     );
   }
   drive(step, maxStep) {
-    CarAnimations(
-      "#car",
-      "#beam",
-      "#rearWheel",
-      "#frontWheel",
-      "#sideview",
-      step,
-      maxStep
-    );
+    CarAnimations("#car", "#beam", "#rearWheel", "#frontWheel", step, maxStep);
   }
   trees(step, maxStep) {
     TreeAnimations("#treeOne", "#treeTwo", step, maxStep);
