@@ -163,3 +163,11 @@
 #cycle8 {
   opacity: 0;
 }
+#trees,
+#mountains,
+#flag,
+#house,
+#car,
+#garage-door {
+  filter: brightness(0.1);
+}
