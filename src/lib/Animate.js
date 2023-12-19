@@ -52,7 +52,7 @@ export default class Animate {
     );
   }
   drive(step, maxStep) {
-    CarAnimations("#car", "#beam", "#rearWheel", "#frontWheel", step, maxStep);
+    CarAnimations("#car", "#rearWheel", "#frontWheel", step, maxStep);
   }
   trees(step, maxStep) {
     TreeAnimations("#treeOne", "#treeTwo", step, maxStep);
