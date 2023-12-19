@@ -31,7 +31,11 @@ export default class Animate {
     DoorAnimations("#garage-door", step, maxStep);
   }
   dayAndNight(step, maxStep) {
-    night(".page", step, maxStep);
+    night(
+      ["#trees", "#mountains", "#flag", "#house", "#garage-door", "#car"],
+      step,
+      maxStep
+    );
     day(".page", "#clouds", "#sun", step, maxStep);
   }
   walk(step, maxStep) {

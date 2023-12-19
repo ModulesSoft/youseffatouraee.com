@@ -5,7 +5,7 @@ export function day(pageClass, cloudsId, sunId, step, maxStep) {
   const red = 135 * slideStep;
   const green = 206 * slideStep;
   const blue = 238 * slideStep;
-  // sun sets
+  // The sun sets
   document.querySelector(
     sunId
   ).style.transform = `translateY(${sunPosition}px)`;
@@ -13,11 +13,16 @@ export function day(pageClass, cloudsId, sunId, step, maxStep) {
   document.querySelector(
     cloudsId
   ).style.transform = `translateY(${cloudsPosition}px)`;
-  // sky color changes - desired blue: #87CEEE
+  // The sky color changes - desired blue: #87CEEE
   document.querySelector(
     pageClass
   ).style = `background-color:rgb(${red}, ${green}, ${blue})`;
 }
-export function night(pageId, step, maxStep) {
-  document.querySelector(pageId).style.filter = `brightness(${step / maxStep})`;
+export function night(elements, step, maxStep) {
+  // The darkness fades
+  elements.forEach((element) => {
+    document.querySelector(element).style.filter = `brightness(${
+      step / maxStep
+    })`;
+  });
 }
