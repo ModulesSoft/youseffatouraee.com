@@ -6,8 +6,6 @@ import Flag from "./Flag";
 import Trees from "./Trees";
 import Mountains from "./Mountains";
 import Car from "./Car";
-import Sideview from "./faces/Sideview";
-import LightBeam from "./LightBeam";
 import GarageDoor from "./GarageDoor";
 import Garage from "./Garage";
 function Background() {
@@ -27,9 +25,7 @@ function Background() {
       <Flag loading="lazy" />
       <Garage loading="lazy" />
       <GarageDoor loading="lazy" />
-      <Sideview loading="lazy" />
       <Car loading="lazy" />
-      <LightBeam loading="lazy" />
     </svg>
   );
 }

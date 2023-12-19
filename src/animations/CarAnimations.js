@@ -6,7 +6,6 @@ function CarAnimations(carId, rearWheelId, frontWheelId, step, maxStep) {
   // Move the car
   const distance = (step / maxStep) * 3000;
   document.querySelector(carId).style.transform = `translateX(${distance}px)`;
-  document.querySelector(beamId).style.transform = `translateX(${distance}px)`;
 }
 
 export default CarAnimations;
