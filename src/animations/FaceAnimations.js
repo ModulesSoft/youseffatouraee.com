@@ -1,8 +1,10 @@
-export function poker(pokerFaceId, step) {
-  document.querySelector(pokerFaceId).style.transform = `translateY(${step}px)`;
+export function poker(pokerFaceId, step, maxStep) {
+  document.querySelector(pokerFaceId).style.transform = `translateY(${
+    (-step / maxStep) * 4
+  }px)`;
 }
-export function smile(smileFaceId, step) {
+export function smile(smileFaceId, step, maxStep) {
   document.querySelector(smileFaceId).style.transform = `translate(${
-    2 * step
-  }px, ${(-1 / 2) * step}px) rotate(${5 * step}deg)`;
+    (step / maxStep) * 20
+  }px, ${(step / maxStep) * -4}px) rotate(${(step / maxStep) * 45}deg)`;
 }
