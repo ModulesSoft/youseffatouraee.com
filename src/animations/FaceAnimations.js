@@ -1,6 +1,6 @@
 export function poker(pokerFaceId, step, maxStep) {
   document.querySelector(pokerFaceId).style.transform = `translateY(${
-    (-step / maxStep) * 4
+    (-step / maxStep) * 10
   }px)`;
 }
 export function smile(smileFaceId, step, maxStep) {
