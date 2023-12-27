@@ -29,7 +29,7 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
     },
     woods: {
-      view: isMobile ? "1400 600 600 420" : "1258 600 600 420",
+      view: isMobile ? "1100 200 1200 840" : "700 200 1200 840",
     },
     mountain: {
       view: "970 100 600 420",
