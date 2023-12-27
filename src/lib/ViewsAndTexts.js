@@ -23,7 +23,7 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
       view: isMobile ? "514 890 60 45" : "502 890 60 35",
     },
     skills: {
-      view: isMobile ? "519 920 60 45" : "492 920 60 35",
+      view: isMobile ? "519 915 80 65" : "500 920 60 35",
     },
     garageHobbies: {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
