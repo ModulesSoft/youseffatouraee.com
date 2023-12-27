@@ -1,6 +1,6 @@
 function Poker() {
   return (
-    <svg x="332" y="45" width="35" height="30" viewBox="0 0 35 30">
+    <svg x="332" y="40" width="35" height="30" viewBox="0 0 35 30">
       <g id="pokerFace">
         <g transform="scale(0.45),translate(0 30)">
           <ellipse
