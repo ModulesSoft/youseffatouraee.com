@@ -5,7 +5,7 @@
 .container {
   position: relative;
   width: 100vw;
-  height: 600rem;
+  height: 500vh;
   background-color: black;
   font-size: 2rem;
 }
