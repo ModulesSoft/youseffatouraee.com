@@ -13,11 +13,11 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(1),
+        time: this.calculateRange(5),
         actions: [{ method: "animate.removeScrollInstruction", args: [] }],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -26,7 +26,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.face",
@@ -39,11 +39,11 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(1),
+        time: this.calculateRange(5),
         actions: [{ method: "animate.clear", args: [] }],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -52,7 +52,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(1),
+        time: this.calculateRange(5),
         actions: [
           {
             method: "animate.clear",
@@ -61,7 +61,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -70,7 +70,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -79,7 +79,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -88,7 +88,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.clear",
@@ -97,7 +97,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -110,7 +110,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(1),
+        time: this.calculateRange(5),
         actions: [
           {
             method: "animate.clear",
@@ -119,7 +119,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -128,7 +128,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -137,7 +137,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -155,7 +155,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -173,7 +173,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -182,7 +182,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -191,7 +191,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(25),
         actions: [
           {
             method: "animate.type",
@@ -209,7 +209,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -227,7 +227,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -243,7 +243,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.dayAndNight",
@@ -252,7 +252,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(30),
+        time: this.calculateRange(100),
         actions: [
           {
             method: "animate.walk",
@@ -261,7 +261,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.drive",
@@ -270,7 +270,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -296,7 +296,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -305,7 +305,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(20),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "camera.zoom",
@@ -314,7 +314,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(25),
         actions: [
           {
             method: "animate.flag",
@@ -323,7 +323,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.type",
@@ -354,7 +354,7 @@ class Timeline {
       console.error("Start time is not >=0 !");
     }
   }
-  executeActions(time) {
+  play(time) {
     let period;
     const matchedRange = this.timeRanges.find((range) => {
       if (typeof range.time === "object") {
