@@ -9,12 +9,10 @@ import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import { day, night } from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
-import Typewriter from "./Typewriter";
 
 export default class Animate {
   constructor(isMobile) {
     this.isMobile = isMobile;
-    this.typewriter = new Typewriter(".resume", "text-background", 0, 0, 0);
   }
   scrollInstruction() {
     addAnimationAndShow(".decorative", ".decorative__scroll", "#scrollResume");
@@ -68,11 +66,7 @@ export default class Animate {
   flag(step, maxStep) {
     FlagAnimations("#flag", step, maxStep);
   }
-  type(step, maxStep, text) {
-    this.typewriter.write(step, maxStep, text);
-  }
-  clear() {
-    this.typewriter.clear();
-  }
+  type(step, maxStep, text) {}
+  clear() {}
   // Remove hardcoded values and pass them up
 }
