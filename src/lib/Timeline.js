@@ -33,30 +33,17 @@ class Timeline {
             args: [],
           },
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.laptop.text[0]],
           },
         ],
       },
       {
-        time: this.calculateRange(10),
-        actions: [{ method: "animate.clear", args: [] }],
-      },
-      {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.laptop.text[1]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -82,7 +69,7 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.bachelor.text[0]],
           },
         ],
@@ -91,30 +78,12 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.clear",
-            args: [],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.certificate.text[0]],
           },
           {
             method: "camera.move",
             args: [viewsAndTexts.bachelor.view, viewsAndTexts.certificate.view],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -140,17 +109,8 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.skills.text[0]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -158,17 +118,8 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.skills.text[1]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -187,42 +138,6 @@ class Timeline {
           {
             method: "camera.zoom",
             args: [viewsAndTexts.door.view, viewsAndTexts.garageHobbies.view],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "animate.type",
-            args: [viewsAndTexts.garageHobbies.text[0]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "animate.type",
-            args: [viewsAndTexts.garageHobbies.text[1]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -281,17 +196,8 @@ class Timeline {
             args: [],
           },
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.woods.text[0]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [
-          {
-            method: "animate.clear",
-            args: [],
           },
         ],
       },
@@ -326,14 +232,10 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
-            method: "animate.type",
+            method: "animate.write",
             args: [viewsAndTexts.mountain.text[0]],
           },
         ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [{ method: "animate.clear", args: [] }],
       },
       // {
       //   // Default case
