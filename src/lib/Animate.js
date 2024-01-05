@@ -9,7 +9,7 @@ import TreeAnimations from "../animations/TreeAnimations";
 import FlagAnimations from "../animations/FlagAnimations";
 import { day, night } from "../animations/BackgroundAnimations";
 import DoorAnimations from "../animations/DoorAnimations";
-
+import SubtitleAnimations from "../animations/SubtitleAnimations";
 export default class Animate {
   constructor(isMobile) {
     this.isMobile = isMobile;
@@ -66,7 +66,8 @@ export default class Animate {
   flag(step, maxStep) {
     FlagAnimations("#flag", step, maxStep);
   }
-  type(step, maxStep, text) {}
-  clear() {}
+  write(step, maxStep, text) {
+    SubtitleAnimations(".subtitle", text);
+  }
   // Remove hardcoded values and pass them up
 }

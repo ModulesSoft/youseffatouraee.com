@@ -43,7 +43,16 @@
   opacity: 0;
   color: white;
 }
-
+.subtitle {
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.3rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: white;
+  z-index: 100;
+}
 .mouse {
   width: 50px;
   height: 90px;
