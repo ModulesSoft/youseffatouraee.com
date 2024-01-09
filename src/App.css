@@ -1,3 +1,6 @@
+body {
+  background-color: black;
+}
 #root {
   font-family: "Times New Roman";
   overflow-x: hidden;
