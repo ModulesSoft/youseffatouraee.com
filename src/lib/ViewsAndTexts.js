@@ -14,7 +14,7 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
         : "262 800 400 240",
     },
     laptop: {
-      view: "590 920 60 60",
+      view: "600 920 60 60",
     },
     bachelor: {
       view: isMobile ? "550 890 60 45" : "550 890 60 35",

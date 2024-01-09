@@ -25,9 +25,8 @@ export default class Animate {
     );
   }
   face(step, maxStep) {
-    this.isMobile
-      ? poker("#pokerFace", step, maxStep)
-      : smile("#smileFace", step, maxStep);
+    poker("#pokerFace", step, maxStep);
+    smile("#smileFace", step, maxStep);
   }
   door(step, maxStep) {
     DoorAnimations("#garage-door", step, maxStep);
