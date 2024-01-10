@@ -170,6 +170,10 @@ class Timeline {
         time: this.calculateRange(100),
         actions: [
           {
+            method: "camera.move",
+            args: [viewsAndTexts.general.view, viewsAndTexts.walking.view],
+          },
+          {
             method: "animate.walk",
             args: [],
           },
@@ -189,7 +193,7 @@ class Timeline {
         actions: [
           {
             method: "camera.zoom",
-            args: [viewsAndTexts.general.view, viewsAndTexts.woods.view],
+            args: [viewsAndTexts.walking.view, viewsAndTexts.woods.view],
           },
           {
             method: "animate.trees",
@@ -201,21 +205,21 @@ class Timeline {
           },
         ],
       },
+      // {
+      //   time: this.calculateRange(100),
+      //   actions: [
+      //     {
+      //       method: "camera.zoom",
+      //       args: [viewsAndTexts.woods.view, viewsAndTexts.general.view],
+      //     },
+      //   ],
+      // },
       {
         time: this.calculateRange(100),
         actions: [
           {
             method: "camera.zoom",
-            args: [viewsAndTexts.woods.view, viewsAndTexts.general.view],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "camera.zoom",
-            args: [viewsAndTexts.general.view, viewsAndTexts.mountain.view],
+            args: [viewsAndTexts.woods.view, viewsAndTexts.mountain.view],
           },
         ],
       },
