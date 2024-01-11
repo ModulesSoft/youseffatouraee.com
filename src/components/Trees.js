@@ -10,12 +10,7 @@ function Trees() {
       viewBox="0 0 1920 1080"
       xmlSpace="preserve"
     >
-      <a
-        href="https://www.youtube.com/playlist?list=PLfEf_Hlj0AEnRwi8dKKNkGEe4SlggJqsl"
-        target="_blank"
-        rel="noreferrer"
-        id="trees"
-      >
+      <g id="trees">
         <g fillRule="evenodd" clipRule="evenodd">
           <g>
             <path d="M1428.5 897.4H1440.8V985.1999999999999H1428.5z"></path>
@@ -75,7 +70,7 @@ function Trees() {
             ></path>
           </g>
         </g>
-      </a>
+      </g>
     </svg>
   );
 }
