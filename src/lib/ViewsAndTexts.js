@@ -22,7 +22,7 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
     },
     general: {
       view: isMobile
-        ? `600 ${1080 - height} ${width - 50} ${height - 50}`
+        ? `1000 ${1080 - height} ${width} ${height}`
         : "0 0 1920 1080",
     },
     walking: {

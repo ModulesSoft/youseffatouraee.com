@@ -150,10 +150,7 @@ class Timeline {
         actions: [
           {
             method: "camera.zoom",
-            args: [
-              viewsAndTexts.garageHobbies.view,
-              viewsAndTexts.general.view,
-            ],
+            args: [viewsAndTexts.garageHobbies.view, viewsAndTexts.door.view],
           },
           {
             method: "animate.door",
@@ -167,6 +164,10 @@ class Timeline {
           {
             method: "animate.dayAndNight",
             args: [],
+          },
+          {
+            method: "camera.move",
+            args: [viewsAndTexts.door.view, viewsAndTexts.general.view],
           },
           {
             method: "animate.doubleCheck",
@@ -217,15 +218,6 @@ class Timeline {
           },
         ],
       },
-      // {
-      //   time: this.calculateRange(100),
-      //   actions: [
-      //     {
-      //       method: "camera.zoom",
-      //       args: [viewsAndTexts.woods.view, viewsAndTexts.general.view],
-      //     },
-      //   ],
-      // },
       {
         time: this.calculateRange(100),
         actions: [
