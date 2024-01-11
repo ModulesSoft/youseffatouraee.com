@@ -139,6 +139,10 @@ class Timeline {
             method: "camera.zoom",
             args: [viewsAndTexts.door.view, viewsAndTexts.garageHobbies.view],
           },
+          {
+            method: "animate.doubleCheck",
+            args: [{ door: false, walkAndDrive: false }],
+          },
         ],
       },
       {
@@ -163,6 +167,10 @@ class Timeline {
           {
             method: "animate.dayAndNight",
             args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ door: true, walkAndDrive: false }],
           },
         ],
       },
@@ -202,6 +210,10 @@ class Timeline {
           {
             method: "animate.write",
             args: [viewsAndTexts.woods.text[0]],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ door: true, walkAndDrive: true }],
           },
         ],
       },

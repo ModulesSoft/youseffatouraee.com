@@ -68,5 +68,21 @@ export default class Animate {
   write(step, maxStep, text) {
     SubtitleAnimations(".subtitle", text);
   }
+  doubleCheck(step, maxStep, { door, walkAndDrive }) {
+    if (door) {
+      // keep the door opened
+      this.door(1, 1);
+    } else {
+      // keep the door closed
+      this.door(0, 1);
+    }
+    if (walkAndDrive) {
+      this.walk(1, 1);
+      this.drive(1, 1);
+    } else {
+      this.walk(0, 1);
+      this.drive(0, 1);
+    }
+  }
   // Remove hardcoded values and pass them up
 }
