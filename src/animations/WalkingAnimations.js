@@ -1,15 +1,20 @@
 function WalkingAnimations(walkingId, cycleIds, step, maxStep) {
-  const roundedStep = Math.floor((step / maxStep) * (cycleIds.length + 1)); // +1 to make sure it exceeds walking cycles and stops rendering it
+  const fullCycle = maxStep / 2;
+  const moveStep = Math.floor((step / fullCycle) * cycleIds.length);
+  if (step > fullCycle) {
+    step = step / 2;
+  }
+  const shuffleStep = Math.floor((step / fullCycle) * cycleIds.length);
   // Hide the other cycles
   cycleIds.forEach((cycleId) => {
     document.querySelector(cycleId).style.opacity = 0;
   });
-  if (roundedStep >= 0 && roundedStep < cycleIds.length) {
+  if (shuffleStep >= 0 && shuffleStep < cycleIds.length) {
     // Show the current cycle
-    document.querySelector(cycleIds[roundedStep]).style.opacity = 1;
+    document.querySelector(cycleIds[shuffleStep]).style.opacity = 1;
     // Move the body
     document.querySelector(walkingId).style.transform = `translateX(${
-      roundedStep * 60
+      moveStep * 30
     }px)`;
   }
 }
