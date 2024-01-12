@@ -130,6 +130,10 @@ class Timeline {
             method: "camera.zoom",
             args: [viewsAndTexts.skills.view, viewsAndTexts.door.view],
           },
+          {
+            method: "animate.write",
+            args: [viewsAndTexts.garageHobbies.text[0]],
+          },
         ],
       },
       {
@@ -140,8 +144,21 @@ class Timeline {
             args: [viewsAndTexts.door.view, viewsAndTexts.garageHobbies.view],
           },
           {
+            method: "animate.write",
+            args: [viewsAndTexts.garageHobbies.text[1]],
+          },
+          {
             method: "animate.doubleCheck",
             args: [{ door: false, walkAndDrive: false }],
+          },
+        ],
+      },
+      {
+        time: this.calculateRange(10),
+        actions: [
+          {
+            method: "animate.write",
+            args: [viewsAndTexts.garageHobbies.text[2]],
           },
         ],
       },
@@ -245,13 +262,15 @@ class Timeline {
           },
         ],
       },
-      // {
-      //   // Default case
-      //   time: "default",
-      //   actions: [
-      //     // { method: 'Animation.scrollup', args: [] },
-      //   ],
-      // },
+      {
+        time: this.calculateRange(10),
+        actions: [
+          {
+            method: "animate.write",
+            args: [viewsAndTexts.mountain.text[1]],
+          },
+        ],
+      },
     ];
   }
   calculateRange(amount = 0) {
