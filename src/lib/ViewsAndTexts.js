@@ -22,17 +22,17 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
     },
     general: {
       view: isMobile
-        ? `1000 ${1080 - height} ${width} ${height}`
+        ? `1000 ${1080 - height - 50} ${width} ${height}`
         : "0 0 1920 1080",
     },
     walking: {
       view: isMobile
-        ? `1510 ${1080 - height} ${width} ${height}`
+        ? `1510 ${1080 - height - 50} ${width} ${height}`
         : "300 0 1620 1080",
     },
     woods: {
       view: isMobile
-        ? `1350 ${1080 - height} ${width - 50} ${height}`
+        ? `1350 ${1080 - height} ${width} ${height}`
         : "700 200 1200 840",
     },
     mountain: {
