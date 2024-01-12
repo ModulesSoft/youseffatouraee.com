@@ -17,7 +17,7 @@ function GetTextArray() {
     let temp = document.getElementById(id).children;
     let result = [];
     for (let i = 0; i < temp.length; i++) {
-      result.push(temp[i].innerText);
+      result.push(temp[i].innerHTML);
     }
     return result;
   }
