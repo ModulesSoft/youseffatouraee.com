@@ -63,37 +63,42 @@
     <article class="resume" id="article">
       <!-- resume -->
       <section id="laptop">
-        <h1 class="text-animation">Hi! This is Yousef.</h1>
-        <p class="text-animation">I'm a software engineer.</p>
+        <h1 class="text-animation">Hi! This is Yousef</h1>
+        <p class="text-animation">I'm a Software Engineer!</p>
       </section>
       <section id="bachelor">
-        <p class="text-animation">I studied Information Technology at AUT.</p>
+        <p class="text-animation">
+          I studied Information Technology at
+          <a href="https://aut.ac.ir/en" target="_blank">AUT</a>.
+        </p>
       </section>
       <section id="certificate">
         <p class="text-animation">
-          My focus is mainly on front-end development.
+          My focus is mainly on Front-end development
         </p>
       </section>
       <section id="skills">
         <p class="text-animation">
-          I have over 4 years of professional experience as a fullstack
-          developer.
-        </p>
+          I have over <span id="years"></span> years of professional experience as a Full Stack
+          Developer
+        </time>
         <p class="text-animation">
-          I've done many projects using Javascript and PHP, my favorite
-          frameworks are Next.js & Laravel.
+          I've done multiple projects using JavaScript and PHP, my favorite
+          frameworks are Next.js & Laravel
         </p>
       </section>
       <!-- hobbies -->
       <section id="garageHobbies">
-        <p class="text-animation">I made an electronic album back in 2011.</p>
-        <p class="text-animation">I have restored over 2 motorcycles.</p>
+        <p class="text-animation">Keep scrolling to check out my hobbies, Or visit my YouTube <a href="https://www.youtube.com/@modulessoft" target="_blank">channel</a></p>
+        <p class="text-animation">I made an electronic album back in 2011</p>
+        <p class="text-animation">I have restored over 2 motorcycles</p>
       </section>
       <section id="woods">
-        <p class="text-animation">I love gardening.</p>
+        <p class="text-animation">I love gardening</p>
       </section>
       <section id="mountain">
-        <p class="text-animation">I enjoy hiking!</p>
+        <p class="text-animation">And I enjoy hiking!</p>
+        <p class="text-animation">Thank you for coming over. <br> <a href="/" id="scrollUpLink">Scroll up</a></p>
       </section>
     </article>
 
@@ -105,4 +110,15 @@
       }
     </style>
   </body>
+  <script>
+    // Calculate the number of years of professional experience
+    const currentYear = new Date().getFullYear();
+    const yearsPast = currentYear - 2019;
+    document.getElementById("years").textContent = yearsPast;
+    
+    // Scroll up when page refreshes
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
+    </script>
 </html>
