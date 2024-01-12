@@ -1,39 +1,26 @@
-import { useEffect } from "react";
-import Play from "./Play";
-import scrollToTop from "./ScrollToTop";
-import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import ViewsAndTexts from "./ViewsAndTexts";
+import Timeline from "./Timeline";
+import Camera from "./Camera";
+import { useEffect } from "react";
+import Animate from "./Animate";
 export const useRender = (pageRef, isMobile, width, height, texts) => {
-  const scrollSteps = 50; // the number to devide scroll by
-  const scrollWait = 25; // for performance (should be less than scrollSteps)
-  const scrollStage = 10; // the number of scrolls for each scene
-  const viewsAndTexts = ViewsAndTexts(isMobile, width, height, texts); // view points data
-  useScrollPosition(
-    ({ prevPos, currPos }) => {
-      const scrollDir = currPos.y < prevPos.y ? "down" : "up";
-      const scrl = Math.abs(currPos.y) / scrollSteps;
-      const scroll = Number.parseFloat(scrl).toFixed(2);
-      const scene = Math.floor(scrl / scrollStage);
-      // action
-      Play(
-        pageRef,
-        scroll,
-        scrollDir,
-        scrollStage,
-        scene,
-        isMobile,
-        viewsAndTexts
-      );
-    },
-    undefined,
-    undefined,
-    undefined,
-    scrollWait
-  );
+  const viewsAndTexts = ViewsAndTexts(isMobile, width, height, texts);
+  const camera = new Camera(pageRef);
+  const animate = new Animate(isMobile);
+  const timeline = new Timeline(viewsAndTexts, camera, animate);
+  const handleScroll = () => {
+    // Update the scrollY state when the user scrolls
+    requestAnimationFrame(() => timeline.play(window.scrollY));
+  };
   useEffect(() => {
-    // lights, camera...
-    scrollToTop();
-    Play(pageRef, 0, "down", scrollStage, 0, isMobile, viewsAndTexts);
+    // Init the page
+    timeline.play(0);
+    // Add the scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 };
 export default useRender;
