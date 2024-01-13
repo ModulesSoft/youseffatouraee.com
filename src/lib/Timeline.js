@@ -149,7 +149,7 @@ class Timeline {
           },
           {
             method: "animate.doubleCheck",
-            args: [{ door: false, walkAndDrive: false }],
+            args: [{ door: false, walk: false }],
           },
         ],
       },
@@ -188,7 +188,7 @@ class Timeline {
           },
           {
             method: "animate.doubleCheck",
-            args: [{ door: true, walkAndDrive: false }],
+            args: [{ door: true, walk: false, drive: false }],
           },
         ],
       },
@@ -212,6 +212,10 @@ class Timeline {
             method: "animate.drive",
             args: [],
           },
+          {
+            method: "animate.doubleCheck",
+            args: [{ door: true, walk: false }],
+          },
         ],
       },
       {
@@ -231,7 +235,7 @@ class Timeline {
           },
           {
             method: "animate.doubleCheck",
-            args: [{ door: true, walkAndDrive: true }],
+            args: [{ door: true, walk: false, drive: true }],
           },
         ],
       },
