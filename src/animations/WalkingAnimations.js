@@ -4,7 +4,7 @@ function WalkingAnimations(walkingId, cycleIds, step, maxStep) {
   if (step > fullCycle) {
     step = step / 2;
   }
-  const shuffleStep = Math.floor((step / fullCycle) * cycleIds.length);
+  const shuffleStep = Math.floor((step / fullCycle) * cycleIds.length) - 1;
   // Hide the other cycles
   cycleIds.forEach((cycleId) => {
     document.querySelector(cycleId).style.opacity = 0;
