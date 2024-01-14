@@ -37,7 +37,7 @@ export default class Animate {
       step,
       maxStep
     );
-    day(".page", "#clouds", "#sun", step, maxStep);
+    day("#sky", "#clouds", "#sun", step, maxStep);
   }
   walk(step, maxStep) {
     WalkingAnimations(

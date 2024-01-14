@@ -8,6 +8,7 @@ import Mountains from "./Mountains";
 import Car from "./Car";
 import GarageDoor from "./GarageDoor";
 import Garage from "./Garage";
+import Sky from "./Sky";
 function Background() {
   return (
     <svg
@@ -16,6 +17,7 @@ function Background() {
       height="1080"
       viewBox="0 0 1920 1080"
     >
+      <Sky loading="lazy" />
       <Sun loading="lazy" />
       <Clouds loading="lazy" />
       <Mountains loading="lazy" />

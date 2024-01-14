@@ -1,4 +1,4 @@
-export function day(pageClass, cloudsId, sunId, step, maxStep) {
+export function day(skyId, cloudsId, sunId, step, maxStep) {
   const slideStep = step / maxStep;
   const sunPosition = -650 * slideStep;
   const cloudsPosition = -300 * slideStep;
@@ -14,9 +14,7 @@ export function day(pageClass, cloudsId, sunId, step, maxStep) {
     cloudsId
   ).style.transform = `translateY(${cloudsPosition}px)`;
   // The sky color changes - desired blue: #87CEEE
-  document.querySelector(
-    pageClass
-  ).style = `background-color:rgb(${red}, ${green}, ${blue})`;
+  document.querySelector(skyId).style = `fill:rgb(${red}, ${green}, ${blue})`;
 }
 export function night(elements, step, maxStep) {
   // The darkness fades

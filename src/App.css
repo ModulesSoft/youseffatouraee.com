@@ -12,10 +12,15 @@ body {
   background-color: black;
   font-size: 2rem;
 }
+#sky {
+  fill: black;
+}
 .page {
   position: fixed;
   bottom: 0;
   left: 0;
+  /* background-color: #0a2946; */
+  background-color: #000;
 }
 .resume,
 .decorative {
