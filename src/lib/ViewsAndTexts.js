@@ -16,27 +16,19 @@ const ViewsAndTexts = (isMobile, width, height, texts) => {
       view: isMobile ? "272 850 390 220" : "262 850 200 180",
     },
     door: {
-      view: isMobile
-        ? `262 ${1080 - height} ${width} ${height}`
-        : "262 800 400 240",
+      view: isMobile ? `270 500 530 700` : "262 800 400 280",
     },
     general: {
-      view: isMobile
-        ? `1000 ${1080 - height - 50} ${width} ${height}`
-        : "0 0 1920 1080",
+      view: isMobile ? `1000 500 530 700` : "0 0 1920 1080",
     },
     walking: {
-      view: isMobile
-        ? `1510 ${1080 - height - 50} ${width} ${height}`
-        : "300 0 1620 1080",
+      view: isMobile ? `1300 380 530 700` : "300 0 1620 1080",
     },
     woods: {
-      view: isMobile
-        ? `1350 ${1080 - height} ${width} ${height}`
-        : "700 200 1200 840",
+      view: isMobile ? `1400 270 530 700` : "700 200 1200 840",
     },
     mountain: {
-      view: isMobile ? `970 0 ${width} ${height}` : "970 100 600 420",
+      view: isMobile ? `970 0 530 700` : "970 100 600 420",
     },
   };
   // add texts to viewsAndTexts
