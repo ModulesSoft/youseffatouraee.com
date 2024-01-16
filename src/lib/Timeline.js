@@ -9,12 +9,19 @@ class Timeline {
         time: this.calculateRange(0),
         actions: [
           { method: "camera.show", args: [viewsAndTexts.door.view] },
-          { method: "animate.scrollInstruction", args: [] },
+          {
+            method: "animate.doubleCheck",
+            args: [
+              {
+                door: false,
+                walk: false,
+                day: false,
+                instruction: true,
+                poker: true,
+              },
+            ],
+          },
         ],
-      },
-      {
-        time: this.calculateRange(10),
-        actions: [{ method: "animate.removeScrollInstruction", args: [] }],
       },
       {
         time: this.calculateRange(100),
@@ -22,6 +29,10 @@ class Timeline {
           {
             method: "camera.zoom",
             args: [viewsAndTexts.door.view, viewsAndTexts.laptop.view],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ instruction: false, poker: false }],
           },
         ],
       },
@@ -173,6 +184,10 @@ class Timeline {
             method: "animate.door",
             args: [],
           },
+          {
+            method: "animate.doubleCheck",
+            args: [{ day: false }],
+          },
         ],
       },
       {
@@ -202,6 +217,10 @@ class Timeline {
           {
             method: "animate.walk",
             args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ day: true }],
           },
         ],
       },
@@ -272,6 +291,19 @@ class Timeline {
           {
             method: "animate.write",
             args: [viewsAndTexts.mountain.text[1]],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [
+              {
+                door: true,
+                walk: false,
+                drive: true,
+                day: true,
+                instruction: false,
+                poker: false,
+              },
+            ],
           },
         ],
       },

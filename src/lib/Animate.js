@@ -68,12 +68,11 @@ export default class Animate {
   write(step, maxStep, text) {
     SubtitleAnimations(".subtitle", text);
   }
-  doubleCheck(step, maxStep, { door, walk, drive }) {
+  // Double check the animations situation in case the user scrolls fast
+  doubleCheck(step, maxStep, { door, walk, drive, instruction, day, poker }) {
     if (door === true) {
-      // keep the door opened
       this.door(1, 1);
     } else if (door === false) {
-      // keep the door closed
       this.door(0, 1);
     }
     if (walk === true) {
@@ -86,6 +85,20 @@ export default class Animate {
     } else if (drive === false) {
       this.drive(0, 1);
     }
+    if (instruction === true) {
+      this.scrollInstruction();
+    } else if (instruction === false) {
+      this.removeScrollInstruction();
+    }
+    if (day === true) {
+      this.dayAndNight(1, 1);
+    } else if (day === false) {
+      this.dayAndNight(0, 1);
+    }
+    if (poker === true) {
+      this.face(0, 1);
+    } else if (day === false) {
+      this.face(1, 1);
+    }
   }
-  // Remove hardcoded values and pass them up
 }
