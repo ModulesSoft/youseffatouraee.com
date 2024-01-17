@@ -24,7 +24,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "camera.zoom",
@@ -37,30 +37,25 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
-          {
-            method: "animate.face",
-            args: [],
-          },
           {
             method: "animate.write",
             args: [viewsAndTexts.laptop.text[0]],
           },
+          {
+            method: "animate.face",
+            args: [],
+          },
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "animate.write",
             args: [viewsAndTexts.laptop.text[1]],
           },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
           {
             method: "camera.zoom",
             args: [viewsAndTexts.laptop.view, viewsAndTexts.door.view],
@@ -68,7 +63,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "camera.zoom",
@@ -77,20 +72,11 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "animate.write",
             args: [viewsAndTexts.bachelor.text[0]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "animate.write",
-            args: [viewsAndTexts.certificate.text[0]],
           },
           {
             method: "camera.move",
@@ -99,8 +85,12 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
+          {
+            method: "animate.write",
+            args: [viewsAndTexts.certificate.text[0]],
+          },
           {
             method: "camera.zoom",
             args: [viewsAndTexts.certificate.view, viewsAndTexts.door.view],
@@ -108,8 +98,12 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
+          {
+            method: "animate.write",
+            args: [viewsAndTexts.skills.text[0]],
+          },
           {
             method: "camera.zoom",
             args: [viewsAndTexts.door.view, viewsAndTexts.skills.view],
@@ -117,16 +111,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
-        actions: [
-          {
-            method: "animate.write",
-            args: [viewsAndTexts.skills.text[0]],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.write",
@@ -135,28 +120,28 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
-          {
-            method: "camera.zoom",
-            args: [viewsAndTexts.skills.view, viewsAndTexts.door.view],
-          },
           {
             method: "animate.write",
             args: [viewsAndTexts.garageHobbies.text[0]],
           },
+          {
+            method: "camera.zoom",
+            args: [viewsAndTexts.skills.view, viewsAndTexts.door.view],
+          },
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
-          {
-            method: "camera.zoom",
-            args: [viewsAndTexts.door.view, viewsAndTexts.garageHobbies.view],
-          },
           {
             method: "animate.write",
             args: [viewsAndTexts.garageHobbies.text[1]],
+          },
+          {
+            method: "camera.zoom",
+            args: [viewsAndTexts.door.view, viewsAndTexts.garageHobbies.view],
           },
           {
             method: "animate.doubleCheck",
@@ -165,7 +150,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.write",
@@ -174,8 +159,12 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
+          {
+            method: "animate.write",
+            args: [""],
+          },
           {
             method: "camera.zoom",
             args: [viewsAndTexts.garageHobbies.view, viewsAndTexts.door.view],
@@ -191,7 +180,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "animate.dayAndNight",
@@ -208,7 +197,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "camera.move",
@@ -225,7 +214,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "animate.drive",
@@ -238,7 +227,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "camera.zoom",
@@ -259,7 +248,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "camera.zoom",
@@ -268,17 +257,12 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(100),
+        time: this.calculateRange(200),
         actions: [
           {
             method: "animate.flag",
             args: [],
           },
-        ],
-      },
-      {
-        time: this.calculateRange(100),
-        actions: [
           {
             method: "animate.write",
             args: [viewsAndTexts.mountain.text[0]],
@@ -286,7 +270,7 @@ class Timeline {
         ],
       },
       {
-        time: this.calculateRange(10),
+        time: this.calculateRange(50),
         actions: [
           {
             method: "animate.write",
