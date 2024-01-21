@@ -76,7 +76,7 @@ body {
     width: 12px;
     height: 12px;
     position: absolute;
-    top: 10px;
+    top: 70px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -90,14 +90,7 @@ body {
 @keyframes wheel {
   to {
     opacity: 0;
-    top: 60px;
-  }
-}
-
-@-webkit-keyframes wheel {
-  to {
-    opacity: 0;
-    top: 60px;
+    top: 0;
   }
 }
 
