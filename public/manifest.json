@@ -1,6 +1,6 @@
 {
-  "short_name": "Yousef Fatouraee",
-  "name": "Profile",
+  "short_name": "Introduction",
+  "name": "Yousef Fatouraee",
   "icons": [
     {
       "src": "/favicon.svg",
@@ -9,6 +9,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "blue",
-  "background_color": "red"
+  "theme_color": "black",
+  "background_color": "black"
 }
