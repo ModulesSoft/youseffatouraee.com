@@ -1,10 +1,7 @@
 body {
   background-color: black;
 }
-#root {
-  font-family: "Times New Roman";
-  overflow-x: hidden;
-}
+
 .container {
   position: relative;
   width: 100vw;
@@ -12,9 +9,7 @@ body {
   background-color: black;
   font-size: 2rem;
 }
-#sky {
-  fill: black;
-}
+
 .page {
   position: fixed;
   bottom: 0;
@@ -22,6 +17,17 @@ body {
   /* background-color: #0a2946; */
   background-color: #000;
 }
+
+.page a {
+  stroke: blue;
+  stroke-width: 0.004rem;
+  text-decoration: underline;
+}
+
+.page a:hover {
+  stroke-width: 0.01rem;
+}
+
 .resume,
 .decorative {
   position: fixed;
@@ -33,24 +39,28 @@ body {
   /* debug - to prevent first page load texts */
   opacity: 1 !important;
 }
+
 .decorative {
   z-index: 1;
   height: 100vh;
 }
+
 .decorative__scroll {
+  position: relative;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
   opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   flex-direction: column;
 }
+
 .decorative__scroll p {
   opacity: 0;
   color: white;
 }
+
 .subtitle {
   position: fixed;
   top: 0;
@@ -65,17 +75,19 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .mouse {
+  position: relative;
   width: 50px;
   height: 90px;
   border: 3px solid white;
   border-radius: 60px;
-  position: relative;
+
   &::before {
+    position: absolute;
     content: "";
     width: 12px;
     height: 12px;
-    position: absolute;
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
@@ -85,6 +97,10 @@ body {
     animation: wheel 2s infinite;
     -webkit-animation: wheel 2s infinite;
   }
+}
+
+.path {
+  stroke-dasharray: 100;
 }
 
 @keyframes wheel {
@@ -106,16 +122,13 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
+
 .decorative__intro__text__link {
   position: fixed;
   top: 1rem;
   right: 1rem;
 }
 
-.Typewriter__cursor {
-  /* debug */
-  margin-left: -15px !important;
-}
 .text-background {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px;
@@ -123,8 +136,18 @@ body {
   border-radius: 10px;
   line-height: 4rem;
 }
+
 .text-animation {
   opacity: 0;
+}
+
+#root {
+  font-family: "Times New Roman";
+  overflow-x: hidden;
+}
+
+#sky {
+  fill: black;
 }
 
 #rearWheel,
@@ -133,39 +156,21 @@ body {
   transform-origin: center;
   transform-box: fill-box;
 }
-.page a {
-  stroke: blue;
-  stroke-width: 0.004rem;
-  text-decoration: underline;
-}
-.page a:hover {
-  stroke-width: 0.01rem;
-}
+
 #treeOne,
 #treeTwo,
 #motorcycle,
 #microphone {
   stroke-width: 0.02rem;
 }
+
 #treeOne:hover,
 #treeTwo:hover,
 #motorcycle:hover,
 #microphone:hover {
   stroke-width: 0.05rem;
 }
-@media screen and (max-width: 768px) {
-  .container {
-    font-size: 1rem;
-  }
-  .decorative__intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-.path {
-  stroke-dasharray: 100;
-}
+
 #cycle1,
 #cycle2,
 #cycle2,
@@ -177,6 +182,7 @@ body {
 #cycle8 {
   opacity: 0;
 }
+
 #trees,
 #mountains,
 #flag,
@@ -184,4 +190,16 @@ body {
 #car,
 #garage-door {
   filter: brightness(0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    font-size: 1rem;
+  }
+
+  .decorative__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
