@@ -1,10 +1,11 @@
 function WalkingAnimations(walkingId, cycleIds, step, maxStep) {
-  const fullCycle = maxStep / 2;
-  const moveStep = Math.floor((step / fullCycle) * cycleIds.length);
-  if (step > fullCycle) {
-    step = step / 2;
-  }
-  const shuffleStep = Math.floor((step / fullCycle) * cycleIds.length) - 1;
+  // Maximum distance to move
+  const distance = 40;
+  // Move to shuffle proportion
+  const proportion = 1.55;
+  const amount = (step / maxStep) * distance;
+  const shuffleStep = Math.floor((amount / proportion) % cycleIds.length);
+  const move = Math.floor(amount * cycleIds.length * proportion);
   // Hide the other cycles
   cycleIds.forEach((cycleId) => {
     document.querySelector(cycleId).style.opacity = 0;
@@ -13,9 +14,7 @@ function WalkingAnimations(walkingId, cycleIds, step, maxStep) {
     // Show the current cycle
     document.querySelector(cycleIds[shuffleStep]).style.opacity = 1;
     // Move the body
-    document.querySelector(walkingId).style.transform = `translateX(${
-      moveStep * 30
-    }px)`;
+    document.querySelector(walkingId).style.transform = `translateX(${move}px)`;
   }
 }
 export default WalkingAnimations;
