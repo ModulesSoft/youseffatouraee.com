@@ -41,7 +41,7 @@ body {
 }
 
 .decorative {
-  z-index: 1;
+  z-index: 3;
   height: 100vh;
 }
 
@@ -71,10 +71,10 @@ body {
   color: white;
   margin-left: auto;
   margin-right: auto;
-  z-index: 100;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
+  z-index: 2;
 }
 
 .mouse {
@@ -124,7 +124,7 @@ body {
   grid-template-rows: 1fr 1fr;
 }
 
-.decorative__intro__text__link {
+.decorative__intro a {
   position: fixed;
   top: 1rem;
   right: 1rem;
