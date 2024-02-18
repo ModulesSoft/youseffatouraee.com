@@ -1,23 +1,17 @@
-# Portfolio
+# Interactive Personal Introduction Website 💡
 
-Welcome to my portfolio page repository!
+Step into an innovative dynamic and interactive personal portfolio experience!
 
 This project is a showcase of my skills, professional experiences, and hobbies built using [React.js](https://github.com/facebook/create-react-app).
 
-You can check out the live [demo here](https://youseffatouraee.com).
+Please check out the live [demo](https://youseffatouraee.com).
 
-## Available Scripts
+## Production 🚀
 
-In the project directory, you can easily execute React.js scripts.
+You can find the production code in the 'publish' branch.
 
-## Built
+## Star 🌟
 
-The built version of the project is pushed to 'publish' branch.
-
-## Star
-
-Feel free to add your comments and feedbacks.
-
-Don't forget to star the project if it looks interesting to you.
+Don't forget to star the project if it looks interesting to you and before you clone.
 
 Thanks.
