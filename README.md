@@ -1,6 +1,6 @@
 # Interactive Personal Introduction Website 💡
 
-Step into an innovative dynamic and interactive personal portfolio experience!
+Step into an innovative dynamic and interactive personal homepage experience!
 
 This project is a showcase of my skills, professional experiences, and hobbies built using [React.js](https://github.com/facebook/create-react-app).
 
