@@ -15,14 +15,10 @@ export default class Animate {
     this.isMobile = isMobile;
   }
   scrollInstruction() {
-    addAnimationAndShow(".decorative", ".decorative__scroll", "#scrollResume");
+    addAnimationAndShow(".scroll-instruction");
   }
   removeScrollInstruction() {
-    removeAnimationAndHide(
-      ".decorative",
-      ".decorative__scroll",
-      "#scrollResume"
-    );
+    removeAnimationAndHide(".scroll-instruction");
   }
   face(step, maxStep) {
     poker("#pokerFace", step, maxStep);

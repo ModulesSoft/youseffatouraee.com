@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M2JRDY5FS"></script>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M2JRDY5FS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-0M2JRDY5FS');
-    </script>
-     <!--  -->
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Yousef Fatouraee's introduction."
-    />
-    <meta property="og:title" content="Yousef Fatouraee - Software Engineer" />
-    <meta
-      property="og:description"
-      content="Yousef Fatouraee's introduction."
-    />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
-    <meta property="og:url" content="https://youseffatouraee.com" />
-    <meta name="twitter:card" content="%PUBLIC_URL%/og-image.png" />
-    <meta name="twitter:title" content="Yousef Fatouraee - Software Engineer" />
-    <meta
-      name="twitter:description"
-      content="Software engineer with multiple web application projects utilizing JavaScript and PHP."
-    />
-    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
-    <meta name="twitter:url" content="https://youseffatouraee.com" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
-    <!--
+    </script> -->
+  <!--  -->
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Yousef Fatouraee's introduction." />
+  <meta property="og:title" content="Yousef Fatouraee - Software Engineer" />
+  <meta property="og:description" content="Yousef Fatouraee's introduction." />
+  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta property="og:url" content="https://youseffatouraee.com" />
+  <meta name="twitter:card" content="%PUBLIC_URL%/og-image.png" />
+  <meta name="twitter:title" content="Yousef Fatouraee - Software Engineer" />
+  <meta name="twitter:description"
+    content="Software engineer with multiple web application projects utilizing JavaScript and PHP." />
+  <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta name="twitter:url" content="https://youseffatouraee.com" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -49,106 +42,95 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Yousef Fatouraee</title>
-  </head>
-  <body class="mostly-customized-scrollbar">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <div class="decorative" id="decorative">
-      <div class="decorative__scroll">
-        <div class="mouse"></div>
-        <p id="scrollResume" class="scrollText">Scroll to play</p>
-        <p id="scrollHobbies" class="scrollText">Check Out Hobbies</p>
-      </div>
-      <div class="decorative__intro">
-        <a
-          target="_blank"
-          href="https://github.com/ModulesSoft/youseffatouraee.com"
-          >GitHub</a
-        >
-      </div>
-    </div>
-    <p class="subtitle"></p>
-    <article class="resume" id="article">
-      <!-- resume -->
-      <section id="laptop">
-        <h1 class="text-animation">Hi!<br>This is Yousef.</h1>
-        <p class="text-animation">I'm a Software Engineer!</p>
-      </section>
-      <section id="bachelor">
-        <p class="text-animation">
-          I studied Information Technology at
-          <a href="https://aut.ac.ir/en" target="_blank">AUT</a>.
-        </p>
-      </section>
-      <section id="certificate">
-        <p class="text-animation">
-          My focus is mainly on Front-end development.
-        </p>
-      </section>
-      <section id="skills">
-        <p class="text-animation">
-          I have over <span id="years"></span> years of professional experience as a Full Stack Web
-          Developer.
+  <title>Yousef Fatouraee</title>
+</head>
+
+<body class="mostly-customized-scrollbar">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!-- <div class="navbar">
+    <a href="portfolio">Portfolio</a>
+    <a target="_blank" href="https://github.com/ModulesSoft/youseffatouraee.com">GitHub</a>
+  </div> -->
+  <div class="scroll-instruction" id="scroll-instruction">
+    <div class="mouse"></div>
+    <p>Scroll to play</p>
+  </div>
+  <p class="subtitle"></p>
+  <article style="opacity: 0;" id="article">
+    <!-- resume -->
+    <section id="laptop">
+      <h1 class="text-animation">Hi!<br>This is Yousef.</h1>
+      <p class="text-animation">I'm a Software Engineer!</p>
+    </section>
+    <section id="bachelor">
+      <p class="text-animation">
+        I studied Information Technology at
+        <a href="https://aut.ac.ir/en" target="_blank">AUT</a>.
+      </p>
+    </section>
+    <section id="certificate">
+      <p class="text-animation">
+        My focus is mainly on Front-end development.
+      </p>
+    </section>
+    <section id="skills">
+      <p class="text-animation">
+        I have over <span id="years"></span> years of professional experience as a Full Stack Web
+        Developer.
         </time>
-        <p class="text-animation">
-          I've completed multiple projects using JavaScript and PHP.<br>My favorite
-          frameworks are Next.js & Laravel.
-        </p>
-      </section>
-      <!-- hobbies -->
-      <section id="garageHobbies">
-        <p class="text-animation">Keep scrolling to check out my hobbies,<br>or visit my YouTube <a href="https://www.youtube.com/@modulessoft" target="_blank">channel</a>.</p>
-        <p class="text-animation">I made an electronic album back in 2011.</p>
-        <p class="text-animation">I have restored a few vehicles.</p>
-      </section>
-      <section id="woods">
-        <p class="text-animation">I cherish nature.</p>
-      </section>
-      <section id="mountain">
-        <p class="text-animation">And I enjoy hiking!</p>
-        <p class="text-animation">Thank you for coming over. <br> <a href="/" id="scrollUpLink">Scroll up</a></p>
-      </section>
-    </article>
+      <p class="text-animation">
+        I've completed multiple projects using JavaScript and PHP.<br>My favorite
+        frameworks are Next.js & Laravel.
+      </p>
+    </section>
+    <!-- hobbies -->
+    <section id="garageHobbies">
+      <p class="text-animation">Keep scrolling to check out my hobbies,<br>or visit my YouTube <a
+          href="https://www.youtube.com/@modulessoft" target="_blank">channel</a>.</p>
+      <p class="text-animation">I made an electronic album back in 2011.</p>
+      <p class="text-animation">I have restored a few vehicles.</p>
+    </section>
+    <section id="woods">
+      <p class="text-animation">I cherish nature.</p>
+    </section>
+    <section id="mountain">
+      <p class="text-animation">And I enjoy hiking!</p>
+      <p class="text-animation">Thank you for coming over. <br> <a href="/" id="scrollUpLink">Scroll up</a></p>
+    </section>
+  </article>
+</body>
+<script>
+  /* Show the scroll instruction overlay with a delay */
+  // var myElement = document.querySelector('.scroll-instruction');
+  // function showElement() {
+  //   myElement.style.opacity = 1;
+  // }
+  // setTimeout(showElement, 1000);
 
-    <style>
-      .resume,
-      .decorative {
-        /* Prevent the page from rendering text */
-        opacity: 0;
-      }
-    </style>
-  </body>
-  <script>
-    /* Show the scroll instruction overlay with a delay */
-    var myElement = document.getElementById('decorative');
-    function showElement() {
-      myElement.style.display = 'block';
-    }
-    setTimeout(showElement, 10000);
+  // Calculate the number of years of professional experience
+  const currentYear = new Date().getFullYear();
+  const yearsPast = currentYear - 2019;
+  document.getElementById("years").textContent = yearsPast;
 
-    // Calculate the number of years of professional experience
-    const currentYear = new Date().getFullYear();
-    const yearsPast = currentYear - 2019;
-    document.getElementById("years").textContent = yearsPast;
-    
-    // Scroll up when page refreshes
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
+  // Scroll up when page refreshes
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
 
-    /* Register the service worker */
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
-          .then(function(registration) {
-            // Registration was successful
-            // console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-            // Registration failed :(
-            // console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-    </script>
+  /* Register the service worker */
+  // if ('serviceWorker' in navigator) {
+  //   window.addEventListener('load', function() {
+  //     navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
+  //       .then(function(registration) {
+  //         // Registration was successful
+  //         // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+  //       }, function(err) {
+  //         // Registration failed :(
+  //         // console.log('ServiceWorker registration failed: ', err);
+  //       });
+  //   });
+  // }
+</script>
+
 </html>
