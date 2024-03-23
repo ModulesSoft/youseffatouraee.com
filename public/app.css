@@ -58,6 +58,42 @@ body {
   stroke-width: 0.01rem;
 }
 
+/* Navbar styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: #000; /* Background color */
+  font-family: "Times New Roman";
+}
+
+nav ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block; /* Display menu items inline */
+}
+
+nav ul li a {
+  display: block; /* Make anchor tags full-width */
+  padding: 10px 20px; /* Add padding to the menu items */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+nav ul li a:hover {
+  background-color: #555; /* Background color on hover */
+}
+
+.active {
+  color: grey !important;
+}
+
 .scroll-instruction {
   position: fixed;
   top: 0;
@@ -73,14 +109,14 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 3;
+  z-index: 2;
   height: 100vh;
   /* opacity: 0 !important; */
 }
 
 .subtitle {
   position: fixed;
-  top: 0;
+  top: 3rem;
   background: rgba(0, 0, 0, 0.7);
   padding: 0.3rem 1rem 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -91,7 +127,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
-  z-index: 2;
+  z-index: 4;
 }
 
 .mouse {

@@ -1,4 +1,3 @@
-import "./App.css";
 import useWindowDimensions from "./lib/useWindowDimensions";
 import Background from "./components/Background";
 import GetTextArray from "./lib/GetTextArray";
