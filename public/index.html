@@ -120,6 +120,13 @@
     </style>
   </body>
   <script>
+    /* Show the scroll instruction overlay with a delay */
+    var myElement = document.getElementById('decorative');
+    function showElement() {
+      myElement.style.display = 'block';
+    }
+    setTimeout(showElement, 3000);
+
     // Calculate the number of years of professional experience
     const currentYear = new Date().getFullYear();
     const yearsPast = currentYear - 2019;
