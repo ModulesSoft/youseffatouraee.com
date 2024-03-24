@@ -241,16 +241,16 @@ nav ul li a:hover {
 /* Projects CSS */
 .gallery-container {
   margin: 25% 0;
-}
-@media (min-width: 768px) {
-  .header,
-  .footer {
-    padding: 100px 30px;
-  }
+  font-family: "Courier New", Courier, monospace;
+  color: green !important;
 }
 .section {
   width: 100%;
   position: relative;
+  margin-top: 1rem;
+}
+.section span {
+  color: darkblue;
 }
 .section .left,
 .section .middle,
@@ -268,71 +268,11 @@ nav ul li a:hover {
   -webkit-transition: 0.3s ease-in-out all;
   transition: 0.3s ease-in-out all;
 }
-@media (min-width: 480px) {
-  .section .left .content,
-  .section .middle .content,
-  .section .right .content {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-}
-@media (min-width: 480px) {
-  .section .left,
-  .section .middle,
-  .section .right {
-    width: 50%;
-    font-size: 0.9em;
-    padding: 10px;
-    left: 0;
-    float: left;
-    position: absolute;
-  }
-}
-@media (min-width: 768px) {
-  .section .left,
-  .section .middle,
-  .section .right {
-    width: 33.33333%;
-    left: 33.33%;
-    padding: 10px;
-  }
-}
-@media (min-width: 992px) {
-  .section .left,
-  .section .middle,
-  .section .right {
-    padding: 30px;
-    font-size: 1em;
-  }
-}
 .section.animate .left {
   left: 0;
 }
-@media (min-width: 480px) {
-  .section.animate .left {
-    left: 50%;
-  }
-}
-@media (min-width: 768px) {
-  .section.animate .left {
-    left: 0;
-  }
-}
 .section.animate .right {
   left: 0;
-}
-@media (min-width: 480px) {
-  .section.animate .right {
-    left: 50%;
-  }
-}
-@media (min-width: 768px) {
-  .section.animate .right {
-    left: 66.66%;
-  }
 }
 .section .title {
   background: tomato;
@@ -385,11 +325,6 @@ nav ul li a:hover {
   -moz-filter: grayscale(0%);
   -o-filter: grayscale(0%);
 }
-@media (min-width: 768px) {
-  .section .tiles {
-    display: block;
-  }
-}
 .section .middle {
   background: black;
   z-index: 2;
@@ -400,8 +335,9 @@ nav ul li a:hover {
   width: 100%;
   height: auto;
   display: block;
+  height: 100%;
+  object-fit: cover;
 }
-
 @-webkit-keyframes bounce {
   0%,
   20%,
@@ -430,5 +366,61 @@ nav ul li a:hover {
   }
   60% {
     transform: translateY(-10px);
+  }
+}
+@media (min-width: 480px) {
+  .section .left .content,
+  .section .middle .content,
+  .section .right .content {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .section .left,
+  .section .middle,
+  .section .right {
+    width: 50%;
+    font-size: 0.9em;
+    padding: 10px;
+    left: 0;
+    float: left;
+    position: absolute;
+  }
+  .section.animate .left {
+    left: 50%;
+  }
+  .section.animate .right {
+    left: 50%;
+  }
+  .section {
+    margin-top: 0;
+  }
+}
+@media (min-width: 768px) {
+  .section .left,
+  .section .middle,
+  .section .right {
+    width: 33.33333%;
+    left: 33.33%;
+    padding: 0;
+  }
+  .section.animate .left {
+    left: 0;
+  }
+  .section.animate .right {
+    left: 66.66%;
+  }
+  .section .tiles {
+    display: block;
+  }
+}
+@media (min-width: 992px) {
+  .section .left,
+  .section .middle,
+  .section .right {
+    /* padding: 30px; */
+    font-size: 1em;
   }
 }
