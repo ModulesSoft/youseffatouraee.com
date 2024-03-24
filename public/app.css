@@ -240,7 +240,7 @@ nav ul li a:hover {
 
 /* Projects CSS */
 .gallery-container {
-  margin-top: 3rem;
+  margin: 25% 0;
 }
 @media (min-width: 768px) {
   .header,
