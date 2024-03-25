@@ -1,12 +1,6 @@
 function GarageDoor() {
   return (
-    <svg
-      width="384.264"
-      height="300"
-      viewBox="0 140 384.264 300"
-      x="265"
-      y="900"
-    >
+    <svg width="389" height="303" viewBox="0 140 384.264 300" x="263" y="899">
       <g id="garage-door">
         <defs>
           <clipPath id="clip-path">
@@ -22,13 +16,6 @@ function GarageDoor() {
               transform="translate(.418)"
             ></path>
             <g data-name="Group 130" transform="translate(0 .064)">
-              <path
-                fill="#3d5980"
-                fillRule="evenodd"
-                d="M3340 5279h382.587v131.438h-156.965z"
-                data-name="Path 671"
-                transform="translate(-3338 -5279)"
-              ></path>
               <path
                 fill="#28324e"
                 d="M0 0H384.264V9.998H0z"
