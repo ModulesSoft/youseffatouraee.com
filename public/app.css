@@ -240,7 +240,7 @@ nav ul li a:hover {
 
 /* Projects CSS */
 .gallery-container {
-  margin: 25% 0;
+  margin-bottom: 25%;
   font-family: "Courier New", Courier, monospace;
   color: green !important;
 }
