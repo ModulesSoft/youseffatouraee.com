@@ -338,7 +338,7 @@ nav ul li a:hover {
   height: auto;
   display: block;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 14px;
 }
 @-webkit-keyframes bounce {
