@@ -141,27 +141,18 @@ nav ul li a:hover {
     position: absolute;
     content: "";
     width: 12px;
-    height: 12px;
-    top: 70px;
+    height: 22px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
     border-radius: 50%;
     opacity: 1;
-    animation: wheel 2s infinite;
-    -webkit-animation: wheel 2s infinite;
   }
 }
 
 .path {
   stroke-dasharray: 100;
-}
-
-@keyframes wheel {
-  to {
-    opacity: 0;
-    top: 0;
-  }
 }
 
 .text-background {
