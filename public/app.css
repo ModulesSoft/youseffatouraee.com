@@ -250,14 +250,14 @@ nav ul li a:hover {
   margin-top: 1rem;
 }
 .section span {
-  color: darkblue;
+  color: lightgrey;
 }
 .section .left,
 .section .middle,
 .section .right {
   width: 100%;
   display: block;
-  color: #fff;
+  color: forestgreen;
   box-sizing: border-box;
   left: 0;
   padding: 30px;
@@ -275,10 +275,11 @@ nav ul li a:hover {
   left: 0;
 }
 .section .title {
-  background: tomato;
+  /* background: tomato; */
 }
 .section .title h2 {
   margin-top: 0;
+  color: white;
 }
 .section .title p {
   line-height: 1.55em;
