@@ -3,14 +3,14 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M2JRDY5FS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M2JRDY5FS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-      gtag('config', 'G-0M2JRDY5FS');
-    </script> -->
+    gtag('config', 'G-0M2JRDY5FS');
+  </script>
   <!--  -->
   <link rel="stylesheet" href="app.css">
   <meta charset="utf-8" />
@@ -121,18 +121,18 @@
   }
 
   /* Register the service worker */
-  // if ('serviceWorker' in navigator) {
-  //   window.addEventListener('load', function() {
-  //     navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
-  //       .then(function(registration) {
-  //         // Registration was successful
-  //         // console.log('ServiceWorker registration successful with scope: ', registration.scope);
-  //       }, function(err) {
-  //         // Registration failed :(
-  //         // console.log('ServiceWorker registration failed: ', err);
-  //       });
-  //   });
-  // }
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
+        .then(function (registration) {
+          // Registration was successful
+          // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+          // Registration failed :(
+          // console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
 </script>
 
 </html>
