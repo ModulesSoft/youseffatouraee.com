@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Bachelor() {
     return (
-        <g>
+        <g transform="translate(-1600, 0)">
             <path
                 fill="none"
                 stroke="gray"
@@ -76,9 +76,9 @@ export default function Bachelor() {
                         y="0"
                         fill="#E1A728"
                         fontFamily="'TimesNewRomanPSMT'"
-                        fontSize="20"
+                        fontSize="24"
                     >
-                        Bachelor of{" "}
+                        Bachelor of
                     </tspan>
                     <tspan
                         x="-146.5"
@@ -87,7 +87,7 @@ export default function Bachelor() {
                         fontFamily="'TimesNewRomanPSMT'"
                         fontSize="39.965"
                     >
-                        Information Technology
+                        Computer Engineering
                     </tspan>
                 </text>
                 <path

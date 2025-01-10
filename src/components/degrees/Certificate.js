@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Certificate() {
     return (
-        <g>
+        <g transform="translate(-1400, 0)">
             <path
                 fill="none"
                 stroke="gray"
