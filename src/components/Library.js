@@ -1,5 +1,6 @@
 import Bachelor from "./degrees/Bachelor";
 import Certificate from "./degrees/Certificate";
+import Master from "./degrees/Master";
 
 function Library() {
   return (
@@ -178,7 +179,7 @@ function Library() {
         ></path>
       </g>
       <g fill="#264157">
-        <path d="M6932.2-289.6H3557.6c-62.7 0-113.5 50.8-113.5 113.5s50.8 113.5 113.5 113.5h3374.6c62.7 0 113.5-50.8 113.5-113.5s-50.8-113.5-113.5-113.5zM5827.7 1663.8H2447c-62.7 0-113.5 50.8-113.5 113.5s50.8 113.5 113.5 113.5h3380.7c62.7 0 113.5-50.8 113.5-113.5-.1-62.7-50.9-113.5-113.5-113.5z"></path>
+        <path d="M6763.47-289.6H2376.49c-62.7 0-113.5 50.8-113.5 113.5s50.8 113.5 113.5 113.5h4386.98c62.7 0 113.5-50.8 113.5-113.5s-50.8-113.5-113.5-113.5zM5827.7 1663.8H2447c-62.7 0-113.5 50.8-113.5 113.5s50.8 113.5 113.5 113.5h3380.7c62.7 0 113.5-50.8 113.5-113.5-.1-62.7-50.9-113.5-113.5-113.5z"></path>
       </g>
       <g>
         <path
@@ -613,17 +614,9 @@ function Library() {
         fontSize="48"
         transform="rotate(90 2042.147 2995.923)"
       >
-        REST API - GraphQ
+        REST API - GraphQL
       </text>
-      <text
-        fill="#FFF"
-        fontFamily="'TimesNewRomanPSMT'"
-        fontSize="48"
-        letterSpacing="-1"
-        transform="rotate(90 1841.497 3196.573)"
-      >
-        L
-      </text>
+      <Master />
       <Bachelor />
       <Certificate />
     </svg>
