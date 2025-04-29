@@ -1,0 +1,504 @@
+.visible-scrollbar,
+.invisible-scrollbar,
+.mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+  padding: 1em;
+  margin: 1em auto;
+  /* outline: 2px dashed cornflowerblue; */
+}
+
+.invisible-scrollbar::-webkit-scrollbar .scrollbar {
+  display: none;
+}
+
+/* Demonstrate a "mostly customized" scrollbar
+* (won't be visible otherwise if width/height is specified) */
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  /* or add it to the track */
+}
+
+/* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  background: #aaa;
+}
+
+body {
+  background-color: black;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 4320px;
+  background-color: black;
+  font-size: 2rem;
+}
+
+.page {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /* background-color: #0a2946; */
+  background-color: #000;
+}
+
+.page a {
+  stroke: blue;
+  stroke-width: 0.004rem;
+  text-decoration: underline;
+}
+
+.page a:hover {
+  stroke-width: 0.01rem;
+}
+
+/* Navbar styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: #000;
+  /* Background color */
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+nav ul {
+  list-style-type: none;
+  /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  /* Display menu items inline */
+}
+
+nav ul li a {
+  display: block;
+  /* Make anchor tags full-width */
+  padding: 10px 20px;
+  /* Add padding to the menu items */
+  color: white;
+  /* Text color */
+  text-decoration: none;
+  /* Remove underline from links */
+}
+
+nav ul li a:hover {
+  color: #555;
+}
+
+.active {
+  color: grey !important;
+}
+
+.scroll-instruction {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  color: #f5f5f5;
+  font-size: 1.2rem;
+  text-align: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+  height: 100vh;
+  /* opacity: 0 !important; */
+}
+
+.subtitle {
+  position: fixed;
+  top: 3rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.3rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  z-index: 4;
+}
+
+.mouse {
+  position: relative;
+  width: 50px;
+  height: 90px;
+  border: 3px solid white;
+  border-radius: 60px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 22px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;
+  }
+}
+
+.path {
+  stroke-dasharray: 100;
+}
+
+.text-background {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  padding-right: 20px;
+  border-radius: 10px;
+  line-height: 4rem;
+}
+
+.text-animation {
+  opacity: 0;
+}
+
+#root {
+  font-family: "Times New Roman";
+  overflow-x: hidden;
+}
+
+#sky {
+  fill: black;
+}
+
+#rearWheel,
+#frontWheel,
+#smileFace {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#treeOne,
+#treeTwo,
+#motorcycle,
+#microphone {
+  stroke-width: 0.02rem;
+}
+
+#treeOne:hover,
+#treeTwo:hover,
+#motorcycle:hover,
+#microphone:hover {
+  stroke-width: 0.05rem;
+}
+
+#cycle1,
+#cycle2,
+#cycle2,
+#cycle3,
+#cycle4,
+#cycle5,
+#cycle6,
+#cycle7,
+#cycle8 {
+  opacity: 0;
+}
+
+#trees,
+#mountains,
+#flag,
+#house,
+#car,
+#garage-door {
+  filter: brightness(0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    font-size: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    width: 80%;
+  }
+}
+
+/* Projects CSS */
+.gallery-container {
+  margin-bottom: 25%;
+  font-family: "Courier New", Courier, monospace;
+  color: green !important;
+}
+
+.section {
+  width: 100%;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.section span {
+  color: lightgrey;
+}
+
+.section .left,
+.section .middle,
+.section .right {
+  width: 100%;
+  display: block;
+  color: forestgreen;
+  box-sizing: border-box;
+  left: 0;
+  padding: 30px;
+  text-align: center;
+  overflow: hidden;
+  -moz-transition: 0.3s ease-in-out all;
+  -o-transition: 0.3s ease-in-out all;
+  -webkit-transition: 0.3s ease-in-out all;
+  transition: 0.3s ease-in-out all;
+}
+
+.section.animate .left {
+  left: 0;
+}
+
+.section.animate .right {
+  left: 0;
+}
+
+.section .title {
+  /* background: tomato; */
+}
+
+.section .title h2 {
+  margin-top: 0;
+  color: white;
+}
+
+.section .title p {
+  line-height: 1.55em;
+  margin-bottom: 0.75em;
+}
+
+.section .title .btn-primary {
+  color: #fff;
+  background: #ff3814;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 3px;
+  display: inline-block;
+  -moz-transition: 0.3s ease-in-out all;
+  -o-transition: 0.3s ease-in-out all;
+  -webkit-transition: 0.3s ease-in-out all;
+  transition: 0.3s ease-in-out all;
+}
+
+.section .title .btn-primary:hover {
+  background: #fa2600;
+}
+
+.section .tiles {
+  padding: 0;
+  background: #000;
+  clear: both;
+  display: none;
+  float: none;
+}
+
+.section .tiles img {
+  width: 50%;
+  float: left;
+  height: 33%;
+  opacity: 0.7;
+  -moz-transition: 0.3s ease-in-out all;
+  -o-transition: 0.3s ease-in-out all;
+  -webkit-transition: 0.3s ease-in-out all;
+  transition: 0.3s ease-in-out all;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  object-fit: contain;
+}
+
+.section .tiles img:hover {
+  opacity: 1;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+}
+
+.section .middle {
+  background: black;
+  z-index: 2;
+  padding: 0;
+  height: 100%;
+  position: relative;
+}
+
+.section .middle img {
+  width: 400px;
+  height: auto;
+  display: block;
+  height: 400px;
+  object-fit: fill;
+  border-radius: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.middle a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* Add the button style */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  border-color: #0056b3;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.middle a:hover {
+  background-color: #0056b3;
+}
+
+.middle:hover a {
+  opacity: 1;
+}
+
+.middle:hover img {
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+#walking {
+  /* Initialy invisible */
+  opacity: 0;
+}
+
+@-webkit-keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-20px);
+  }
+
+  60% {
+    -webkit-transform: translateY(-10px);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (min-width: 480px) {
+
+  .section .left .content,
+  .section .middle .content,
+  .section .right .content {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .section .left,
+  .section .middle,
+  .section .right {
+    width: 50%;
+    font-size: 0.9em;
+    padding: 10px;
+    left: 0;
+    float: left;
+    position: absolute;
+  }
+
+  .section.animate .left {
+    left: 50%;
+  }
+
+  .section.animate .right {
+    left: 50%;
+  }
+
+  .section {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .section .left,
+  .section .middle,
+  .section .right {
+    width: 33.33333%;
+    left: 33.33%;
+    padding: 0;
+  }
+
+  .section.animate .left {
+    left: 0;
+  }
+
+  .section.animate .right {
+    left: 66.66%;
+  }
+
+  .section .tiles {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .section .left,
+  .section .middle,
+  .section .right {
+    /* padding: 30px; */
+    font-size: 1em;
+  }
+}

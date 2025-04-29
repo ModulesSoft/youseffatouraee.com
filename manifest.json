@@ -1,0 +1,15 @@
+{
+  "short_name": "Yousef Fatouraee",
+  "name": "Yousef Fatouraee",
+  "description": "Introduction to Yousef Fatouraee",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "black",
+  "background_color": "black"
+}

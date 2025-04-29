@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M2JRDY5FS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0M2JRDY5FS');
+  </script>
+  <!--  -->
+  <link rel="stylesheet" href="app.css">
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description"
+    content="Yousef Fatouraee's introduction website. Software engineer with focus on JavaScript, PHP, and Python." />
+  <meta property="og:title" content="Yousef Fatouraee - Software Engineer" />
+  <meta property="og:description" content="Yousef Fatouraee's introduction website - youseffatouraee.com" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://youseffatouraee.com" />
+  <meta name="twitter:card" content="/og-image.png" />
+  <meta name="twitter:title" content="Yousef Fatouraee - Software Engineer" />
+  <meta name="twitter:description"
+    content="Software engineer with multiple web application projects utilizing JavaScript, PHP, and Python." />
+  <meta name="twitter:image" content="/og-image.png" />
+  <meta name="twitter:url" content="https://youseffatouraee.com" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <!-- <link rel="manifest" href="/manifest.json" /> -->
+  <title>Yousef Fatouraee</title>
+  <script type="module" crossorigin src="/assets/index-DKW0W4eq.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CIfVvUo9.css">
+</head>
+
+<body class="mostly-customized-scrollbar">
+  <header>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" class="active">ABOUT ME</a>
+          </li>
+          <li>
+            <a href="/projects.html">PROJECTS</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/ModulesSoft">GIT</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </header>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <div class="scroll-instruction" id="scroll-instruction">
+    <div class="mouse"></div>
+    <p data-nosnippet>Just Scroll Down to Animate!</p>
+  </div>
+  <p class="subtitle"></p>
+  <article style="opacity: 0;" id="article">
+    <!-- resume -->
+    <section id="laptop">
+      <h1 class="text-animation">Hi!<br>This is Yousef.</h1>
+      <p class="text-animation">I'm a Software Engineer!</p>
+    </section>
+    <section id="bachelor">
+      <p class="text-animation">
+        I graduated from
+        <a href="https://ucalgary.ca" target="_blank">UofC</a>.
+      </p>
+    </section>
+    <section id="certificate">
+      <p class="text-animation">
+        While my main focus is web application development, I also leverage Machine Learning as needed.
+      </p>
+    </section>
+    <section id="skills">
+      <p class="text-animation">
+        I have over <span id="years"></span> years of professional work experience. </time>
+      <p class="text-animation">
+        With a portfolio of projects built using JavaScript, PHP, and Python,<br> my preferred frameworks are Laravel,
+        Next.js, and Django.
+      </p>
+    </section>
+    <!-- hobbies -->
+    <section id="garageHobbies">
+      <p class="text-animation">Keep scrolling to check out my hobbies:</p>
+      <p class="text-animation">At the age of 14, I produced an electronic music album.</p>
+      <p class="text-animation">I have flipped a couple of vehicles since 2019.</p>
+    </section>
+    <section id="woods">
+      <p class="text-animation">I cherish nature.</p>
+    </section>
+    <section id="mountain">
+      <p class="text-animation">And I enjoy hiking!</p>
+      <p class="text-animation">Thank you for coming over. <br> <a href="/" id="scrollUpLink">Scroll up</a></p>
+    </section>
+  </article>
+</body>
+<script>
+  // Calculate the number of years of professional experience
+  const currentYear = new Date().getFullYear();
+  const yearsPast = currentYear - 2019;
+  document.getElementById("years").textContent = yearsPast;
+
+  // Scroll up when page refreshes
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
+
+  /* Register the service worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function (registration) {
+          // Registration was successful
+        }, function (err) {
+          // Registration failed
+        });
+    });
+  }
+</script>
+
+</html>
