@@ -1,7 +1,7 @@
 function House() {
   return (
     <svg>
-      <g id="house" data-name="Group 164" transform="translate(0 515.39)">
+      <g id="house" data-name="Group 164" transform="translate(800 515.39)">
         <g data-name="Group 157" transform="translate(10.436)">
           <path
             fill="#97d1e3"

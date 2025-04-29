@@ -1,6 +1,6 @@
 function GarageDoor() {
   return (
-    <svg width="389" height="303" viewBox="0 140 384.264 300" x="263" y="899">
+    <svg width="389" height="303" viewBox="0 140 384.264 300" x="1063" y="899">
       <g id="garage-door">
         <defs>
           <clipPath id="clip-path">

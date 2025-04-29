@@ -3,7 +3,7 @@ function GarageBackground() {
     <svg>
       <path fill="#fff" d="M0 0H384.264V136.105H0z"></path>
       <path fill="#fff" d="M0 0h384.264v136.1H0z"></path>
-      <g transform="translate(2390 -351.355) translate(-2389 352.355)">
+      <g>
         <path fill="#ffeddc" d="M0 0H384.264V10H0z"></path>
         <path
           fill="#ffeddc"

@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description"
-    content="Yousef Fatouraee's introduction website. Software engineer with focus on JavaScript and PHP." />
+    content="Yousef Fatouraee's introduction website. Software engineer with focus on JavaScript, PHP, and Python." />
   <meta property="og:title" content="Yousef Fatouraee - Software Engineer" />
   <meta property="og:description" content="Yousef Fatouraee's introduction website - youseffatouraee.com" />
   <meta property="og:image" content="/og-image.png" />
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="/og-image.png" />
   <meta name="twitter:title" content="Yousef Fatouraee - Software Engineer" />
   <meta name="twitter:description"
-    content="Software engineer with multiple web application projects utilizing JavaScript and PHP." />
+    content="Software engineer with multiple web application projects utilizing JavaScript, PHP, and Python." />
   <meta name="twitter:image" content="/og-image.png" />
   <meta name="twitter:url" content="https://youseffatouraee.com" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -68,29 +68,28 @@
     </section>
     <section id="bachelor">
       <p class="text-animation">
-        I studied at
+        I graduated from
         <a href="https://ucalgary.ca" target="_blank">UofC</a>.
       </p>
     </section>
     <section id="certificate">
       <p class="text-animation">
-        My focus is mainly on web application development.
+        While my main focus is web application development, I also leverage Machine Learning as needed.
       </p>
     </section>
     <section id="skills">
       <p class="text-animation">
         I have over <span id="years"></span> years of professional work experience. </time>
       <p class="text-animation">
-        I've completed multiple projects using JavaScript and PHP.<br>My favorite
-        frameworks are Next.js & Laravel.
+        With a portfolio of projects built using JavaScript, PHP, and Python,<br> my preferred frameworks are Laravel,
+        Next.js, and Django.
       </p>
     </section>
     <!-- hobbies -->
     <section id="garageHobbies">
-      <p class="text-animation">Keep scrolling to check out my hobbies,<br>or visit my YouTube <a
-          href="https://www.youtube.com/@modulessoft" target="_blank">channel</a>.</p>
-      <p class="text-animation">I made an electronic album back in 2011.</p>
-      <p class="text-animation">I have restored a few vehicles.</p>
+      <p class="text-animation">Keep scrolling to check out my hobbies:</p>
+      <p class="text-animation">At the age of 14, I produced an electronic music album.</p>
+      <p class="text-animation">I have flipped a couple of vehicles since 2019.</p>
     </section>
     <section id="woods">
       <p class="text-animation">I cherish nature.</p>
@@ -102,13 +101,6 @@
   </article>
 </body>
 <script>
-  /* Show the scroll instruction overlay with a delay */
-  // var myElement = document.querySelector('.scroll-instruction');
-  // function showElement() {
-  //   myElement.style.opacity = 1;
-  // }
-  // setTimeout(showElement, 1000);
-
   // Calculate the number of years of professional experience
   const currentYear = new Date().getFullYear();
   const yearsPast = currentYear - 2019;
@@ -125,10 +117,8 @@
       navigator.serviceWorker.register('/service-worker.js')
         .then(function (registration) {
           // Registration was successful
-          // console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function (err) {
-          // Registration failed :(
-          // console.log('ServiceWorker registration failed: ', err);
+          // Registration failed
         });
     });
   }

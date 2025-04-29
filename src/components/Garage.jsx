@@ -14,7 +14,7 @@ function Garage() {
       width="384.264"
       height="136.105"
       viewBox="0 0 384.264 136.105"
-      x="265"
+      x="1065"
       y="900"
     >
       <g id="garage">

@@ -5,10 +5,11 @@ class Timeline {
     this.animate = animate;
     this.initialTime = 0;
     this.timeRanges = [
+      // 1. SCROLL INSTRUCTIONS
       {
         time: this.calculateRange(0),
         actions: [
-          { method: "camera.show", args: [viewsAndTexts.door.view] },
+          { method: "camera.show", args: [viewsAndTexts.general.view] },
           {
             method: "animate.doubleCheck",
             args: [
@@ -23,6 +24,77 @@ class Timeline {
           },
         ],
       },
+      // 2. Day animation
+      {
+        time: this.calculateRange(200),
+        actions: [
+          {
+            method: "animate.dayAndNight",
+            args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [
+              {
+                door: false,
+                instruction: false,
+                walk: false
+              },
+            ],
+          },
+        ]
+      },
+      // 3. CAR ANIMATION
+      {
+        time: this.calculateRange(100),
+        actions: [
+          {
+            method: "animate.drive",
+            args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ door: false, walk: false, instruction: false }],
+          },
+        ],
+      },
+      // 4. WALKING ANIMATIONS
+      {
+        time: this.calculateRange(200),
+        actions: [
+          {
+            method: "camera.move",
+            args: [viewsAndTexts.general.view, viewsAndTexts.walking.view],
+          },
+          {
+            method: "animate.walk",
+            args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ day: true }],
+          },
+        ],
+      },
+      // 5. GARAGE DOOR ANIMATIONS
+      {
+        time: this.calculateRange(200),
+        actions: [
+          {
+            method: "camera.move",
+            args: [viewsAndTexts.walking.view, viewsAndTexts.door.view],
+          },
+          {
+            method: "animate.door",
+            args: [],
+          },
+          {
+            method: "animate.doubleCheck",
+            args: [{ walk: false, drive: true }],
+          },
+        ],
+      },
+      // 6. INTRODUCTION ANIMATIONS
       {
         time: this.calculateRange(200),
         actions: [
@@ -32,7 +104,7 @@ class Timeline {
           },
           {
             method: "animate.doubleCheck",
-            args: [{ instruction: false, poker: false }],
+            args: [{ instruction: false, poker: true, door: true }],
           },
         ],
       },
@@ -49,6 +121,7 @@ class Timeline {
           },
         ],
       },
+      // 7. DEGREE ANIMATIONS
       {
         time: this.calculateRange(200),
         actions: [
@@ -58,16 +131,7 @@ class Timeline {
           },
           {
             method: "camera.zoom",
-            args: [viewsAndTexts.laptop.view, viewsAndTexts.door.view],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(200),
-        actions: [
-          {
-            method: "camera.zoom",
-            args: [viewsAndTexts.door.view, viewsAndTexts.bachelor.view],
+            args: [viewsAndTexts.laptop.view, viewsAndTexts.bachelor.view],
           },
         ],
       },
@@ -97,6 +161,7 @@ class Timeline {
           },
         ],
       },
+      // 8. SKILLS ANIMATIONS
       {
         time: this.calculateRange(200),
         actions: [
@@ -119,6 +184,7 @@ class Timeline {
           },
         ],
       },
+      // 9. GARAGE HOBBIES ANIMATIONS
       {
         time: this.calculateRange(200),
         actions: [
@@ -145,7 +211,7 @@ class Timeline {
           },
           {
             method: "animate.doubleCheck",
-            args: [{ door: false, walk: false }],
+            args: [{ door: true, walk: false }],
           },
         ],
       },
@@ -170,68 +236,18 @@ class Timeline {
             args: [viewsAndTexts.garageHobbies.view, viewsAndTexts.door.view],
           },
           {
-            method: "animate.door",
-            args: [],
-          },
-          {
-            method: "animate.doubleCheck",
-            args: [{ day: false }],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(200),
-        actions: [
-          {
-            method: "animate.dayAndNight",
-            args: [],
-          },
-          {
-            method: "camera.move",
-            args: [viewsAndTexts.door.view, viewsAndTexts.general.view],
-          },
-          {
-            method: "animate.doubleCheck",
-            args: [{ door: true, walk: false, drive: false }],
-          },
-        ],
-      },
-      {
-        time: this.calculateRange(200),
-        actions: [
-          {
-            method: "camera.move",
-            args: [viewsAndTexts.general.view, viewsAndTexts.walking.view],
-          },
-          {
-            method: "animate.walk",
-            args: [],
-          },
-          {
             method: "animate.doubleCheck",
             args: [{ day: true }],
           },
         ],
       },
-      {
-        time: this.calculateRange(200),
-        actions: [
-          {
-            method: "animate.drive",
-            args: [],
-          },
-          {
-            method: "animate.doubleCheck",
-            args: [{ door: true, walk: false }],
-          },
-        ],
-      },
+      // 10. OUTDOOR HOBBIES ANIMATIONS
       {
         time: this.calculateRange(200),
         actions: [
           {
             method: "camera.zoom",
-            args: [viewsAndTexts.walking.view, viewsAndTexts.woods.view],
+            args: [viewsAndTexts.door.view, viewsAndTexts.woods.view],
           },
           {
             method: "animate.trees",

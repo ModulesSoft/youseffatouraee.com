@@ -11,6 +11,8 @@ function WalkingAnimations(walkingId, cycleIds, step, maxStep) {
     document.querySelector(cycleId).style.opacity = 0;
   });
   if (shuffleStep >= 0 && shuffleStep < cycleIds.length) {
+    // Make walking visible
+    document.querySelector(walkingId).style.opacity = move > 0 ? 1 : 0;
     // Show the current cycle
     document.querySelector(cycleIds[shuffleStep]).style.opacity = 1;
     // Move the body

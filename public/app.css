@@ -19,7 +19,8 @@
 .mostly-customized-scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background-color: #000; /* or add it to the track */
+  background-color: #000;
+  /* or add it to the track */
 }
 
 /* Add a thumb */
@@ -65,25 +66,32 @@ nav {
   left: 0;
   width: 100%;
   z-index: 3;
-  background-color: #000; /* Background color */
+  background-color: #000;
+  /* Background color */
   font-family: Helvetica, Arial, sans-serif;
 }
 
 nav ul {
-  list-style-type: none; /* Remove bullet points */
+  list-style-type: none;
+  /* Remove bullet points */
   margin: 0;
   padding: 0;
 }
 
 nav ul li {
-  display: inline-block; /* Display menu items inline */
+  display: inline-block;
+  /* Display menu items inline */
 }
 
 nav ul li a {
-  display: block; /* Make anchor tags full-width */
-  padding: 10px 20px; /* Add padding to the menu items */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline from links */
+  display: block;
+  /* Make anchor tags full-width */
+  padding: 10px 20px;
+  /* Add padding to the menu items */
+  color: white;
+  /* Text color */
+  text-decoration: none;
+  /* Remove underline from links */
 }
 
 nav ul li a:hover {
@@ -235,14 +243,17 @@ nav ul li a:hover {
   font-family: "Courier New", Courier, monospace;
   color: green !important;
 }
+
 .section {
   width: 100%;
   position: relative;
   margin-top: 1rem;
 }
+
 .section span {
   color: lightgrey;
 }
+
 .section .left,
 .section .middle,
 .section .right {
@@ -259,23 +270,29 @@ nav ul li a:hover {
   -webkit-transition: 0.3s ease-in-out all;
   transition: 0.3s ease-in-out all;
 }
+
 .section.animate .left {
   left: 0;
 }
+
 .section.animate .right {
   left: 0;
 }
+
 .section .title {
   /* background: tomato; */
 }
+
 .section .title h2 {
   margin-top: 0;
   color: white;
 }
+
 .section .title p {
   line-height: 1.55em;
   margin-bottom: 0.75em;
 }
+
 .section .title .btn-primary {
   color: #fff;
   background: #ff3814;
@@ -288,9 +305,11 @@ nav ul li a:hover {
   -webkit-transition: 0.3s ease-in-out all;
   transition: 0.3s ease-in-out all;
 }
+
 .section .title .btn-primary:hover {
   background: #fa2600;
 }
+
 .section .tiles {
   padding: 0;
   background: #000;
@@ -298,6 +317,7 @@ nav ul li a:hover {
   display: none;
   float: none;
 }
+
 .section .tiles img {
   width: 50%;
   float: left;
@@ -312,12 +332,14 @@ nav ul li a:hover {
   -o-filter: grayscale(100%);
   object-fit: contain;
 }
+
 .section .tiles img:hover {
   opacity: 1;
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
   -o-filter: grayscale(0%);
 }
+
 .section .middle {
   background: black;
   z-index: 2;
@@ -325,13 +347,16 @@ nav ul li a:hover {
   height: 100%;
   position: relative;
 }
+
 .section .middle img {
-  width: 100%;
+  width: 400px;
   height: auto;
   display: block;
-  height: 100%;
-  object-fit: contain;
+  height: 400px;
+  object-fit: fill;
   border-radius: 14px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .middle a {
@@ -359,13 +384,20 @@ nav ul li a:hover {
 .middle:hover a {
   opacity: 1;
 }
+
 .middle:hover img {
   /* Add the blur effect */
   filter: blur(2px);
   -webkit-filter: blur(2px);
 }
 
+#walking {
+  /* Initialy invisible */
+  opacity: 0;
+}
+
 @-webkit-keyframes bounce {
+
   0%,
   20%,
   50%,
@@ -373,14 +405,18 @@ nav ul li a:hover {
   100% {
     -webkit-transform: translateY(0);
   }
+
   40% {
     -webkit-transform: translateY(-20px);
   }
+
   60% {
     -webkit-transform: translateY(-10px);
   }
 }
+
 @keyframes bounce {
+
   0%,
   20%,
   50%,
@@ -388,14 +424,18 @@ nav ul li a:hover {
   100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-20px);
   }
+
   60% {
     transform: translateY(-10px);
   }
 }
+
 @media (min-width: 480px) {
+
   .section .left .content,
   .section .middle .content,
   .section .right .content {
@@ -405,6 +445,7 @@ nav ul li a:hover {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+
   .section .left,
   .section .middle,
   .section .right {
@@ -415,17 +456,22 @@ nav ul li a:hover {
     float: left;
     position: absolute;
   }
+
   .section.animate .left {
     left: 50%;
   }
+
   .section.animate .right {
     left: 50%;
   }
+
   .section {
     margin-top: 0;
   }
 }
+
 @media (min-width: 768px) {
+
   .section .left,
   .section .middle,
   .section .right {
@@ -433,17 +479,22 @@ nav ul li a:hover {
     left: 33.33%;
     padding: 0;
   }
+
   .section.animate .left {
     left: 0;
   }
+
   .section.animate .right {
     left: 66.66%;
   }
+
   .section .tiles {
     display: block;
   }
 }
+
 @media (min-width: 992px) {
+
   .section .left,
   .section .middle,
   .section .right {

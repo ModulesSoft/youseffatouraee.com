@@ -3,7 +3,7 @@ function Car() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       y="720"
-      x="1000"
+      x="-842"
       baseProfile="basic"
       version="1.1"
       viewBox="0 0 6000 4000"

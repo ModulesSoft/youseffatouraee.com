@@ -4,7 +4,8 @@ function CarAnimations(carId, rearWheelId, frontWheelId, step, maxStep) {
   document.querySelector(rearWheelId).style.transform = `rotate(${angle}deg)`;
   document.querySelector(frontWheelId).style.transform = `rotate(${angle}deg)`;
   // Move the car
-  const distance = (step / maxStep) * 3000;
+  const distance = (step / maxStep) * 2520;
+
   document.querySelector(carId).style.transform = `translateX(${distance}px)`;
 }
 
