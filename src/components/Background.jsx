@@ -1,5 +1,5 @@
 import House from "./House";
-import Walking from "./walk/Walking";
+import Walking from "./walk/Walking.jsx";
 import Sun from "./Sun";
 import Clouds from "./Clouds";
 import Flag from "./Flag";

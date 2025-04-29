@@ -19,7 +19,7 @@ export default function Master() {
                         x2="360"
                         y2="80"
                         stroke="#A9A9A9"
-                        stroke-width="2"
+                        strokeWidth="2"
                     />
                     <line
                         x1="360"
@@ -27,7 +27,7 @@ export default function Master() {
                         x2="680"
                         y2="370"
                         stroke="#A9A9A9"
-                        stroke-width="2"
+                        strokeWidth="2"
                     />
                 </g>
 
@@ -48,7 +48,7 @@ export default function Master() {
                     height="440"
                     fill="none"
                     stroke="url(#wood-pattern)"
-                    stroke-width="40"
+                    strokeWidth="40"
                     rx="2"
                     ry="2"
                 />
@@ -198,36 +198,36 @@ export default function Master() {
                 </g>
 
                 {/* Title */}
-                <text x="240" y="100" font-family="Arial" font-size="28" fill="#333333" font-weight="bold">
+                <text x="240" y="100" fontFamily="Arial" fontSize="28" fill="#333333" fontWeight="bold">
                     University of Calgary
                 </text>
-                <text x="240" y="140" font-family="Arial" font-size="24" fill="#666666">
+                <text x="240" y="140" fontFamily="Arial" fontSize="24" fill="#666666">
                     Faculty of Graduate Studies
                 </text>
 
                 {/* Degree Name */}
-                <text x="120" y="220" font-family="Arial" font-size="24" fill="#333333" font-weight="bold">
+                <text x="120" y="220" fontFamily="Arial" fontSize="24" fill="#333333" fontWeight="bold">
                     Master of Engineering
                 </text>
-                <text x="120" y="260" font-family="Arial" font-size="32" fill="#666666">
+                <text x="120" y="260" fontFamily="Arial" fontSize="32" fill="#666666">
                     Software Engineering
                 </text>
 
                 {/* Date */}
-                <text x="120" y="340" font-family="Arial" font-size="22" fill="#666666">
+                <text x="120" y="340" fontFamily="Arial" fontSize="22" fill="#666666">
                     Awarded to: Yousef Fatouraee
                 </text>
 
                 {/* Decorative Elements */}
                 <g>
-                    <line x1="120" y1="360" x2="600" y2="360" stroke="#E31837" stroke-width="2" />
-                    <line x1="120" y1="370" x2="600" y2="370" stroke="#E31837" stroke-width="2" />
+                    <line x1="120" y1="360" x2="600" y2="360" stroke="#E31837" strokeWidth="2" />
+                    <line x1="120" y1="370" x2="600" y2="370" stroke="#E31837" strokeWidth="2" />
                 </g>
 
                 {/* Seal */}
                 <g transform="translate(540, 310)">
                     <circle cx="60" cy="60" r="48" fill="gold" stroke="#E31837"
-                        stroke-linecap="round" stroke-width="10" stroke-dasharray="2,5" />
+                        strokeLinecap="round" strokeWidth="10" strokeDasharray="2,5" />
                 </g>
             </svg>
         )

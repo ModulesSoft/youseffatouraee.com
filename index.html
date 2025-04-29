@@ -14,23 +14,24 @@
   <!--  -->
   <link rel="stylesheet" href="app.css">
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+  <link rel="icon" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description"
     content="Yousef Fatouraee's introduction website. Software engineer with focus on JavaScript and PHP." />
   <meta property="og:title" content="Yousef Fatouraee - Software Engineer" />
   <meta property="og:description" content="Yousef Fatouraee's introduction website - youseffatouraee.com" />
-  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta property="og:image" content="/og-image.png" />
   <meta property="og:url" content="https://youseffatouraee.com" />
-  <meta name="twitter:card" content="%PUBLIC_URL%/og-image.png" />
+  <meta name="twitter:card" content="/og-image.png" />
   <meta name="twitter:title" content="Yousef Fatouraee - Software Engineer" />
   <meta name="twitter:description"
     content="Software engineer with multiple web application projects utilizing JavaScript and PHP." />
-  <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta name="twitter:image" content="/og-image.png" />
   <meta name="twitter:url" content="https://youseffatouraee.com" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <script type="module" src="./src/index.jsx"></script>
+  <!-- <link rel="manifest" href="/manifest.json" /> -->
   <title>Yousef Fatouraee</title>
 </head>
 
@@ -56,7 +57,7 @@
   <div id="root"></div>
   <div class="scroll-instruction" id="scroll-instruction">
     <div class="mouse"></div>
-    <p>Just Scroll Down to Animate!</p>
+    <p data-nosnippet>Just Scroll Down to Animate!</p>
   </div>
   <p class="subtitle"></p>
   <article style="opacity: 0;" id="article">
@@ -121,7 +122,7 @@
   /* Register the service worker */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(function (registration) {
           // Registration was successful
           // console.log('ServiceWorker registration successful with scope: ', registration.scope);

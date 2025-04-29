@@ -1,19 +1,16 @@
 {
-  "name": "Portfolio",
-  "version": "1.1.0",
+  "name": "yousef-fatouraee-homepage",
+  "version": "1.2.0",
   "private": true,
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "dev": "vite"
   },
   "eslintConfig": {
     "extends": [
@@ -32,5 +29,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.3"
   }
 }

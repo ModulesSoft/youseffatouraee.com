@@ -1,4 +1,4 @@
-const CACHE_NAME = "offline-cache-v1.4.3";
+const CACHE_NAME = "offline-cache-v1.5.3";
 const urlsToCache = ["index.html"];
 
 self.addEventListener("install", function (event) {
